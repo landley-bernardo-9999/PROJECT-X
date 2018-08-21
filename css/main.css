@@ -4,7 +4,7 @@ body{
   margin: 0%;
 }
 #container{
-    background-image: url(/img/hotel.jpg);
+    background-image: url(../img/hotel.jpg);
     background-size: cover;  
     height: 100%;
     background-position: center;
