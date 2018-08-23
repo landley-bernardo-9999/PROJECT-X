@@ -46,11 +46,8 @@ body{
 }
 
 #copyright{
-    
     padding-right: 50px;
-    
     margin-left: auto;
-
 }
 
 #footer a{
@@ -59,12 +56,10 @@ body{
 }
 
 .div-form{
-
     height: 50px;
-    margin-top: 10px;
+    margin-top: 0px;
     padding: 15px;
     display: flex;
-  
 }
 
 #div-login{
@@ -73,36 +68,39 @@ body{
   
 }
 
-button[type="button"]{
-    width: 100px;
-    height: 40px;
-    border-radius: 13%;
-}
-
 #div-username{
     display: flex;
-    margin-top:30px;
+    margin-top:30px;   
 }
 
 #div-username-label, #div-password-label{
-    margin-left: 10px;
-    
-    margin-top: 10px;
+    font-size: 24px;
+    width: 100px;
 }
 
-input{
-    width: 200px;
+input[type="text"], input[type="password"]{
+    width: 230px;
     height: 30px;
-    margin-left: 25px;
+    margin-left: 20px;
+    font-size: 23px;
 }
+
+button[type="submit"]{
+    width: 100px;
+    height: 35px;
+    font-size: 20px;
+}
+
 
 #div-forgot-password{
     padding-left: 10px;
+    margin-top: 20px;
 }
 
 #div-forgot-password a{
     color: black;
     text-decoration: none;
+    font-size: 20px;
 }
 
 @media only screen and (max-width: 500px){
@@ -113,6 +111,29 @@ input{
     #login{
         width: 80%;
     }
+
+    button[type="submit"]{
+        width: 50%;
+        margin-top: 15px;
+    }
+
+    .div-form{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    input[type="text"], input[type="password"]{
+        width: 80%;
+        height: 30px;
+        font-size: 23px;
+    }
+
+    #div-username-label, #div-password-label{
+        text-align: center;
+        margin: auto;
+    }
+
     #footer{
         text-align: center;
         display: flex;
@@ -130,7 +151,7 @@ input{
     }
     
     #faq:hover{
-    background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
     #copyright{
@@ -143,5 +164,10 @@ input{
 
     #copyright:hover{
         background-color: rgba(255, 255, 255, 0.2);
-        }
+    }
+
+    #div-forgot-password{
+        padding-left: 10px;
+        margin-top: 0px;
+    }
 }

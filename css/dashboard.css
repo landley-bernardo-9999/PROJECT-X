@@ -1,0 +1,98 @@
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+}
+
+#container{
+    border: solid black;
+    display: grid;
+    grid-template-areas: 
+            'welcome title real-time'
+            'stat schedule options'
+            'filter units units units';
+}
+
+#header{
+    display: flex;
+}
+
+#welcome{
+    grid-area: header;
+}
+
+#title{
+    background-color: green;
+    grid-area: header;
+    margin: auto;
+}
+
+#real-time{ 
+    grid-area: header;
+    margin-left: auto;
+    background-color: red;
+}
+
+#stat{
+   grid-area: stat;
+}
+
+.label-div-style, .colored-div-style, .vacant-num-div-style{
+    text-align: left;
+    margin-top: 10px;
+}
+
+.vacant-num-div-style{
+   
+    margin-left: 15px;
+}
+.stat-div-style{
+    width: 150px;
+    display: flex;
+}
+
+.label-div-style{
+    width: 80px;
+}
+
+.colored-div-style{
+    width: 25px;
+    height: 20px;
+}
+
+
+#green-div{
+    background-color: green;
+}
+
+#red-div{
+    background-color: red;
+}
+
+#orange-div{
+    background-color: orange;
+}
+
+#black-div{
+    background-color: black;
+}
+
+#schedule{
+    grid-area: schedule;
+    border: solid black;
+    width: 300px;
+}
+
+#options{
+    grid-area: options;
+    width: 300px;
+}
+
+
+
+
+
+
+
+
+
