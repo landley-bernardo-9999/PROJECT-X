@@ -39,13 +39,6 @@
                 $zip = $_POST['zip'];
                 $mobileNumber = $_POST['mobileNumber'];
 
-                $query = "SELECT * FROM residents WHERE username ='$username'";
-
-                if($query){
-                  echo "<script>alert('The username is already taken!');</script>";
-                  exit();
-                }
-
                 $query = "INSERT INTO employees (firstName, lastName, birthDate, username, pass, repeatPass, mobileNumber, city, country, zip)
                     VALUE('$firstName','$lastName','$birthDate','$username','$pass','$repeatPass',' $mobileNumber','$city','$country','$zip')";
                                         
@@ -90,7 +83,7 @@
                   </div>
               <!--Re-enter password-->
                    <div class="col-md-12 mb-3">
-                      <input name="repeatPass" type="password" minlength="8" class="form-control" placeholder="Please re-enter your password." aria-describedby="inputGroupPrepend2" required>
+                      <input name="repeatPass" type="password" minlength="8" class="form-control" placeholder="Please confirm your password." aria-describedby="inputGroupPrepend2" required>
                   </div>
               <!--Mobile number-->    
                     <div class="col-md-12 mb-3">
