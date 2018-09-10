@@ -53,13 +53,16 @@
                 $result=mysqli_query($conn,$query);
 
                 if($result==1){
-                  echo "<script>alert('A record has been added to the database sucessfully!');</script>";
+                  echo "<script>alert('A new resident has been added sucessfully!');</script>";
                 }
+
                 else{
-                  echo "Problem adding record to the database. Please try again!";
+                  echo "<script>alert('This resident cant be added to the database. Please try again or contact your IT personnel.');</script>";
                 }
                 
-            }
+            }//end of submit button.
+
+            mysqli_close($conn); //close the database connection.
 
       ?>
 

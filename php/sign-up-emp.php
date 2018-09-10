@@ -23,9 +23,10 @@
      
     <!--Adding values to the database using PHP-->
       <?php
-       if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-      }
+       if (!$conn) 
+        {
+          die("Connection failed: " . mysqli_connect_error());
+        }
             if(isset($_POST['submit']))
             {
                 $firstName = $_POST['firstName'];
@@ -33,27 +34,31 @@
                 $birthDate = $_POST['birthDate'];
                 $username = $_POST['username'];
                 $pass = $_POST['pass'];
+                $encryptPass = md5($pass);//ecncrypt the password using MD5.
                 $repeatPass = $_POST['repeatPass'];
                 $city = $_POST['city'];
                 $country = $_POST['country'];
                 $zip = $_POST['zip'];
                 $mobileNumber = $_POST['mobileNumber'];
 
-                $query = "INSERT INTO employees (firstName, lastName, birthDate, username, pass, repeatPass, mobileNumber, city, country, zip)
-                    VALUE('$firstName','$lastName','$birthDate','$username','$pass','$repeatPass',' $mobileNumber','$city','$country','$zip')";
+                  $query = "INSERT INTO employees (firstName, lastName, birthDate, username, pass, mobileNumber, city, country, zip)
+                    VALUE('$firstName','$lastName','$birthDate','$username','$encryptPass',' $mobileNumber','$city','$country','$zip')";
                                         
-                $result=mysqli_query($conn,$query);
+                    $result=mysqli_query($conn,$query);
 
-                if($result==1){
-                  echo "<script>alert('A record has been added to the database sucessfully!');</script>";
-                }
+                      if($result==1)
+                      {
+                        echo "<script>alert('A new employee has been added sucessfully!');</script>";
+                      }
 
-                else{
-                  echo "Problem adding record to the database. Please try again!";
-                }
-                
-            }
+                      else
+                      {
+                        echo "<script>alert('This employee cant be added to the database. Please try again or contact your IT personnel.');</script>";
+                      }
 
+            }//end of submit button.
+            
+            mysqli_close($conn); //close the database connection.
       ?>
 
         <form action="sign-up-emp.php" method="POST">
