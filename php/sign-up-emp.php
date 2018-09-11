@@ -41,6 +41,26 @@
                 $zip = $_POST['zip'];
                 $mobileNumber = $_POST['mobileNumber'];
 
+                $query1 = "SELECT * FROM employees WHERE username = '$username' ";
+
+                $sql = mysqli_query($conn, $query1);
+
+                //confirm the password.
+                if($pass!=$repeatPass)
+                {
+                  echo "<script>alert('Password does not match!');</script>";
+                }
+                
+                else
+                {
+                  //avoid duplicate in username.
+                  if(mysqli_num_rows($sql) > 0 )
+                {
+                  echo "<script>alert('username already exists!');</script>";
+                }
+
+                else{ 
+                  //adding record to the databases
                   $query = "INSERT INTO employees (firstName, lastName, birthDate, username, pass, mobileNumber, city, country, zip)
                     VALUE('$firstName','$lastName','$birthDate','$username','$encryptPass',' $mobileNumber','$city','$country','$zip')";
                                         
@@ -56,8 +76,10 @@
                         echo "<script>alert('This employee cant be added to the database. Please try again or contact your IT personnel.');</script>";
                       }
 
-            }//end of submit button.
-            
+                    }
+                 }
+                
+              }//end of submit button
             mysqli_close($conn); //close the database connection.
       ?>
 
@@ -112,6 +134,7 @@
                     <input name="zip" type="text" class="form-control" placeholder="Zip" required>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" required>

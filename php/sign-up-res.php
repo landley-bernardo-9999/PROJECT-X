@@ -28,7 +28,7 @@
         }
             if(isset($_POST['submit']))
             {
-                $unitNo = $_POST['unitNo'];
+                $roomNo = $_POST['roomNo'];
                 $bedNo = $_POST['bedNo'];
                 $stat = $_POST['stat'];
                 $firstName = $_POST['firstName'];
@@ -47,8 +47,9 @@
                 $rel = $_POST['rel'];
                 $contactPersonMobileNumber = $_POST['contactPersonMobileNumber'];
 
-                $query = "INSERT INTO residents (unitNo, bedNo, stat, firstName, lastName, gender, school, course, yearLevel, birthDate, mobileNumber, emailAddress, city, country, zip, contactPerson, rel, contactPersonMobileNumber)
-                  VALUES('$unitNo','$bedNo','$stat','$firstName','$lastName','$gender','$school','$course','$yearLevel','$birthDate','$mobileNumber','$emailAddress','$city','$country','$zip','$contactPerson','$rel','$contactPersonMobileNumber') ";    
+
+                $query = "INSERT INTO residents (roomNo, bedNo, stat, firstName, lastName, gender, school, course, yearLevel, birthDate, mobileNumber, emailAddress, city, country, zip, contactPerson, rel, contactPersonMobileNumber)
+                  VALUES('$roomNo','$bedNo','$stat','$firstName','$lastName','$gender','$school','$course','$yearLevel','$birthDate','$mobileNumber','$emailAddress','$city','$country','$zip','$contactPerson','$rel','$contactPersonMobileNumber') ";    
                     
                 $result=mysqli_query($conn,$query);
 
@@ -74,7 +75,7 @@
             <!--Unit No-->
                 <label for="validationDefault03">Room Information</label>
                 <div class="col-md-12 mb-3">
-                  <input name="unitNo" type="text" class="form-control" placeholder="Unit No" required>
+                  <input name="roomNo" type="text" class="form-control" placeholder="Unit No" required>
                 </div> 
             <!--Bed No-->
                 <div class="col-md-12 mb-3">
