@@ -28,30 +28,13 @@
         }
             if(isset($_POST['submit']))
             {
-                $roomNo = $_POST['roomNo'];
-                $bedNo = $_POST['bedNo'];
-                $stat = $_POST['stat'];
-                $moveInDate = $_POST['moveInDate'];
-                $moveOutDate = $_POST['moveOutDate'];
-                $firstName = $_POST['firstName'];
-                $lastName = $_POST['lastName'];
-                $gender = $_POST['gender'];
-                $school = $_POST['school'];
-                $course = $_POST['course'];
-                $yearLevel = $_POST['yearLevel'];
-                $birthDate = $_POST['birthDate'];
-                $mobileNumber = $_POST['mobileNumber'];
-                $emailAddress = $_POST['emailAddress'];
-                $city = $_POST['city'];
-                $country = $_POST['country'];
-                $zip = $_POST['zip'];
                 $contactPerson = $_POST['contactPerson'];
                 $rel = $_POST['rel'];
                 $contactPersonMobileNumber = $_POST['contactPersonMobileNumber'];
 
 
-                $query = "INSERT INTO residents (roomNo, bedNo, stat, moveInDate, moveOutDate, firstName, lastName, gender, school, course, yearLevel, birthDate, mobileNumber, emailAddress, city, country, zip, contactPerson, rel, contactPersonMobileNumber)
-                  VALUES('$roomNo','$bedNo','$stat','$moveInDate','$moveOutDate','$firstName','$lastName','$gender','$school','$course','$yearLevel','$birthDate','$mobileNumber','$emailAddress','$city','$country','$zip','$contactPerson','$rel','$contactPersonMobileNumber') ";    
+                $query = "INSERT INTO residents (firstName, lastName, rel, mobileNumber)
+                  VALUES('$firstName','$rel','$contactPersonMobileNumber') ";    
                     
                 $result=mysqli_query($conn,$query);
 
