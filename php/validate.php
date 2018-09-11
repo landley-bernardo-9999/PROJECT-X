@@ -4,14 +4,14 @@
     $myusername = $_POST['username'];
     $mypassword = $_POST['password'];
 
-    $sql = "SELECT * FROM employees WHERE username = '$myusername' AND pass = '$mypassword' ";
-    $result = $conn->query($sql);
+    $query = "SELECT * FROM employees WHERE username = '$myusername' AND pass = '$mypassword' ";
+    $result = mysqli_query($conn,$query);
 
     if(!$row = $result->fetch_assoc()){
-        echo "Your email or password is incorrect!";
+        echo "<script>alert('The username or password you entered is incorrect!');</script>";
       
     }else{
-        echo "Login successfully!";
+        echo "<script>alert('Login Sucessfully!');</script>";
     }
 
 ?>

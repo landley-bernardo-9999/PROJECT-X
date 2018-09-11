@@ -41,9 +41,9 @@
                 $zip = $_POST['zip'];
                 $mobileNumber = $_POST['mobileNumber'];
 
-                $query1 = "SELECT * FROM employees WHERE username = '$username' ";
+                $query = "SELECT * FROM employees WHERE username = '$username' ";
 
-                $sql = mysqli_query($conn, $query1);
+                $sql = mysqli_query($conn, $query);
 
                 //confirm the password.
                 if($pass!=$repeatPass)
