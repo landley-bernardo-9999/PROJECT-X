@@ -1,17 +1,18 @@
 <?php
     include 'config.php';
+    
+    $username = mysqli_real_escape_string($conn,$_POST['userName']); 
+    $pass = mysqli_real_escape_string($conn,$_POST['pass']);
 
-    $myusername = $_POST['username'];
-    $mypassword = $_POST['password'];
-
-    $query = "SELECT * FROM employees WHERE username = '$myusername' AND pass = '$mypassword' ";
+    $query = "SELECT * FROM info WHERE userName = '$username' AND pass = '$pass' ";
+    
     $result = mysqli_query($conn,$query);
 
-    if(!$row = $result->fetch_assoc()){
-        echo "<script>alert('The username or password you entered is incorrect!');</script>";
+    if(mysqli_num_rows($result) > 0){
+        echo "<script>alert('Welcome, $username');</script>";
       
     }else{
-        echo "<script>alert('Login Sucessfully!');</script>";
+        echo "<script>alert('Username or password is incorrect!');</script>";
     }
 
 ?>
