@@ -10,9 +10,12 @@
 
     if(mysqli_num_rows($result) > 0){
         echo "<script>alert('Welcome, $username');</script>";
+        header("Location: ../php/dashboard.php");
+        exit;
       
     }else{
         echo "<script>alert('Username or password is incorrect!');</script>";
+        header("Location: ../index.html");
     }
 
 ?>

@@ -70,11 +70,11 @@
                       {
                         echo "Failure to add user. Please try again or contact your IT department." + mysqli_error($conn);
                       }
-              else
-              {
-                echo "<script>alert('A new user has been added to the database!');</script>";
-                mysqli_close($conn); //close the database's connection.
-              }
+                      else
+                      {
+                        echo "<script>alert('A new user has been added to the database!');</script>";
+                        mysqli_close($conn); //close the database's connection.
+                      }
                   }
                 }
                 

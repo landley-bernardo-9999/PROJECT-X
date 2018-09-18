@@ -1,0 +1,59 @@
+html, body{
+    height: 100%;
+    margin: 0%;
+}
+.nav-item{
+    padding: 0px 10px;
+}
+
+#dashboard-content{
+    display: grid;
+    grid-template-areas: 
+    'upcoming-events applications applications'
+    'upcoming-events applications applications';
+    grid-column-gap: 2%; 
+}
+
+#main{
+    margin: 0%;
+}
+
+#upcoming-events{
+   height: 300px;
+    width: 100%;
+   
+}
+
+#applications{
+   height: 450px;
+   width: 100%;
+
+}
+
+.display-5{
+    text-align: center;
+}
+
+#footer{
+   
+}
+
+.align-left{
+    text-align: left;
+}
+
+.card-header{
+   display: flex;
+   padding: 10px;
+   justify-content: flex-start;
+}
+
+.welcome-name{
+    padding: 20px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: ;
+    border-color:;
+}
