@@ -1,14 +1,16 @@
 form{
     width: 400px;
-    margin: auto;
+    margin: 8% auto;
     text-align: center;
-    padding: 40px;
     display: flex;
     flex-direction: column; 
+    border: solid 1px #007bff;
+    border-radius: 3%;
+    padding: 5%;
 } 
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 900px){
     form{
-        width: 80%;
+        width: 60%;
     }
 }

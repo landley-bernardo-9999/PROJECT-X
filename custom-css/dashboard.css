@@ -1,59 +1,35 @@
-html, body{
-    height: 100%;
-    margin: 0%;
-}
-.nav-item{
-    padding: 0px 10px;
+#applications{
+    margin-left: 5%;
 }
 
 #dashboard-content{
-    display: grid;
-    grid-template-areas: 
-    'upcoming-events applications applications'
-    'upcoming-events applications applications';
-    grid-column-gap: 2%; 
-}
-
-#main{
-    margin: 0%;
-}
-
-#upcoming-events{
-   height: 300px;
-    width: 100%;
-   
-}
-
-#applications{
-   height: 450px;
-   width: 100%;
-
-}
-
-.display-5{
-    text-align: center;
-}
-
-#footer{
-   
-}
-
-.align-left{
-    text-align: left;
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 0 3%;
 }
 
 .card-header{
-   display: flex;
-   padding: 10px;
-   justify-content: flex-start;
+    text-align: left;
+    display: flex;
 }
 
 .welcome-name{
-    padding: 20px;
+    margin-top: 1.5%;
 }
+@media only screen and (max-width: 780px){
+    #dashboard-content{
+        display: flex;
+        flex-direction: column;
+        padding: 3%;
+    }
+     
+    #applications{
+        margin-top: 5%;
+    }
 
-.btn-primary {
-    color: #fff;
-    background-color: ;
-    border-color:;
+    #upcoming-events{
+        width: 90%;
+    }
+
 }

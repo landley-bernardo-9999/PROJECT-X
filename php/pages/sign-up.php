@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!--Custom CSS-->
-    <link rel="stylesheet" href="../custom-css/sign-up.css">     
+    <link rel="stylesheet" href="../../custom-css/sign-up.css">     
 
     <title>Sign Up</title>
 
     <!--database's configuration MYSQL-->
     <?php
-        include_once 'config.php';
+        include_once '../config.php';
     ?>
 
   </head>
@@ -81,7 +81,7 @@
             }//end of submit button
       ?>
             <!--Redirect the to the same php file.-->
-        <form action="sign-up.php" method="POST"> 
+        <form action="../pages/sign-up.php" method="POST"> 
           <h1>Sign Up</h1>
           <br>
             <div class="form-row">            <!--Start div form-->
