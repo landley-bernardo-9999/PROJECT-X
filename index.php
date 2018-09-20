@@ -1,14 +1,3 @@
-<!--Start the session-->
-<?php
-  session_start();
-  if(isset($SESSION['userName']))
-  {
-      header("location:../../php/pages/dashboard.php");
-  }
-
-
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -46,12 +35,13 @@
             </div>
           
           <!---Submit Button-->
-            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-            
-          <!--Incorrect credentials warning-->  
-          <div id="error"></div>
-  
-          </form>
+            <button type="submit" id="submit" class="btn btn-primary">Login</button>
+          <!--Forgot Password-->  
+          <br>
+          <a href="php/pages/forgot-pass.php" class="btn btn-primary btn-md" tabindex="-1" role="button">Forgot Password?</a>
+          <!--Register-->
+          <br>
+          <a href="php/pages/sign-up.php" class="btn btn-primary btn-md" tabindex="-1" role="button">Sign Up</a>
      </div>
 
     <!-- Optional JavaScript -->

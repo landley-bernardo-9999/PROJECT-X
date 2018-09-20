@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 18, 2018 at 12:43 AM
+-- Generation Time: Sep 20, 2018 at 01:52 PM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -75,17 +75,20 @@ CREATE TABLE IF NOT EXISTS `info` (
   `mobileNumber` varchar(255) DEFAULT NULL,
   `emailAddress` varchar(255) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
+  `isApproved` tinyint(1) DEFAULT '0',
+  `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`infoId`),
   UNIQUE KEY `userName_UNIQUE` (`userName`),
   KEY `firstName` (`firstName`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `info`
 --
 
-INSERT INTO `info` (`infoId`, `type`, `firstName`, `lastName`, `userName`, `pass`, `img`, `gender`, `birthDate`, `mobileNumber`, `emailAddress`, `city`) VALUES
-(2, 'Resident', 'Landley', 'Bernardo', 'Landley', 'Password', 0x696d673138312e6a7067, 'Male', '1996-12-03', '9752826318', 'lmbernardo@slu.edu.ph', 'Baguio City');
+INSERT INTO `info` (`infoId`, `type`, `firstName`, `lastName`, `userName`, `pass`, `img`, `gender`, `birthDate`, `mobileNumber`, `emailAddress`, `city`, `isApproved`, `createdOn`) VALUES
+(6, 'Owner', 'Kendall ', 'Jenner', 'kendall', '0235ba98d61628fd6da1e543dc274e94', 0x6c6f676f2e6a7067, 'Female', '2000-12-01', '12312312312', 'wefdq@dfdfsd', 'Tarlac', 0, '2018-09-20 12:27:53'),
+(11, 'Resident', 'Landley', 'Bernardo', 'landley', 'aasdasdasdasd', 0x6c6f676f2e6a7067, 'Male', '1996-12-03', '9752826318', 'lmbernardo@slu.edu.ph', 'Baguio City', 1, '2018-09-20 12:29:38');
 
 -- --------------------------------------------------------
 

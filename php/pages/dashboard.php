@@ -1,7 +1,7 @@
 <?php
  session_start();
 
-  if(isset($_SESSION['started']))
+  /* if(isset($_SESSION['started']))
   {
     $_SESSION['started'] = time();
   }
@@ -10,6 +10,7 @@
     session_regenerate_id(true);
     $_SESSION['started'] = time();
   }
+  **/
 ?>
 
 <!doctype html>
@@ -79,7 +80,7 @@
 
     <!--Display name of the user-->
     <div class="container-fluid">
-    <h5 class="welcome-name">Welcome, <?php echo $_SESSION['myusername'];  ?> </h5>
+    <h5 class="welcome-name">Welcome, <?php echo $_SESSION['firstName'];  ?> </h5>
     </div>
 
     <!--Dashboard content-->

@@ -24,7 +24,7 @@
     <!--Adding values to the database using PHP-->
       <?php
         if (!$conn) {
-          die("Connection failed: " . mysqli_connect_error());
+          die("Connection failed: " .mysqli_connect_error());
         }
             if(isset($_POST['submit']))
             {
@@ -42,30 +42,36 @@
                 $emailAddress = mysqli_real_escape_string($conn, $_POST['emailAddress']);  // access email address
                 $city = mysqli_real_escape_string($conn, $_POST['city']);  //access city
 
-                $query = "SELECT * FROM info WHERE userName = '$userName'";
-
+                //Check for username's availability.
+                $query = "SELECT * FROM info WHERE userName = '$userName' ";
                 $result = mysqli_query($conn, $query);
-                
                 if(mysqli_num_rows($result) > 0)
                 {
-                  echo "<script>alert('Username already exists');</script>";
+                  echo "<script>alert('Username is no longer available!');</script>";
                 }
 
                 else
-                {
-                  if($pass!=$confirmPass)
+                { 
+                  //Check for email address' availability.
+                  $query = "SELECT * FROM info WHERE emailAddress = '$emailAddress' ";
+                  $result = mysqli_query($conn, $query);
+                  if(mysqli_num_rows($result) > 0)
                   {
-                    echo "<script>alert('Password does not match!');</script>";
+                    echo "<script>alert('Email already exists!');</script>";
                   }
-
                   else
                   {
-                    //insert the record to the database
-                    $query = "INSERT INTO info (type, firstName, lastName, userName, pass, img, gender, birthDate, mobileNumber, emailAddress, city )
-                    VALUE ('$type','$firstName','$lastName','$userName','$encryptedPass','$img','$gender','$birthDate','$mobileNumber','$emailAddress','$city') ";    
-                  
-                    $result=mysqli_query($conn,$query);
-
+                    //Check for the password's consistency.
+                    if($pass!=$confirmPass)
+                    {
+                      echo "<script>alert('Password does not match!');</script>";
+                    }
+                    else
+                    {
+                         //insert the record to the database
+                      $query = "INSERT INTO info (type, firstName, lastName, userName, pass, img, gender, birthDate, mobileNumber, emailAddress, city )
+                      VALUE ('$type','$firstName','$lastName','$userName','$encryptedPass','$img','$gender','$birthDate','$mobileNumber','$emailAddress','$city') ";                      
+                      $result=mysqli_query($conn,$query);
                       if(!$result)
                       {
                         echo "Failure to add user. Please try again or contact your IT department." + mysqli_error($conn);
@@ -75,12 +81,17 @@
                         echo "<script>alert('A new user has been added to the database!');</script>";
                         mysqli_close($conn); //close the database's connection.
                       }
+                    }
                   }
                 }
                 
             }//end of submit button
-      ?>
+      ?>      
             <!--Redirect the to the same php file.-->
+            <div class="container-fluid" id="login-link">
+              <a class="btn btn-primary" href="../../index.php" role="button">Login</a>
+            </div>
+
         <form action="../pages/sign-up.php" method="POST"> 
           <h1>Sign Up</h1>
           <br>
