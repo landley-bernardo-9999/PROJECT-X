@@ -21,15 +21,11 @@ Route::get('/hello/{id}/{name}', function ($id,$name) {
 
 Route::get('/','PagesController@index');
 
-Route::get('/welcome','PagesController@welcome');
+Route::get('/template','PagesController@template');
 
+Route::get('/dashboard','PagesController@dashboard');
 
-/***
-    Route::get('/landley', function () {
-    return view('pages.landley');
-})
-;*/
+Route::get('/signup','PagesController@signup');
 
-#RESTful API
-#post
-#delete
+Route::get('/forgotpassword','PagesController@forgotpassword');
+

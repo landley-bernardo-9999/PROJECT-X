@@ -9,42 +9,35 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!--Custom CSS-->
-    <link rel="stylesheet" href="custom-css/login.css">
+    <link rel="stylesheet" href="../../custom-css/forgot-pass.css">
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    
+
     <!--Font awesome links-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     
-    <title>{{config('app.name','Vester')}}</title>
+    <title>Forgot Password</title>
 
   </head>
   <body>
-    
-    <!--Login Form-->
-     <div class="container" id="form-container">
-        <form method="POST" action="php/login.php">  
-          <h1><i class="fas fa-sign-in-alt"></i>&nbspLOGIN</h1>
+
+    <div class="container">
+    <form action="confirm-username.php" method="POST">  
+          <h1><i class="fas fa-lock"></i>&nbspForgot Password</h1>
           <br>
           <!--Username Input-->
             <div class="form-group">
                 <input name="userName" id="userName" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Username" required>
             </div>
-          
-          <!--Password Input-->
-            <div class="form-group">
-                <input name="pass" id="pass" type="password" class="form-control" placeholder="Password" required>
-            </div>
+
           
           <!---Submit Button-->
-            <button type="submit" id="submit" class="btn btn-primary">Login</button>
-          <!--Forgot Password-->  
-          <br>
-          <a href="/forgotpassword" class="btn btn-primary btn-md" tabindex="-1" role="button">Forgot Password?</a>
-          <!--Register-->
-          <br>
-          <a href="/signup" class="btn btn-primary btn-md" tabindex="-1" role="button">Sign Up</a>
-     </div>
+       
+            <button type="search" style="display:block" name="search" id="search" class="btn btn-primary">Search</button>
+            <br>
+            <a href="/" style="display:block" class="btn btn-primary btn-md" role="button">Back to Login Page</a>
+          </form>
+	</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
