@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/hello/{id}/{name}', function ($id,$name) {
-    return 'My Id number is '.$id.' and this is ' .$name;
-});
+//Route::get('/hello/{id}/{name}', function ($id,$name) {
+//    return 'My Id number is '.$id.' and this is ' .$name;
+//});
 
 Route::get('/','PagesController@index');
 
@@ -28,4 +28,6 @@ Route::get('/dashboard','PagesController@dashboard');
 Route::get('/signup','PagesController@signup');
 
 Route::get('/forgotpassword','PagesController@forgotpassword');
+
+Route::resource('posts','PostsController');
 
