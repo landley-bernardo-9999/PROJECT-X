@@ -35,5 +35,6 @@ Route::resources([
     'rooms'=> 'RoomsController',
     'residents'=> 'ResidentsController',
     'owners'=> 'OwnersController',
-    'repairs'=> 'RepairsController'
+    'repairs'=> 'RepairsController',
+    'maintenances' => 'MaintenancesController',
 ]);

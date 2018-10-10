@@ -7,11 +7,11 @@
         </div>
 
         <div class="col-lg-1">
-            <a href="{{$repair->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i>&nbspEdit</a>
+            <a href="{{$maintenances->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i>&nbspEdit</a>
         </div>
 
         <div class="col-lg-1">
-            {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+            {!!Form::open(['action' => ['MaintenancesController@destroy', $maintenances->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
@@ -20,46 +20,40 @@
     </div>
 </div>
 <br>
-<h1>{{$repair->roomNo}}</h1>
+<h1>{{$maintenances->name}}</h1>
     <div class="container">
        <div class="row">
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                 <table class="table">
                     <tr>
-                        <th>Date Reported</th>
-                        <td>{{$repair->dateReported}}</td>
+                        <th>Birthdate</th>
+                        <td>{{$maintenances->birthDate}}</td>
                     <tr>
                     <tr>
-                        <th>Description</th>
-                        <td>{{$repair->desc}}</td>
-                    <tr>
-                    <tr>
-                        <th>Person In Charge</th>
-                        <td>{{$repair->endorsedTo}}</td>
+                        <th>Employment Status</th>
+                        <td>{{$maintenances->employmentStatus}}</td>
                     </tr>
                     <tr>
-                        <th>Cost</th>
-                        <td>{{$repair->cost}}</td>
+                        <th>Position</th>
+                        <td>{{$maintenances->position}}</td>
                     </tr>
                     <tr>
-                        <th>Status</th>
-                        <td>{{$repair->repairStatus}}</td>
+                        <th>Schedule</th>
+                        <td>{{$maintenances->schedule}}</td>
                     </tr>
                     <tr>
-                        <th>Date Finished</th>
-                        <td>{{$repair->dateFinished}}</td>
+                        <th>Mobile Number</th>
+                        <td>{{$maintenances->mobileNumber}}</td>
                     </tr>
                         
                     </table>
                 </div>             
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                     <div class="card" style="width: 35rem" >
-                        <img style="width:90%" class="card-img-top" src="/storage/repair_images/{{$repair->cover_image}}" alt="Card image cap">
+                        <img style="width:90%" class="card-img-top" src="/storage/maintenance_images/{{$maintenances->cover_image}}" alt="Card image cap">
                 </div>
                 </div>
        </div>
     </div>
-     
-        
 @endsection
 

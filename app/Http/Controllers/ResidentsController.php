@@ -100,7 +100,7 @@ class ResidentsController extends Controller
         $resident->save();
 
 
-        return redirect('/residents/'.$resident->id)->with('success',''.'Added successfully!');
+        return redirect('/residents/'.$resident->id)->with('success','Added successfully!');
     }
 
     /**
@@ -183,10 +183,8 @@ class ResidentsController extends Controller
         if($request->hasFile('cover_image')){
         $resident->cover_image = $fileNameToStore;
         }
-
         $resident->save();
-
-        return redirect('/residents/'.$resident->id)->with('success',' '.'Updated successfully!');
+        return redirect('/residents/'.$resident->id)->with('success', 'Updated successfully!');
 
     }
 
@@ -199,13 +197,10 @@ class ResidentsController extends Controller
     public function destroy($id)
     {
         $resident = Resident::find($id);
-
         if($resident->cover_image != 'noimage.jpg'){
-            //Delete the image
             Storage::delete('public/resident_images/'.$resident->cover_image);
         }
-
         $resident->delete();
-        return redirect('/residents')->with('success','  '.'Deleted successfully!');
+        return redirect('/residents')->with('success','Deleted successfully!');
     }
 }

@@ -5,7 +5,7 @@
             <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
             <a class="btn btn-secondary btn-md" role="button" href="/rooms/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRoom</a> 
     </div>
-   <br><br><br>
+   <br>
     @if(count($rooms) > 0)
     <div class="container text-center">
         <div class="row">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/posts"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a> 
+<a class="btn btn-secondary btn-md" role="button" href="/repairs"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a> 
 <br><br>    
 <h1>Add Repair</h1>
     {!! Form::open(['action'=>'RepairsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
@@ -22,7 +22,7 @@
         <div class="form-group">
                 {{Form::label('Endorsed To')}}
                 &nbsp&nbsp&nbsp
-                {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon','Old Jeff' => 'Old Jeff', 'New Jeff' => 'New Jeff'],null,['placeholder' => 'Please select'])}}
+                {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon', 'Marquez' => 'Marquez','Old Jeff' => 'Old Jeff', 'New Jeff' => 'New Jeff'],null,['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
             {{Form::number('cost','',['class'=>'form-control','placeholder'=>'Cost'])}}

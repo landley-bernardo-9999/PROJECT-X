@@ -90,7 +90,7 @@ class RoomsController extends Controller
 
         $room->save();
 
-        return redirect('/rooms/'.$room->roomNo)->with('success'.' '.'Added successfully!');
+        return redirect('/rooms/'.$room->roomNo)->with('success','Added successfully!');
     }
 
     /**
@@ -169,7 +169,7 @@ class RoomsController extends Controller
     
         $room->save();
 
-        return redirect('/rooms/'.$room->roomNo)->with('success','Room'.''.'Updated successfully!');
+        return redirect('/rooms/'.$room->roomNo)->with('success','Updated successfully!');
     }
 
     /**
@@ -188,7 +188,7 @@ class RoomsController extends Controller
         }
 
         $room->delete();
-        return redirect('/rooms')->with('success','Room'.' '.'Deleted successfully!');
+        return redirect('/rooms')->with('success','Room','Deleted successfully!');
     }
 }
 

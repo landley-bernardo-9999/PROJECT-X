@@ -3,8 +3,9 @@
 <br>
     <div class="container" >
             <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
+            <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRepair</a>
     </div>
-   <br><br><br>
+   <br>
     @if(count($repairs) > 0)
     <div class="container"  >
             <table class="table">

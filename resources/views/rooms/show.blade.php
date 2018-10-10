@@ -1,13 +1,25 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/rooms/"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
-<a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-home"></i>&nbspHome</a>
-<a class="btn btn-secondary btn-md" role="button" href="/rooms/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRoom</a>
-<a href="{{$room->roomNo}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i>&nbspEdit</a>
-{!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo], 'method' => 'POST', 'class' =>'pull-right'])!!}
-    {{Form::hidden('_method', 'DELETE')}}  
-    {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
-{!!Form::close()!!}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">
+            <a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
+        </div>
+
+        <div class="col-lg-1">
+            <a href="{{$room->roomNo}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i>&nbspEdit</a>
+        </div>
+
+        <div class="col-lg-1">
+            {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                {{Form::hidden('_method', 'DELETE')}}  
+                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
+            {!!Form::close()!!}
+        </div>
+
+    </div>
+</div>
+<br>
 <h1>{{$room->roomNo}}</h1>
     <div class="container">
        <hr>

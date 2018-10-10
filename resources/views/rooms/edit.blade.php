@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/posts"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
+<a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
     <h1>Edit Room</h1>
     {!! Form::open(['action'=>['RoomsController@update', $room->roomNo],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">
@@ -28,7 +28,7 @@
             {{Form::file('cover_image')}}
         </div>
         {{Form::hidden('_method','PUT')}}
-        {{Form::submit('Submit',['class'=>'btn btn-primary'])}}    
+        {{Form::submit('Submit',['class'=>'btn btn-secondary'])}}    
 
      {!! Form::close() !!}    
 @endsection

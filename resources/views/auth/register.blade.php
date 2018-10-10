@@ -67,7 +67,7 @@
                                     <select class="form-control" name="type" id="type">
                                         <option value=""disabled selected>Select one</option> 
                                         <option value="owner">Owner</option>    
-                                        <option value="maintenance">Maitenance</option>
+                                        <option value="maintenance">Maintenance</option>
                                         <option value="finance">Finance</option>
                                         <option value="admin">Admin</option>
                                         <option value="executive">Executive</option>

@@ -4,21 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Owner;
+use App\Maintenance;
 use DB;
 
-class OwnersController extends Controller
+class MaintenancesController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +16,8 @@ class OwnersController extends Controller
      */
     public function index()
     {
-        $owners = DB::table('owners')->get();
-        return view('owners.index')->with('owners', $owners);
+        $maintenances = DB::table('maintenances')->get();
+        return view('maintenances.index')->with('maintenances', $maintenances);
     }
 
     /**
@@ -37,7 +27,7 @@ class OwnersController extends Controller
      */
     public function create()
     {
-        return view('owners.create');
+        return view('maintenances.create');
     }
 
     /**
@@ -50,10 +40,11 @@ class OwnersController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'roomNo' => 'required',
             'birthDate' => 'required',
-            'mobileNumber' => 'required|unique:owners',
-            'emailAddress' => 'required|unique:owners',
+            'employmentStatus' => 'required',
+            'position' => 'required',
+            'schedule' => 'required',
+            'mobileNumber' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ]);
 
@@ -68,26 +59,28 @@ class OwnersController extends Controller
             //Filename to store
             $fileNameToStore = $filename.' '.time().' '.$extension; 
             //Upload Image
-            $path = $request->file('cover_image')->storeAs('public/owner _images',$fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/maintenance_images',$fileNameToStore);
         }else{
             $fileNameToStore = 'noimage.jpg';
         }
 
 
         //Add Room
-        $owner = new Owner;
+        $maintenance = new Maintenance;
 
-        $owner->name = $request->input('name');
-        $owner->roomNo = $request->input('roomNo');
-        $owner->birthDate = $request->input('birthDate');
-        $owner->mobileNumber = $request->input('mobileNumber');
-        $owner->emailAddress = $request->input('emailAddress');   
-        $owner->cover_image = $fileNameToStore; 
+        $maintenance->name = $request->input('name');
+        $maintenance->birthDate = $request->input('birthDate');
+        $maintenance->employmentStatus = $request->input('employmentStatus');
+        $maintenance->position = $request->input('position');
+        $maintenance->schedule = $request->input('schedule');
+        $maintenance->mobileNumber = $request->input('mobileNumber');  
+        $maintenance->cover_image = $fileNameToStore; 
 
-        $owner->save();
+        $maintenance->save();
 
-        return redirect('/owners/'.$owner->id)->with('success','Added successfully!');
+        return redirect('/maintenances/'.$maintenance->id)->with('success','Added successfully!');
 
+ 
     }
 
     /**
@@ -98,8 +91,8 @@ class OwnersController extends Controller
      */
     public function show($id)
     {
-        $owner = Owner::find($id);
-        return view('owners.show', array('owner' => $owner));
+        $maintenances = Maintenance::find($id);
+        return view('maintenances.show', array('maintenances' => $maintenances));
     }
 
     /**
@@ -110,8 +103,8 @@ class OwnersController extends Controller
      */
     public function edit($id)
     {
-        $owners = Owner::find ($id);
-        return view('owners.edit')->with('owner',$owners);
+        $maintenance = Maintenance::find ($id);
+        return view('maintenances.edit')->with('maintenance',$maintenance);
     }
 
     /**
@@ -125,14 +118,15 @@ class OwnersController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'roomNo' => 'required',
             'birthDate' => 'required',
+            'employmentStatus' => 'required',
+            'position' => 'required',
+            'schedule' => 'required',
             'mobileNumber' => 'required',
-            'emailAddress' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
         ]);
 
-         //Handle File Upload
-         if($request->hasFile('cover_image')){
+        if($request->hasFile('cover_image')){
             //Get filename with the extension 
             $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
             //Get just filename
@@ -142,26 +136,25 @@ class OwnersController extends Controller
             //Filename to store
             $fileNameToStore = $filename.' '.time().' '.$extension; 
             //Upload Image
-            $path = $request->file('cover_image')->storeAs('public/owner_images',$fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/maintenance_images',$fileNameToStore);
         }else{
             $fileNameToStore = 'noimage.jpg';
         }
 
 
-        //Add Owner
-        $owner = Owner::find($id);
-        $owner->name = $request->input('name');
-        $owner->roomNo = $request->input('roomNo');
-        $owner->birthDate = $request->input('birthDate');
-        $owner->mobileNumber = $request->input('mobileNumber');
-        $owner->emailAddress = $request->input('emailAddress');   
+        $maintenance = Maintenance::find($id);
+        
+        $maintenance->name = $request->input('name');
+        $maintenance->birthDate = $request->input('birthDate');
+        $maintenance->employmentStatus = $request->input('employmentStatus');
+        $maintenance->position = $request->input('position');
+        $maintenance->schedule = $request->input('schedule');
+        $maintenance->mobileNumber = $request->input('mobileNumber');  
         if($request->hasFile('cover_image')){
-        $owner->cover_image = $fileNameToStore;
+            $maintenance->cover_image = $fileNameToStore;
         }
-
-        $owner->save();
-
-        return redirect('/owners/'.$owner->id)->with('success','Updated successfully!');
+        $maintenance->save();
+        return redirect('/maintenances/'.$maintenance->id)->with('success','Updated successfully!');
     }
 
     /**
@@ -172,14 +165,14 @@ class OwnersController extends Controller
      */
     public function destroy($id)
     {
-        $owner = Owner::find($id);
+        $maintenance = Maintenance::find($id);
 
-        if($owner->cover_image != 'noimage.jpg'){
+        if($maintenance->cover_image != 'noimage.jpg'){
             //Delete the image
-            Storage::delete('public/owner_images/'.$owner->cover_image);
+            Storage::delete('public/maintenance_images/'.$maintenance->cover_image);
         }
 
-        $owner->delete();
-        return redirect('/owners')->with('success','Deleted successfully!');
+        $maintenance->delete();
+        return redirect('/maintenances')->with('success', 'Deleted successfully!');
     }
 }

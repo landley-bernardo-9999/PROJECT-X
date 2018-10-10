@@ -16,7 +16,7 @@
           </div>
         </div>
             <br>
-            <h1>Per Status</h1>
+            <h3>Per Status</h3>
         <div class="row">
                 <div class="col-md-4">
                     <div class="card text-center">
@@ -46,7 +46,7 @@
                 </div>
         </div>
         <br>
-        <h1>Per Category</h1>
+        <h3>Per Category</h3>
         <div class="row">
                 <div class="col-md-2">
                     <div class="card text-center">
@@ -87,7 +87,7 @@
                 <div class="col-md-2">
                         <div class="card text-center">
                             <div class="card-body">
-                                <h5 class="card-title">Replacement</h5>
+                                <h6 class="card-title">Replacement</h6>
                                 <h1>{{count($replacement)}}</h1>
                             </div>
                       </div>
@@ -103,7 +103,7 @@
                 </div>
         </div>
         <br>
-        <h1>Per Maintenance</h1>
+        <h3>Per Maintenance</h3>
         <div class="row">
                 <div class="col-md-2">
                     <div class="card text-center">
@@ -149,6 +149,14 @@
                             </div>
                       </div>
                 </div>
+                <div class="col-md-2">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Marquez</h5>
+                            <h1>{{count($marquez)}}</h1>
+                        </div>
+                  </div>
+            </div>
 
         </div>
         

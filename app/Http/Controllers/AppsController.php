@@ -61,6 +61,7 @@ class AppsController extends Controller
         $old_jeff = DB::table('repairs')->where('endorsedTo', 'Old Jeff' ) ->get();
         $new_jeff = DB::table('repairs')->where('endorsedTo', 'New Jeff' ) ->get();
         $marlon = DB::table('repairs')->where('endorsedTo', 'marlon' ) ->get();
+        $marquez = DB::table('repairs')->where('endorsedTo', 'marquez' ) ->get(); 
 
 
         return view('apps.reportsandstats')
@@ -81,6 +82,7 @@ class AppsController extends Controller
                                    ->with('old_jeff', $old_jeff)
                                    ->with('new_jeff', $new_jeff)
                                    ->with('marlon', $marlon)
+                                   ->with('marquez', $marquez)
                                    ;
     }
  
