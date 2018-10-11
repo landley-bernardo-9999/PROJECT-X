@@ -1,9 +1,35 @@
 @extends('layouts.app')
 @section('content')
 <br>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:2%">
+                <h3>Enrolled</h3>
+                <h1>{{count($rooms)}}</h1>
+                <i class="fas fa-home fa-1x"></i>
+            </div>
+            <div class="col-md-2 btn btn-outline-danger" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
+                <h3>Occupied</h3>
+                <h1>{{count($occupied)}}</h1>
+            </div>
+            <div class="col-md-2 btn btn-outline-success" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
+                <h3>Vacant</h3>
+                <h1>{{count($vacant)}}</h1>
+            </div>
+            <div class="col-md-2 btn btn-outline-info" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
+                <h3>Reserved</h3>
+                <h1>{{count($reserved)}}</h1>
+            </div>
+            <div class="col-md-2 btn btn-outline-dark" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
+                <h3>NRFO</h3>
+                <h1>{{count($nrfo)}}</h1>
+            </div>
+        </div>
+    </div>
+    <br>
     <div class="container" >
-            <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
-            <a class="btn btn-secondary btn-md" role="button" href="/rooms/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRoom</a> 
+        <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
+        <a class="btn btn-secondary btn-md" role="button" href="/rooms/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRoom</a> 
     </div>
    <br>
     @if(count($rooms) > 0)
@@ -11,33 +37,69 @@
         <div class="row">
             @foreach($rooms as $room)
                 @if($room->roomStatus == 'Occupied')
+                    @if($room->isUnderLeasing == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
-                        <i class="fas fa-home fa-6x"></i>
+                        <i class="fas fa-home fa-5x"></i>
                         <div style="display: flex">
                             <h6>{{$room->roomNo}}</h6>
                         </div>
                     </a>
+                    @else
+                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
+                        <i class="fas fa-user-tag fa-5x"></i>
+                        <div style="display: flex">
+                            <h6>{{$room->roomNo}}</h6>
+                        </div>
+                    </a>
+                    @endif
                 @elseif($room->roomStatus == 'Vacant')
+                    @if($room->isUnderLeasing == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
-                        <i class="fas fa-home fa-6x"></i>
+                        <i class="fas fa-home fa-5x"></i>
                         <div style="display: flex">
                             <h6>{{$room->roomNo}}</h6>
                         </div>
                     </a>
+                    @else
+                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
+                        <i class="fas fa-user-tag fa-5x"></i>
+                        <div style="display: flex">
+                            <h6>{{$room->roomNo}}</h6>
+                        </div>
+                    </a>
+                    @endif
                 @elseif($room->roomStatus == 'Reserved')
-                <a href="/rooms/{{$room->roomNo}}" class="btn btn-md btn-outline-info" role="button">
-                    <i class="fas fa-home fa-6x"></i>
-                    <div style="display: flex">
-                        <h6>{{$room->roomNo}}</h6>
-                    </div>
-                </a>
+                    @if($room->isUnderLeasing == "Yes")
+                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
+                        <i class="fas fa-home fa-5x"></i>
+                        <div style="display: flex">
+                            <h6>{{$room->roomNo}}</h6>
+                        </div>
+                    </a>
+                    @else
+                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
+                        <i class="fas fa-user-tag fa-5x"></i>
+                        <div style="display: flex">
+                            <h6>{{$room->roomNo}}</h6>
+                        </div>
+                    </a>
+                    @endif
                 @elseif($room->roomStatus == 'NRFO')
-                <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
-                    <i class="fas fa-home fa-6x"></i>
-                    <div style="display: flex">
-                        <h6>{{$room->roomNo}}</h6>
-                    </div>
-                </a>                  
+                    @if($room->isUnderLeasing == "Yes")
+                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
+                        <i class="fas fa-home fa-5x"></i>
+                        <div style="display: flex">
+                            <h6>{{$room->roomNo}}</h6>
+                        </div>
+                    </a>
+                    @else
+                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
+                        <i class="fas fa-user-tag fa-5x"></i>
+                        <div style="display: flex">
+                            <h6>{{$room->roomNo}}</h6>
+                        </div>
+                    </a>
+                    @endif             
                 @endif
             @endforeach
         </div>

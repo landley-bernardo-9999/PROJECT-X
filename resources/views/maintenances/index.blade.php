@@ -8,7 +8,7 @@
    <br>
     @if(count($maintenances) > 0)
     <div class="container"  >
-            <table class="table">
+            <table class="table table-striped">
                 <tr>
                     <th>No</th>
                     <th>Name</th>

@@ -4,13 +4,18 @@
 <br><br>  
 <h1>Add Room</h1>
     {!! Form::open(['action'=>'RoomsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-    <div class="form-group">
+        <div class="form-group">
             {{Form::text('roomNo','',['class'=>'form-control','placeholder'=>'Room No'])}}
         </div>  
         <div class="form-group">
+            {{Form::label('Under Leasing?')}}
+            &nbsp&nbsp&nbsp
+            {{Form::select('isUnderLeasing', ['Yes'=>'Yes', 'No' => 'No'],'Harvard',['placeholder' => 'Please select'])}}
+        </div>
+        <div class="form-group">
             {{Form::label('Building')}}
             &nbsp&nbsp&nbsp
-            {{Form::select('building', ['Harvard' => 'Harvard', 'Princeton' => 'Princeton', 'Wharton' => 'Wharton'],'Harvard',['placeholder' => 'Please select'])}}
+            {{Form::select('building', ['Harvard' => 'Harvard', 'Princeton' => 'Princeton', 'Wharton' => 'Wharton', 'Courtyard' => 'Courtyard'],'Harvard',['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
             {{Form::number('rentalFee','6000',['class'=>'form-control','placeholder'=>'Monthly Rent'],['min'=>'0'])}}

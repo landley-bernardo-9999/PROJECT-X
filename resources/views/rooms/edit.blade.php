@@ -7,8 +7,13 @@
             {{Form::text('roomNo',$room->roomNo,['class'=>'form-control','placeholder'=>'Room No'])}}
         </div>
         <div class="form-group">
+            {{Form::label('Under Leasing?')}}
+            &nbsp&nbsp&nbsp
+            {{Form::select('isUnderLeasing', ['Yes'=>'Yes', 'No' => 'No'],$room->isUnderLeasing)}}
+        </div>
+        <div class="form-group">
             {{Form::label('Building')}}
-            {{Form::select('building',['Harvard' => 'Harvard', 'Princeton' => 'Princeton', 'Wharton' => 'Wharton'],'$room->building')}}
+            {{Form::select('building',['Harvard' => 'Harvard', 'Princeton' => 'Princeton', 'Wharton' => 'Wharton', 'Courtyard'=> 'Courtyard'],'$room->building')}}
         </div>
         <div class="form-group">
             {{Form::number('rentalFee',$room->rentalFee,['class'=>'form-control','placeholder'=>'Monthly Rent'])}}

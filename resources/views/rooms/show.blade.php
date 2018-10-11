@@ -27,6 +27,10 @@
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                     <table class="table">
                         <tr>
+                            <th>Under Leasing?</th>
+                            <td>{{$room->isUnderLeasing}}</td>
+                        </tr>
+                        <tr>
                             <th>Building:</th>
                             <td>{{$room->building}}</td>
                         </tr>

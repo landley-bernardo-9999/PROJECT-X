@@ -29,7 +29,34 @@ class ResidentsController extends Controller
     {
         $rowNum = 1;
         $residents = DB::table('residents')->paginate(10);
-        return view('residents.index')->with('residents', $residents)->with('rowNum', $rowNum);
+        $harvard = DB::table('residents')
+            ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
+            ->select('residents.*')
+            ->where('rooms.building','=','Harvard')
+            ->get();
+        $princeton = DB::table('residents')
+            ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
+            ->select('residents.*')
+            ->where('rooms.building','=','Princeton')
+            ->get();
+        $wharton = DB::table('residents')
+            ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
+            ->select('residents.*')
+            ->where('rooms.building','=','Wharton')
+            ->get();
+        $courtyard = DB::table('residents')
+            ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
+            ->select('residents.*')
+            ->where('rooms.building','=','Courtyard')
+            ->get();
+
+            
+        return view('residents.index')->with('residents', $residents)
+                                      ->with('rowNum', $rowNum)
+                                      ->with('harvard', $harvard)
+                                      ->with('princeton', $princeton)
+                                      ->with('wharton', $wharton)
+                                      ->with('courtyard', $courtyard);
     }
 
     /**

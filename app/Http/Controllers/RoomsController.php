@@ -31,7 +31,15 @@ class RoomsController extends Controller
     public function index()
     {
         $rooms = DB::table('rooms')->orderBy('roomNo', 'asc')->get();
-        return view('rooms.index')->with('rooms', $rooms);
+        $occupied = DB::table('rooms')->where('roomStatus','=', 'Occupied')->get();
+        $vacant = DB::table('rooms')->where('roomStatus','=', 'Vacant')->get();
+        $reserved = DB::table('rooms')->where('roomStatus','=', 'Reserved')->get();
+        $nrfo = DB::table('rooms')->where('roomStatus','=', 'NRFO')->get();
+        return view('rooms.index')->with('rooms', $rooms)
+                                  ->with('occupied', $occupied)
+                                  ->with('vacant', $vacant)
+                                  ->with('reserved', $reserved)
+                                  ->with('nrfo', $nrfo);
     }
 
     /**
@@ -54,6 +62,7 @@ class RoomsController extends Controller
     {
         $this->validate($request,[
             'roomNo' => 'required',
+            'isUnderLeasing' => 'required',
             'building' => 'required',
             'rentalFee' => 'required',
             'roomStatus' => 'required',
@@ -82,6 +91,7 @@ class RoomsController extends Controller
         //Add Room
         $room = new Room;
         $room->roomNo = $request->input('roomNo'); 
+        $room->isUnderLeasing = $request->input('isUnderLeasing');
         $room->building = $request->input('building');
         $room->rentalFee = $request->input('rentalFee');
         $room->roomStatus = $request->input('roomStatus');
@@ -144,6 +154,7 @@ class RoomsController extends Controller
     {
         $this->validate($request,[
             'roomNo' => 'required',
+            'isUnderLeasing' => 'required',
             'building' => 'required',
             'rentalFee' => 'required',
             'roomStatus' => 'required',
@@ -169,6 +180,7 @@ class RoomsController extends Controller
         //Add Room
         $room = Room::find($roomNo);
         $room->roomNo = $request->input('roomNo');
+        $room->isUnderLeasing = $request->input('isUnderLeasing');
         $room->building = $request->input('building');
         $room->rentalFee = $request->input('rentalFee');
         $room->roomStatus = $request->input('roomStatus');
