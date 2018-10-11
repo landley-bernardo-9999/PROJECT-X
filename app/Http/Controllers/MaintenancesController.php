@@ -16,8 +16,9 @@ class MaintenancesController extends Controller
      */
     public function index()
     {
-        $maintenances = DB::table('maintenances')->get();
-        return view('maintenances.index')->with('maintenances', $maintenances);
+        $rowNum = 1;
+        $maintenances = DB::table('maintenances')->paginate(10);
+        return view('maintenances.index')->with('maintenances', $maintenances)->with('rowNum', $rowNum);
     }
 
     /**

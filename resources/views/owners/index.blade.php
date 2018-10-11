@@ -10,24 +10,25 @@
     <div class="container"  >
             <table class="table">
                 <tr>
+                    <th>No</th>
                     <th>Name</th>
                     <th>Room No</th>
                     <th>Mobile Number</th>
                     <th>Email Address</th>
                     <th>Date Owned</th>
                 </tr>
-                 @foreach($owners as $owner)
+            @foreach($owners as $owner)
                 <tr>
+                    <td>{{$rowNum++}}</td>
                     <td><a href="/owners/{{$owner->id}}">{{$owner->name}}</a></td>
                     <td><a href="/rooms/{{$owner->roomNo}}">{{$owner->roomNo}}</a></td>
                     <td>{{$owner->mobileNumber}}</td>
                     <td>{{$owner->emailAddress}}</td>
-                    <td>{{$owner->created_at}}</td>
-                   
+                    <td>{{$owner->created_at}}</td>   
                 </tr>  
-        @endforeach   
+            @endforeach   
             </table> 
-        
+            {{$owners->links()}}
     @else
     <div class="alert alert-danger" role="alert"><p>No Owners found!</p></div>
     @endif

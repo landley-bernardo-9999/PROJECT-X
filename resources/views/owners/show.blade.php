@@ -26,6 +26,10 @@
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                 <table class="table">
                     <tr>
+                        <th>Room No</th>
+                        <td>{{$owner->roomNo}}</td>
+                    <tr>
+                    <tr>
                         <th>BirthDate</th>
                         <td>{{$owner->birthDate}}</td>
                     <tr>

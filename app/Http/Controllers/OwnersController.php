@@ -26,8 +26,9 @@ class OwnersController extends Controller
      */
     public function index()
     {
-        $owners = DB::table('owners')->get();
-        return view('owners.index')->with('owners', $owners);
+        $rowNum = 1;
+        $owners = DB::table('owners')->orderBy('name', 'asc')->paginate(10);
+        return view('owners.index')->with('owners', $owners)->with('rowNum', $rowNum);
     }
 
     /**

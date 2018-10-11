@@ -10,6 +10,7 @@
     <div class="container"  >
             <table class="table">
                 <tr>
+                    <td>No</td>
                     <th>Date Reported</th>
                     <th>Room No</th>
                     <th>Description</th>
@@ -19,6 +20,7 @@
                 </tr>
                  @foreach($repairs as $repair)
                 <tr>
+                    <td>{{$rowNum++}}</td>
                     <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
                     <td><a href="/rooms/{{$repair->roomNo}}">{{$repair->roomNo}}</a></td>
                     <td>{{$repair->desc}}</td>
@@ -28,6 +30,7 @@
                 </tr>  
         @endforeach   
             </table>
+            {{$repairs->links()}}
     @else
     <div class="alert alert-danger" role="alert"><p>No Repairs found!</p></div>
     @endif

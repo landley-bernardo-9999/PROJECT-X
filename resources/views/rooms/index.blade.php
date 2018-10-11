@@ -12,30 +12,30 @@
             @foreach($rooms as $room)
                 @if($room->roomStatus == 'Occupied')
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
-                        <i class="fas fa-home fa-5x"></i>
+                        <i class="fas fa-home fa-6x"></i>
                         <div style="display: flex">
-                            <h5>{{$room->roomNo}}</h5>
+                            <h6>{{$room->roomNo}}</h6>
                         </div>
                     </a>
                 @elseif($room->roomStatus == 'Vacant')
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
-                        <i class="fas fa-home fa-5x"></i>
+                        <i class="fas fa-home fa-6x"></i>
                         <div style="display: flex">
-                            <h5>{{$room->roomNo}}</h5>
+                            <h6>{{$room->roomNo}}</h6>
                         </div>
                     </a>
                 @elseif($room->roomStatus == 'Reserved')
                 <a href="/rooms/{{$room->roomNo}}" class="btn btn-md btn-outline-info" role="button">
-                    <i class="fas fa-home fa-5x"></i>
+                    <i class="fas fa-home fa-6x"></i>
                     <div style="display: flex">
-                        <h5>{{$room->roomNo}}</h5>
+                        <h6>{{$room->roomNo}}</h6>
                     </div>
                 </a>
                 @elseif($room->roomStatus == 'NRFO')
                 <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
-                    <i class="fas fa-home fa-5x"></i>
+                    <i class="fas fa-home fa-6x"></i>
                     <div style="display: flex">
-                        <h5>{{$room->roomNo}}</h5>
+                        <h6>{{$room->roomNo}}</h6>
                     </div>
                 </a>                  
                 @endif

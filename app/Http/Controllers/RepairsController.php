@@ -26,8 +26,9 @@ class RepairsController extends Controller
      */
     public function index()
     {
-        $repairs = DB::table('repairs')->get();
-        return view('repairs.index')->with('repairs', $repairs);
+        $rowNum = 1;
+        $repairs = DB::table('repairs')->paginate(10);
+        return view('repairs.index')->with('repairs', $repairs)->with('rowNum', $rowNum);
     }
 
     /**

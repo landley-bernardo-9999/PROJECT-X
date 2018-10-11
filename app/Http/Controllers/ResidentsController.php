@@ -27,8 +27,9 @@ class ResidentsController extends Controller
      */
     public function index()
     {
-        $residents = DB::table('residents')->get();
-        return view('residents.index')->with('residents', $residents);
+        $rowNum = 1;
+        $residents = DB::table('residents')->paginate(10);
+        return view('residents.index')->with('residents', $residents)->with('rowNum', $rowNum);
     }
 
     /**

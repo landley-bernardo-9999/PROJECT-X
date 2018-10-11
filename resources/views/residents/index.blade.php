@@ -10,6 +10,7 @@
     <div class="container"  >
             <table class="table">
                 <tr>
+                    <th>No</th>
                     <th>Name</th>
                     <th>Room No</th>
                     <th>Status</th>
@@ -20,6 +21,7 @@
                 </tr>
                  @foreach($residents as $resident)
                 <tr>
+                    <td>{{$rowNum++}}</td>
                     <td><a href="/residents/{{$resident->id}}">{{$resident->name}}</a></td>
                     <td><a href="/rooms/{{$resident->roomNo}}">{{$resident->roomNo}}</a></td>
                     <td>{{$resident->residentStatus}}</td>
@@ -30,7 +32,8 @@
 
                 </tr>  
         @endforeach   
-            </table>  
+            </table>
+            {{$residents->links()}}  
     @else
     <div class="alert alert-danger" role="alert"><p>No residents found!</p></div>
     @endif
