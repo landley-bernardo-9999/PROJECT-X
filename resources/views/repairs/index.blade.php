@@ -10,9 +10,9 @@
     <div class="container"  >
             <table class="table">
                 <tr>
-                    <td>No</td>
-                    <th>Date Reported</th>
+                    <th>No</th>
                     <th>Room No</th>
+                    <th>Date Reported</th>
                     <th>Description</th>
                     <th>Endorse To</th>
                     <th>Cost</th>
@@ -21,8 +21,8 @@
                  @foreach($repairs as $repair)
                 <tr>
                     <td>{{$rowNum++}}</td>
-                    <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
                     <td><a href="/rooms/{{$repair->roomNo}}">{{$repair->roomNo}}</a></td>
+                    <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
                     <td>{{$repair->desc}}</td>
                     <td>{{$repair->endorsedTo}}</td>
                     <td>{{$repair->cost}}</td>

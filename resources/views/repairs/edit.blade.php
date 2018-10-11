@@ -22,7 +22,7 @@
         <div class="form-group">
                 {{Form::label('Endorsed To')}}
                 &nbsp&nbsp&nbsp
-                {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon', 'Marquez' => 'Marquez','Jeff' => 'Jeff', 'Jeffrey' => 'Jeffrey'],$repair->endorsedTo)}}
+                {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon', 'Marquez' => 'Marquez','Jeff' => 'Jeff', 'Jeffrey' => 'Jeffrey', 'Oliver' => 'Oliver']],$repair->endorsedTo)}}
         </div>
         <div class="form-group">
             {{Form::number('cost',$repair->cost,['class'=>'form-control'])}}

@@ -10,7 +10,7 @@
     <div class="container"  >
             <table class="table">
                 <tr>
-                    <td>No</td>
+                    <th>No</th>
                     <th>Name</th>
                     <th>Schedule</th>
                     <th>Employment Status</th>
@@ -30,7 +30,7 @@
                 </tr>  
         @endforeach   
             </table> 
-        {{$owners->links()}}
+        {{$maintenances->links()}}
         
     @else
     <div class="alert alert-danger" role="alert"><p>No Maintenance Personnels found!</p></div>

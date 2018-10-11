@@ -27,7 +27,7 @@
                 <table class="table">
                     <tr>
                         <th>Room No</th>
-                        <td>{{$resident->rommNo}}</td>
+                        <td>{{$resident->roomNo}}</td>
                     <tr>
                     <tr>
                         <th>Status</th>

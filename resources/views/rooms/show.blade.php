@@ -47,10 +47,6 @@
                             <td>{{$room->capacity}}</td>
                         </tr>
                         <tr>
-                            <th>Enrolled:</th>
-                            <td>{{$room->created_at}}</td>
-                        </tr>
-                        <tr>
                             <th>Updated:</th>
                             <td>&nbsp{{$room->updated_at}}</td>
                         </tr>  

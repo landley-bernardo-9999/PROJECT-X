@@ -103,7 +103,9 @@ class RoomsController extends Controller
     public function show($roomNo)
     {
         $room = Room::find($roomNo);
-        $resident = Resident::where('roomNo', '=', $roomNo)->orderBy('residentStatus', 'asc')->get();
+        $resident = Resident::where('roomNo', '=', $roomNo)
+                            ->where('residentStatus','=', 'Active')
+                            ->orderBy('residentStatus', 'asc')->get();
         $owner = Owner::where('roomNo', '=', $roomNo)->get();
         $repair = Repair::where('roomNo', '=', $roomNo)->get();
         
