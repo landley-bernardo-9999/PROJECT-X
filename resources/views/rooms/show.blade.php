@@ -59,7 +59,7 @@
                         <h1>Residents</h1>
 
                         <div class="panel panel-default">
-                            @if(!$resident)              
+                            @if(count($resident) > 0)             
                             <table class="table">
                              <tr>
                                 <th>Name</th>

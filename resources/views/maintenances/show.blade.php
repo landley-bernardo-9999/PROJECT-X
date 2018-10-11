@@ -2,15 +2,15 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-lg-1">
+        <div class="col-lg-1 col-md-1 col-xs-4">
             <a class="btn btn-secondary btn-md" role="button" href="/maintenances"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
         </div>
 
-        <div class="col-lg-1">
+        <div class="col-lg-1 col-md-1 col-xs-4">
             <a href="{{$maintenances->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i>&nbspEdit</a>
         </div>
 
-        <div class="col-lg-1">
+        <div class="col-lg-1 col-md-1 col-xs-4">
             {!!Form::open(['action' => ['MaintenancesController@destroy', $maintenances->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}

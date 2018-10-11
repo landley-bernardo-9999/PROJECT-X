@@ -47,26 +47,7 @@
                     </tr>
                         
                     </table>
-                        <h1>Concerns</h1>
-                            <div class="panel panel-default">              
-                        <!-- Table -->
-                            <table class="table">
-                                <tr>
-                                    <th>Date Started</th>
-                                    <th>Description</th>
-                                    <th>Endorsed to</th>
-                                    <th>Cost</th>
-                                    <th>Status</th>
-                                </tr>
-                                <tr>
-                                    <td>January 12, 2018</td>
-                                    <td>Plumbing</td>
-                                    <td>Armando</td>
-                                    <td>8,000</td>
-                                    <td>Pending</td>
-                                </tr>
-                                    </table>
-                            </div>
+                       
                 </div>             
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                     <div class="card" style="width: 35rem" >

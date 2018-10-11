@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 use App\Room;
 use App\Resident;
 use App\Owner;
@@ -29,7 +30,7 @@ class RoomsController extends Controller
      */
     public function index()
     {
-        $rooms = DB::table('rooms')->get();
+        $rooms = DB::table('rooms')->orderBy('roomNo', 'asc')->get();
         return view('rooms.index')->with('rooms', $rooms);
     }
 
@@ -102,11 +103,20 @@ class RoomsController extends Controller
     public function show($roomNo)
     {
         $room = Room::find($roomNo);
-        $resident = Resident::where('roomNo', '=', '101');
-        $owner = Owner::all();
-        $repair = Repair::all();
+        $resident = Resident::where('roomNo', '=', $roomNo)->orderBy('residentStatus', 'asc')->get();
+        $owner = Owner::where('roomNo', '=', $roomNo)->get();
+        $repair = Repair::where('roomNo', '=', $roomNo)->get();
+        
 
-        return view('rooms.show')->with('room', $room)->with('resident' , $resident)->with('repair', $repair)->with('owner', $owner);
+       return view('rooms.show')->with('room', $room)
+                                    ->with('resident', $resident)
+                                    ->with('owner', $owner)
+                                    ->with('repair', $repair);
+        
+
+
+
+        
     }
 
     /**

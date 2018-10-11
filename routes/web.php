@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    if(Auth::guest()){
+        return view('auth.register');
+    }
+    else
+        return view('/home');
 });
 
 Route::get('/propertymgmt', 'AppsController@propertymgmt');
@@ -26,6 +30,8 @@ Route::get('/dormhealthmgmt', 'AppsController@dormhealthmgmt');
 Route::get('/inventorymgmt', 'AppsController@inventorymgmt');
 
 Route::get('/reportsandstats', 'AppsController@reportsandstats');
+
+Route::get('/profile', 'HomeController@profile');
 
 Auth::routes();
 

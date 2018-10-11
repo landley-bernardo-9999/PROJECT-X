@@ -11,7 +11,7 @@
             <table class="table">
                 <tr>
                     <th>Name</th>
-                    <th>BirthDate</th>
+                    <th>Schedule</th>
                     <th>Employment Status</th>
                     <th>Mobile Number</th>
                     <th>Position</th>
@@ -20,7 +20,7 @@
                  @foreach($maintenances as $maintenance)
                 <tr>
                     <td><a href="/maintenances/{{$maintenance->id}}">{{$maintenance->name}}</a></td>
-                    <td>{{$maintenance->birthDate}}</td>
+                    <td>{{$maintenance->schedule}}</td>
                     <td>{{$maintenance->employmentStatus}}</td>
                     <td>{{$maintenance->mobileNumber}}</td>
                     <td>{{$maintenance->position}}</td>

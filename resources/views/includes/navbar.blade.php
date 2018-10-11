@@ -26,8 +26,11 @@
                         @endif
                     </li>
                 @else
-                <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">{{ __('Profile') }}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -39,11 +42,12 @@
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
-                            </a>
+                            </a>    
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+
                         </div>
                     </li>
                 @endguest

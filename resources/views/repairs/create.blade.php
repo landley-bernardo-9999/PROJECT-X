@@ -15,14 +15,15 @@
         <div class="form-group">
             {{Form::label('Description')}}
             &nbsp&nbsp&nbsp
-            {{Form::select('desc', ['Plumbing' => 'Plumbing', 'Carpentry' => 'Carpentry', 
-            'Electric' => 'Electric', 'Tilling' => 'Tilling', 'Replacement' => 'Replacement',
-            'Renovation' => 'Renovation'],null,['placeholder' => 'Please select'])}}
+            {{Form::select('desc', ['Carpentry'=>'Carpentry', 'Electrical' => 'Electrical', 'Plumbing'=>'Plumbing', 
+                                    'General' => 'General', 'Installations' => 'Installations',
+                                    'Masonry' => 'Masonry', 'Painting' => 'Painting', 'Cleaning' => 'Cleaning',
+                                    'Security' => 'Security', 'Internet' => 'Internet', 'Request' => 'Request'],null,['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
                 {{Form::label('Endorsed To')}}
                 &nbsp&nbsp&nbsp
-                {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon', 'Marquez' => 'Marquez','Old Jeff' => 'Old Jeff', 'New Jeff' => 'New Jeff'],null,['placeholder' => 'Please select'])}}
+                {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon', 'Marquez' => 'Marquez','Jeff' => 'Jeff', 'Jeffrey' => 'Jeffrey'],null,['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
             {{Form::number('cost','',['class'=>'form-control','placeholder'=>'Cost'])}}
@@ -33,7 +34,7 @@
             {{Form::select('repairStatus', ['Pending' => 'Pending', 'Ongoing' => 'Ongoing','Done' => 'Done'],null,['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
-            {{Form::label('Date Finished')}}
+            {{Form::label('Date Finished (Leave it blank if unknown)')}}
             &nbsp&nbsp&nbsp
             {{ Form::date('dateFinished',' ', ['class' => 'form-control']) }}
         </div>

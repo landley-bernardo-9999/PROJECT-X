@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-1">
-            <a class="btn btn-secondary btn-md" role="button" href="/maintenances"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
+            <a class="btn btn-secondary btn-md" role="button" href="/repairs"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
         </div>
 
         <div class="col-lg-1">
