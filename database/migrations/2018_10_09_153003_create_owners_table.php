@@ -18,13 +18,12 @@ class CreateOwnersTable extends Migration
             $table->increments('id');
             $table->string('roomNo');
             $table->string('name');
-            $table->date('birthDate');
-            $table->string('mobileNumber')->unique();
-            $table->string('emailAddress')->unique();
+            $table->date('birthDate')->nullable();
+            $table->string('mobileNumber')->unique()->nullable();
+            $table->string('emailAddress')->unique()->nullable();
             $table->string('cover_image');
             $table->timestamps();
 
-          
         });
     }
 

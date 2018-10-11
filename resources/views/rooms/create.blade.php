@@ -10,21 +10,21 @@
         <div class="form-group">
             {{Form::label('Building')}}
             &nbsp&nbsp&nbsp
-            {{Form::select('building', ['Harvard' => 'Harvard', 'Princeton' => 'Princeton', 'Wharton' => 'Wharton'],null,['placeholder' => 'Please select'])}}
+            {{Form::select('building', ['Harvard' => 'Harvard', 'Princeton' => 'Princeton', 'Wharton' => 'Wharton'],'Harvard',['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
-            {{Form::number('rentalFee',' ',['class'=>'form-control','placeholder'=>'Monthly Rent'],['min'=>'0'])}}
+            {{Form::number('rentalFee','6000',['class'=>'form-control','placeholder'=>'Monthly Rent'],['min'=>'0'])}}
         </div>
         <div class="form-group">
             {{Form::label('Status')}}
             &nbsp&nbsp&nbsp
-            {{Form::select('roomStatus', ['Occupied' => 'Occupied', 'Vacant' => 'Vacant','Reserved' => 'Reserved', 'NRFO' => 'NRFO'],null,['placeholder' => 'Please select'])}}
+            {{Form::select('roomStatus', ['Occupied' => 'Occupied', 'Vacant' => 'Vacant','Reserved' => 'Reserved', 'NRFO' => 'NRFO'],'Occupied',['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
-            {{Form::number('size',' ',['class'=>'form-control','placeholder'=>'Size'])}}
+            {{Form::number('size','15',['class'=>'form-control','placeholder'=>'Size'])}}
         </div>
         <div class="form-group">
-            {{Form::number('capacity',' ',['class'=>'form-control','placeholder'=>'Capacity'])}}
+            {{Form::number('capacity','2',['class'=>'form-control','placeholder'=>'Capacity'])}}
         </div>    
         <div class="form-group">
             {{Form::file('cover_image')}}

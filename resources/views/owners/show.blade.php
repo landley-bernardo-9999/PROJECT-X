@@ -26,7 +26,7 @@
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                 <table class="table">
                     <tr>
-                        <th>birthDate</th>
+                        <th>BirthDate</th>
                         <td>{{$owner->birthDate}}</td>
                     <tr>
                     <tr>

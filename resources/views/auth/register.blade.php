@@ -66,12 +66,12 @@
                                 <div class="col-md-6">
                                     <select class="form-control" name="type" id="type">
                                         <option value=""disabled selected>Select one</option> 
-                                        <option value="owner">Owner</option>    
-                                        <option value="maintenance">Maintenance </option>
-                                        <option value="finance">Finance</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="executive">Executive</option>
-                                        <option value="developer">Developer</option>
+                                        <option value="Owner">Owner</option>    
+                                        <option value="Maintenance">Maintenance </option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Executive">Executive</option>
+                                        <option value="Developer">Developer</option>
                                     </select>
                                 </div>
                         </div>

@@ -10,13 +10,36 @@
     <div class="container text-center">
         <div class="row">
             @foreach($rooms as $room)
-            <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-secondary" role="button">
-                <i class="fas fa-home fa-5x"></i>
-                <div style="display: flex">
-                    <h5>{{$room->roomNo}}</h5>
-                </div>
-            </a>
-        @endforeach
+                @if($room->roomStatus == 'Occupied')
+                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
+                        <i class="fas fa-home fa-5x"></i>
+                        <div style="display: flex">
+                            <h5>{{$room->roomNo}}</h5>
+                        </div>
+                    </a>
+                @elseif($room->roomStatus == 'Vacant')
+                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
+                        <i class="fas fa-home fa-5x"></i>
+                        <div style="display: flex">
+                            <h5>{{$room->roomNo}}</h5>
+                        </div>
+                    </a>
+                @elseif($room->roomStatus == 'Reserved')
+                <a href="/rooms/{{$room->roomNo}}" class="btn btn-md btn-outline-info" role="button">
+                    <i class="fas fa-home fa-5x"></i>
+                    <div style="display: flex">
+                        <h5>{{$room->roomNo}}</h5>
+                    </div>
+                </a>
+                @elseif($room->roomStatus == 'NRFO')
+                <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
+                    <i class="fas fa-home fa-5x"></i>
+                    <div style="display: flex">
+                        <h5>{{$room->roomNo}}</h5>
+                    </div>
+                </a>                  
+                @endif
+            @endforeach
         </div>
     @else
     <div class="alert alert-danger" role="alert"><p>No rooms found!</p></div>

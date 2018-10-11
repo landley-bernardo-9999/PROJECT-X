@@ -37,7 +37,7 @@
                                   </tr>
                                   <tr>
                                     <th scope="row">Position</th>
-                                    <td>{{Auth::user()->position}}</td>
+                                    <td>{{Auth::user()->type}}</td>
                                  
                                   </tr>
                                   <tr>

@@ -31,7 +31,7 @@
             
             <div class="col-sm-2">
                     <a href="/inventorymgmt" class="btn btn-secondary"><i class="fas fa-truck fa-4x"></i></a>
-                    <p class="card-title">Movein and Moveout</p>
+                    <p class="card-title">Moveins and Moveouts</p>
             </div>
         </div> 
 

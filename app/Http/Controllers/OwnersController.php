@@ -51,9 +51,9 @@ class OwnersController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'roomNo' => 'required',
-            'birthDate' => 'required',
-            'mobileNumber' => 'required|unique:owners',
-            'emailAddress' => 'required|unique:owners',
+            'birthDate' => 'nullable',
+            'mobileNumber' => 'nullable',
+            'emailAddress' => 'nullable',
             'cover_image' => 'image|nullable|max:1999'
         ]);
 
@@ -126,9 +126,9 @@ class OwnersController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'roomNo' => 'required',
-            'birthDate' => 'required',
-            'mobileNumber' => 'required',
-            'emailAddress' => 'required',
+            'birthDate' => 'nullable',
+            'mobileNumber' => 'nullable',
+            'emailAddress' => 'nullable',
         ]);
 
          //Handle File Upload
