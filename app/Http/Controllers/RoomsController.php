@@ -35,11 +35,15 @@ class RoomsController extends Controller
         $vacant = DB::table('rooms')->where('roomStatus','=', 'Vacant')->get();
         $reserved = DB::table('rooms')->where('roomStatus','=', 'Reserved')->get();
         $nrfo = DB::table('rooms')->where('roomStatus','=', 'NRFO')->get();
+        $totalRooms = count($rooms);
+        $occupiedRooms = count($occupied);
+        $occupancyRate = round($occupiedRooms/$totalRooms * 100); 
         return view('rooms.index')->with('rooms', $rooms)
                                   ->with('occupied', $occupied)
                                   ->with('vacant', $vacant)
                                   ->with('reserved', $reserved)
-                                  ->with('nrfo', $nrfo);
+                                  ->with('nrfo', $nrfo)
+                                  ->with('occupancyRate', $occupancyRate);
     }
 
     /**

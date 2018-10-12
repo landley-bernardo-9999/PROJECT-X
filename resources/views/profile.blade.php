@@ -19,26 +19,21 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                         <table class="table table-striped">
-                                
                                   <tr>
                                     <th scope="col">Name</th>
                                     <td scope="col">{{ Auth::user()->name }}</td>
-                                
                                   </tr>
-                               
-                                
                                     <tr>
                                     <th scope="row">Email Address</th>
                                     <td>{{Auth::user()->email}}</td>    
                                   </tr>
                                   <tr>
-                                    <th scope="row">Contact</th>
-                                    <td>{{Auth::user()->contact}}</td>
+                                    <th scope="row">Mobile Number</th>
+                                    <td>{{Auth::user()->mobileNumber}}</td>
                                   </tr>
                                   <tr>
                                     <th scope="row">Position</th>
                                     <td>{{Auth::user()->type}}</td>
-                                 
                                   </tr>
                                   <tr>
                                     <th scope="row">Department</th>

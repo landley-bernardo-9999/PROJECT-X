@@ -3,7 +3,7 @@
 <br>
     <div class="container-fluid">
         <div class="row text-center">
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:2%">
+            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:6%">
                 <h3>Enrolled</h3>
                 <h1>{{count($rooms)}}</h1>
                 <i class="fas fa-home fa-1x"></i>
@@ -25,6 +25,19 @@
                 <h1>{{count($nrfo)}}</h1>
             </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-12" style="padding: 2% 2%" >
+              <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                    <h3 style="color:black">Occupancy Rate</h3>
+                </a>
+                    <div class="progress"  style="margin-left: 5%; border:style black;">
+                        <div class="progress-bar" role="progressbar" style="width: {{ $occupancyRate }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $occupancyRate }}%</div>
+                    </div>    
+                </div>
+            </div>
+          </div>
     </div>
     <br>
     <div class="container" >

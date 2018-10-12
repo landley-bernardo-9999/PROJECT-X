@@ -62,16 +62,39 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="mobileNumber" class="col-md-4 col-form-label text-md-right">{{ __('Mobile Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="mobileNumber" type="text" class="form-control{{ $errors->has('mobileNumber') ? ' is-invalid' : '' }}" name="mobileNumber" value="{{ old('mobileNumber') }}" required autofocus>
+
+                                @if ($errors->has('mobileNumber'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('mobileNumber') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="type" class="col-md-4 col-form-label text-md-right" >User Type:</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="type" id="type">
-                                        <option value=""disabled selected>Select one</option> 
-                                        <option value="Owner">Owner</option>    
-                                        <option value="Maintenance">Maintenance </option>
+                                        <option value=""disabled selected>Select one</option>    
+                                        <option value="Maintenance">Maintenance</option>
                                         <option value="Finance">Finance</option>
                                         <option value="Admin">Admin</option>
                                         <option value="Executive">Executive</option>
                                         <option value="Developer">Developer</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="department" class="col-md-4 col-form-label text-md-right" >Department :</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="department" id="department">
+                                        <option value=" " disabled selected>Select one</option> 
+                                        <option value="Owner">Leasing</option>    
+                                        <option value="Maintenance">Property Management</option>
                                     </select>
                                 </div>
                         </div>
