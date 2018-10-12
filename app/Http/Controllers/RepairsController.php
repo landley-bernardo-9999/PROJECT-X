@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Repair;
+use App\Room;
 use DB;
 
 class RepairsController extends Controller
@@ -45,7 +46,11 @@ class RepairsController extends Controller
      */
     public function create()
     {
-        return view('repairs.create');
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get();
+        return view('repairs.create')->with('registeredRooms', $registeredRooms);
     }
 
     /**
@@ -122,7 +127,11 @@ class RepairsController extends Controller
     public function edit($id)
     {
         $repairs = Repair::find ($id);
-        return view('repairs.edit')->with('repair',$repairs);
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get();
+        return view('repairs.edit')->with('repair',$repairs)->with('registeredRooms', $registeredRooms);
     }
 
     /**

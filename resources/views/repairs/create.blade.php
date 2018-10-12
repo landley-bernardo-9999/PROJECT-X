@@ -4,9 +4,17 @@
 <br><br>    
 <h1>Add Repair</h1>
     {!! Form::open(['action'=>'RepairsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        <div class="form-group">
-            {{Form::text('roomNo','',['class'=>'form-control','placeholder'=>'Room No'])}}
-        </div>    
+    <div class="form-group">
+                <label for="">Room No</label>
+                <select name="roomNo" id="roomNo">
+                    <option value="" disabled selected>Please select</option>
+                    @foreach($registeredRooms as $registeredRoom)
+                    <option value="{{$registeredRoom->roomNo}}">
+                        {{$registeredRoom->roomNo}}
+                    </option>
+                    @endforeach
+                </select>
+        </div>   
         <div class="form-group">
                 {{Form::label('Date Reported')}}
                 &nbsp&nbsp&nbsp

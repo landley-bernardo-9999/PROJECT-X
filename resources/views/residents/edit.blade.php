@@ -8,7 +8,15 @@
             {{Form::text('name',$resident->name,['class'=>'form-control','placeholder'=>'Name'])}}
         </div>
         <div class="form-group">
-            {{Form::text('roomNo',$resident->roomNo,['class'=>'form-control'])}}
+            <label for="">Room No</label>
+            <select name="roomNo" id="roomNo">
+                <option value="{{$resident->roomNo}}"selected disabled>{{$resident->roomNo}}</option>
+                @foreach($registeredRooms as $registeredRoom)
+                <option value="{{$registeredRoom->roomNo}}">
+                    {{$registeredRoom->roomNo}}
+                </option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
                 {{Form::label('Birthdate')}}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Owner;
+use App\Room;
 use DB;
 
 class OwnersController extends Controller
@@ -28,6 +29,7 @@ class OwnersController extends Controller
     {
         $rowNum = 1;
         $owners = DB::table('owners')->orderBy('name', 'asc')->paginate(10);
+        
         return view('owners.index')->with('owners', $owners)->with('rowNum', $rowNum);
     }
 
@@ -38,7 +40,11 @@ class OwnersController extends Controller
      */
     public function create()
     {
-        return view('owners.create');
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get();
+        return view('owners.create')->with('registeredRooms', $registeredRooms);
     }
 
     /**
@@ -112,7 +118,11 @@ class OwnersController extends Controller
     public function edit($id)
     {
         $owners = Owner::find ($id);
-        return view('owners.edit')->with('owner',$owners);
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get();
+        return view('owners.edit')->with('owner',$owners)->with('registeredRooms', $registeredRooms);
     }
 
     /**

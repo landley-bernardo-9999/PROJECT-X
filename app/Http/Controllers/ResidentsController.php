@@ -66,8 +66,19 @@ class ResidentsController extends Controller
      */
     public function create()
     {
-        return view('residents.create');
+        //$registeredRooms = DB::table('rooms')->get();
+
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get();
+
+        //return $registeredRooms;    
+        return view('residents.create')->with('registeredRooms', $registeredRooms);
+        
     }
+    
+    
 
     /**
      * Store a newly created resource in storage.
@@ -152,7 +163,11 @@ class ResidentsController extends Controller
     public function edit($id)
     {
         $residents = Resident::find ($id);
-        return view('residents.edit')->with('resident',$residents);
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get();
+        return view('residents.edit')->with('resident',$residents)->with('registeredRooms', $registeredRooms);
     }
 
     /**

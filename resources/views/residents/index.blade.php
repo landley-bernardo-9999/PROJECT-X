@@ -45,18 +45,17 @@
                     <th>Move-out Date</th>
                 </tr>
                  @foreach($residents as $resident)
-                <tr>
-                    <td>{{$rowNum++}}</td>
-                    <td><a href="/residents/{{$resident->id}}">{{$resident->name}}</a></td>
-                    <td><a href="/rooms/{{$resident->roomNo}}">{{$resident->roomNo}}</a></td>
-                    <td>{{$resident->residentStatus}}</td>
-                    <td>{{$resident->mobileNumber}}</td>
-                    <td>{{$resident->emailAddress}}</td>
-                    <td>{{$resident->moveInDate}}</td>
-                    <td>{{$resident->moveOutDate}}</td>
-
-                </tr>  
-        @endforeach   
+                    <tr>
+                        <td>{{$rowNum++}}</td>
+                        <td><a href="/residents/{{$resident->id}}">{{$resident->name}}</a></td>
+                        <td><a href="/rooms/{{$resident->roomNo}}">{{$resident->roomNo}}</a></td>
+                        <td>{{$resident->residentStatus}}</td>
+                        <td>{{$resident->mobileNumber}}</td>
+                        <td>{{$resident->emailAddress}}</td>
+                        <td>{{$resident->moveInDate}}</td>
+                        <td>{{$resident->moveOutDate}}</td>
+                    </tr>  
+                @endforeach   
             </table>
             {{$residents->links()}}  
     @else

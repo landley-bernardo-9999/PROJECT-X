@@ -7,15 +7,15 @@
                 <h3>Total</h3>
                 <h1>{{count($repairs)}}</h1>
             </div>
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
+            <div class="col-md-2 btn btn-outline-warning" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                 <h3>Pending</h3>
                 <h1>{{count($pending)}}</h1>
             </div>
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
+            <div class="col-md-2 btn btn-outline-success" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                 <h3>Ongoing</h3>
                 <h1>{{count($ongoing)}}</h1>
             </div>
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
+            <div class="col-md-2 btn btn-outline-danger" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                 <h3>Closed</h3>
                 <h1>{{count($closed)}}</h1>
             </div>

@@ -9,8 +9,16 @@
             {{ Form::date('dateReported',$repair->dateReported, ['class' => 'form-control']) }}
         </div>
         <div class="form-group">
-                {{Form::text('roomNo',$repair->roomNo,['class'=>'form-control'])}}
-            </div>
+                <label for="">Room No</label>
+                <select name="roomNo" id="roomNo">
+                    <option value="{{$repair->roomNo}}"selected disabled>{{$repair->roomNo}}</option>
+                @foreach($registeredRooms as $registeredRoom)
+                    <option value="{{$registeredRoom->roomNo}}">
+                        {{$registeredRoom->roomNo}}
+                    </option>
+                @endforeach
+            </select>
+        </div>
         <div class="form-group">
             {{Form::label('Description')}}
             &nbsp&nbsp&nbsp
@@ -20,9 +28,9 @@
             'Security' => 'Security', 'Internet' => 'Internet', 'Request' => 'Request'],$repair->desc)}}
         </div>
         <div class="form-group">
-                {{Form::label('Endorsed To')}}
-                &nbsp&nbsp&nbsp
-                {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon', 'Marquez' => 'Marquez','Jeff' => 'Jeff', 'Jeffrey' => 'Jeffrey', 'Oliver' => 'Oliver']],$repair->endorsedTo)}}
+            {{Form::label('Endorsed To')}}
+            &nbsp&nbsp&nbsp
+            {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon', 'Marquez' => 'Marquez','Jeff' => 'Jeff', 'Jeffrey' => 'Jeffrey', 'Oliver' => 'Oliver'],$repair->endorsedTo)}}
         </div>
         <div class="form-group">
             {{Form::number('cost',$repair->cost,['class'=>'form-control'])}}

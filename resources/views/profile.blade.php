@@ -18,15 +18,15 @@
             </div>
             <div class="row">
                 <div class="col-md-12 col-lg-12">
-                        <table class="table">
-                                <thead>
+                        <table class="table table-striped">
+                                
                                   <tr>
                                     <th scope="col">Name</th>
                                     <td scope="col">{{ Auth::user()->name }}</td>
                                 
                                   </tr>
-                                </thead>
-                                <tbody>
+                               
+                                
                                     <tr>
                                     <th scope="row">Email Address</th>
                                     <td>{{Auth::user()->email}}</td>    
@@ -48,7 +48,7 @@
                                     <th scope="row">Date Hired</th>
                                     <td>{{Auth::user()->created_at}}</td> 
                                   </tr>
-                                </tbody>
+                               
                               </table>
                 </div>
             </div>
