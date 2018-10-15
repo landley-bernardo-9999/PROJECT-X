@@ -93,8 +93,8 @@
                                 <div class="col-md-6">
                                     <select class="form-control" name="department" id="department">
                                         <option value=" " disabled selected>Select one</option> 
-                                        <option value="Owner">Leasing</option>    
-                                        <option value="Maintenance">Property Management</option>
+                                        <option value="Leasing">Leasing</option>    
+                                        <option value="Property Management">Property Management</option>
                                     </select>
                                 </div>
                         </div>

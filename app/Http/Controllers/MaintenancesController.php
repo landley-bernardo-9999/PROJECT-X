@@ -45,7 +45,7 @@ class MaintenancesController extends Controller
             'employmentStatus' => 'required',
             'position' => 'required',
             'schedule' => 'required',
-            'mobileNumber' => 'required',
+            'mobileNumber' => 'nullable',
             'cover_image' => 'image|nullable|max:1999'
         ]);
 

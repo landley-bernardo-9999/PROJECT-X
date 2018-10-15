@@ -20,10 +20,10 @@
     </div>
 </div>
 <br>
-<h1>{{$resident->name}}</h1>
+<h1>{{$resident->name}}(Resident)</h1>
     <div class="container">
        <div class="row">
-            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+            <div class="col-lg-9">
                 <table class="table">
                     <tr>
                         <th>Room No</th>
@@ -51,11 +51,75 @@
                     </tr>
                         
                     </table>
+                    <br>
+                    <div>
+                        <h1>Concerns</h1>
+                         <div class="panel panel-default">
+                        @if(count($repair) > 0)              
+                        <table class="table">
+                         <tr>
+                            <th>Date Reported</th>
+                            <th>Description</th>
+                            <th>Endorse To</th>
+                            <th>Status</th>
+                            <th>Date Finished</th>
+                            <th>Cost</th>
+                         </tr>
+                         @foreach($repair as $repair)
+                         <tr>
+                            <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
+                            <td>{{$repair->desc}}</td>
+                            <td>{{$repair->endorsedTo}}</td>
+                            <td>{{$repair->repairStatus}}</td>
+                            <td>{{$repair->dateFinished}}</td>
+                            <td>{{$repair->cost}}</td>
+                         </tr>
+                         @endforeach
+                        </table>
+                        @else
+                        <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
+                        @endif
+                      </div>
+                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRepair</a>  
+                </div>
+                <br>
+                <div>
+                        <h1>Violations</h1>
+                         <div class="panel panel-default">
+                        {{-- @if(count($repair) > 0)               --}}
+                        <table class="table">
+                         <tr>
+                            <th>Date Reported</th>
+                            <th>Description</th>
+                            <th>Endorse To</th>
+                            <th>Status</th>
+                            <th>Date Finished</th>
+                            <th>Cost</th>
+                         </tr>
+                         {{-- @foreach($repair as $repair) --}}
+                         <tr>
+                            <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
+                            <td>{{$repair->desc}}</td>
+                            <td>{{$repair->endorsedTo}}</td>
+                            <td>{{$repair->repairStatus}}</td>
+                            <td>{{$repair->dateFinished}}</td>
+                            <td>{{$repair->cost}}</td>
+                         </tr>
+                         {{-- @endforeach --}}
+                        </table>
+                        {{-- @else --}}
+                        <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
+                        {{-- @endif --}}
+                      </div>
+                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspViolation</a>  
+                </div>
+
+                
                        
                 </div>             
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                    <div class="card" style="width: 35rem" >
-                        <img style="width:90%" class="card-img-top" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap">
+                <div class="col-lg-3">
+                    <div class="card" style="width: 20rem" >
+                        <img class="card-img-top" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap">
                 </div>
                 </div>
        </div>

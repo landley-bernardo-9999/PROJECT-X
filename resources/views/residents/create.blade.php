@@ -19,6 +19,9 @@
                 @endforeach
             </select>
         </div>
+
+
+
         <div class="form-group">
                 {{Form::label('Birthdate')}}
                 &nbsp&nbsp&nbsp
@@ -27,7 +30,7 @@
         <div class="form-group">
             {{Form::label('Status')}}
             &nbsp&nbsp&nbsp
-            {{Form::select('residentStatus', ['Active' => 'Active', 'Inactive' => 'Inactive', 'Pending' => 'Pending'],null,['placeholder' => 'Please select'])}}
+            {{Form::select('residentStatus', ['Pending' => 'Pending','Moving-in' => 'Moving-in','Active' => 'Active', 'Moving-out' => 'Moving-out', 'Inactive' => 'Inactive'],null,['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
             {{Form::label('Move-in Date')}}

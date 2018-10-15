@@ -14,7 +14,20 @@
                     </option>
                     @endforeach
                 </select>
-        </div>   
+        </div> 
+        
+        <div class="form-group">
+            <label for="">Name of the Resident</label>
+            <select name="name" id="name">
+                <option value="" disabled selected>Please select</option>
+                @foreach($registeredResidents as $registeredResident)
+                <option value="{{$registeredResident->name}}">
+                    {{$registeredResident->name}}
+                </option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="form-group">
                 {{Form::label('Date Reported')}}
                 &nbsp&nbsp&nbsp
@@ -39,7 +52,7 @@
         <div class="form-group">
             {{Form::label('Status')}}
             &nbsp&nbsp&nbsp
-            {{Form::select('repairStatus', ['Pending' => 'Pending', 'Ongoing' => 'Ongoing','Done' => 'Done'],null,['placeholder' => 'Please select'])}}
+            {{Form::select('repairStatus', ['Pending' => 'Pending', 'Ongoing' => 'Ongoing','Closed' => 'Closed'],null,['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
             {{Form::label('Date Finished (Leave it blank if unknown)')}}

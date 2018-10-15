@@ -50,7 +50,7 @@
                 </div>             
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                     <div class="card" style="width: 35rem" >
-                        <img style="width:90%" class="card-img-top" src="/storage/maintenance_images/{{$maintenances->cover_image}}" alt="Card image cap">
+                        <img style="width:80%" class="card-img-top" src="/storage/maintenance_images/{{$maintenances->cover_image}}" alt="Card image cap">
                 </div>
                 </div>
        </div>

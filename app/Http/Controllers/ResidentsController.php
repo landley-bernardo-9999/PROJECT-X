@@ -19,7 +19,7 @@ class ResidentsController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -50,7 +50,7 @@ class ResidentsController extends Controller
             ->where('rooms.building','=','Courtyard')
             ->get();
 
-            
+
         return view('residents.index')->with('residents', $residents)
                                       ->with('rowNum', $rowNum)
                                       ->with('harvard', $harvard)
@@ -73,12 +73,12 @@ class ResidentsController extends Controller
         ->select('roomNo')
         ->get();
 
-        //return $registeredRooms;    
+        //return $registeredRooms;
         return view('residents.create')->with('registeredRooms', $registeredRooms);
-        
+
     }
-    
-    
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -91,13 +91,13 @@ class ResidentsController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'roomNo' => 'required',
-            'birthDate' => 'required',
+            'birthDate' => 'nullable',
             'residentStatus' => 'required',
             'school' => 'nullable',
             'course' => 'nullable',
             'yearLevel' => 'nullable',
-            'mobileNumber' => 'required|unique:residents',
-            'emailAddress' => 'required|unique:residents',
+            'mobileNumber' => 'nullable',
+            'emailAddress' => 'nullable',
             'moveInDate' => 'nullable',
             'moveOutDate' => 'nullable',
             'cover_image' => 'image|nullable|max:1999'
@@ -105,14 +105,14 @@ class ResidentsController extends Controller
 
          //Handle File Upload
          if($request->hasFile('cover_image')){
-            //Get filename with the extension 
+            //Get filename with the extension
             $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
             //Get just filename
             $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             //Get just extension
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             //Filename to store
-            $fileNameToStore = $filename.' '.time().' '.$extension; 
+            $fileNameToStore = $filename.' '.time().' '.$extension;
             //Upload Image
             $path = $request->file('cover_image')->storeAs('public/resident_images',$fileNameToStore);
         }else{
@@ -131,10 +131,10 @@ class ResidentsController extends Controller
         $resident->course =$request->input('course');
         $resident->yearLevel = $request->input('yearLevel');
         $resident->mobileNumber = $request->input('mobileNumber');
-        $resident->emailAddress = $request->input('emailAddress');   
+        $resident->emailAddress = $request->input('emailAddress');
         $resident->moveInDate = $request->input('moveInDate');
         $resident->moveOutDate = $request->input('moveOutDate');
-        $resident->cover_image = $fileNameToStore; 
+        $resident->cover_image = $fileNameToStore;
 
         $resident->save();
 
@@ -151,7 +151,14 @@ class ResidentsController extends Controller
     public function show($id)
     {
         $resident = Resident::find($id);
-        return view('residents.show')->with('resident',$resident);
+        $repair = DB::table('repairs')
+            ->join('residents', 'repairs.name', '=', 'residents.name')
+            ->select('repairs.*')
+            ->where('residents.id','=',$id)
+            ->get();
+
+        return view('residents.show')->with('resident',$resident)
+                                     ->with('repair', $repair);
     }
 
     /**
@@ -182,27 +189,28 @@ class ResidentsController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'roomNo' => 'required',
-            'birthDate' => 'required',
+            'birthDate' => 'nullable',
             'residentStatus' => 'required',
             'school' => 'nullable',
             'course' => 'nullable',
             'yearLevel' => 'nullable',
-            'mobileNumber' => 'required',
-            'emailAddress' => 'required',
+            'mobileNumber' => 'nullable',
+            'emailAddress' => 'nullable',
             'moveInDate' => 'nullable',
-            'moveOutDate' => 'nullable'
+            'moveOutDate' => 'nullable',
+            'cover_image' => 'image|nullable|max:1999'
         ]);
 
          //Handle File Upload
          if($request->hasFile('cover_image')){
-            //Get filename with the extension 
+            //Get filename with the extension
             $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
             //Get just filename
             $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             //Get just extension
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             //Filename to store
-            $fileNameToStore = $filename.' '.time().' '.$extension; 
+            $fileNameToStore = $filename.' '.time().' '.$extension;
             //Upload Image
             $path = $request->file('cover_image')->storeAs('public/resident_images',$fileNameToStore);
         }else{
@@ -220,9 +228,9 @@ class ResidentsController extends Controller
         $resident->course =$request->input('course');
         $resident->yearLevel = $request->input('yearLevel');
         $resident->mobileNumber = $request->input('mobileNumber');
-        $resident->emailAddress = $request->input('emailAddress'); 
+        $resident->emailAddress = $request->input('emailAddress');
         $resident->moveInDate = $request->input('moveInDate');
-        $resident->moveOutDate = $request->input('moveOutDate');  
+        $resident->moveOutDate = $request->input('moveOutDate');
         if($request->hasFile('cover_image')){
         $resident->cover_image = $fileNameToStore;
         }

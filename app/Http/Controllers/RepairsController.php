@@ -31,7 +31,7 @@ class RepairsController extends Controller
         $repairs = DB::table('repairs')->paginate(10);
         $pending = DB::table('repairs')->where('repairStatus', 'pending')->get();
         $ongoing = DB::table('repairs')->where('repairStatus', 'ongoing')->get();
-        $closed = DB::table('repairs')->where('repairStatus', 'done' ) ->get();
+        $closed = DB::table('repairs')->where('repairStatus', 'closed' ) ->get();
         return view('repairs.index')->with('repairs', $repairs)
                                     ->with('rowNum', $rowNum)
                                     ->with('pending', $pending)
@@ -50,7 +50,14 @@ class RepairsController extends Controller
         ->orderBy('roomNo', 'asc')
         ->select('roomNo')
         ->get();
-        return view('repairs.create')->with('registeredRooms', $registeredRooms);
+
+        $registeredResidents = DB::table('residents')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get(); 
+
+        return view('repairs.create')->with('registeredRooms', $registeredRooms)
+                                     ->with('registeredResidents', $registeredResidents);
     }
 
     /**
@@ -62,6 +69,8 @@ class RepairsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
+            'roomNo' => 'required',
+            'name' => 'nullable',
             'dateReported' => 'required',
             'desc' => 'required',
             'endorsedTo' => 'required',
@@ -92,6 +101,7 @@ class RepairsController extends Controller
         $repair = new Repair;
 
         $repair->roomNo = $request->input('roomNo');
+        $repair->name = $request->input('name');
         $repair->dateReported = $request->input('dateReported');
         $repair->desc = $request->input('desc');
         $repair->endorsedTo = $request->input('endorsedTo');
@@ -131,7 +141,15 @@ class RepairsController extends Controller
         ->orderBy('roomNo', 'asc')
         ->select('roomNo')
         ->get();
-        return view('repairs.edit')->with('repair',$repairs)->with('registeredRooms', $registeredRooms);
+
+        $registeredResidents = DB::table('residents')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get(); 
+
+        return view('repairs.edit')->with('repair',$repairs)
+                                   ->with('registeredRooms', $registeredRooms)
+                                   ->with('registeredResidents', $registeredResidents);
     }
 
     /**
@@ -145,6 +163,7 @@ class RepairsController extends Controller
     {
         $this->validate($request,[
             'roomNo' => 'required',
+            'name' => 'nullable',
             'dateReported' => 'required',
             'desc' => 'required',
             'endorsedTo' => 'required',
@@ -172,6 +191,7 @@ class RepairsController extends Controller
         //Add Repair
         $repair = Repair::find($id);
         $repair->roomNo = $request->input('roomNo');
+        $repair->name = $request->input('name');
         $repair->dateReported = $request->input('dateReported');
         $repair->desc = $request->input('desc');
         $repair->endorsedTo = $request->input('endorsedTo');

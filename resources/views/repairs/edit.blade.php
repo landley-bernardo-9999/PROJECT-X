@@ -11,7 +11,7 @@
         <div class="form-group">
                 <label for="">Room No</label>
                 <select name="roomNo" id="roomNo">
-                    <option value="{{$repair->roomNo}}"selected disabled>{{$repair->roomNo}}</option>
+                    <option value="{{$repair->roomNo}}"selected>{{$repair->roomNo}}</option>
                 @foreach($registeredRooms as $registeredRoom)
                     <option value="{{$registeredRoom->roomNo}}">
                         {{$registeredRoom->roomNo}}
@@ -19,6 +19,19 @@
                 @endforeach
             </select>
         </div>
+
+        <div class="form-group">
+            <label for="">Name of the Resident</label>
+            <select name="name" id="name">
+                <option value="{{$repair->name}}"selected>{{$repair->name}}</option>
+                @foreach($registeredResidents as $registeredResident)
+                <option value="{{$registeredResident->name}}">
+                    {{$registeredResident->name}}
+                </option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="form-group">
             {{Form::label('Description')}}
             &nbsp&nbsp&nbsp
@@ -38,7 +51,7 @@
         <div class="form-group">
             {{Form::label('Status')}}
             &nbsp&nbsp&nbsp
-        {{Form::select('repairStatus', ['Pending' => 'Pending', 'Ongoing' => 'Ongoing','Done' => 'Done'],$repair->repairStatus)}}
+        {{Form::select('repairStatus', ['Pending' => 'Pending', 'Ongoing' => 'Ongoing','Closed' => 'Closed'],$repair->repairStatus)}}
         </div>
         <div class="form-group">
             {{Form::label('Date Finished')}}

@@ -122,12 +122,12 @@ class RoomsController extends Controller
                             ->orderBy('residentStatus', 'asc')->get();
         $owner = Owner::where('roomNo', '=', $roomNo)->get();
         $repair = Repair::where('roomNo', '=', $roomNo)->get();
-        
 
        return view('rooms.show')->with('room', $room)
                                     ->with('resident', $resident)
                                     ->with('owner', $owner)
                                     ->with('repair', $repair);
+                                   
         
 
 

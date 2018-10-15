@@ -7,10 +7,11 @@
         <div class="form-group">
             {{Form::text('name',$resident->name,['class'=>'form-control','placeholder'=>'Name'])}}
         </div>
+
         <div class="form-group">
             <label for="">Room No</label>
             <select name="roomNo" id="roomNo">
-                <option value="{{$resident->roomNo}}"selected disabled>{{$resident->roomNo}}</option>
+                <option value="{{$resident->roomNo}}"selected>{{$resident->roomNo}}</option>
                 @foreach($registeredRooms as $registeredRoom)
                 <option value="{{$registeredRoom->roomNo}}">
                     {{$registeredRoom->roomNo}}
@@ -18,6 +19,9 @@
                 @endforeach
             </select>
         </div>
+
+        
+
         <div class="form-group">
                 {{Form::label('Birthdate')}}
                 &nbsp&nbsp&nbsp
@@ -36,7 +40,7 @@
         <div class="form-group">
             {{Form::label('Status')}}
             &nbsp&nbsp&nbsp
-            {{Form::select('residentStatus', ['Active' => 'Active', 'Inactive' => 'Inactive', 'Pending' => 'Pending'],'$resident->residentStatus')}}
+            {{Form::select('residentStatus', ['Pending' => 'Pending','Moving-in' => 'Moving-in','Active' => 'Active', 'Moving-out' => 'Moving-out', 'Inactive' => 'Inactive'],$resident->residentStatus)}}
         </div>
         <div class="form-group">
                 {{Form::text('school',$resident->school,['class'=>'form-control','placeholder'=>'School'])}}

@@ -18,15 +18,15 @@ class CreateResidentsTable extends Migration
             $table->increments('id');
             $table->string('roomNo');
             $table->string('name');
-            $table->date('birthDate');
+            $table->date('birthDate')->nullable();
             $table->string('residentStatus');
-            $table->date('moveInDate');
-            $table->date('moveOutDate');
-            $table->string('school');
-            $table->string('course');
-            $table->integer('yearLevel');
-            $table->string('mobileNumber')->unique;
-            $table->string('emailAddress')->unique;
+            $table->date('moveInDate')->nullable();
+            $table->date('moveOutDate')->nullable();
+            $table->string('school')->nullable();
+            $table->string('course')->nullable();
+            $table->integer('yearLevel')->nullable();
+            $table->string('mobileNumber')->unique()->nullable();
+            $table->string('emailAddress')->unique()->nullable();
             $table->string('cover_image');
             $table->timestamps();
 

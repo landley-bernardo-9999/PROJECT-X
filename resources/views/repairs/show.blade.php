@@ -20,11 +20,15 @@
     </div>
 </div>
 <br>
-<h1>{{$repair->roomNo}}</h1>
+<h1>{{$repair->roomNo}}(Repair)</h1>
     <div class="container">
        <div class="row">
-            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+            <div class="col-lg-9">
                 <table class="table">
+                    <tr>
+                        <th>Reported By</th>
+                        <td>{{$repair->name}}</td>
+                    <tr>
                     <tr>
                         <th>Date Reported</th>
                         <td>{{$repair->dateReported}}</td>
@@ -52,9 +56,9 @@
                         
                     </table>
                 </div>             
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                    <div class="card" style="width: 35rem" >
-                        <img style="width:90%" class="card-img-top" src="/storage/repair_images/{{$repair->cover_image}}" alt="Card image cap">
+                <div class="col-lg-3">
+                    <div class="card" style="width: 20rem" >
+                        <img class="card-img-top" src="/storage/repair_images/{{$repair->cover_image}}" alt="Card image cap">
                 </div>
                 </div>
        </div>

@@ -24,7 +24,7 @@
     <div class="container">
        <hr>
        <div class="row">
-            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+            <div class="col-lg-9">
                     <table class="table">
                         <tr>
                             <th>Under Leasing?</th>
@@ -64,7 +64,7 @@
                              <tr>
                                 <th>Name</th>
                                 <th>Status</th>
-                                <th>Since</th>
+                                <th>Move-In Date</th>
                                 <th>Mobile Number</th>
                                 <th>Email Address</th>
                              </tr>
@@ -83,7 +83,8 @@
                             @endif
                           </div>
                           <a class="btn btn-secondary btn-md" role="button" href="/residents/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspResident</a>  
-                   
+                   <br>
+                   <br>
                     <div>
                             <h1>Repairs</h1>
                              <div class="panel panel-default">
@@ -114,6 +115,8 @@
                           </div>
                               <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRepair</a>  
                     </div>
+
+                    <br>
                     <div>
                         <h1>Owner</h1>
                         <div class="panel panel-default">
@@ -121,7 +124,7 @@
                                 <table class="table">
                                  <tr>
                                     <th>Name</th>
-                                    <th>Since</th>
+                                    <th>Move-In Date</th>
                                     <th>Mobile Number</th>
                                     <th>Email Address</th>
                                  </tr>
@@ -144,9 +147,9 @@
                         <br>
                     </div> 
             </div>
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                    <div class="card" style="width: 35rem" >
-                        <img style="width:90%" class="card-img-top" src="/storage/cover_images/{{$room->cover_image}}" alt="Card image cap">
+                <div class="col-lg-3">
+                    <div class="card" style="width: 20rem" >
+                        <img class="card-img-top" src="/storage/cover_images/{{$room->cover_image}}" alt="Card image cap">
                       </div>
                 </div>
 

@@ -34,7 +34,6 @@
                 <tr>
                     <th>No</th>
                     <th>Room No</th>
-                    <th>Reported By</th>
                     <th>Date Reported</th>
                     <th>Details</th>
                     <th>Description</th>
@@ -46,9 +45,8 @@
                 <tr>
                     <td>{{$rowNum++}}</td>
                     <td><a href="/rooms/{{$repair->roomNo}}">{{$repair->roomNo}}</a></td>
-                    <td>{{$repair->name}}</td>
                     <td>{{$repair->dateReported}}</td>
-                    <td><a href="/repairs/{{$repair->id}}">MORE INFO</a></td>
+                    <td><a href="/repairs/{{$repair->id}}">More info</a></td>
                     <td>{{$repair->desc}}</td>
                     <td>{{$repair->endorsedTo}}</td>
                     <td>{{$repair->cost}}</td>

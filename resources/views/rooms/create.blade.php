@@ -18,7 +18,7 @@
             {{Form::select('building', ['Harvard' => 'Harvard', 'Princeton' => 'Princeton', 'Wharton' => 'Wharton', 'Courtyard' => 'Courtyard'],null,['placeholder' => 'Please select'])}}
         </div>
         <div class="form-group">
-            {{Form::number('rentalFee',' ',['class'=>'form-control','placeholder'=>'Monthly Rent'],['min'=>'0'])}}
+            {{Form::number('rentalFee','6000',['class'=>'form-control','placeholder'=>'Monthly Rent'],['min'=>'0'])}}
         </div>
         <div class="form-group">
             {{Form::label('Status')}}

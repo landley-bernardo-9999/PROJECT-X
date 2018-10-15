@@ -16,11 +16,11 @@ class CreateMaintenancesTable extends Migration
         Schema::create('maintenances', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->date('birthDate');
+            $table->date('birthDate')->nullable();
             $table->string('employmentStatus');
             $table->string('position');
             $table->string('schedule');
-            $table->string('mobileNumber');
+            $table->string('mobileNumber')->nullable();
             $table->string('cover_image');
             $table->timestamps();
         });

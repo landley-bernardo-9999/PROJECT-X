@@ -10,7 +10,7 @@
         <div class="form-group">
                 <label for="">Room No</label>
                 <select name="roomNo" id="roomNo">
-                    <option value="{{$owner->roomNo}}"selected disabled>{{$owner->roomNo}}</option>
+                    <option value="{{$owner->roomNo}}"selected>{{$owner->roomNo}}</option>
                 @foreach($registeredRooms as $registeredRoom)
                     <option value="{{$registeredRoom->roomNo}}">
                         {{$registeredRoom->roomNo}}

@@ -16,6 +16,7 @@ class CreateRepairsTable extends Migration
         Schema::create('repairs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('roomNo');
+            $table->string('name');
             $table->date('dateReported');
             $table->string('desc');
             $table->string('endorsedTo');
