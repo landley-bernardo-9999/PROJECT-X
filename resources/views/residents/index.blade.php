@@ -24,6 +24,18 @@
                 <h1>{{count($courtyard)}}</h1>
             </div>
         </div>
+        <div class="row">
+                <div class="col-12" style="padding: 2% 2%" >
+                  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                        <h3 style="color:black">Retention Rate</h3>
+                    </a>
+                        <div class="progress"  style="margin-left: 5%; border:style black;">
+                            <div class="progress-bar" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">10%</div>
+                        </div>    
+                    </div>
+                </div>
+              </div>
     </div>
     <br>
     <div class="container" >
@@ -56,8 +68,7 @@
                         <td>{{$resident->moveOutDate}}</td>
                     </tr>  
                 @endforeach   
-            </table>
-            {{$residents->links()}}  
+            </table> 
     @else
     <div class="alert alert-danger" role="alert"><p>No residents found!</p></div>
     @endif

@@ -7,6 +7,7 @@ use DB;
 use App\Room;
 use App\Repair;
 use DateTime;
+use Carbon\Carbon;
 
 
 class AppsController extends Controller
@@ -23,6 +24,28 @@ class AppsController extends Controller
     public function propertymgmt(){
         return view('apps.propertymgmt');
     }
+
+    public function moveins(){
+        $rowNo = 1;
+        $residents = DB::table('residents')->where('residentStatus','Moving-in')->orderBy('name', 'asc')->get();
+        
+        return view('apps.moveins')->with('residents', $residents)->with('rowNo', $rowNo);
+    }
+
+    public function moveouts(){
+        $rowNo = 1;
+        $date = Carbon::now();
+        $currentDate = $date->year.'-'.$date->month;
+        
+
+        $residents = DB::table('residents')->where('residentStatus', 'Moving-out')->orderBy('name', 'asc')->get();
+
+        return view('apps.moveouts')->with('residents', $residents)->with('rowNo', $rowNo);
+
+
+    }
+
+
 
     public function financialmgmt(){
         return view('apps.financialmgmt');

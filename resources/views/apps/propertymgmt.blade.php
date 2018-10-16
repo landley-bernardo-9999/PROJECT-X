@@ -40,11 +40,21 @@
                 <a href="/moveouts" class="btn btn-secondary"><i class="fas fa-people-carry fa-4x"></i></a>
                 <p class="card-title">Moveouts</p>
         </div>
+        <div class="col-md-3">
+                <a href="/violations" class="btn btn-secondary"><i class="fas fa-user-times fa-4x"></i></a>
+                <p class="card-title">Violations</p>
+            </div>
 
-            <div class="col-md-3">
-                <a href="/billingandcollection" class="btn btn-secondary"><i class="fas fa-calculator fa-4x"></i></a>
-                <p class="card-title">Billing and Collection</p>
+            
         </div>
+        <br>
+        <div class="row">
+
+                <div class="col-md-3">
+                        <a href="/billingandcollection" class="btn btn-secondary"><i class="fas fa-calculator fa-4x"></i></a>
+                        <p class="card-title">Billing and Collection</p>
+                </div>
+            
         </div>
 
             

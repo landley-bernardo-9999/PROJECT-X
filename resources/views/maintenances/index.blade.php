@@ -30,7 +30,6 @@
                 </tr>  
         @endforeach   
             </table> 
-        {{$maintenances->links()}}
         
     @else
     <div class="alert alert-danger" role="alert"><p>No Maintenance Personnels found!</p></div>

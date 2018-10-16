@@ -20,48 +20,49 @@
     </div>
 </div>
 <br>
-<h1>{{$room->roomNo}}</h1>
+<h3>{{$room->roomNo}}</h3>
     <div class="container">
        <hr>
        <div class="row">
             <div class="col-lg-9">
-                    <table class="table">
+                    <table class="table table-striped">
                         <tr>
                             <th>Under Leasing?</th>
                             <td>{{$room->isUnderLeasing}}</td>
                         </tr>
                         <tr>
-                            <th>Building:</th>
+                            <th>Building</th>
                             <td>{{$room->building}}</td>
                         </tr>
                         <tr>
-                            <th>Status:</th>
+                            <th>Status</th>
                             <td>{{$room->roomStatus}}</td>
                         </tr>
                         <tr>
-                            <th>Rent: </th>
+                            <th>Rent </th>
                             <td>{{$room->rentalFee}}</td>
                         </tr>
                         <tr>
-                            <th>Size:</th>
+                            <th>Size</th>
                             <td>{{$room->size}}</td>
                         </tr>
                         <tr>
-                            <th>Capacity:</th>
+                            <th>Capacity</th>
                             <td>{{$room->capacity}}</td>
                         </tr>
                         <tr>
-                            <th>Updated:</th>
+                            <th>Updated</th>
                             <td>&nbsp{{$room->updated_at}}</td>
                         </tr>  
                     </table>
                     
-                        <h1>Residents</h1>
+                        <h3>Residents</h3>
 
                         <div class="panel panel-default">
                             @if(count($resident) > 0)             
                             <table class="table">
                              <tr>
+                                <th>No</th>
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th>Move-In Date</th>
@@ -70,6 +71,7 @@
                              </tr>
                             @foreach($resident as $resident)
                              <tr>
+                                <td>{{ $residentsRowNo++ }}</td>
                                 <td><a href="/residents/{{$resident->id}}">{{$resident->name}}</a></td>
                                 <td>{{$resident->residentStatus}}</td>
                                 <td>{{$resident->created_at}}</td>
@@ -86,12 +88,14 @@
                    <br>
                    <br>
                     <div>
-                            <h1>Repairs</h1>
+                            <h3>Repairs</h3>
                              <div class="panel panel-default">
                             @if(count($repair) > 0)              
-                            <table class="table">
+                            <table class="table table-striped">
                              <tr>
+                                <th>No</th>
                                 <th>Date Reported</th>
+                                <th>Reported By</th>
                                 <th>Description</th>
                                 <th>Endorse To</th>
                                 <th>Status</th>
@@ -100,7 +104,9 @@
                              </tr>
                              @foreach($repair as $repair)
                              <tr>
+                                <td>{{ $repairsRowNo++ }}</td>
                                 <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
+                                <td>{{$repair->name}}</td>
                                 <td>{{$repair->desc}}</td>
                                 <td>{{$repair->endorsedTo}}</td>
                                 <td>{{$repair->repairStatus}}</td>
@@ -118,11 +124,12 @@
 
                     <br>
                     <div>
-                        <h1>Owner</h1>
+                        <h3>Owners</h3>
                         <div class="panel panel-default">
                                 @if(count($owner) > 0)              
-                                <table class="table">
+                                <table class="table table-striped">
                                  <tr>
+                                    <th>No</th>
                                     <th>Name</th>
                                     <th>Move-In Date</th>
                                     <th>Mobile Number</th>
@@ -130,6 +137,7 @@
                                  </tr>
                                  @foreach($owner as $owner)
                                  <tr>
+                                    <td>{{ $ownersRowNo++ }}</td>
                                     <td><a href="/owners/{{$owner->id}}">{{$owner->name}}</a></td>
                                     <td>{{$owner->created_at}}</td>
                                     <td>{{$owner->mobileNumber}}</td>

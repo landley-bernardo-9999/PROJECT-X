@@ -17,7 +17,7 @@ class MaintenancesController extends Controller
     public function index()
     {
         $rowNum = 1;
-        $maintenances = DB::table('maintenances')->paginate(10);
+        $maintenances = DB::table('maintenances')->get();
         return view('maintenances.index')->with('maintenances', $maintenances)->with('rowNum', $rowNum);
     }
 
@@ -123,7 +123,7 @@ class MaintenancesController extends Controller
             'employmentStatus' => 'required',
             'position' => 'required',
             'schedule' => 'required',
-            'mobileNumber' => 'required',
+            'mobileNumber' => 'nullable',
             'cover_image' => 'image|nullable|max:1999'
         ]);
 

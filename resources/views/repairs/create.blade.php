@@ -17,12 +17,12 @@
         </div> 
         
         <div class="form-group">
-            <label for="">Name of the Resident</label>
+            <label for="">Name of the Resident/Owner</label>
             <select name="name" id="name">
                 <option value="" disabled selected>Please select</option>
-                @foreach($registeredResidents as $registeredResident)
-                <option value="{{$registeredResident->name}}">
-                    {{$registeredResident->name}}
+                @foreach($registeredResidentsAndOwners as $registeredResidentAndOwner)
+                <option value="{{$registeredResidentAndOwner->name}}">
+                    {{$registeredResidentAndOwner->name}}
                 </option>
                 @endforeach
             </select>
@@ -41,10 +41,18 @@
                                     'Masonry' => 'Masonry', 'Painting' => 'Painting', 'Cleaning' => 'Cleaning',
                                     'Security' => 'Security', 'Internet' => 'Internet', 'Request' => 'Request'],null,['placeholder' => 'Please select'])}}
         </div>
+        
+
         <div class="form-group">
-                {{Form::label('Endorsed To')}}
-                &nbsp&nbsp&nbsp
-                {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon', 'Marquez' => 'Marquez','Jeff' => 'Jeff', 'Jeffrey' => 'Jeffrey', 'Oliver' => 'Oliver'],null,['placeholder' => 'Please select'])}}
+            <label for="">Endorsed To</label>
+            <select name="endorsedTo" id="endorsedTo">
+                <option value="" disabled selected>Please select</option>
+                @foreach($registeredPersonnels as $registeredPersonnel)
+                <option value="{{$registeredPersonnel->name}}">
+                    {{$registeredPersonnel->name}}
+                </option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             {{Form::number('cost','',['class'=>'form-control','placeholder'=>'Cost'])}}

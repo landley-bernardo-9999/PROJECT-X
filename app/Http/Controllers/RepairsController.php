@@ -28,7 +28,7 @@ class RepairsController extends Controller
     public function index()
     {
         $rowNum = 1;
-        $repairs = DB::table('repairs')->paginate(10);
+        $repairs = DB::table('repairs')->get();
         $pending = DB::table('repairs')->where('repairStatus', 'pending')->get();
         $ongoing = DB::table('repairs')->where('repairStatus', 'ongoing')->get();
         $closed = DB::table('repairs')->where('repairStatus', 'closed' ) ->get();
@@ -54,10 +54,23 @@ class RepairsController extends Controller
         $registeredResidents = DB::table('residents')
         ->orderBy('name', 'asc')
         ->select('name')
-        ->get(); 
+        ->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+        $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
+        
+        $registeredPersonnels = DB::table('maintenances')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
 
         return view('repairs.create')->with('registeredRooms', $registeredRooms)
-                                     ->with('registeredResidents', $registeredResidents);
+                                     ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners)
+                                     ->with('registeredPersonnels', $registeredPersonnels);
     }
 
     /**

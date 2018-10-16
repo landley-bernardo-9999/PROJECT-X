@@ -20,19 +20,20 @@
     </div>
 </div>
 <br>
-<h1>{{$resident->name}}(Resident)</h1>
+<h3>{{$resident->name}}(Resident)</h3>
+<hr>
     <div class="container">
        <div class="row">
             <div class="col-lg-9">
-                <table class="table">
+                <table class="table table-striped">
                     <tr>
                         <th>Room No</th>
                         <td>{{$resident->roomNo}}</td>
-                    <tr>
+                    </tr>
                     <tr>
                         <th>Status</th>
                         <td>{{$resident->residentStatus}}</td>
-                    <tr>
+                    </tr>
                     <tr>
                         <th>Move-in Date</th>
                         <td>{{$resident->moveInDate}}</td>
@@ -48,16 +49,16 @@
                     <tr>
                         <th>Mobile Number</th>
                         <td>{{$resident->mobileNumber}}</td>
-                    </tr>
-                        
+                    </tr> 
                     </table>
                     <br>
                     <div>
-                        <h1>Concerns</h1>
+                        <h3>Concerns</h3>
                          <div class="panel panel-default">
                         @if(count($repair) > 0)              
-                        <table class="table">
+                        <table class="table table-striped">
                          <tr>
+                            <th>No</th>
                             <th>Date Reported</th>
                             <th>Description</th>
                             <th>Endorse To</th>
@@ -67,6 +68,7 @@
                          </tr>
                          @foreach($repair as $repair)
                          <tr>
+                            <td>{{ $rowNo++ }}</td>
                             <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
                             <td>{{$repair->desc}}</td>
                             <td>{{$repair->endorsedTo}}</td>
@@ -83,36 +85,7 @@
                           <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRepair</a>  
                 </div>
                 <br>
-                <div>
-                        <h1>Violations</h1>
-                         <div class="panel panel-default">
-                        {{-- @if(count($repair) > 0)               --}}
-                        <table class="table">
-                         <tr>
-                            <th>Date Reported</th>
-                            <th>Description</th>
-                            <th>Endorse To</th>
-                            <th>Status</th>
-                            <th>Date Finished</th>
-                            <th>Cost</th>
-                         </tr>
-                         {{-- @foreach($repair as $repair) --}}
-                         <tr>
-                            <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
-                            <td>{{$repair->desc}}</td>
-                            <td>{{$repair->endorsedTo}}</td>
-                            <td>{{$repair->repairStatus}}</td>
-                            <td>{{$repair->dateFinished}}</td>
-                            <td>{{$repair->cost}}</td>
-                         </tr>
-                         {{-- @endforeach --}}
-                        </table>
-                        {{-- @else --}}
-                        <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
-                        {{-- @endif --}}
-                      </div>
-                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspViolation</a>  
-                </div>
+                
 
                 
                        

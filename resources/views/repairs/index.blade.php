@@ -56,7 +56,7 @@
                 </tr>  
         @endforeach   
             </table>
-            {{$repairs->links()}}
+            
     @else
     <div class="alert alert-danger" role="alert"><p>No Repairs found!</p></div>
     @endif

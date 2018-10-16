@@ -33,6 +33,10 @@ Route::get('/reportsandstats', 'AppsController@reportsandstats');
 
 Route::get('/profile', 'HomeController@profile');
 
+Route::get('/moveins', 'AppsController@moveins');
+
+Route::get('/moveouts', 'AppsController@moveouts');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -43,4 +47,5 @@ Route::resources([
     'owners'=> 'OwnersController',
     'repairs'=> 'RepairsController',
     'maintenances' => 'MaintenancesController',
+    'violations' => 'ViolationsController',
 ]);

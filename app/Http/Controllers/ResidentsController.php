@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Resident;
 use App\Room;
 use DB;
+use Carbon\Carbon;
 
 class ResidentsController extends Controller
 {
@@ -28,7 +29,7 @@ class ResidentsController extends Controller
     public function index()
     {
         $rowNum = 1;
-        $residents = DB::table('residents')->paginate(10);
+        $residents = DB::table('residents')->orderBy('name', 'asc')->get();
         $harvard = DB::table('residents')
             ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
             ->select('residents.*')
@@ -49,14 +50,13 @@ class ResidentsController extends Controller
             ->select('residents.*')
             ->where('rooms.building','=','Courtyard')
             ->get();
-
-
+        
         return view('residents.index')->with('residents', $residents)
-                                      ->with('rowNum', $rowNum)
-                                      ->with('harvard', $harvard)
-                                      ->with('princeton', $princeton)
-                                      ->with('wharton', $wharton)
-                                      ->with('courtyard', $courtyard);
+                                       ->with('rowNum', $rowNum)
+                                       ->with('harvard', $harvard)
+                                       ->with('princeton', $princeton)
+                                       ->with('wharton', $wharton)
+                                       ->with('courtyard', $courtyard);
     }
 
     /**
@@ -150,6 +150,7 @@ class ResidentsController extends Controller
      */
     public function show($id)
     {
+        $rowNo = 1;
         $resident = Resident::find($id);
         $repair = DB::table('repairs')
             ->join('residents', 'repairs.name', '=', 'residents.name')
@@ -157,7 +158,10 @@ class ResidentsController extends Controller
             ->where('residents.id','=',$id)
             ->get();
 
-        return view('residents.show')->with('resident',$resident)
+        
+
+        return view('residents.show')->with('rowNo', $rowNo)
+                                     ->with('resident',$resident)
                                      ->with('repair', $repair);
     }
 

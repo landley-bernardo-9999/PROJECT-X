@@ -116,6 +116,9 @@ class RoomsController extends Controller
      */
     public function show($roomNo)
     {
+        $residentsRowNo = 1;
+        $ownersRowNo = 1;
+        $repairsRowNo = 1;
         $room = Room::find($roomNo);
         $resident = Resident::where('roomNo', '=', $roomNo)
                             ->where('residentStatus','=', 'Active')
@@ -123,10 +126,13 @@ class RoomsController extends Controller
         $owner = Owner::where('roomNo', '=', $roomNo)->get();
         $repair = Repair::where('roomNo', '=', $roomNo)->get();
 
-       return view('rooms.show')->with('room', $room)
-                                    ->with('resident', $resident)
-                                    ->with('owner', $owner)
-                                    ->with('repair', $repair);
+       return view('rooms.show')->with('residentsRowNo', $residentsRowNo)
+                                ->with('ownersRowNo', $ownersRowNo)
+                                ->with('repairsRowNo', $repairsRowNo)
+                                ->with('room', $room)
+                                ->with('resident', $resident)
+                                ->with('owner', $owner)
+                                ->with('repair', $repair);
                                    
         
 

@@ -20,19 +20,19 @@
     </div>
 </div>
 <br>
-<h1>{{$owner->name}}(Owner)</h1>
+<h3>{{$owner->name}}(Owner)</h3>
     <div class="container">
        <div class="row">
             <div class="col-lg-9">
-                <table class="table">
+                <table class="table table-striped">
                     <tr>
                         <th>Room No</th>
                         <td>{{$owner->roomNo}}</td>
-                    <tr>
+                    </tr>
                     <tr>
                         <th>BirthDate</th>
                         <td>{{$owner->birthDate}}</td>
-                    <tr>
+                    </tr>
                     <tr>
                         <th>Move-in Date</th>
                         <td>{{$owner->created_at}}</td>
@@ -46,26 +46,38 @@
                       <td>{{$owner->mobileNumber}}</td>
                   </tr>
                     </table>
-                        <h1>Concerns</h1>
-                            <div class="panel panel-default">              
-                        <!-- Table -->
-                            <table class="table">
-                                <tr>
-                                    <th>Date Started</th>
-                                    <th>Description</th>
-                                    <th>Endorsed to</th>
-                                    <th>Cost</th>
-                                    <th>Status</th>
-                                </tr>
-                                <tr>
-                                    <td>January 12, 2018</td>
-                                    <td>Plumbing</td>
-                                    <td>Armando</td>
-                                    <td>8,000</td>
-                                    <td>Pending</td>
-                                </tr>
-                                    </table>
-                            </div>
+                    <div>
+                            <h3>Concerns</h3>
+                             <div class="panel panel-default">
+                            @if(count($repair) > 0)              
+                            <table class="table table-striped">
+                             <tr>
+                                <th>No</th>
+                                <th>Date Reported</th>
+                                <th>Description</th>
+                                <th>Endorse To</th>
+                                <th>Status</th>
+                                <th>Date Finished</th>
+                                <th>Cost</th>
+                             </tr>
+                             @foreach($repair as $repair)
+                             <tr>
+                                <td>{{ $rowNo++ }}</td>
+                                <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
+                                <td>{{$repair->desc}}</td>
+                                <td>{{$repair->endorsedTo}}</td>
+                                <td>{{$repair->repairStatus}}</td>
+                                <td>{{$repair->dateFinished}}</td>
+                                <td>{{$repair->cost}}</td>
+                             </tr>
+                             @endforeach
+                            </table>
+                            @else
+                            <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
+                            @endif
+                          </div>
+                              <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRepair</a>  
+                    </div>
                 </div>             
                 <div class="col-lg-3">
                     <div class="card" style="width: 20rem" >
