@@ -1,41 +1,101 @@
+
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a> 
-<br><br>  
-<h1>Add Room</h1>
-    {!! Form::open(['action'=>'RoomsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        <div class="form-group">
-            {{Form::text('roomNo','',['class'=>'form-control','placeholder'=>'Room No'])}}
-        </div>  
-        <div class="form-group">
-            {{Form::label('Under Leasing?')}}
-            &nbsp&nbsp&nbsp
-            {{Form::select('isUnderLeasing', ['Yes'=>'Yes', 'No' => 'No'],'Harvard',['placeholder' => 'Please select'])}}
-        </div>
-        <div class="form-group">
-            {{Form::label('Building')}}
-            &nbsp&nbsp&nbsp
-            {{Form::select('building', ['Harvard' => 'Harvard', 'Princeton' => 'Princeton', 'Wharton' => 'Wharton', 'Courtyard' => 'Courtyard'],null,['placeholder' => 'Please select'])}}
-        </div>
-        <div class="form-group">
-            {{Form::number('rentalFee','6000',['class'=>'form-control','placeholder'=>'Monthly Rent'],['min'=>'0'])}}
-        </div>
-        <div class="form-group">
-            {{Form::label('Status')}}
-            &nbsp&nbsp&nbsp
-            {{Form::select('roomStatus', ['Occupied' => 'Occupied', 'Vacant' => 'Vacant','Reserved' => 'Reserved', 'NRFO' => 'NRFO'],null,['placeholder' => 'Please select'])}}
-        </div>
-        <div class="form-group">
-            {{Form::number('size',' ',['class'=>'form-control','placeholder'=>'Size'])}}
-        </div>
-        <div class="form-group">
-            {{Form::number('capacity',' ',['class'=>'form-control','placeholder'=>'Capacity'])}}
-        </div>    
-        <div class="form-group">
-            {{Form::file('cover_image')}}
-        </div>
-        {{Form::submit('Submit',['class'=>'btn btn-secondary'])}}    
+<a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>   
+{!! Form::open(['action'=>'RoomsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card"style="padding:6%">
+                    <div class="card-header">
+                        <h3>Add Room</h3>
+                    </div>
+                <br>
+                <div class="form-group row">
+                    <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No</label>
+                    <div class="col-md-6">
+                        {{Form::text('roomNo','',['class'=>'form-control'])}}
+                    </div>
+                </div>
 
-     {!! Form::close() !!}    
+
+                <div class="form-group row">
+                    <label for="isUnderLeasing" class="col-md-4 col-form-label text-md-right">Enrolled</label>
+                    <div class="col-md-6">
+                    <select class="form-control" name="isUnderLeasing" id="isUnderLeasing">
+                        <option value="" disabled selected>Please select</option>    
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    </div>   
+                </div>
+        
+
+                <div class="form-group row">
+                        <label for="building" class="col-md-4 col-form-label text-md-right">Building</label>
+                        <div class="col-md-6">
+                        <select class="form-control" name="building" id="building">
+                            <option value="" disabled selected>Please select</option>    
+                            <option value="Harvard">Harvard</option>
+                            <option value="Princeton">Princeton</option>
+                            <option value="Wharton">Wharton</option>
+                            <option value="Courtyard">Courtyard</option>
+                        </select>
+                        </div>   
+                </div>
+
+                <div class="form-group row">
+                        <label for="" class="col-md-4 col-form-label text-md-right">Monthly Rent</label>
+                        <div class="col-md-6">
+                            {{Form::number('rentalFee','6000',['class'=>'form-control'],['min'>'0'])}}
+                       </div>     
+                </div>
+
+                <div class="form-group row">
+                        <label for="roomStatus" class="col-md-4 col-form-label text-md-right">Status</label>
+                        <div class="col-md-6">
+                        <select class="form-control" name="roomStatus" id="roomStatus">
+                            <option value="" disabled selected>Please select</option>    
+                            <option value="Occupied">Occupied</option>
+                            <option value="Vacant">Vacant</option>
+                            <option value="Reserved">Reserved</option>
+                            <option value="NRFO">NRFO</option>
+                        </select>
+                        </div>   
+                </div>
+
+                <div class="form-group row">
+                        <label for="" class="col-md-4 col-form-label text-md-right">Size(sqm)</label>
+                        <div class="col-md-6">
+                            {{Form::number('size','15',['class'=>'form-control'])}}
+                       </div>     
+                </div>
+
+                <div class="form-group row">
+                        <label for="" class="col-md-4 col-form-label text-md-right">Capacity</label>
+                        <div class="col-md-6">
+                            {{Form::number('capacity','2',['class'=>'form-control'])}}
+                       </div>     
+                </div>
+
+            <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        {{Form::file('cover_image', ['class' => 'form-control'])}}
+                    </div>
+            </div>
+            <br>
+            <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        {{Form::submit('Submit',['class'=>'btn btn-secondary'])}}
+                        {!! Form::close() !!}  
+                    </div>
+                </div>
+        </div>   
+                </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    </div>
+    <br>
 @endsection
-

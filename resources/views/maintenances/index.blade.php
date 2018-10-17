@@ -2,8 +2,8 @@
 @section('content')
 <br>
     <div class="container" >
-            <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
-            <a class="btn btn-secondary btn-md" role="button" href="/maintenances/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspPersonnel</a>
+            <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
+            <a class="btn btn-secondary btn-md" role="button" href="/maintenances/create"><i class="fas fa-user-plus"></i></a>
     </div>
    <br>
     @if(count($maintenances) > 0)
@@ -16,7 +16,8 @@
                     <th>Employment Status</th>
                     <th>Mobile Number</th>
                     <th>Position</th>
-                    
+                    <th></th>
+                    <th></th>                    
                 </tr>
                  @foreach($maintenances as $maintenance)
                 <tr>
@@ -26,6 +27,15 @@
                     <td>{{$maintenance->employmentStatus}}</td>
                     <td>{{$maintenance->mobileNumber}}</td>
                     <td>{{$maintenance->position}}</td>
+                    <td>
+                        <a href="/maintenances/{{$maintenance->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                    </td>
+                    <td>
+                        {!!Form::open(['action' => ['MaintenancesController@destroy', $maintenance->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                            {{Form::hidden('_method', 'DELETE')}}  
+                            {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
+                        {!!Form::close()!!}
+                    </td>
                    
                 </tr>  
         @endforeach   

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Resident;
 use App\Room;
+use App\Violation;  
 use DB;
 use Carbon\Carbon;
 
@@ -150,7 +151,8 @@ class ResidentsController extends Controller
      */
     public function show($id)
     {
-        $rowNo = 1;
+        $rowNoForConcerns = 1;
+        $rowNoForViolations = 1;
         $resident = Resident::find($id);
         $repair = DB::table('repairs')
             ->join('residents', 'repairs.name', '=', 'residents.name')
@@ -158,11 +160,19 @@ class ResidentsController extends Controller
             ->where('residents.id','=',$id)
             ->get();
 
+        $violation = DB::table('violations')
+            ->join('residents', 'violations.name', '=', 'residents.name')
+            ->select('violations.*')
+            ->where('residents.id','=',$id)
+            ->get();
+
         
 
-        return view('residents.show')->with('rowNo', $rowNo)
+        return view('residents.show')->with('rowNoForConcerns', $rowNoForConcerns)
+                                     ->with('rowNoForViolations', $rowNoForViolations)
                                      ->with('resident',$resident)
-                                     ->with('repair', $repair);
+                                     ->with('repair', $repair)
+                                     ->with('violation', $violation);
     }
 
     /**

@@ -1,68 +1,139 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/repairs/".{{$repair->id}}><i class="fas fa-arrow-circle-left"></i>&nbspBack</a> 
-    <h1>Edit Resident</h1>
-    {!! Form::open(['action'=>['RepairsController@update', $repair->id],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        <div class="form-group">
-            {{Form::label('Date Reported')}}
-            &nbsp&nbsp&nbsp
-            {{ Form::date('dateReported',$repair->dateReported, ['class' => 'form-control']) }}
-        </div>
-        <div class="form-group">
-                <label for="">Room No</label>
-                <select name="roomNo" id="roomNo">
-                    <option value="{{$repair->roomNo}}"selected>{{$repair->roomNo}}</option>
-                @foreach($registeredRooms as $registeredRoom)
-                    <option value="{{$registeredRoom->roomNo}}">
-                        {{$registeredRoom->roomNo}}
-                    </option>
-                @endforeach
-            </select>
-        </div>
+<a class="btn btn-secondary btn-md" role="button" href="/repairs"><i class="fas fa-arrow-circle-left"></i></a>   
+{!! Form::open(['action'=>['RepairsController@update', $repair->id],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
-        <div class="form-group">
-            <label for="">Name of the Resident</label>
-            <select name="name" id="name">
-                <option value="{{$repair->name}}"selected>{{$repair->name}}</option>
-                @foreach($registeredResidents as $registeredResident)
-                <option value="{{$registeredResident->name}}">
-                    {{$registeredResident->name}}
-                </option>
-                @endforeach
-            </select>
-        </div>
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card"  style="padding:6%">
+                    <div class="card-header">
+                        <h3>Add Repair</h3>
+                    </div>
+                <br>
+                <!--Select Room No of the resident or owner-->
+                <div class="form-group row">
+                    <label for="" class="col-md-4 col-form-label text-md-right">Room No</label>
+                
+                <div class="col-md-6">
+                    <select name="roomNo" id="roomNo" class="form-control">
+                        <option value="{{$repair->roomNo}}" selected>{{$repair->roomNo}}</option>
+                            @foreach($registeredRooms as $registeredRoom)
+                        <option value="{{$registeredRoom->roomNo}}">
+                            {{$registeredRoom->roomNo}}
+                        </option>
+                            @endforeach
+                    </select>
+                </div>
+                </div>
 
-        <div class="form-group">
-            {{Form::label('Description')}}
-            &nbsp&nbsp&nbsp
-            {{Form::select('desc', ['Carpentry'=>'Carpentry', 'Electrical' => 'Electrical', 'Plumbing'=>'Plumbing', 
-            'General' => 'General', 'Installations' => 'Installations',
-            'Masonry' => 'Masonry', 'Painting' => 'Painting', 'Cleaning' => 'Cleaning',
-            'Security' => 'Security', 'Internet' => 'Internet', 'Request' => 'Request'],$repair->desc)}}
+                <!--Select Name of the resident or owner-->
+                <div class="form-group row">
+                    <label for="" class="col-md-4 col-form-label text-md-right">Name of the Resident/Owner</label>
+                
+                <div class="col-md-6">
+                    <select name="name" id="name" class="form-control">
+                        <option value="{{$repair->name}}" selected>{{$repair->name}}</option>
+                            @foreach($registeredResidentsAndOwners as $registeredResidentAndOwner)
+                        <option value="{{$registeredResidentAndOwner->name}}">
+                            {{$registeredResidentAndOwner->name}}
+                        </option>
+                            @endforeach
+                    </select>
+                </div>
+                </div>
+
+                <!--Date when the repair reported-->
+                <div class="form-group row">
+                    <label for="" class="col-md-4 col-form-label text-md-right">Date Reported</label>
+                    <div class="col-md-6">
+                        {{ Form::date('dateReported',$repair->dateReported, ['class' => 'form-control']) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                        <label for="desc" class="col-md-4 col-form-label text-md-right" >Description</label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="desc" id="desc">
+                            <option value="{{$repair->desc}}" selected>{{$repair->desc}}</option>    
+                            <option value="Carpentry">Carpentry</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Installations">Installations</option>
+                            <option value="Masonry">Masonry</option>
+                            <option value="Painting">Painting</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Security">Security</option>
+                            <option value="Internet">Internet</option>
+                            <option value="Request">Request</option>
+                            <option value="General">General</option>
+                        </select>
+                    </div>
+                </div>
+
+              <div class="form-group row">
+                    <label for="" class="col-md-4 col-form-label text-md-right">Endorsed To</label>
+                <div class="col-md-6">
+                    <select class="form-control" name="endorsedTo" id="endorsedTo">
+                        <option value="{{$repair->endorsedTo}}" selected>{{$repair->endorsedTo}}</option>
+                            @foreach($registeredPersonnels as $registeredPersonnel)
+                        <option value="{{$registeredPersonnel->name}}">
+                            {{$registeredPersonnel->name}}
+                        </option>
+                            @endforeach
+                    </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                 <label for="cost" class="col-md-4 col-form-label text-md-right">Cost</label>
+                 <div class="col-md-6">
+                    {{Form::number('cost',$repair->cost,['class'=>'form-control'])}}
+                </div>     
+              </div>
+
+            <div class="form-group row">
+                <label for="repairStatus" class="col-md-4 col-form-label text-md-right">Status</label>
+             <div class="col-md-6">
+                <select class="form-control" name="repairStatus" id="repairStatus">
+                    <option value="{{$repair->repairStatus}}" selected>{{$repair->repairStatus}}</option>    
+                    <option value="Pending">Pending</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Closed">Closed</option>
+                </select>
+            </div>   
+            </div>
+
+            <div class="form-group row">
+                <label for="dateFinished" class="col-md-4 col-form-label text-md-right">Date Finished</label>
+                    <div class="col-md-6">
+                        {{ Form::date('dateFinished',$repair->dateFinished, ['class' => 'form-control']) }}
+                    </div>
+            </div>
+
+            <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        {{Form::file('cover_image', ['class' => 'form-control'])}}
+                    </div>
+            </div>
+            <br>
+            
+            <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                {{Form::hidden('_method','PUT')}}
+                {{Form::submit('Submit',['class'=>'btn btn-secondary'])}}    
+                {!! Form::close() !!} 
+                    </div>
+                </div>
+        </div>   
+                </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            {{Form::label('Endorsed To')}}
-            &nbsp&nbsp&nbsp
-            {{Form::select('endorsedTo', ['Armando' => 'Armando', 'Chris' => 'Chris','Marlon' => 'Marlon', 'Marquez' => 'Marquez','Jeff' => 'Jeff', 'Jeffrey' => 'Jeffrey', 'Oliver' => 'Oliver'],$repair->endorsedTo)}}
-        </div>
-        <div class="form-group">
-            {{Form::number('cost',$repair->cost,['class'=>'form-control'])}}
-        </div>
-        <div class="form-group">
-            {{Form::label('Status')}}
-            &nbsp&nbsp&nbsp
-        {{Form::select('repairStatus', ['Pending' => 'Pending', 'Ongoing' => 'Ongoing','Closed' => 'Closed'],$repair->repairStatus)}}
-        </div>
-        <div class="form-group">
-            {{Form::label('Date Finished')}}
-            &nbsp&nbsp&nbsp
-            {{Form::date('dateFinished',$repair->dateFinished, ['class' => 'form-control']) }}
-        </div>
-        <div class="form-group">
-            {{Form::file('cover_image')}}
-        </div>
-            {{Form::hidden('_method','PUT')}}
-            {{Form::submit('Submit',['class'=>'btn btn-secondary'])}}    
-            {!! Form::close() !!}    
+    </div> 
+    </div>
+    <br>
 @endsection
+
+
 

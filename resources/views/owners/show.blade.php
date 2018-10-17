@@ -1,24 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-1">
-            <a class="btn btn-secondary btn-md" role="button" href="/owners"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
-        </div>
-
-        <div class="col-lg-1">
-            <a href="{{$owner->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i>&nbspEdit</a>
-        </div>
-
-        <div class="col-lg-1">
-            {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+<br>
+            <a class="btn btn-secondary btn-md" role="button" href="/owners"><i class="fas fa-arrow-circle-left"></i></a>
+            <a href="{{$owner->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+            {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
-        </div>
-
-    </div>
-</div>
+<br>
 <br>
 <h3>{{$owner->name}}(Owner)</h3>
     <div class="container">
@@ -47,37 +36,41 @@
                   </tr>
                     </table>
                     <div>
-                            <h3>Concerns</h3>
-                             <div class="panel panel-default">
-                            @if(count($repair) > 0)              
-                            <table class="table table-striped">
-                             <tr>
-                                <th>No</th>
-                                <th>Date Reported</th>
-                                <th>Description</th>
-                                <th>Endorse To</th>
-                                <th>Status</th>
-                                <th>Date Finished</th>
-                                <th>Cost</th>
-                             </tr>
-                             @foreach($repair as $repair)
-                             <tr>
-                                <td>{{ $rowNo++ }}</td>
-                                <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
-                                <td>{{$repair->desc}}</td>
-                                <td>{{$repair->endorsedTo}}</td>
-                                <td>{{$repair->repairStatus}}</td>
-                                <td>{{$repair->dateFinished}}</td>
-                                <td>{{$repair->cost}}</td>
-                             </tr>
-                             @endforeach
-                            </table>
-                            @else
-                            <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
-                            @endif
-                          </div>
-                              <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRepair</a>  
-                    </div>
+                        <h3>Repairs</h3>
+                         <div class="panel panel-default">
+                        @if(count($repair) > 0)              
+                        <table class="table table-striped">
+                         <tr>
+                            <th>No</th>
+                            <th>Date Reported</th>
+                            <th>Reported By</th>
+                            <th>Description</th>
+                            <th>Endorse To</th>
+                            <th>Status</th>
+                            
+                            <th>Cost</th>
+                            <th></th>
+                         </tr>
+                         @foreach($repair as $repair)
+                         <tr>
+                            <td>{{ $rowNo++ }}</td>
+                            <td>{{ $repair->dateReported}}</td>
+                            <td>{{$repair->name}}</td>
+                            <td>{{$repair->desc}}</td>
+                            <td>{{$repair->endorsedTo}}</td>
+                            <td>{{$repair->repairStatus}}</td>
+                            
+                            <td>{{$repair->cost}}</td>
+                            <td><a href="/repairs/{{$repair->id}}">MORE INFO</a></td>
+                         </tr>
+                         @endforeach
+                        </table>
+                        @else
+                        <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
+                        @endif
+                      </div>
+                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+                </div>
                 </div>             
                 <div class="col-lg-3">
                     <div class="card" style="width: 20rem" >

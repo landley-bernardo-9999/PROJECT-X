@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
+<a class="btn btn-secondary btn-md" role="button" href="/rooms/create"><i class="fas fa-plus-circle fa-1x"></i></a> 
+<br>
 <br>
     <div class="container-fluid">
         <div class="row text-center">
@@ -38,12 +41,7 @@
                 </div>
             </div>
           </div>
-    </div>
-    <br>
-    <div class="container" >
-        <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
-        <a class="btn btn-secondary btn-md" role="button" href="/rooms/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRoom</a> 
-    </div>
+    </div>    
    <br>
     @if(count($rooms) > 0)
     <div class="container text-center">

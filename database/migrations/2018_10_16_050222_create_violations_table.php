@@ -15,12 +15,12 @@ class CreateViolationsTable extends Migration
     {
         Schema::create('violations', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('dateReported');
+            $table->date('dateReported')->nullable();
             $table->string('name');
             $table->string('roomNo');
             $table->string('description');
             $table->longText('details');
-            $table->date('dateCommitted');
+            $table->date('dateCommitted')->nullable();
             $table->string('reportedBy');
             $table->integer('fine');
             $table->longText('actionTaken');

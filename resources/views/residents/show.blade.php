@@ -1,24 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-1">
-            <a class="btn btn-secondary btn-md" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
-        </div>
-
-        <div class="col-lg-1">
-            <a href="{{$resident->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i>&nbspEdit</a>
-        </div>
-
-        <div class="col-lg-1">
-            {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
-                {{Form::hidden('_method', 'DELETE')}}  
-                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-            {!!Form::close()!!}
-        </div>
-
-    </div>
-</div>
+<br>
+    <a class="btn btn-secondary btn-md" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i></a>
+    <a href="{{$resident->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+    {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'float-right'])!!}
+        {{Form::hidden('_method', 'DELETE')}}  
+        {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
+    {!!Form::close()!!}
+<br> 
 <br>
 <h3>{{$resident->name}}(Resident)</h3>
 <hr>
@@ -26,6 +15,10 @@
        <div class="row">
             <div class="col-lg-9">
                 <table class="table table-striped">
+                    <tr>
+                        <th>Birthdate</th>
+                        <td>{{$resident->birthDate}}</td>
+                    </tr>
                     <tr>
                         <th>Room No</th>
                         <td>{{$resident->roomNo}}</td>
@@ -63,18 +56,19 @@
                             <th>Description</th>
                             <th>Endorse To</th>
                             <th>Status</th>
-                            <th>Date Finished</th>
                             <th>Cost</th>
+                            <th></th>
                          </tr>
                          @foreach($repair as $repair)
                          <tr>
-                            <td>{{ $rowNo++ }}</td>
-                            <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
+                            <td>{{ $rowNoForConcerns++ }}</td>
+                            <td>{{$repair->dateReported}}</td>
                             <td>{{$repair->desc}}</td>
                             <td>{{$repair->endorsedTo}}</td>
                             <td>{{$repair->repairStatus}}</td>
-                            <td>{{$repair->dateFinished}}</td>
                             <td>{{$repair->cost}}</td>
+                            <td><a href="/repairs/{{$repair->id}}">MORE INFO</a></td>
+                            
                          </tr>
                          @endforeach
                         </table>
@@ -82,13 +76,42 @@
                         <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
                         @endif
                       </div>
-                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRepair</a>  
+                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
                 </div>
                 <br>
-                
-
-                
-                       
+                <div>
+                    <h3>Violations</h3>
+                     <div class="panel panel-default">
+                    @if(count($violation) > 0)              
+                    <table class="table table-striped">
+                     <tr>
+                        <th>No</th>
+                        <th>Date Reported</th>
+                        <th>Description</th>
+                        <th>Date Committed</th>
+                        <th>Reported By</th>
+                        <th>Fine</th>
+                        <th></th>
+                     </tr>
+                     @foreach($violation as $violation)
+                     <tr>
+                        <td>{{ $rowNoForViolations++ }}</td>
+                        <td>{{ $violation->dateReported }}</td>
+                        <td>{{ $violation->description }}</td>
+                        <td>{{ $violation->dateCommitted }}</td>
+                        <td>{{ $violation->reportedBy }}</td>
+                        <td>{{ $violation->fine }}</td>
+                        <td><a href="/violations/{{$violation->id}}">MORE INFO</a></td>
+                     </tr>
+                     @endforeach
+                    </table>
+                    @else
+                    <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
+                    @endif
+                  </div>
+                      <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+            </div>
+                <br>      
                 </div>             
                 <div class="col-lg-3">
                     <div class="card" style="width: 20rem" >

@@ -150,6 +150,7 @@ class RepairsController extends Controller
     public function edit($id)
     {
         $repairs = Repair::find ($id);
+        
         $registeredRooms = DB::table('rooms')
         ->orderBy('roomNo', 'asc')
         ->select('roomNo')
@@ -158,11 +159,26 @@ class RepairsController extends Controller
         $registeredResidents = DB::table('residents')
         ->orderBy('name', 'asc')
         ->select('name')
-        ->get(); 
+        ->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+        $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
+        
+        $registeredPersonnels = DB::table('maintenances')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+
 
         return view('repairs.edit')->with('repair',$repairs)
                                    ->with('registeredRooms', $registeredRooms)
-                                   ->with('registeredResidents', $registeredResidents);
+                                   ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners)
+                                     ->with('registeredPersonnels', $registeredPersonnels);
     }
 
     /**

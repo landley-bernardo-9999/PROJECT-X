@@ -1,24 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-1">
-            <a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
-        </div>
-
-        <div class="col-lg-1">
-            <a href="{{$room->roomNo}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i>&nbspEdit</a>
-        </div>
-
-        <div class="col-lg-1">
-            {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo], 'method' => 'POST', 'class' =>'pull-right'])!!}
+<br>
+    <a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>
+    <a href="{{$room->roomNo}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+    {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo], 'method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
-        </div>
-
-    </div>
-</div>
+<br>
 <br>
 <h3>{{$room->roomNo}}</h3>
     <div class="container">
@@ -50,10 +39,6 @@
                             <th>Capacity</th>
                             <td>{{$room->capacity}}</td>
                         </tr>
-                        <tr>
-                            <th>Updated</th>
-                            <td>&nbsp{{$room->updated_at}}</td>
-                        </tr>  
                     </table>
                     
                         <h3>Residents</h3>
@@ -68,6 +53,7 @@
                                 <th>Move-In Date</th>
                                 <th>Mobile Number</th>
                                 <th>Email Address</th>
+                               
                              </tr>
                             @foreach($resident as $resident)
                              <tr>
@@ -84,7 +70,7 @@
                             <div class="alert alert-success" role="alert"><p>No records of residents!</p></div>
                             @endif
                           </div>
-                          <a class="btn btn-secondary btn-md" role="button" href="/residents/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspResident</a>  
+                          <a class="btn btn-secondary btn-md" role="button" href="/residents/create"><i class="fas fa-user-plus"></i></a>  
                    <br>
                    <br>
                     <div>
@@ -99,19 +85,21 @@
                                 <th>Description</th>
                                 <th>Endorse To</th>
                                 <th>Status</th>
-                                <th>Date Finished</th>
+                                
                                 <th>Cost</th>
+                                <th></th>
                              </tr>
                              @foreach($repair as $repair)
                              <tr>
                                 <td>{{ $repairsRowNo++ }}</td>
-                                <td><a href="/repairs/{{$repair->id}}">{{$repair->dateReported}}</a></td>
+                                <td>{{ $repair->dateReported}}</td>
                                 <td>{{$repair->name}}</td>
                                 <td>{{$repair->desc}}</td>
                                 <td>{{$repair->endorsedTo}}</td>
                                 <td>{{$repair->repairStatus}}</td>
-                                <td>{{$repair->dateFinished}}</td>
+                                
                                 <td>{{$repair->cost}}</td>
+                                <td><a href="/repairs/{{$repair->id}}" class="btn btn-secondary"><i class="far fa-eye"></i></a></td>
                              </tr>
                              @endforeach
                             </table>
@@ -119,7 +107,7 @@
                             <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
                             @endif
                           </div>
-                              <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRepair</a>  
+                              <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
                     </div>
 
                     <br>
@@ -150,7 +138,7 @@
                                 @endif
                               </div>
                     </div>
-                    <a class="btn btn-secondary btn-md" role="button" href="/owners/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspOwner</a>
+                    <a class="btn btn-secondary btn-md" role="button" href="/owners/create"><i class="fas fa-user-plus"></i></a>
                     <div>
                         <br>
                     </div> 

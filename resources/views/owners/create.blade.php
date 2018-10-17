@@ -1,40 +1,80 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/owners"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a> 
-<br><br>    
-<h1>Add Owner</h1>
-    {!! Form::open(['action'=>'OwnersController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        <div class="form-group">
-            {{Form::text('name','',['class'=>'form-control','placeholder'=>'Name'])}}
-        </div>
-        <div class="form-group">
-            <label for="">Room No</label>
-            <select name="roomNo" id="roomNo">
-                    <option value="" disabled selected>Please select</option>
-                @foreach($registeredRooms as $registeredRoom)
-                    <option value="{{$registeredRoom->roomNo}}">
-                        {{$registeredRoom->roomNo}}
-                    </option>
-                @endforeach
-            </select>
-        </div> 
-        
-        <div class="form-group">
-            {{Form::label('Birthdate')}}
-            &nbsp&nbsp&nbsp
-            {{ Form::date('birthDate',' ', ['class' => 'form-control']) }}
-        </div>
-        <div class="form-group">
-                {{Form::text('mobileNumber','',['class'=>'form-control','placeholder'=>'Mobile Number'])}}
-        </div>
-        <div class="form-group">
-                {{Form::email('emailAddress','',['class'=>'form-control','placeholder'=>'Email Address'])}}
-        </div>
-        <div class="form-group">
-            {{Form::file('cover_image')}}
-        </div>
-        {{Form::submit('Submit',['class'=>'btn btn-secondary'])}}    
+<a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>   
+{!! Form::open(['action'=>'OwnersController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card"style="padding:6%">
+                    <div class="card-header">
+                        <h3>Add Owner</h3>
+                    </div>
+                <br>
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                    <div class="col-md-6">
+                        {{Form::text('name','',['class'=>'form-control'])}}
+                    </div>
+                </div>
 
-     {!! Form::close() !!}    
+                <div class="form-group row">
+                        <label for="" class="col-md-4 col-form-label text-md-right">Room No</label>
+                    
+                    <div class="col-md-6">
+                        <select name="roomNo" id="roomNo" class="form-control">
+                            <option value="" disabled selected>Please select</option>
+                                @foreach($registeredRooms as $registeredRoom)
+                            <option value="{{$registeredRoom->roomNo}}">
+                                {{$registeredRoom->roomNo}}
+                            </option>
+                                @endforeach
+                        </select>
+                    </div>
+                    </div>
+                    
+                    
+                    <div class="form-group row">
+                            <label for="birthDate" class="col-md-4 col-form-label text-md-right">Birthdate</label>
+                            <div class="col-md-6">
+                                {{ Form::date('birthDate',' ', ['class' => 'form-control']) }}
+                            </div>
+                    </div>
+
+                
+                                <div class="form-group row">
+                                        <label for="mobileNumber" class="col-md-4 col-form-label text-md-right">Mobile Number</label>
+                                        <div class="col-md-6">
+                                            {{Form::text('mobileNumber','',['class'=>'form-control'])}}
+                                        </div>
+                                    </div> 
+                                    <div class="form-group row">
+                                            <label for="emailAddress" class="col-md-4 col-form-label text-md-right">Email Address</label>
+                                            <div class="col-md-6">
+                                                    {{Form::email('emailAddress','',['class'=>'form-control','placeholder'=>'Email Address'])}}
+                                            </div>
+                                        </div>                            
+                                    
+
+            <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        {{Form::file('cover_image', ['class' => 'form-control'])}}
+                    </div>
+            </div>
+            <br>
+            <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        {{Form::submit('Submit',['class'=>'btn btn-secondary'])}}
+                        {!! Form::close() !!}  
+                    </div>
+                </div>
+        </div>   
+                </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    </div>
+</div>
+
+    <br>
 @endsection
-

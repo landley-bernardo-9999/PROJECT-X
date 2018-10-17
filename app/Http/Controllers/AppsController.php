@@ -28,8 +28,10 @@ class AppsController extends Controller
     public function moveins(){
         $rowNo = 1;
         $residents = DB::table('residents')->where('residentStatus','Moving-in')->orderBy('name', 'asc')->get();
-        
-        return view('apps.moveins')->with('residents', $residents)->with('rowNo', $rowNo);
+                                         
+        return view('apps.moveins')->with('residents', $residents)
+                                     ->with('rowNo', $rowNo);
+                                     
     }
 
     public function moveouts(){

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('content')
+
+<a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
+<a class="btn btn-secondary btn-md" role="button" href="/residents/create"><i class="fas fa-user-plus"></i></a>
+<br>
 <br>
 <div class="container-fluid">
         <div class="row text-center">
@@ -24,23 +28,6 @@
                 <h1>{{count($courtyard)}}</h1>
             </div>
         </div>
-        <div class="row">
-                <div class="col-12" style="padding: 2% 2%" >
-                  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                        <h3 style="color:black">Retention Rate</h3>
-                    </a>
-                        <div class="progress"  style="margin-left: 5%; border:style black;">
-                            <div class="progress-bar" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">10%</div>
-                        </div>    
-                    </div>
-                </div>
-              </div>
-    </div>
-    <br>
-    <div class="container" >
-            <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
-            <a class="btn btn-secondary btn-md" role="button" href="/residents/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspResident</a>
     </div>
     <br>
     @if(count($residents) > 0)
@@ -53,8 +40,10 @@
                     <th>Status</th>
                     <th>Mobile Number</th>
                     <th>Email Address</th>
-                    <th>Move-in Date</th>
-                    <th>Move-out Date</th>
+                    <th>Move-In</th>
+                    <th>Move-Out</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                  @foreach($residents as $resident)
                     <tr>
@@ -66,6 +55,15 @@
                         <td>{{$resident->emailAddress}}</td>
                         <td>{{$resident->moveInDate}}</td>
                         <td>{{$resident->moveOutDate}}</td>
+                        <td>
+                            <a href="/residents/{{$resident->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+                        </td>
+                        <td>
+                            {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                                {{Form::hidden('_method', 'DELETE')}}  
+                                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
+                            {!!Form::close()!!}
+                        </td>
                     </tr>  
                 @endforeach   
             </table> 

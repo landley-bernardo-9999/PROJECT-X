@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <br>
+<a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
+<a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>   
+<br>
+<br>
 <div class="container-fluid">
         <div class="row text-center">
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:14%">
@@ -21,13 +25,7 @@
             </div>
         </div>
     </div>
-    <br>
-
-    <div class="container" >
-            <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
-            <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspRepair</a>
-    </div>
-   <br>
+ <br>
     @if(count($repairs) > 0)
     <div class="container"  >
             <table class="table table-striped">
@@ -36,11 +34,13 @@
                     <th>Room No</th>
                     <th>Reported By</th>
                     <th>Date Reported</th>
-                    <th>Details</th>
                     <th>Description</th>
                     <th>Endorse To</th>
-                    <th>Cost</th>
+                    
                     <th>Status</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
                  @foreach($repairs as $repair)
                 <tr>
@@ -48,11 +48,20 @@
                     <td><a href="/rooms/{{$repair->roomNo}}">{{$repair->roomNo}}</a></td>
                     <td>{{$repair->name}}</td>
                     <td>{{$repair->dateReported}}</td>
-                    <td><a href="/repairs/{{$repair->id}}">MORE INFO</a></td>
                     <td>{{$repair->desc}}</td>
                     <td>{{$repair->endorsedTo}}</td>
-                    <td>{{$repair->cost}}</td>
+                    
                     <td>{{$repair->repairStatus}}</td>
+                    <td><a href="/repairs/{{$repair->id}}" class="btn btn-secondary"><i class="far fa-eye"></i></a></td>
+                    <td>
+                        <a href="/repairs/{{$repair->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                    </td>
+                    <td>
+                        {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                            {{Form::hidden('_method', 'DELETE')}}  
+                            {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
+                        {!!Form::close()!!}
+                    </td>
                 </tr>  
         @endforeach   
             </table>

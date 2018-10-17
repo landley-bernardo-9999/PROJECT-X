@@ -2,7 +2,7 @@
 @section('content')
 <br>
 <div class="container" >
-        <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
+        <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
 </div>
 <br>
     @if(count($residents) > 0)
@@ -15,8 +15,8 @@
                     <th>Status</th>
                     <th>Mobile Number</th>
                     <th>Email Address</th>
-                    <th>Move-in Date</th>
-                    <th>Move-out Date</th>
+                    <th>Move-In</th>
+                    <th>Move-Out</th>
                 </tr>
                  @foreach($residents as $resident)
                     <tr>
@@ -28,6 +28,7 @@
                         <td>{{$resident->emailAddress}}</td>
                         <td>{{$resident->moveInDate}}</td>
                         <td>{{$resident->moveOutDate}}</td>
+                        
                     </tr>  
                 @endforeach   
             </table> 
