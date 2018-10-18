@@ -4,6 +4,7 @@
 
 <div class="container" >
         <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
+        <a href="/moveins" class="btn btn-secondary"><i class="fas fa-hands-helping">&nbspMoveins</i></a>
 </div>
 
 <br>
@@ -12,24 +13,27 @@
             <table class="table table-striped">
                 <tr>
                     <th>No</th>
+                    <th>Profile</th>
                     <th>Name</th>
-                    <th>Room No</th>
-                    <th>Status</th>
-                    <th>Mobile Number</th>
-                    <th>Email Address</th>
-                    <th>Move-in Date</th>
-                    <th>Move-out Date</th>
+                    <th>Room</th>
+                    
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Move-In</th>
+                    
+                    
                 </tr>
                  @foreach($residents as $resident)
                     <tr>
                         <td>{{$rowNo++}}</td>
+                        <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap"></td>
                         <td><a href="/residents/{{$resident->id}}">{{$resident->name}}</a></td>
                         <td><a href="/rooms/{{$resident->roomNo}}">{{$resident->roomNo}}</a></td>
-                        <td>{{$resident->residentStatus}}</td>
+                        
                         <td>{{$resident->mobileNumber}}</td>
                         <td>{{$resident->emailAddress}}</td>
                         <td>{{$resident->moveInDate}}</td>
-                        <td>{{$resident->moveOutDate}}</td>
+                        
                     </tr>  
                 @endforeach   
             </table> 

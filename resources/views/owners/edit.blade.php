@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>   
+<a class="btn btn-secondary btn-md" role="button" href="/owners"><i class="fas fa-arrow-circle-left"></i></a>   
 {!! Form::open(['action'=>['OwnersController@update', $owner->id],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card"style="padding:6%">
                     <div class="card-header">
-                        <h3>Add Owner</h3>
+                        <h3>Edit Owner</h3>
                     </div>
                 <br>
                 <div class="form-group row">

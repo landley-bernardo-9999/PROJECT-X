@@ -3,6 +3,7 @@
 <br>
 <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
 <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>   
+<a href="/repairs" class="btn btn-secondary"><i class="fas fa-toolbox"></i>&nbspRepairs</a>
 <br>
 <br>
 <div class="container-fluid">

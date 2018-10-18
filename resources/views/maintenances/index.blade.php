@@ -4,6 +4,7 @@
     <div class="container" >
             <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
             <a class="btn btn-secondary btn-md" role="button" href="/maintenances/create"><i class="fas fa-user-plus"></i></a>
+            <a href="/maintenances" class="btn btn-secondary"><i class="fas fa-wrench"></i>&nbspPersonnels</a>
     </div>
    <br>
     @if(count($maintenances) > 0)
@@ -11,10 +12,11 @@
             <table class="table table-striped">
                 <tr>
                     <th>No</th>
+                    <th>Profile</th>
                     <th>Name</th>
                     <th>Schedule</th>
-                    <th>Employment Status</th>
-                    <th>Mobile Number</th>
+                    <th>Status</th>
+                    <th>Mobile</th>
                     <th>Position</th>
                     <th></th>
                     <th></th>                    
@@ -22,6 +24,7 @@
                  @foreach($maintenances as $maintenance)
                 <tr>
                     <td>{{$rowNum++}}</td>
+                    <td><img class="card-img-top" style="width: 35px" src="/storage/maintenance_images/{{$maintenance->cover_image}}" alt="Card image cap"></td>
                     <td><a href="/maintenances/{{$maintenance->id}}">{{$maintenance->name}}</a></td>
                     <td>{{$maintenance->schedule}}</td>
                     <td>{{$maintenance->employmentStatus}}</td>

@@ -3,6 +3,7 @@
 
 <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
 <a class="btn btn-secondary btn-md" role="button" href="/residents/create"><i class="fas fa-user-plus"></i></a>
+<a href="/residents" class="btn btn-secondary"><i class="fas fa-users"></i>&nbspResidents</a>
 <br>
 <br>
 <div class="container-fluid">
@@ -35,26 +36,28 @@
             <table class="table table-striped">
                 <tr>
                     <th>No</th>
+                    <th>Profile</th>
                     <th>Name</th>
-                    <th>Room No</th>
+                    <th>Room</th>
                     <th>Status</th>
-                    <th>Mobile Number</th>
-                    <th>Email Address</th>
-                    <th>Move-In</th>
-                    <th>Move-Out</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    
+                    
                     <th></th>
                     <th></th>
                 </tr>
                  @foreach($residents as $resident)
                     <tr>
                         <td>{{$rowNum++}}</td>
+                        <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap"></td>
                         <td><a href="/residents/{{$resident->id}}">{{$resident->name}}</a></td>
                         <td><a href="/rooms/{{$resident->roomNo}}">{{$resident->roomNo}}</a></td>
                         <td>{{$resident->residentStatus}}</td>
                         <td>{{$resident->mobileNumber}}</td>
                         <td>{{$resident->emailAddress}}</td>
-                        <td>{{$resident->moveInDate}}</td>
-                        <td>{{$resident->moveOutDate}}</td>
+                        
+                        
                         <td>
                             <a href="/residents/{{$resident->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
                         </td>

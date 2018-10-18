@@ -27,7 +27,9 @@ class AppsController extends Controller
 
     public function moveins(){
         $rowNo = 1;
-        $residents = DB::table('residents')->where('residentStatus','Moving-in')->orderBy('name', 'asc')->get();
+        $residents = DB::table('residents')->where('residentStatus','Moving-in')
+                                           
+                                           ->orderBy('moveInDate', 'asc')->get();
                                          
         return view('apps.moveins')->with('residents', $residents)
                                      ->with('rowNo', $rowNo);
@@ -40,7 +42,8 @@ class AppsController extends Controller
         $currentDate = $date->year.'-'.$date->month;
         
 
-        $residents = DB::table('residents')->where('residentStatus', 'Moving-out')->orderBy('name', 'asc')->get();
+        $residents = DB::table('residents')->where('residentStatus', 'Moving-out')
+                                           ->orderBy('moveOutDate', 'asc')->get();
 
         return view('apps.moveouts')->with('residents', $residents)->with('rowNo', $rowNo);
 

@@ -4,23 +4,26 @@
     <div class="container" >
             <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
             <a class="btn btn-secondary btn-md" role="button" href="/owners/create"><i class="fas fa-user-plus"></i></a>
-    </div>
+            <a href="/owners" class="btn btn-secondary"><i class="fas fa-user-tie"></i>&nbspOwners</a>
+        </div>
    <br>
     @if(count($owners) > 0)
     <div class="container"  >
             <table class="table table-striped">
                 <tr>
                     <th>No</th>
+                    <th>Profile</th>
                     <th>Name</th>
-                    <th>Room No</th>
-                    <th>Mobile Number</th>
-                    <th>Email Address</th>
+                    <th>Room</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
                     <th></th>
                     <th></th>
                 </tr>
             @foreach($owners as $owner)
                 <tr>
                     <td>{{$rowNum++}}</td>
+                    <td><img class="card-img-top" style="width: 35px" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap"></td>
                     <td><a href="/owners/{{$owner->id}}">{{$owner->name}}</a></td>
                     <td><a href="/rooms/{{$owner->roomNo}}">{{$owner->roomNo}}</a></td>
                     <td>{{$owner->mobileNumber}}</td>

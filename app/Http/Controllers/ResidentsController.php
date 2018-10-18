@@ -101,7 +101,9 @@ class ResidentsController extends Controller
             'emailAddress' => 'nullable',
             'moveInDate' => 'nullable',
             'moveOutDate' => 'nullable',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999',
+            'reasonForMovingOut' => 'nullable',
+            'securityDeposit' => 'required',
         ]);
 
          //Handle File Upload
@@ -136,6 +138,8 @@ class ResidentsController extends Controller
         $resident->moveInDate = $request->input('moveInDate');
         $resident->moveOutDate = $request->input('moveOutDate');
         $resident->cover_image = $fileNameToStore;
+        $resident->reasonForMovingOut = $request->input('reasonForMovingOut');
+        $resident->securityDeposit = $request->input('securityDeposit');
 
         $resident->save();
 
@@ -212,7 +216,9 @@ class ResidentsController extends Controller
             'emailAddress' => 'nullable',
             'moveInDate' => 'nullable',
             'moveOutDate' => 'nullable',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999',
+            'reasonForMovingOut' => 'nullable',
+            'securityDeposit' => 'required',
         ]);
 
          //Handle File Upload
@@ -245,6 +251,8 @@ class ResidentsController extends Controller
         $resident->emailAddress = $request->input('emailAddress');
         $resident->moveInDate = $request->input('moveInDate');
         $resident->moveOutDate = $request->input('moveOutDate');
+        $resident->reasonForMovingOut = $request->input('reasonForMovingOut');
+        $resident->securityDeposit = $request->input('securityDeposit');
         if($request->hasFile('cover_image')){
         $resident->cover_image = $fileNameToStore;
         }

@@ -2,9 +2,10 @@
 @section('content')
 <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
 <a class="btn btn-secondary btn-md" role="button" href="/rooms/create"><i class="fas fa-plus-circle fa-1x"></i></a> 
+<a href="/rooms" class="btn btn-secondary"><i class="fas fa-store-alt"></i>&nbspRooms</a>
 <br>
 <br>
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <div class="row text-center">
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:6%">
                 <h3>Enrolled</h3>
@@ -28,7 +29,7 @@
                 <h1>{{count($nrfo)}}</h1>
             </div>
         </div>
-        <br>
+        
         <div class="row">
             <div class="col-12" style="padding: 2% 2%" >
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -44,21 +45,21 @@
     </div>    
    <br>
     @if(count($rooms) > 0)
-    <div class="container text-center">
-        <div class="row">
+    <div class="container">
+        <div class="row justify-content-center">
             @foreach($rooms as $room)
                 @if($room->roomStatus == 'Occupied')
                     @if($room->isUnderLeasing == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
                         <i class="fas fa-home fa-4x"></i>
-                        <div style="display: flex; width: 90px">
+                        <div style="display: flex; width: 90px; justify-content: space-around">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
                     @else
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
                         <i class="fas fa-user-tag fa-4x"></i>
-                        <div style="display: flex; width: 90px">
+                        <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
@@ -67,14 +68,14 @@
                     @if($room->isUnderLeasing == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
                         <i class="fas fa-home fa-4x"></i>
-                        <div style="display: flex; width: 90px">
+                        <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
                     @else
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
                         <i class="fas fa-user-tag fa-4x"></i>
-                        <div style="display: flex; width: 90px">
+                        <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
@@ -83,14 +84,14 @@
                     @if($room->isUnderLeasing == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
                         <i class="fas fa-home fa-4x"></i>
-                        <div style="display: flex; width: 90px">
+                        <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
                     @else
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
                         <i class="fas fa-user-tag fa-4x"></i>
-                        <div style="display: flex; width: 90px">
+                        <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
@@ -99,14 +100,14 @@
                     @if($room->isUnderLeasing == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
                         <i class="fas fa-home fa-4x"></i>
-                        <div style="display: flex; width: 90px">
+                        <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
                     @else
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
                         <i class="fas fa-user-tag fa-4x"></i>
-                        <div style="display: flex; width: 90px">
+                        <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
@@ -118,4 +119,5 @@
     <div class="alert alert-danger" role="alert"><p>No rooms found!</p></div>
     @endif
     </div>
+    <br>
 @endsection

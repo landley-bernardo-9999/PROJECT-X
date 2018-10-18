@@ -47,7 +47,7 @@
                 <div class="form-group row">
                         <label for="" class="col-md-4 col-form-label text-md-right">Monthly Rent</label>
                         <div class="col-md-6">
-                            {{Form::number('rentalFee','6000',['class'=>'form-control'],['min'>'0'])}}
+                            {{Form::number('rentalFee',' ',['class'=>'form-control'],['min'>'0'])}}
                        </div>     
                 </div>
 
@@ -67,7 +67,7 @@
                 <div class="form-group row">
                         <label for="" class="col-md-4 col-form-label text-md-right">Size(sqm)</label>
                         <div class="col-md-6">
-                            {{Form::number('size','15',['class'=>'form-control'])}}
+                            {{Form::number('size','',['class'=>'form-control'])}}
                        </div>     
                 </div>
 

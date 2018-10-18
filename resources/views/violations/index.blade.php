@@ -5,6 +5,7 @@
     <div class="container" >
             <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
             <a class="btn btn-secondary btn-md" role="button" href="/violations/create"><i class="fas fa-plus-circle fa-1x"></i></a>
+            <a href="/violations" class="btn btn-secondary"><i class="fas fa-user-times">&nbspViolations</i></a>
     </div>
    <br>
     @if(count($violations) > 0)

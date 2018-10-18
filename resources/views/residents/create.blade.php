@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>   
+<a class="btn btn-secondary btn-md" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i></a>   
 {!! Form::open(['action'=>'ResidentsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 <div class="container">
         <div class="row justify-content-center">
@@ -56,6 +56,13 @@
                             </select>
                             </div>   
                     </div>
+                    
+                    <div class="form-group row">
+                        <label for="" class="col-md-4 col-form-label text-md-right">Security Deposit</label>
+                        <div class="col-md-6">
+                            {{Form::number('securityDeposit',' ',['class'=>'form-control'],['min'>''])}}
+                       </div>     
+                </div>
                 
                     <div class="form-group row">
                             <label for="moveInDate" class="col-md-4 col-form-label text-md-right">Move-in</label>
@@ -70,6 +77,23 @@
                                 {{ Form::date('moveOutDate',' ', ['class' => 'form-control']) }}
                             </div>
                     </div> 
+
+                    <div class="form-group row">
+                        <label for="reasonForMovingOut" class="col-md-4 col-form-label text-md-right">Reason for Moving-out (Optional)</label>
+                        <div class="col-md-6">
+                        <select class="form-control" name="reasonForMovingOut" id="reasonForMovingOut">
+                            <option value="" selected>Please select</option>    
+                            <option value="End of Contract">End of Contract</option>
+                            <option value="Deliquent">Delinquent</option>
+                            <option value="Misconduct">Misconduct</option>
+                            <option value="Force Majeure">Force Majeure</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        </div>   
+                </div>
+
+               
+            
                   
                     <div class="form-group row">
                             <label for="school" class="col-md-4 col-form-label text-md-right">School</label>
@@ -103,7 +127,7 @@
                                     <div class="form-group row">
                                             <label for="emailAddress" class="col-md-4 col-form-label text-md-right">Email Address</label>
                                             <div class="col-md-6">
-                                                    {{Form::email('emailAddress','',['class'=>'form-control','placeholder'=>'Email Address'])}}
+                                                    {{Form::email('emailAddress','',['class'=>'form-control'])}}
                                             </div>
                                         </div>                            
                                     

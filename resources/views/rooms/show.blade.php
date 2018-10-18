@@ -9,7 +9,7 @@
             {!!Form::close()!!}
 <br>
 <br>
-<h3>{{$room->roomNo}}</h3>
+<h3>{{$room->roomNo}}&nbsp<i class="fas fa-store-alt"></i></h3>
     <div class="container">
        <hr>
        <div class="row">
@@ -41,8 +41,8 @@
                         </tr>
                     </table>
                     
-                        <h3>Residents</h3>
-
+                        <h3>Residents&nbsp<i class="fas fa-users"></i></h3>
+                        <br>
                         <div class="panel panel-default">
                             @if(count($resident) > 0)             
                             <table class="table">
@@ -74,7 +74,8 @@
                    <br>
                    <br>
                     <div>
-                            <h3>Repairs</h3>
+                            <h3>Repairs&nbsp<i class="fas fa-toolbox"></i></h3>
+                            <br>
                              <div class="panel panel-default">
                             @if(count($repair) > 0)              
                             <table class="table table-striped">
@@ -112,7 +113,8 @@
 
                     <br>
                     <div>
-                        <h3>Owners</h3>
+                        <h3>Owners&nbsp<i class="fas fa-user-tie"></i></h3>
+                        <br>
                         <div class="panel panel-default">
                                 @if(count($owner) > 0)              
                                 <table class="table table-striped">

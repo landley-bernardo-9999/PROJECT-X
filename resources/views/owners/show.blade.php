@@ -2,6 +2,8 @@
 @section('content')
 <br>
             <a class="btn btn-secondary btn-md" role="button" href="/owners"><i class="fas fa-arrow-circle-left"></i></a>
+            <a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-store-alt"></i></a>
+            
             <a href="{{$owner->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
             {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
@@ -9,7 +11,8 @@
             {!!Form::close()!!}
 <br>
 <br>
-<h3>{{$owner->name}}(Owner)</h3>
+<h3>{{$owner->name}}&nbsp<i class="fas fa-user-tie"></i></h3>
+<br>
     <div class="container">
        <div class="row">
             <div class="col-lg-9">
@@ -35,8 +38,10 @@
                       <td>{{$owner->mobileNumber}}</td>
                   </tr>
                     </table>
+                    <br>
                     <div>
-                        <h3>Repairs</h3>
+                        <h3>Concerns/Repairs &nbsp<i class="fas fa-toolbox fa-1x"></i></h3>
+                        <br>
                          <div class="panel panel-default">
                         @if(count($repair) > 0)              
                         <table class="table table-striped">
@@ -61,7 +66,7 @@
                             <td>{{$repair->repairStatus}}</td>
                             
                             <td>{{$repair->cost}}</td>
-                            <td><a href="/repairs/{{$repair->id}}">MORE INFO</a></td>
+                            <td><a href="/repairs/{{$repair->id}}"><i class="far fa-eye"></i></a></td>
                          </tr>
                          @endforeach
                         </table>

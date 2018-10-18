@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>   
+<a class="btn btn-secondary btn-md" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i></a>   
 {!! Form::open(['action'=>['ResidentsController@update', $resident->id],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 <div class="container">
         <div class="row justify-content-center">
@@ -57,6 +57,14 @@
                             </div>   
                     </div>
                 
+                     
+                    <div class="form-group row">
+                        <label for="" class="col-md-4 col-form-label text-md-right">Security Deposit</label>
+                        <div class="col-md-6">
+                            {{Form::number('securityDeposit',$resident->securityDeposit,['class'=>'form-control'],['min'>''])}}
+                       </div>     
+                </div>
+
                     <div class="form-group row">
                             <label for="moveInDate" class="col-md-4 col-form-label text-md-right">Move-in</label>
                             <div class="col-md-6">
@@ -70,6 +78,20 @@
                                 {{ Form::date('moveOutDate',$resident->moveOutDate, ['class' => 'form-control']) }}
                             </div>
                     </div> 
+
+                    <div class="form-group row">
+                        <label for="reasonForMovingOut" class="col-md-4 col-form-label text-md-right">Reason for Moving-out (Optional)</label>
+                        <div class="col-md-6">
+                        <select class="form-control" name="reasonForMovingOut" id="reasonForMovingOut">
+                            <option value="{{$resident->reasonForMovingOut}}"selected>{{$resident->reasonForMovingOut}}</option>    
+                            <option value="End of Contract">End of Contract</option>
+                            <option value="Deliquent">Delinquent</option>
+                            <option value="Misconduct">Misconduct</option>
+                            <option value="Force Majeure">Force Majeure</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        </div>   
+                </div>
                   
                     <div class="form-group row">
                             <label for="school" class="col-md-4 col-form-label text-md-right">School</label>

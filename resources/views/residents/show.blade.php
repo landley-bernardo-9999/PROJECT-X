@@ -2,6 +2,7 @@
 @section('content')
 <br>
     <a class="btn btn-secondary btn-md" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i></a>
+    <a class="btn btn-secondary btn-md" role="button" href="/rooms"> <i class="fas fa-store-alt"></i></a>
     <a href="{{$resident->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
     {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
@@ -9,7 +10,7 @@
     {!!Form::close()!!}
 <br> 
 <br>
-<h3>{{$resident->name}}(Resident)</h3>
+<h3>{{$resident->name}}&nbsp<i class="fas fa-users"></i></h3>
 <hr>
     <div class="container">
        <div class="row">
@@ -28,6 +29,10 @@
                         <td>{{$resident->residentStatus}}</td>
                     </tr>
                     <tr>
+                        <th>Security Deposit</th>
+                        <td>{{$resident->securityDeposit}}</td>
+                    </tr>
+                    <tr>
                         <th>Move-in Date</th>
                         <td>{{$resident->moveInDate}}</td>
                     </tr>
@@ -43,10 +48,23 @@
                         <th>Mobile Number</th>
                         <td>{{$resident->mobileNumber}}</td>
                     </tr> 
+                    <tr>
+                        <th>School</th>
+                        <td>{{$resident->school}}</td>
+                    </tr>
+                    <tr>
+                        <th>Course</th>
+                        <td>{{$resident->course}}</td>
+                    </tr>
+                    <tr>
+                        <th>Year Level</th>
+                        <td>{{$resident->yearLevel}}</td>
+                    </tr>
                     </table>
                     <br>
                     <div>
-                        <h3>Concerns</h3>
+                        <h3>Concerns&nbsp<i class="fas fa-toolbox"></i></h3>
+                        <br>
                          <div class="panel panel-default">
                         @if(count($repair) > 0)              
                         <table class="table table-striped">
@@ -80,7 +98,8 @@
                 </div>
                 <br>
                 <div>
-                    <h3>Violations</h3>
+                    <h3>Violations&nbsp<i class="fas fa-user-times"></i></h3>
+                    <br>
                      <div class="panel panel-default">
                     @if(count($violation) > 0)              
                     <table class="table table-striped">
