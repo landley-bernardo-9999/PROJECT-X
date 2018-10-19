@@ -121,7 +121,7 @@ class RoomsController extends Controller
         $repairsRowNo = 1;
         $room = Room::find($roomNo);
         $resident = Resident::where('roomNo', '=', $roomNo)
-                            ->where('residentStatus','=', 'Active')
+                            ->whereIn('residentStatus', ['Active','Moving-out','Moving-in', 'Extended'])
                             ->orderBy('residentStatus', 'asc')->get();
         $owner = Owner::where('roomNo', '=', $roomNo)->get();
         $repair = Repair::where('roomNo', '=', $roomNo)->get();

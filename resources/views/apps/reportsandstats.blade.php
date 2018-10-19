@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/home"><i class="fas fa-arrow-circle-left"></i>&nbspBack</a>
+<a class="btn btn-secondary btn-md" role="button" href="/home"><i class="fas fa-arrow-circle-left"></i></a>
 <br><br>
 <div class="container">
         <div class="row">

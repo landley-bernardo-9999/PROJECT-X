@@ -30,21 +30,27 @@ class ResidentsController extends Controller
     public function index()
     {
         $rowNum = 1;
+    
         $residents = DB::table('residents')->orderBy('name', 'asc')->get();
+
+        $active = DB::table('residents')->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])->get();
         $harvard = DB::table('residents')
             ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
             ->select('residents.*')
             ->where('rooms.building','=','Harvard')
+            ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
             ->get();
         $princeton = DB::table('residents')
             ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
             ->select('residents.*')
             ->where('rooms.building','=','Princeton')
+            ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
             ->get();
         $wharton = DB::table('residents')
             ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
             ->select('residents.*')
             ->where('rooms.building','=','Wharton')
+            ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
             ->get();
         $courtyard = DB::table('residents')
             ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
@@ -53,7 +59,8 @@ class ResidentsController extends Controller
             ->get();
         
         return view('residents.index')->with('residents', $residents)
-                                       ->with('rowNum', $rowNum)
+                                      ->with('active', $active)
+                                      ->with('rowNum', $rowNum)
                                        ->with('harvard', $harvard)
                                        ->with('princeton', $princeton)
                                        ->with('wharton', $wharton)

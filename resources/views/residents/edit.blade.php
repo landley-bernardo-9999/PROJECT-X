@@ -83,6 +83,7 @@
                         <label for="reasonForMovingOut" class="col-md-4 col-form-label text-md-right">Reason for Moving-out (Optional)</label>
                         <div class="col-md-6">
                         <select class="form-control" name="reasonForMovingOut" id="reasonForMovingOut">
+                            <option value="" selected>Please select</option> 
                             <option value="{{$resident->reasonForMovingOut}}"selected>{{$resident->reasonForMovingOut}}</option>    
                             <option value="End of Contract">End of Contract</option>
                             <option value="Deliquent">Delinquent</option>

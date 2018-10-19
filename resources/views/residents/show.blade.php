@@ -125,10 +125,10 @@
                      @endforeach
                     </table>
                     @else
-                    <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
+                    <div class="alert alert-success" role="alert"><p>No records of violations!</p></div>
                     @endif
                   </div>
-                      <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+                      <a class="btn btn-secondary btn-md" role="button" href="/violations/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
             </div>
                 <br>      
                 </div>             

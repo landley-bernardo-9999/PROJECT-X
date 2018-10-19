@@ -30,7 +30,7 @@ class AppsController extends Controller
         $residents = DB::table('residents')->where('residentStatus','Moving-in')
                                            
                                            ->orderBy('moveInDate', 'asc')->get();
-                                         
+        
         return view('apps.moveins')->with('residents', $residents)
                                      ->with('rowNo', $rowNo);
                                      
@@ -41,7 +41,6 @@ class AppsController extends Controller
         $date = Carbon::now();
         $currentDate = $date->year.'-'.$date->month;
         
-
         $residents = DB::table('residents')->where('residentStatus', 'Moving-out')
                                            ->orderBy('moveOutDate', 'asc')->get();
 

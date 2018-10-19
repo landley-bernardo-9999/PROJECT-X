@@ -29,16 +29,16 @@
                         <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap"></td>
                         <td><a href="/residents/{{$resident->id}}">{{$resident->name}}</a></td>
                         <td><a href="/rooms/{{$resident->roomNo}}">{{$resident->roomNo}}</a></td>
-                        
                         <td>{{$resident->mobileNumber}}</td>
                         <td>{{$resident->emailAddress}}</td>
                         <td>{{$resident->moveInDate}}</td>
+                        
                         
                     </tr>  
                 @endforeach   
             </table> 
     @else
-    <div class="alert alert-danger" role="alert"><p>No moveins this month!</p></div>
+    <div class="alert alert-danger" role="alert"><p>No Moveins found!</p></div>
     @endif
             </div>
 @endsection

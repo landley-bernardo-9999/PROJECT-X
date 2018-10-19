@@ -45,6 +45,7 @@
                                 <option value="{{$maintenance->position}}" selected>{{$maintenance->position}}</option>    
                                 <option value="Maintenance">Maintenance</option>
                                 <option value="Housekeeping">Housekeeping</option>
+                                <option value="Admin Assistant">Admin Assistant</option>
                                 <option value="Others">Others</option>    
                             </select>
                             </div>   

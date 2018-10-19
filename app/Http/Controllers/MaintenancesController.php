@@ -17,7 +17,7 @@ class MaintenancesController extends Controller
     public function index()
     {
         $rowNum = 1;
-        $maintenances = DB::table('maintenances')->get();
+        $maintenances = DB::table('maintenances')->orderBy('name', 'asc')->get();
         return view('maintenances.index')->with('maintenances', $maintenances)->with('rowNum', $rowNum);
     }
 

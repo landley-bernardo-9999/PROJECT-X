@@ -48,7 +48,7 @@
             </table>
             
     @else
-    <div class="alert alert-danger" role="alert"><p>No Repairs found!</p></div>
+    <div class="alert alert-danger" role="alert"><p>No Violations found!</p></div>
     @endif
             </div>
 @endsection

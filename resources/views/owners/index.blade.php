@@ -29,7 +29,7 @@
                     <td>{{$owner->mobileNumber}}</td>
                     <td>{{$owner->emailAddress}}</td>
                     <td>
-                        <a href="/owners/{{$owner->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                        <a href="/owners/{{$owner->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
                     </td>
                     <td>
                         {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'pull-right'])!!}

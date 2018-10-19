@@ -10,7 +10,7 @@
         <div class="row text-center">
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:4%">
                 <h3>Active</h3>
-                <h1>{{count($residents)}}</h1>
+                <h1>{{count($active)}}</h1>
             </div>
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                 <h3>Harvard</h3>

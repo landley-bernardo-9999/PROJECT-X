@@ -36,7 +36,7 @@
                 @endforeach   
             </table> 
     @else
-    <div class="alert alert-danger" role="alert"><p>No moveouts this month!</p></div>
+    <div class="alert alert-danger" role="alert"><p>No Moveouts found!</p></div>
     @endif
             </div>
 @endsection
