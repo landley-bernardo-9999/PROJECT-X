@@ -21,7 +21,7 @@
                         <label for="" class="col-md-4 col-form-label text-md-right">Room No</label>
                     
                     <div class="col-md-6">
-                        <select name="roomNo" id="roomNo" class="form-control">
+                        <select name="residentRoomNo" id="residentRoomNo" class="form-control">
                             <option value="" disabled selected>Please select</option>
                                 @foreach($registeredRooms as $registeredRoom)
                             <option value="{{$registeredRoom->roomNo}}">
@@ -56,44 +56,6 @@
                             </select>
                             </div>   
                     </div>
-                    
-                    <div class="form-group row">
-                        <label for="" class="col-md-4 col-form-label text-md-right">Security Deposit</label>
-                        <div class="col-md-6">
-                            {{Form::number('securityDeposit',' ',['class'=>'form-control'],['min'>''])}}
-                       </div>     
-                </div>
-                
-                    <div class="form-group row">
-                            <label for="moveInDate" class="col-md-4 col-form-label text-md-right">Move-in</label>
-                            <div class="col-md-6">
-                                {{ Form::date('moveInDate',' ', ['class' => 'form-control']) }}
-                            </div>
-                    </div> 
-                    
-                    <div class="form-group row">
-                            <label for="moveOutDate" class="col-md-4 col-form-label text-md-right">Move-out</label>
-                            <div class="col-md-6">
-                                {{ Form::date('moveOutDate',' ', ['class' => 'form-control']) }}
-                            </div>
-                    </div> 
-
-                    <div class="form-group row">
-                        <label for="reasonForMovingOut" class="col-md-4 col-form-label text-md-right">Reason for Moving-out (Optional)</label>
-                        <div class="col-md-6">
-                        <select class="form-control" name="reasonForMovingOut" id="reasonForMovingOut">
-                            <option value="" selected>Please select</option>    
-                            <option value="End of Contract">End of Contract</option>
-                            <option value="Deliquent">Delinquent</option>
-                            <option value="Misconduct">Misconduct</option>
-                            <option value="Force Majeure">Force Majeure</option>
-                            <option value="Others">Others</option>
-                        </select>
-                        </div>   
-                </div>
-
-               
-            
                   
                     <div class="form-group row">
                             <label for="school" class="col-md-4 col-form-label text-md-right">School</label>

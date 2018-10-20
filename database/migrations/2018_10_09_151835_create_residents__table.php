@@ -16,12 +16,14 @@ class CreateResidentsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('residents', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('roomNo');
+
+            //set roomNo as a foreign key
+            $table->string('residentRoomNo')->nullable();
+            $table->foreign('residentRoomNo')->references('roomNo')->on('rooms')->onDelete('cascade');
+
             $table->string('name');
             $table->date('birthDate')->nullable();
             $table->string('residentStatus');
-            $table->date('moveInDate')->nullable();
-            $table->date('moveOutDate')->nullable();
             $table->string('school')->nullable();
             $table->string('course')->nullable();
             $table->integer('yearLevel')->nullable();
@@ -29,8 +31,6 @@ class CreateResidentsTable extends Migration
             $table->string('emailAddress')->unique()->nullable();
             $table->string('cover_image');
             $table->timestamps();
-
-        
         });
     }
 
@@ -41,7 +41,10 @@ class CreateResidentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('residents_');
-       
+        Schema::dropIfExists('residents');
+
+        //drop the foreign key
+       $table->dropForeign('resident_roomNo_foreign');
+       $table->dropColumn('residentRoomNo');  
     }
 }

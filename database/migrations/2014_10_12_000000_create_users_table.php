@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->boolean('isApproved')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('mobileNumber');
+            $table->string('department');
             $table->rememberToken();
             $table->timestamps();
         });

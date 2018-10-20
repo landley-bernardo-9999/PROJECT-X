@@ -1,13 +1,14 @@
 <?php
 
 namespace App;
+use App\Violation;
+use App\Resident;   
 
 use Illuminate\Database\Eloquent\Model;
 
 class Resident extends Model
 {
-    protected $table = "residents";
-    protected $primaryKey = "id";
-    public $incrementing = true;
-
+    public function violations(){
+        return $this->hasMany(Violation::class);
+    }
 }

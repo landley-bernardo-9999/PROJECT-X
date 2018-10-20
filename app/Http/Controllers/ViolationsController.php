@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use DB;
 use App\Violation;
+use App\Resident;
 
 class ViolationsController extends Controller
 {
@@ -46,19 +47,18 @@ class ViolationsController extends Controller
 
         $registeredResidents = DB::table('residents')
         ->orderBy('name', 'asc')
-        ->select('name')
+        ->select('name', 'id')
         ->get();
 
         $registeredOwners = DB::table('owners')
         ->orderBy('name', 'asc')
-        ->select('name')
+        ->select('name', 'id')
         ->get();
 
         $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
-        
 
         return view('violations.create')->with('registeredRooms', $registeredRooms)
-                                     ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners);
+                                       ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners);
                                      
     }
 
@@ -70,35 +70,37 @@ class ViolationsController extends Controller
      */
     public function store(Request $request)
     {
+        //$resident_id = Resident::select('id')->where('name','=',$request->name)->get();
+        
         $this->validate($request,[
-            'dateReported' => 'nullable',
-            'name' => 'required',
-            'roomNo' => 'required',
-            'description' => 'required',
-            'details' => 'nullable',
-            'dateCommitted' => 'nullable',
-            'reportedBy' => 'required',
-            'fine' => 'required',
-            'actionTaken' => 'required',
+             'dateReported' => 'nullable',
+             'name' => 'required',
+             'roomNo' => 'required',
+             'description' => 'required',
+             'details' => 'nullable',
+             'dateCommitted' => 'nullable',
+             'reportedBy' => 'required',
+             'fine' => 'required',
+             'actionTaken' => 'required',
 
-        ]);
+         ]);
 
 
-        $violation = new Violation;
+         $violation = new Violation;
 
-        $violation->dateReported = $request->input('dateReported');
-        $violation->name = $request->input('name');
-        $violation->roomNo = $request->input('roomNo');
-        $violation->description = $request->input('description');
-        $violation->details = $request->input('details');
-        $violation->dateCommitted = $request->input('dateCommitted');
-        $violation->reportedBy = $request->input('reportedBy');
-        $violation->fine = $request->input('fine');
-        $violation->actionTaken = $request->input('actionTaken');
+         $violation->dateReported = $request->input('dateReported');
+         $violation->name = $request->input('name');
+         $violation->roomNo = $request->input('roomNo');
+         $violation->description = $request->input('description');
+         $violation->details = $request->input('details');
+         $violation->dateCommitted = $request->input('dateCommitted');
+         $violation->reportedBy = $request->input('reportedBy');
+         $violation->fine = $request->input('fine');
+         $violation->actionTaken = $request->input('actionTaken');
+        
+         $violation->save();
 
-        $violation->save();
-
-        return redirect('/violations/'.$violation->id)->with('success', 'Added successfully!');
+         return redirect('/violations/'.$violation->id)->with('success', 'Added successfully!');
     }
 
     /**

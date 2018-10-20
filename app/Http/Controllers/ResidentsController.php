@@ -35,25 +35,25 @@ class ResidentsController extends Controller
 
         $active = DB::table('residents')->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])->get();
         $harvard = DB::table('residents')
-            ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
+            ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
             ->select('residents.*')
             ->where('rooms.building','=','Harvard')
             ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
             ->get();
         $princeton = DB::table('residents')
-            ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
+            ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
             ->select('residents.*')
             ->where('rooms.building','=','Princeton')
             ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
             ->get();
         $wharton = DB::table('residents')
-            ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
+            ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
             ->select('residents.*')
             ->where('rooms.building','=','Wharton')
             ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
             ->get();
         $courtyard = DB::table('residents')
-            ->join('rooms', 'residents.roomNo', '=', 'rooms.roomNo')
+            ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
             ->select('residents.*')
             ->where('rooms.building','=','Courtyard')
             ->get();
@@ -98,7 +98,7 @@ class ResidentsController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'roomNo' => 'required',
+            'residentRoomNo' => 'required',
             'birthDate' => 'nullable',
             'residentStatus' => 'required',
             'school' => 'nullable',
@@ -106,11 +106,7 @@ class ResidentsController extends Controller
             'yearLevel' => 'nullable',
             'mobileNumber' => 'nullable',
             'emailAddress' => 'nullable',
-            'moveInDate' => 'nullable',
-            'moveOutDate' => 'nullable',
             'cover_image' => 'image|nullable|max:1999',
-            'reasonForMovingOut' => 'nullable',
-            'securityDeposit' => 'required',
         ]);
 
          //Handle File Upload
@@ -134,7 +130,7 @@ class ResidentsController extends Controller
         $resident = new Resident;
 
         $resident->name = $request->input('name');
-        $resident->roomNo = $request->input('roomNo');
+        $resident->residentRoomNo = $request->input('residentRoomNo');
         $resident->birthDate = $request->input('birthDate');
         $resident->residentStatus = $request->input('residentStatus');
         $resident->school = $request->input('school');
@@ -142,11 +138,7 @@ class ResidentsController extends Controller
         $resident->yearLevel = $request->input('yearLevel');
         $resident->mobileNumber = $request->input('mobileNumber');
         $resident->emailAddress = $request->input('emailAddress');
-        $resident->moveInDate = $request->input('moveInDate');
-        $resident->moveOutDate = $request->input('moveOutDate');
         $resident->cover_image = $fileNameToStore;
-        $resident->reasonForMovingOut = $request->input('reasonForMovingOut');
-        $resident->securityDeposit = $request->input('securityDeposit');
 
         $resident->save();
 
@@ -213,7 +205,7 @@ class ResidentsController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'roomNo' => 'required',
+            'residentRoomNo' => 'required',
             'birthDate' => 'nullable',
             'residentStatus' => 'required',
             'school' => 'nullable',
@@ -221,11 +213,7 @@ class ResidentsController extends Controller
             'yearLevel' => 'nullable',
             'mobileNumber' => 'nullable',
             'emailAddress' => 'nullable',
-            'moveInDate' => 'nullable',
-            'moveOutDate' => 'nullable',
             'cover_image' => 'image|nullable|max:1999',
-            'reasonForMovingOut' => 'nullable',
-            'securityDeposit' => 'required',
         ]);
 
          //Handle File Upload
@@ -248,7 +236,7 @@ class ResidentsController extends Controller
         //Add Resident
         $resident = Resident::find($id);
         $resident->name = $request->input('name');
-        $resident->roomNo = $request->input('roomNo');
+        $resident->residentRoomNo = $request->input('residentRoomNo');
         $resident->birthDate = $request->input('birthDate');
         $resident->residentStatus = $request->input('residentStatus');
         $resident->school = $request->input('school');
@@ -256,10 +244,6 @@ class ResidentsController extends Controller
         $resident->yearLevel = $request->input('yearLevel');
         $resident->mobileNumber = $request->input('mobileNumber');
         $resident->emailAddress = $request->input('emailAddress');
-        $resident->moveInDate = $request->input('moveInDate');
-        $resident->moveOutDate = $request->input('moveOutDate');
-        $resident->reasonForMovingOut = $request->input('reasonForMovingOut');
-        $resident->securityDeposit = $request->input('securityDeposit');
         if($request->hasFile('cover_image')){
         $resident->cover_image = $fileNameToStore;
         }

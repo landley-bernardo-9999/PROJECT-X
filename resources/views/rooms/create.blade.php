@@ -18,37 +18,44 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <label for="building" class="col-md-4 col-form-label text-md-right">Building</label>
+                    <div class="col-md-6">
+                    <select class="form-control" name="building" id="building">
+                        <option value="" disabled selected>Please select</option>    
+                        <option value="Harvard">Harvard</option>
+                        <option value="Princeton">Princeton</option>
+                        <option value="Wharton">Wharton</option>
+                        <option value="Courtyard">Courtyard</option>
+                    </select>
+                    </div>   
+                </div>
 
                 <div class="form-group row">
-                    <label for="isUnderLeasing" class="col-md-4 col-form-label text-md-right">Enrolled</label>
+                    <label for="enrolled" class="col-md-4 col-form-label text-md-right">Enrolled</label>
                     <div class="col-md-6">
-                    <select class="form-control" name="isUnderLeasing" id="isUnderLeasing">
+                    <select class="form-control" name="enrolled" id="enrolled">
                         <option value="" disabled selected>Please select</option>    
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
                     </div>   
                 </div>
-        
+                        
 
                 <div class="form-group row">
-                        <label for="building" class="col-md-4 col-form-label text-md-right">Building</label>
+                        <label for="shortTermRent" class="col-md-4 col-form-label text-md-right">Short Term Rent</label>
                         <div class="col-md-6">
-                        <select class="form-control" name="building" id="building">
-                            <option value="" disabled selected>Please select</option>    
-                            <option value="Harvard">Harvard</option>
-                            <option value="Princeton">Princeton</option>
-                            <option value="Wharton">Wharton</option>
-                            <option value="Courtyard">Courtyard</option>
-                        </select>
-                        </div>   
+                            {{Form::number('shortTermRent',' ',['class'=>'form-control'],['min'>'0'])}}
+                       </div>     
                 </div>
 
+                
                 <div class="form-group row">
-                        <label for="" class="col-md-4 col-form-label text-md-right">Monthly Rent</label>
-                        <div class="col-md-6">
-                            {{Form::number('rentalFee',' ',['class'=>'form-control'],['min'>'0'])}}
-                       </div>     
+                    <label for="longTermRent" class="col-md-4 col-form-label text-md-right">Long Term Rent</label>
+                    <div class="col-md-6">
+                        {{Form::number('longTermRent',' ',['class'=>'form-control'],['min'>'0'])}}
+                   </div>     
                 </div>
 
                 <div class="form-group row">

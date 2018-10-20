@@ -25,29 +25,29 @@ class AppsController extends Controller
         return view('apps.propertymgmt');
     }
 
-    public function moveins(){
-        $rowNo = 1;
-        $residents = DB::table('residents')->where('residentStatus','Moving-in')
+    // public function moveins(){
+    //     $rowNo = 1;
+    //     $residents = DB::table('residents')->where('residentStatus','Moving-in')
                                            
-                                           ->orderBy('moveInDate', 'asc')->get();
+    //                                        ->orderBy('moveInDate', 'asc')->get();
         
-        return view('apps.moveins')->with('residents', $residents)
-                                     ->with('rowNo', $rowNo);
+    //     return view('apps.moveins')->with('residents', $residents)
+    //                                  ->with('rowNo', $rowNo);
                                      
-    }
+    // }
 
-    public function moveouts(){
-        $rowNo = 1;
-        $date = Carbon::now();
-        $currentDate = $date->year.'-'.$date->month;
+    // public function moveouts(){
+    //     $rowNo = 1;
+    //     $date = Carbon::now();
+    //     $currentDate = $date->year.'-'.$date->month;
         
-        $residents = DB::table('residents')->where('residentStatus', 'Moving-out')
-                                           ->orderBy('moveOutDate', 'asc')->get();
+    //     $residents = DB::table('residents')->where('residentStatus', 'Moving-out')
+    //                                        ->orderBy('moveOutDate', 'asc')->get();
 
-        return view('apps.moveouts')->with('residents', $residents)->with('rowNo', $rowNo);
+    //     return view('apps.moveouts')->with('residents', $residents)->with('rowNo', $rowNo);
 
 
-    }
+    // }
 
 
 

@@ -15,11 +15,22 @@ class CreateRepairsTable extends Migration
     {
         Schema::create('repairs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('roomNo');
-            $table->string('name');
             $table->date('dateReported');
+            
+            $table->string('name');
+            //set residentId as a foreign key
+            // $table->integer('residentId')->unsigned()->after('id');
+            // $table->foreign('residentId')->references('id')->on('residents')->onDelete('cascade');
+            $table->string('roomNo');
+            //set roomNo as a foreign key
+            // $table->string('repairRoomNo')->after('id');
+            // $table->foreign('repairRoomNo')->references('roomNo')->on('rooms')->onDelete('cascade');
+            
+            //set personnelName as a foreign key 
+            // $table->integer('personnelId')->unsigned()->after('id');
+            // $table->foreign('personnelId')->references('id')->on('maintenances')->onDelete('cascade');
+            $table->string('endorseTo');
             $table->string('desc');
-            $table->string('endorsedTo');
             $table->integer('cost');
             $table->string('repairStatus');
             $table->date('dateFinished')->nullable();
@@ -36,5 +47,18 @@ class CreateRepairsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('repairs');
+
+        // //drop the foreign key
+        // $table->dropForeign('repair_residentId_foreign');
+        // $table->dropColumn('residentId');
+
+        // //drop the foreign key
+        // $table->dropForeign('repair_roomNo_foreign');
+        // $table->dropColumn('repairRoomNo');
+
+        // //drop the foreign key
+        // $table->dropForeign('repair_personnelId_foreign');
+        // $table->dropColumn('personnelId');
+        
     }
 }

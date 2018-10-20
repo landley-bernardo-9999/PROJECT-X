@@ -66,9 +66,10 @@ class RoomsController extends Controller
     {
         $this->validate($request,[
             'roomNo' => 'required',
-            'isUnderLeasing' => 'required',
             'building' => 'required',
-            'rentalFee' => 'required',
+            'enrolled' => 'required',
+            'longTermRent' => 'required',
+            'shortTermRent' => 'required',
             'roomStatus' => 'required',
             'size' => 'required',
             'capacity' => 'required',
@@ -95,9 +96,10 @@ class RoomsController extends Controller
         //Add Room
         $room = new Room;
         $room->roomNo = $request->input('roomNo'); 
-        $room->isUnderLeasing = $request->input('isUnderLeasing');
         $room->building = $request->input('building');
-        $room->rentalFee = $request->input('rentalFee');
+        $room->enrolled = $request->input('enrolled');
+        $room->longTermRent = $request->input('longTermRent');
+        $room->shortTermRent = $request->input('shortTermRent');
         $room->roomStatus = $request->input('roomStatus');
         $room->size = $request->input('size');
         $room->capacity=$request->input('capacity');    
@@ -135,10 +137,6 @@ class RoomsController extends Controller
                                 ->with('repair', $repair);
                                    
         
-
-
-
-        
     }
 
     /**
@@ -164,9 +162,10 @@ class RoomsController extends Controller
     {
         $this->validate($request,[
             'roomNo' => 'required',
-            'isUnderLeasing' => 'required',
             'building' => 'required',
-            'rentalFee' => 'required',
+            'enrolled' => 'required',
+            'longTermRent' => 'required',
+            'shortTermRent' => 'required',
             'roomStatus' => 'required',
             'size' => 'required',
             'capacity' => 'required',
@@ -188,11 +187,12 @@ class RoomsController extends Controller
         }
          
         //Add Room
-        $room = Room::find($roomNo);
-        $room->roomNo = $request->input('roomNo');
-        $room->isUnderLeasing = $request->input('isUnderLeasing');
+        $room = new Room;
+        $room->roomNo = $request->input('roomNo'); 
         $room->building = $request->input('building');
-        $room->rentalFee = $request->input('rentalFee');
+        $room->enrolled = $request->input('enrolled');
+        $room->longTermRent = $request->input('longTermRent');
+        $room->shortTermRent = $request->input('shortTermRent');
         $room->roomStatus = $request->input('roomStatus');
         $room->size = $request->input('size');
         $room->capacity = $request->input('capacity');  

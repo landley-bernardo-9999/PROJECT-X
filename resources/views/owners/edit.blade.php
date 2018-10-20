@@ -18,10 +18,10 @@
                 </div>
 
                 <div class="form-group row">
-                        <label for="" class="col-md-4 col-form-label text-md-right">Room No</label>
+                        <label for="ownerRoomNo" class="col-md-4 col-form-label text-md-right">Room No</label>
                     
                     <div class="col-md-6">
-                        <select name="roomNo" id="roomNo" class="form-control">
+                        <select name="ownerRoomNo" id="ownerRoomNo" class="form-control">
                             <option value="{{$owner->roomNo}}"selected>{{$owner->roomNo}}</option>
                                 @foreach($registeredRooms as $registeredRoom)
                             <option value="{{$registeredRoom->roomNo}}">
