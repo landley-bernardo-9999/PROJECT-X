@@ -36,7 +36,7 @@
                     <label for="enrolled" class="col-md-4 col-form-label text-md-right">Enrolled</label>
                     <div class="col-md-6">
                     <select class="form-control" name="enrolled" id="enrolled">
-                        <option value="{{$room->isUnderLeasing}}" selected>{{$room->isUnderLeasing}}</option>    
+                        <option value="{{$room->enrolled}}" selected>{{$room->enrolled}}</option>    
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>

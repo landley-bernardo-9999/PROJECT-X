@@ -57,7 +57,6 @@ class OwnersController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'ownerRoomNo' => 'required',
             'birthDate' => 'nullable',
             'mobileNumber' => 'nullable',
             'emailAddress' => 'nullable',
@@ -85,7 +84,6 @@ class OwnersController extends Controller
         $owner = new Owner;
 
         $owner->name = $request->input('name');
-        $owner->ownerRoomNo = $request->input('ownerRoomNo');
         $owner->birthDate = $request->input('birthDate');
         $owner->mobileNumber = $request->input('mobileNumber');
         $owner->emailAddress = $request->input('emailAddress');   
@@ -146,7 +144,6 @@ class OwnersController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'ownerRoomNo' => 'required',
             'birthDate' => 'nullable',
             'mobileNumber' => 'nullable',
             'emailAddress' => 'nullable',
@@ -172,7 +169,6 @@ class OwnersController extends Controller
         //Add Owner
         $owner = Owner::find($id);
         $owner->name = $request->input('name');
-        $owner->ownerRoomNo = $request->input('ownerRoomNo');
         $owner->birthDate = $request->input('birthDate');
         $owner->mobileNumber = $request->input('mobileNumber');
         $owner->emailAddress = $request->input('emailAddress');   

@@ -78,12 +78,13 @@
                                             {{Form::text('reportedBy','',['class'=>'form-control'])}}
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                 <label for="fine" class="col-md-4 col-form-label text-md-right">Fine</label>
-                 <div class="col-md-6">
+                                
+                <div class="form-group row">
+                    <label for="fine" class="col-md-4 col-form-label text-md-right">Fine</label>
+                    <div class="col-md-6">
                         {{Form::number('fine','',['class'=>'form-control'])}}
-                </div>     
-              </div> 
+                    </div>     
+                </div> 
          
               <div class="form-group row">
                             <label for="actionTaken" class="col-md-4 col-form-label text-md-right">Action/s Taken</label>

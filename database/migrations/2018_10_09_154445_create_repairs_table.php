@@ -29,7 +29,7 @@ class CreateRepairsTable extends Migration
             //set personnelName as a foreign key 
             // $table->integer('personnelId')->unsigned()->after('id');
             // $table->foreign('personnelId')->references('id')->on('maintenances')->onDelete('cascade');
-            $table->string('endorseTo');
+            $table->string('endorsedTo');
             $table->string('desc');
             $table->integer('cost');
             $table->string('repairStatus');

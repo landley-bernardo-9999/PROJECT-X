@@ -9,12 +9,17 @@
     {!!Form::close()!!}
 <br>
 <br>
-<h3>{{$repair->roomNo}}(Repair)</h3>
+<hr>
+<h3>Repair&nbsp<i class="fas fa-toolbox"></i></h3>
 <br>
     <div class="container">
        <div class="row">
             <div class="col-lg-9">
                 <table class="table">
+                    <tr>
+                        <th>Room No</th>
+                        <td>{{$repair->roomNo}}</td>
+                    <tr>
                     <tr>
                         <th>Reported By</th>
                         <td>{{$repair->name}}</td>

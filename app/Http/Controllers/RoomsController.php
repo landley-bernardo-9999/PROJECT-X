@@ -122,17 +122,25 @@ class RoomsController extends Controller
         $ownersRowNo = 1;
         $repairsRowNo = 1;
         $room = Room::find($roomNo);
-        $resident = Resident::where('roomNo', '=', $roomNo)
-                            ->whereIn('residentStatus', ['Active','Moving-out','Moving-in', 'Extended'])
-                            ->orderBy('residentStatus', 'asc')->get();
-        $owner = Owner::where('roomNo', '=', $roomNo)->get();
+
+        $resident_contract = DB::table('residents')
+            ->join('contracts', 'residents.id', '=', 'contracts.residentName')
+            ->select('residents.*','contracts.*')
+            ->where('residentRoomNo', $roomNo)
+            ->whereIn('residents.residentStatus',['Active', 'Moving-In', 'Moving-Out'])
+            ->orderBy('contracts.moveOutDate', 'asc')
+            ->get();
+
+
+        
+        $owner = Owner::all();
         $repair = Repair::where('roomNo', '=', $roomNo)->get();
 
        return view('rooms.show')->with('residentsRowNo', $residentsRowNo)
                                 ->with('ownersRowNo', $ownersRowNo)
                                 ->with('repairsRowNo', $repairsRowNo)
                                 ->with('room', $room)
-                                ->with('resident', $resident)
+                                ->with('resident_contract', $resident_contract)
                                 ->with('owner', $owner)
                                 ->with('repair', $repair);
                                    
@@ -187,7 +195,7 @@ class RoomsController extends Controller
         }
          
         //Add Room
-        $room = new Room;
+        $room = Room::find($roomNo);
         $room->roomNo = $request->input('roomNo'); 
         $room->building = $request->input('building');
         $room->enrolled = $request->input('enrolled');
@@ -222,7 +230,7 @@ class RoomsController extends Controller
         }
 
         $room->delete();
-        return redirect('/rooms')->with('success','Room','Deleted successfully!');
+        return redirect('/rooms')->with('success','Deleted successfully!');
     }
 }
 

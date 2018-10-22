@@ -49,7 +49,7 @@
         <div class="row justify-content-center">
             @foreach($rooms as $room)
                 @if($room->roomStatus == 'Occupied')
-                    @if($room->isUnderLeasing == "Yes")
+                    @if($room->enrolled == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
                         <i class="fas fa-home fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around">
@@ -65,7 +65,7 @@
                     </a>
                     @endif
                 @elseif($room->roomStatus == 'Vacant')
-                    @if($room->isUnderLeasing == "Yes")
+                    @if($room->enrolled == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
                         <i class="fas fa-home fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">
@@ -81,7 +81,7 @@
                     </a>
                     @endif
                 @elseif($room->roomStatus == 'Reserved')
-                    @if($room->isUnderLeasing == "Yes")
+                    @if($room->enrolled == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
                         <i class="fas fa-home fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">
@@ -97,7 +97,7 @@
                     </a>
                     @endif
                 @elseif($room->roomStatus == 'NRFO')
-                    @if($room->isUnderLeasing == "Yes")
+                    @if($room->enrolled == "Yes")
                     <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
                         <i class="fas fa-home fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">

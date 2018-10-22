@@ -15,16 +15,14 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
-
-            //set residentId as a foreign key
-            $table->integer('residentId')->unsigned();
-            $table->foreign('residentId')->references('id')->on('residents')->onDelete('cascade');
-            
+            $table->string('name');
+            $table->string('roomNo');
             $table->date('moveInDate')->nullable();
-            $table->date('moveOutDate')->nullable();
-            $table->integer('securityDeposit');
-            $table->integer('amountPaid');
-            $table->string('reasonForMovingOut')->nullable();
+            $table->integer('totalPrice')->nullable();
+            $table->integer('downPayment')->nullable();
+            $table->string('downPaymentMonthlyAmortization')->nullable();
+            $table->integer('monthlyAmortization')->nullable();
+            $table->string('formOfPayment');
             $table->timestamps();
         });
     }
@@ -37,9 +35,5 @@ class CreateTransactionsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('transactions');
-
-         //drop the foreign key
-        $table->dropForeign('transaction_residentId_foreign');
-        $table->dropColumn('residentId');
     }
 }

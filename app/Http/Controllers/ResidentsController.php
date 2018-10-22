@@ -34,37 +34,37 @@ class ResidentsController extends Controller
         $residents = DB::table('residents')->orderBy('name', 'asc')->get();
 
         $active = DB::table('residents')->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])->get();
-        $harvard = DB::table('residents')
-            ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
-            ->select('residents.*')
-            ->where('rooms.building','=','Harvard')
-            ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-            ->get();
-        $princeton = DB::table('residents')
-            ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
-            ->select('residents.*')
-            ->where('rooms.building','=','Princeton')
-            ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-            ->get();
-        $wharton = DB::table('residents')
-            ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
-            ->select('residents.*')
-            ->where('rooms.building','=','Wharton')
-            ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-            ->get();
-        $courtyard = DB::table('residents')
-            ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
-            ->select('residents.*')
-            ->where('rooms.building','=','Courtyard')
-            ->get();
+        // $harvard = DB::table('residents')
+        //     ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
+        //     ->select('residents.*')
+        //     ->where('rooms.building','=','Harvard')
+        //     ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
+        //     ->get();
+        // $princeton = DB::table('residents')
+        //     ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
+        //     ->select('residents.*')
+        //     ->where('rooms.building','=','Princeton')
+        //     ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
+        //     ->get();
+        // $wharton = DB::table('residents')
+        //     ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
+        //     ->select('residents.*')
+        //     ->where('rooms.building','=','Wharton')
+        //     ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
+        //     ->get();
+        // $courtyard = DB::table('residents')
+        //     ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
+        //     ->select('residents.*')
+        //     ->where('rooms.building','=','Courtyard')
+        //     ->get();
         
         return view('residents.index')->with('residents', $residents)
                                       ->with('active', $active)
-                                      ->with('rowNum', $rowNum)
-                                       ->with('harvard', $harvard)
-                                       ->with('princeton', $princeton)
-                                       ->with('wharton', $wharton)
-                                       ->with('courtyard', $courtyard);
+                                      ->with('rowNum', $rowNum);
+                                    //    ->with('harvard', $harvard)
+                                    //    ->with('princeton', $princeton)
+                                    //    ->with('wharton', $wharton)
+                                    //    ->with('courtyard', $courtyard);
     }
 
     /**
@@ -98,7 +98,6 @@ class ResidentsController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'residentRoomNo' => 'required',
             'birthDate' => 'nullable',
             'residentStatus' => 'required',
             'school' => 'nullable',
@@ -130,7 +129,6 @@ class ResidentsController extends Controller
         $resident = new Resident;
 
         $resident->name = $request->input('name');
-        $resident->residentRoomNo = $request->input('residentRoomNo');
         $resident->birthDate = $request->input('birthDate');
         $resident->residentStatus = $request->input('residentStatus');
         $resident->school = $request->input('school');
@@ -154,9 +152,17 @@ class ResidentsController extends Controller
      */
     public function show($id)
     {
+        $rowNoForContracts = 1;
         $rowNoForConcerns = 1;
         $rowNoForViolations = 1;
         $resident = Resident::find($id);
+
+        $contract = DB::table('contracts')
+            ->join('residents', 'contracts.residentName', '=', 'residents.id')
+            ->select('contracts.*')
+            ->where('residents.id','=',$id)
+            ->get();
+
         $repair = DB::table('repairs')
             ->join('residents', 'repairs.name', '=', 'residents.name')
             ->select('repairs.*')
@@ -171,11 +177,13 @@ class ResidentsController extends Controller
 
         
 
-        return view('residents.show')->with('rowNoForConcerns', $rowNoForConcerns)
+        return view('residents.show')->with('rowNoForContracts', $rowNoForContracts)
+                                     ->with('rowNoForConcerns', $rowNoForConcerns)
                                      ->with('rowNoForViolations', $rowNoForViolations)
                                      ->with('resident',$resident)
                                      ->with('repair', $repair)
-                                     ->with('violation', $violation);
+                                     ->with('violation', $violation)
+                                     ->with('contract', $contract);
     }
 
     /**
@@ -205,7 +213,6 @@ class ResidentsController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'residentRoomNo' => 'required',
             'birthDate' => 'nullable',
             'residentStatus' => 'required',
             'school' => 'nullable',
@@ -236,7 +243,6 @@ class ResidentsController extends Controller
         //Add Resident
         $resident = Resident::find($id);
         $resident->name = $request->input('name');
-        $resident->residentRoomNo = $request->input('residentRoomNo');
         $resident->birthDate = $request->input('birthDate');
         $resident->residentStatus = $request->input('residentStatus');
         $resident->school = $request->input('school');

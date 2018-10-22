@@ -16,11 +16,6 @@ class CreateOwnersTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('owners', function (Blueprint $table) {
             $table->increments('id');
-
-            //Set roomNo as a foreign key
-            $table->string('ownerRoomNo')->nullable();
-            $table->foreign('ownerRoomNo')->references('roomNo')->on('rooms')->onDelete('cascade');
-
             $table->string('name');
             $table->date('birthDate')->nullable();
             $table->string('mobileNumber')->unique()->nullable();

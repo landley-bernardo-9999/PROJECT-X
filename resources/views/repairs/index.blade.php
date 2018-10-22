@@ -36,7 +36,7 @@
                     <th>Reported By</th>
                     <th>Date Reported</th>
                     <th>Description</th>
-                    <th>Endorse To</th>
+                    <th>Endorsed To</th>
                     
                     <th>Status</th>
                     <th></th>

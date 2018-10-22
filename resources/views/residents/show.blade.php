@@ -10,44 +10,28 @@
     {!!Form::close()!!}
 <br> 
 <br>
-<h3>{{$resident->name}}&nbsp<i class="fas fa-users"></i></h3>
 <hr>
+<h3>Resident&nbsp<i class="fas fa-users"></i></h3>
     <div class="container">
        <div class="row">
             <div class="col-lg-9">
-                <table class="table table-striped">
+                <table class="table">
+                    <tr>
+                        <th>Name of the resident</th>
+                        <td>{{$resident->name}}</td>
+                    </tr>
                     <tr>
                         <th>Birthdate</th>
                         <td>{{$resident->birthDate}}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <th>Room No</th>
                         <td>{{$resident->roomNo}}</td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <th>Status</th>
                         <td>{{$resident->residentStatus}}</td>
                     </tr>
-                    <tr>
-                        <th>Security Deposit</th>
-                        <td>{{$resident->securityDeposit}}</td>
-                    </tr>
-                    <tr>
-                        <th>Move-in Date</th>
-                        <td>{{$resident->moveInDate}}</td>
-                    </tr>
-                    <tr>
-                        <th>Move-out Date</th>
-                        <td>{{$resident->moveOutDate}}</td>
-                    </tr>
-                    <tr>
-                        <th>Email Address</th>
-                        <td>{{$resident->emailAddress}}</td>
-                    </tr>
-                    <tr>
-                        <th>Mobile Number</th>
-                        <td>{{$resident->mobileNumber}}</td>
-                    </tr> 
                     <tr>
                         <th>School</th>
                         <td>{{$resident->school}}</td>
@@ -57,13 +41,73 @@
                         <td>{{$resident->course}}</td>
                     </tr>
                     <tr>
-                        <th>Year Level</th>
+                        <th>YearLevel</th>
                         <td>{{$resident->yearLevel}}</td>
                     </tr>
+                    <tr>
+                        <th>Mobile</th>
+                        <td>{{$resident->mobile}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{$resident->emailAddress}}</td>
+                    </tr> 
                     </table>
+            </div>
+                    <div class="col-lg-3">
+                        <div class="card" style="width: 20rem" >
+                            <img class="card-img-top" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap">
+                        </div>
+                    </div>
+                </div>  
+            </div>    
+            <div class="row">
+                    <div class="col-lg-12">
+                        <hr>
+                        <h3>Contracts&nbsp<i class="fas fa-archive"></i></h3>
+                        <br>
+                         <div class="panel panel-default">
+                        @if(count($contract) > 0)              
+                        <table class="table table-striped">
+                         <tr>
+                            <th>No</th>
+                            <th>Room No</th>
+                            <th>Move-In Charges</th>
+                            <th>Move-In</th>
+                            <th>Move-Out</th>
+                            
+                            <th>Security Deposit</th>
+                            <th></th>
+                            
+                         </tr>
+                         @foreach($contract as $contract)
+                         <tr>
+                            <td>{{ $rowNoForContracts++ }}</td>
+                            <td><a href="/contracts/{{$contract->residentRoomNo}}" class="btn btn-secondary">{{ $contract->residentRoomNo }}</a></td>
+                            <td>{{ $contract->amountPaid }}</td>
+                            <td>{{ $contract->moveInDate }}</td>
+                            <td>{{ $contract->moveOutDate }}</td>
+                            
+                            <td>{{ $contract->securityDeposit}}</td>
+                            <td><a href="/contracts/{{$contract->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                            
+                         </tr>
+                         @endforeach
+                        </table>
+                        @else
+                        <div class="alert alert-danger" role="alert"><p>No records of contracts!</p></div>
+                        @endif
+                      </div>
+                          <a class="btn btn-secondary btn-md" role="button" href="/contracts/create"><i class="fas fa-plus-circle fa-1x"></i></a> 
+                </div>
+                <br>
+                    </div>
                     <br>
-                    <div>
-                        <h3>Concerns&nbsp<i class="fas fa-toolbox"></i></h3>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr>
+                        <h3>Concerns/Repairs&nbsp<i class="fas fa-toolbox"></i></h3>
                         <br>
                          <div class="panel panel-default">
                         @if(count($repair) > 0)              
@@ -74,7 +118,7 @@
                             <th>Description</th>
                             <th>Endorse To</th>
                             <th>Status</th>
-                            <th>Cost</th>
+                            <th>Cost</th>   
                             <th></th>
                          </tr>
                          @foreach($repair as $repair)
@@ -85,60 +129,62 @@
                             <td>{{$repair->endorsedTo}}</td>
                             <td>{{$repair->repairStatus}}</td>
                             <td>{{$repair->cost}}</td>
-                            <td><a href="/repairs/{{$repair->id}}">MORE INFO</a></td>
+                            <td><a href="/repairs/{{$repair->id}}" class="btn btn-secondary">MORE INFO</a></td>
                             
                          </tr>
                          @endforeach
                         </table>
                         @else
-                        <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
+                        <div class="alert alert-danger" role="alert"><p>No records of concerns/repairs!</p></div>
                         @endif
                       </div>
-                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a> 
                 </div>
                 <br>
-                <div>
-                    <h3>Violations&nbsp<i class="fas fa-user-times"></i></h3>
+                    </div>
                     <br>
-                     <div class="panel panel-default">
-                    @if(count($violation) > 0)              
-                    <table class="table table-striped">
-                     <tr>
-                        <th>No</th>
-                        <th>Date Reported</th>
-                        <th>Description</th>
-                        <th>Date Committed</th>
-                        <th>Reported By</th>
-                        <th>Fine</th>
-                        <th></th>
-                     </tr>
-                     @foreach($violation as $violation)
-                     <tr>
-                        <td>{{ $rowNoForViolations++ }}</td>
-                        <td>{{ $violation->dateReported }}</td>
-                        <td>{{ $violation->description }}</td>
-                        <td>{{ $violation->dateCommitted }}</td>
-                        <td>{{ $violation->reportedBy }}</td>
-                        <td>{{ $violation->fine }}</td>
-                        <td><a href="/violations/{{$violation->id}}">MORE INFO</a></td>
-                     </tr>
-                     @endforeach
-                    </table>
-                    @else
-                    <div class="alert alert-success" role="alert"><p>No records of violations!</p></div>
-                    @endif
-                  </div>
-                      <a class="btn btn-secondary btn-md" role="button" href="/violations/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
-            </div>
-                <br>      
-                </div>             
-                <div class="col-lg-3">
-                    <div class="card" style="width: 20rem" >
-                        <img class="card-img-top" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap">
-                </div>
-                </div>
-       </div>
+                <hr>
+                       
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3>Violations&nbsp<i class="fas fa-user-times"></i></h3>
+                            <br>
+                             <div class="panel panel-default">
+                            @if(count($violation) > 0)              
+                            <table class="table table-striped">
+                             <tr>
+                                <th>No</th>
+                                <th>Date Reported</th>
+                                <th>Description</th>
+                                <th>Date Committed</th>
+                                <th>Reported By</th>
+                                <th>Fine</th>
+                                <th></th>
+                             </tr>
+                             @foreach($violation as $violation)
+                             <tr>
+                                <td>{{ $rowNoForViolations++ }}</td>
+                                <td>{{ $violation->dateReported }}</td>
+                                <td>{{ $violation->description }}</td>
+                                <td>{{ $violation->dateCommitted }}</td>
+                                <td>{{ $violation->reportedBy }}</td>
+                                <td>{{ $violation->fine }}</td>
+                                <td><a href="/violations/{{$violation->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                             </tr>
+                             @endforeach
+                            </table>
+                            @else
+                            <div class="alert alert-danger" role="alert"><p>No records of violations!</p></div>
+                            @endif
+                          </div>
+                              <a class="btn btn-secondary btn-md" role="button" href="/violations/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+                    </div>
+                        <br>      
+                        </div>         
+                        </div>
+                    </div>
     </div>
+    <br>
      
         
 @endsection

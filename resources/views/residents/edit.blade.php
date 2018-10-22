@@ -16,22 +16,6 @@
                         {{Form::text('name',$resident->name,['class'=>'form-control'])}}
                     </div>
                 </div>
-
-                <div class="form-group row">
-                        <label for="" class="col-md-4 col-form-label text-md-right">Room No</label>
-                    
-                    <div class="col-md-6">
-                        <select name="residentRoomNo" id="residentRoomNo" class="form-control">
-                            <option value="{{$resident->roomNo}}"selected>{{$resident->roomNo}}</option>
-                                @foreach($registeredRooms as $registeredRoom)
-                            <option value="{{$registeredRoom->roomNo}}">
-                                {{$registeredRoom->roomNo}}
-                            </option>
-                                @endforeach
-                        </select>
-                    </div>
-                    </div>
-                    
                     
                     <div class="form-group row">
                             <label for="birthDate" class="col-md-4 col-form-label text-md-right">birthDate</label>

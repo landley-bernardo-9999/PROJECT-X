@@ -138,7 +138,7 @@ class RepairsController extends Controller
     public function show($id)
     {
         $repair = Repair::find($id);
-        return view('repairs.show', array('repair' => $repair));
+        return view('repairs.show')->with('repair', $repair);
     }
 
     /**

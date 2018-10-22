@@ -16,11 +16,6 @@ class CreateResidentsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('residents', function (Blueprint $table) {
             $table->increments('id');
-
-            //set roomNo as a foreign key
-            $table->string('residentRoomNo')->nullable();
-            $table->foreign('residentRoomNo')->references('roomNo')->on('rooms')->onDelete('cascade');
-
             $table->string('name');
             $table->date('birthDate')->nullable();
             $table->string('residentStatus');

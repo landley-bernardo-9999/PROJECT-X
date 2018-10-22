@@ -71,7 +71,7 @@
                 </div>
 
               <div class="form-group row">
-                    <label for="" class="col-md-4 col-form-label text-md-right">Endorsed To</label>
+                    <label for="endorsedTo" class="col-md-4 col-form-label text-md-right">Endorsed To</label>
                 <div class="col-md-6">
                     <select class="form-control" name="endorsedTo" id="endorsedTo">
                         <option value="" disabled selected>Please select</option>

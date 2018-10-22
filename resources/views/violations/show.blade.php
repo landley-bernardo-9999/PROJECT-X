@@ -8,12 +8,17 @@
     {!!Form::close()!!}
 <br>
 <br>
-<h3>{{$violation->name}}(Violator)</h3>
+<hr>
+<h3>Violation&nbsp<i class="fas fa-user-times"></i></h3>
 <br>
     <div class="container">
        <div class="row">
             <div class="col-lg-12">
-                <table class="table table-striped">
+                <table class="table">
+                    <tr>
+                        <th>Name of the violator</th>
+                        <td>{{$violation->name}}</td>
+                    </tr>
                     <tr>
                         <th>Date Reported</th>
                         <td>{{$violation->dateReported}}</td>

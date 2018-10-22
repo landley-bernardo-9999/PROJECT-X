@@ -7,7 +7,7 @@
             <div class="col-md-7">
                 <div class="card"style="padding:6%">
                     <div class="card-header">
-                        <h3>Add Resident</h3>
+                        <h3>Resident Information</h3>
                     </div>
                 <br>
                 <div class="form-group row">
@@ -16,22 +16,6 @@
                         {{Form::text('name','',['class'=>'form-control'])}}
                     </div>
                 </div>
-
-                <div class="form-group row">
-                        <label for="" class="col-md-4 col-form-label text-md-right">Room No</label>
-                    
-                    <div class="col-md-6">
-                        <select name="residentRoomNo" id="residentRoomNo" class="form-control">
-                            <option value="" disabled selected>Please select</option>
-                                @foreach($registeredRooms as $registeredRoom)
-                            <option value="{{$registeredRoom->roomNo}}">
-                                {{$registeredRoom->roomNo}}
-                            </option>
-                                @endforeach
-                        </select>
-                    </div>
-                    </div>
-                    
                     
                     <div class="form-group row">
                             <label for="birthDate" class="col-md-4 col-form-label text-md-right">birthDate</label>

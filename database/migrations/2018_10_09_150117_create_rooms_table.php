@@ -15,7 +15,7 @@ class CreateRoomsTable extends Migration
     {
         Schema::enableForeignKeyConstraints();
         Schema::create('rooms', function (Blueprint $table) {
-            $table->string('roomNo')->unique();
+            $table->string('roomNo')->primary();
             $table->string('building');
             $table->string('enrolled');
             $table->integer('longTermRent');

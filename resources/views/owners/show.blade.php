@@ -11,35 +11,44 @@
             {!!Form::close()!!}
 <br>
 <br>
-<h3>{{$owner->name}}&nbsp<i class="fas fa-user-tie"></i></h3>
-<br>
+<hr>
+<h3>Owner&nbsp<i class="fas fa-user-tie"></i></h3>
     <div class="container">
        <div class="row">
             <div class="col-lg-9">
-                <table class="table table-striped">
+                <table class="table">
                     <tr>
-                        <th>Room No</th>
-                        <td>{{$owner->roomNo}}</td>
+                        <th>Name of the owner</th>
+                        <td>{{$owner->name}}</td>
                     </tr>
                     <tr>
-                        <th>BirthDate</th>
+                        <th>Birthdate</th>
                         <td>{{$owner->birthDate}}</td>
                     </tr>
                     <tr>
-                        <th>Move-in Date</th>
-                        <td>{{$owner->created_at}}</td>
-                    </tr>
-                    <tr>
-                        <th>Email Address</th>
+                        <th>Email</th>
                         <td>{{$owner->emailAddress}}</td>
                     </tr>
                     <tr>
-                      <th>Mobile Number</th>
+                      <th>Mobile</th>
                       <td>{{$owner->mobileNumber}}</td>
                   </tr>
                     </table>
-                    <br>
-                    <div>
+
+            </div>
+
+            <div class="col-lg-3">
+                    <div class="card" style="width: 20rem" >
+                        <img class="card-img-top" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap">
+                </div>
+            </div>
+        
+       </div>
+        
+       <div class="row">
+           <div class="col-lg-12">
+                <div>
+                    <hr>
                         <h3>Concerns/Repairs &nbsp<i class="fas fa-toolbox fa-1x"></i></h3>
                         <br>
                          <div class="panel panel-default">
@@ -71,20 +80,15 @@
                          @endforeach
                         </table>
                         @else
-                        <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
+                        <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
                         @endif
                       </div>
                           <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
                 </div>
-                </div>             
-                <div class="col-lg-3">
-                    <div class="card" style="width: 20rem" >
-                        <img class="card-img-top" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap">
-                </div>
-                </div>
+                </div>           
+           </div>
        </div>
-    </div>
-     
-        
+       </div>
+       <br>
 @endsection
 

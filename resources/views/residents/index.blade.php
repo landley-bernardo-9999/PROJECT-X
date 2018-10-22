@@ -10,23 +10,23 @@
         <div class="row text-center">
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:4%">
                 <h3>Active</h3>
-                <h1>{{count($active)}}</h1>
+                {{-- <h1>{{count($active)}}</h1> --}}
             </div>
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                 <h3>Harvard</h3>
-                <h1>{{count($harvard)}}</h1>
+                {{-- <h1>{{count($harvard)}}</h1> --}}
             </div>
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                 <h3>Princeton</h3>
-                <h1>{{count($princeton)}}</h1>
+                {{-- <h1>{{count($princeton)}}</h1> --}}
             </div>
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                 <h3>Wharton</h3>
-                <h1>{{count($wharton)}}</h1>
+                {{-- <h1>{{count($wharton)}}</h1> --}}
             </div>
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                 <h3>Courtyard</h3>
-                <h1>{{count($courtyard)}}</h1>
+                {{-- <h1>{{count($courtyard)}}</h1> --}}
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                     <th>No</th>
                     <th>Profile</th>
                     <th>Name</th>
-                    <th>Room</th>
+                    {{-- <th>Room</th> --}}
                     <th>Status</th>
                     <th>Mobile</th>
                     <th>Email</th>
@@ -52,7 +52,7 @@
                         <td>{{$rowNum++}}</td>
                         <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap"></td>
                         <td><a href="/residents/{{$resident->id}}">{{$resident->name}}</a></td>
-                        <td><a href="/rooms/{{$resident->roomNo}}">{{$resident->roomNo}}</a></td>
+                        {{-- <td><a href="/rooms/{{$resident->residentRoomNo}}">{{$resident->residentRoomNo}}</a></td> --}}
                         <td>{{$resident->residentStatus}}</td>
                         <td>{{$resident->mobileNumber}}</td>
                         <td>{{$resident->emailAddress}}</td>
