@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/contracts"><i class="fas fa-arrow-circle-left"></i></a>   
+<a class="btn btn-secondary btn-md" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i></a>   
 {!! Form::open(['action'=>'ContractsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 <div class="container">
         <div class="row justify-content-center">
@@ -13,7 +13,7 @@
 
          
                 <div class="form-group row">
-                        <label for="residenRoomNo" class="col-md-4 col-form-label text-md-right">Room No</label>
+                        <label for="residentRoomNo" class="col-md-4 col-form-label text-md-right">Room No</label>
                     
                     <div class="col-md-6">
                         <select name="residentRoomNo" id="residentRoomNo" class="form-control">
@@ -33,7 +33,7 @@
                         <div class="col-md-6">
                     <select class="form-control" name="term" id="term">
                             <option value="" selected>Please select</option>
-                            <option value="Short Term" selected>Short Term</option>    
+                            <option value="Short Term" >Short Term</option>    
                             <option value="Long Term">Long Term</option>
                             <option value="Transient">Transient</option>                            
                     </select>
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="amountPaid" class="col-md-4 col-form-label text-md-right">Move-In Charges</label>
+                    <label for="amountPaid" class="col-md-4 col-form-label text-md-right">Rent</label>
                     <div class="col-md-6">
                         {{Form::number('amountPaid','',['class'=>'form-control'])}}
                     </div>     

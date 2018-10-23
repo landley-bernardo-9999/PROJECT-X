@@ -31,40 +31,45 @@ class ResidentsController extends Controller
     {
         $rowNum = 1;
     
-        $residents = DB::table('residents')->orderBy('name', 'asc')->get();
+         $residents = DB::table('residents')->orderBy('name', 'asc')->get();
 
         $active = DB::table('residents')->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])->get();
-        // $harvard = DB::table('residents')
-        //     ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
-        //     ->select('residents.*')
-        //     ->where('rooms.building','=','Harvard')
-        //     ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-        //     ->get();
-        // $princeton = DB::table('residents')
-        //     ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
-        //     ->select('residents.*')
-        //     ->where('rooms.building','=','Princeton')
-        //     ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-        //     ->get();
-        // $wharton = DB::table('residents')
-        //     ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
-        //     ->select('residents.*')
-        //     ->where('rooms.building','=','Wharton')
-        //     ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-        //     ->get();
-        // $courtyard = DB::table('residents')
-        //     ->join('rooms', 'residents.residentRoomNo', '=', 'rooms.roomNo')
-        //     ->select('residents.*')
-        //     ->where('rooms.building','=','Courtyard')
-        //     ->get();
+        $harvard = DB::table('rooms')
+             ->join('contracts', 'rooms.roomNo', '=', 'contracts.residentRoomNo')
+             ->join('residents', 'residents.id', '=', 'contracts.residentName')
+             ->select('rooms.*', 'residents.*', 'contracts.*')
+             ->where('rooms.building','=','Harvard')
+             ->whereIn('residents.residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
+             ->get();
+        $princeton = DB::table('rooms')
+             ->join('contracts', 'rooms.roomNo', '=', 'contracts.residentRoomNo')
+             ->join('residents', 'residents.id', '=', 'contracts.residentName')
+             ->select('rooms.*')
+             ->where('rooms.building','=','Princeton')
+             ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
+             ->get();
+        $wharton = DB::table('rooms')
+             ->join('contracts', 'rooms.roomNo', '=', 'contracts.residentRoomNo')
+             ->join('residents', 'residents.id', '=', 'contracts.residentName')
+             ->select('rooms.*')
+             ->where('rooms.building','=','Wharton')
+             //->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
+             ->get();
+        $courtyard = DB::table('rooms')
+             ->join('contracts', 'rooms.roomNo', '=', 'contracts.residentRoomNo')
+             ->join('residents', 'residents.id', '=', 'contracts.residentName')
+             ->select('rooms.*')
+             ->where('rooms.building','=','Courtyard')
+             ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
+             ->get();
         
         return view('residents.index')->with('residents', $residents)
                                       ->with('active', $active)
-                                      ->with('rowNum', $rowNum);
-                                    //    ->with('harvard', $harvard)
-                                    //    ->with('princeton', $princeton)
-                                    //    ->with('wharton', $wharton)
-                                    //    ->with('courtyard', $courtyard);
+                                      ->with('rowNum', $rowNum)
+                                      ->with('harvard', $harvard)
+                                      ->with('princeton', $princeton)
+                                      ->with('wharton', $wharton)
+                                      ->with('courtyard', $courtyard);
     }
 
     /**

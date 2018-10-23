@@ -72,11 +72,11 @@
                             <th>Profile</th>
                             <th>Name</th>
                             <th>Status</th>
+                            <th>Term</th>
+                            <th>Rent</th>
                             <th>Move-In</th>
                             <th>Move-Out</th>
-                            <th>Mobile</th>
-                            <th>Email</th>
-                            <th>Reason for Moving-Out</th>
+                            <th></th>
                            
                          </tr>
                         @foreach($resident_contract as $resident_contract)
@@ -86,11 +86,11 @@
                             <td><a href="/residents/{{$resident_contract->residentName}}" class="btn btn-secondary">{{$resident_contract->name}}</a></td>
                                 
                             <td>{{$resident_contract->residentStatus}}</td>
-                            <td>{{$resident_contract->moveInDate}}</td>
-                            <td>{{$resident_contract->moveOutDate}}</td>
-                            <td>{{$resident_contract->mobileNumber}}</td>
-                            <td>{{$resident_contract->emailAddress}}</td>
-                            <td><a href="/contracts/{{$resident_contract->id}}" class="btn btn-secondary">{{$resident_contract->reasonForMovingOut}}</td>
+                            <td>{{$resident_contract->term}}</td>
+                            <td>{{$resident_contract->amountPaid}}</td>
+                            <td>{{Carbon\Carbon::parse($resident_contract->moveInDate)->format('F j, Y')}}</td>
+                            <td>{{Carbon\Carbon::parse($resident_contract->moveInDate)->format('F j, Y')}}</td>
+                            <td><a href="/contracts/{{$resident_contract->id}}" class="btn btn-secondary">MORE INFO</td>
                          </tr>
                         @endforeach
                         </table>
@@ -98,7 +98,7 @@
                         <div class="alert alert-success" role="alert"><p>No records of residents!</p></div>
                         @endif
                       </div>
-                      {{-- <a class="btn btn-secondary btn-md" role="button" href="/residents/create"><i class="fas fa-user-plus"></i></a>   --}}
+                      <a class="btn btn-secondary btn-md" role="button" href="/contracts/create"><i class="fas fa-user-plus"></i></a> 
                 </div>
             </div>
             <hr>
@@ -138,7 +138,7 @@
                                  <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
                                  @endif
                                </div>
-                                   {{-- <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>   --}}
+                                   <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
                          </div>
                 </div>
                 <hr>
@@ -154,17 +154,21 @@
                             <th>Profile</th>
                             <th>Name</th>
                             <th>Move-In</th>
-                            <th>Mobile</th>
-                            <th>Email</th>
+                            <th>Buying Price</th>
+                            <th>DownPayment</th>
+                            <th>Form of Payment</th>
+                            <th></th>
                          </tr>
                          @foreach($owner as $owner)
                          <tr>
                             <td>{{ $ownersRowNo++ }}</td>
                             <td><img class="card-img-top" style="width:35px" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap"></td>
-                            <td><a href="/owners/{{$owner->id}}" class="btn btn-secondary">{{$owner->name}}</a></td>
-                            <td>{{$owner->created_at}}</td>
-                            <td>{{$owner->mobileNumber}}</td>
-                            <td>{{$owner->emailAddress}}</td>
+                            <td><a href="/owners/{{$owner->ownerName}}" class="btn btn-secondary">{{$owner->name}}</a></td>
+                            <td>{{Carbon\Carbon::parse($owner->moveInDate)->format('F j, Y')}}</td>
+                            <td>{{$owner->totalPrice}}</td>
+                            <td>{{$owner->downPayment}}</td>
+                            <td>{{$owner->formOfPayment}}</td>
+                            <td><a href="/transactions/{{$owner->id}}" class="btn btn-secondary">MORE INFO</a></td>
                          </tr>
                          @endforeach
                         </table>
@@ -174,9 +178,9 @@
                       </div>
             </div>
 </div>
-                    {{-- <a class="btn btn-secondary btn-md" role="button" href="/owners/create"><i class="fas fa-user-plus"></i></a> --}}
+                    <a class="btn btn-secondary btn-md" role="button" href="/transactions/create"><i class="fas fa-user-plus"></i></a> 
 
        </div>        
-   
+   <br>
 @endsection
 

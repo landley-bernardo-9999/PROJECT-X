@@ -14,6 +14,7 @@
                     <th>No</th>
                     <th>Profile</th>
                     <th>Name</th>
+                    
                     <th>Mobile</th>
                     <th>Email</th>
                     <th></th>
@@ -24,16 +25,17 @@
                     <td>{{$rowNum++}}</td>
                     <td><img class="card-img-top" style="width: 35px" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap"></td>
                     <td><a href="/owners/{{$owner->id}}">{{$owner->name}}</a></td>
+                    
                     <td>{{$owner->mobileNumber}}</td>
                     <td>{{$owner->emailAddress}}</td>
                     <td>
                         <a href="/owners/{{$owner->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
                     </td>
                     <td>
-                        {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                        {{-- {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
                             {{Form::hidden('_method', 'DELETE')}}  
                             {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                        {!!Form::close()!!}
+                        {!!Form::close()!!} --}}
                     </td>
                        
                 </tr>  

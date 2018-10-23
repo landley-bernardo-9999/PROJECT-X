@@ -36,7 +36,7 @@
                     <p class="card-title">Violations</p>
                 </div> 
             
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                     <a href="/contracts" class="btn btn-secondary"><i class="fas fa-archive fa-4x"></i></a>
                     <p class="card-title">Residents' Contracts</p>
             </div>
@@ -45,7 +45,7 @@
                     <a href="/transactions" class="btn btn-secondary"><i class="fas fa-hands-helping fa-4x"></i></a>
                     <p class="card-title">Owners' Transactions</p>
                 </div>            
-            </div>
+            </div> --}}
 
                   
         </div>

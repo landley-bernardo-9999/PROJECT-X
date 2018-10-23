@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <th>Birthdate</th>
-                        <td>{{$resident->birthDate}}</td>
+                        <td>{{Carbon\Carbon::parse($resident->birthDate)->format('F j, Y')}}</td>
                     </tr>
                     {{-- <tr>
                         <th>Room No</th>
@@ -46,7 +46,7 @@
                     </tr>
                     <tr>
                         <th>Mobile</th>
-                        <td>{{$resident->mobile}}</td>
+                        <td>{{$resident->mobileNumber}}</td>
                     </tr>
                     <tr>
                         <th>Email</th>
@@ -64,31 +64,32 @@
             <div class="row">
                     <div class="col-lg-12">
                         <hr>
-                        <h3>Contracts&nbsp<i class="fas fa-archive"></i></h3>
+                        <h3>Rooms&nbsp<i class="fas fa-store-alt"></i></h3>
                         <br>
                          <div class="panel panel-default">
                         @if(count($contract) > 0)              
                         <table class="table table-striped">
                          <tr>
                             <th>No</th>
-                            <th>Room No</th>
-                            <th>Move-In Charges</th>
+                            <th>Unit No</th>
+                            <th>Rent</th>
+                            <th>Deposit</th>
+                            <th>Term</th>
                             <th>Move-In</th>
                             <th>Move-Out</th>
                             
-                            <th>Security Deposit</th>
                             <th></th>
                             
                          </tr>
                          @foreach($contract as $contract)
                          <tr>
                             <td>{{ $rowNoForContracts++ }}</td>
-                            <td><a href="/contracts/{{$contract->residentRoomNo}}" class="btn btn-secondary">{{ $contract->residentRoomNo }}</a></td>
+                            <td><a href="/rooms/{{$contract->residentRoomNo}}" class="btn btn-secondary">{{ $contract->residentRoomNo }}</a></td>
                             <td>{{ $contract->amountPaid }}</td>
-                            <td>{{ $contract->moveInDate }}</td>
-                            <td>{{ $contract->moveOutDate }}</td>
-                            
                             <td>{{ $contract->securityDeposit}}</td>
+                            <td>{{ $contract->term}}</td>
+                            <td>{{ Carbon\Carbon::parse($contract->moveInDate)->format('F j, Y') }}</td>
+                            <td>{{ Carbon\Carbon::parse($contract->moveOutDate)->format('F j, Y') }}</td>
                             <td><a href="/contracts/{{$contract->id}}" class="btn btn-secondary">MORE INFO</a></td>
                             
                          </tr>
@@ -124,7 +125,7 @@
                          @foreach($repair as $repair)
                          <tr>
                             <td>{{ $rowNoForConcerns++ }}</td>
-                            <td>{{$repair->dateReported}}</td>
+                            <td>{{Carbon\Carbon::parse($repair->dateReported)->format('F j, Y')}}</td>
                             <td>{{$repair->desc}}</td>
                             <td>{{$repair->endorsedTo}}</td>
                             <td>{{$repair->repairStatus}}</td>

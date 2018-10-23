@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <a class="btn btn-secondary btn-md" role="button" href="/contracts"><i class="fas fa-arrow-circle-left"></i></a>
+    <a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>
     <a href="{{$contract->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
     {!!Form::open(['action' => ['ContractsController@destroy', $contract->id], 'method' => 'POST', 'class' =>'float-right'])!!}
     {{Form::hidden('_method', 'DELETE')}}  
@@ -33,11 +33,11 @@
                     </tr>
                     <tr>
                         <th>Move-In</th>
-                        <td>{{$contract->moveInDate}}</td>
+                        <td>{{Carbon\Carbon::parse($contract->moveInDate)->format('F j, Y')}}</td>
                     </tr>
                     <tr>
                         <th>Move-Out</th>
-                        <td>{{$contract->moveOutDate}}</td>
+                        <td>{{Carbon\Carbon::parse($contract->moveOutDate)->format('F j, Y')}}</td>
                     </tr>
                    
                     <tr>

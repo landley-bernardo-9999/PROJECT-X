@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="amountPaid" class="col-md-4 col-form-label text-md-right">Move-In charges</label>
+                    <label for="amountPaid" class="col-md-4 col-form-label text-md-right">Rent</label>
                     <div class="col-md-6">
                         {{Form::number('amountPaid',$contract->amountPaid,['class'=>'form-control'])}}
                     </div>     

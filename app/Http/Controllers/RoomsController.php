@@ -107,7 +107,7 @@ class RoomsController extends Controller
 
         $room->save();
 
-        return redirect('/rooms/'.$room->roomNo)->with('success','Added successfully!');
+        return redirect('/rooms/')->with('success','Added successfully!');
     }
 
     /**
@@ -127,13 +127,16 @@ class RoomsController extends Controller
             ->join('contracts', 'residents.id', '=', 'contracts.residentName')
             ->select('residents.*','contracts.*')
             ->where('residentRoomNo', $roomNo)
-            ->whereIn('residents.residentStatus',['Active', 'Moving-In', 'Moving-Out'])
+            ->whereIn('residents.residentStatus',['Active', 'Moving-In', 'Moving-Out', 'Extended'])
             ->orderBy('contracts.moveOutDate', 'asc')
             ->get();
 
-
-        
-        $owner = Owner::all();
+        $owner_transaction = DB::table('owners')
+            ->join('transactions', 'owners.id', '=', 'transactions.ownerName')
+            ->select('owners.*','transactions.*')
+            ->where('roomNo', $roomNo)
+            ->orderBy('transactions.created_at', 'asc')
+            ->get();
         $repair = Repair::where('roomNo', '=', $roomNo)->get();
 
        return view('rooms.show')->with('residentsRowNo', $residentsRowNo)
@@ -141,7 +144,7 @@ class RoomsController extends Controller
                                 ->with('repairsRowNo', $repairsRowNo)
                                 ->with('room', $room)
                                 ->with('resident_contract', $resident_contract)
-                                ->with('owner', $owner)
+                                ->with('owner', $owner_transaction)
                                 ->with('repair', $repair);
                                    
         

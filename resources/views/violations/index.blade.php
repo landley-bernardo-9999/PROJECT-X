@@ -38,10 +38,10 @@
                         <a href="/violations/{{$violation->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
                     </td>
                     <td>
-                        {!!Form::open(['action' => ['ViolationsController@destroy', $violation->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                        {{-- {!!Form::open(['action' => ['ViolationsController@destroy', $violation->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
                             {{Form::hidden('_method', 'DELETE')}}  
                             {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                        {!!Form::close()!!}
+                        {!!Form::close()!!} --}}
                     </td>
                 </tr>  
         @endforeach   

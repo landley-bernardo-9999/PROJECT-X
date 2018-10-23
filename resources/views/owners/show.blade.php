@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <th>Birthdate</th>
-                        <td>{{$owner->birthDate}}</td>
+                        <td>{{Carbon\Carbon::parse($owner->birthDate)->format('F j, Y')}}</td>
                     </tr>
                     <tr>
                         <th>Email</th>
@@ -44,6 +44,43 @@
             </div>
         
        </div>
+
+       <div class="row">
+        <div class="col-lg-12">
+             <div>
+                 <hr>
+                     <h3>Rooms&nbsp<i class="fas fa-store-alt fa-1x"></i></h3>
+                     <br>
+                      <div class="panel panel-default">
+                     @if(count($transaction) > 0)              
+                     <table class="table table-striped">
+                      <tr>
+                         <th>No</th> 
+                         <th>Unit Number</th>
+                         <th>Move-In</th>
+                         <th>Buying Price</th>
+                         <th>Form Of Payment</th>
+                         <th></th>
+                      </tr>
+                      @foreach($transaction as $transaction)
+                      <tr>
+                         <td>{{ $rowNoForTransactions++ }}</td>
+                         <td>{{$transaction->roomNo}}</td>
+                         <td>{{$transaction->moveInDate}}</td>
+                         <td>{{$transaction->totalPrice}}</td>
+                         <td>{{$transaction->formOfPayment}}</td>
+                         <td><a href="/transactions/{{$transaction->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                      </tr>
+                      @endforeach
+                     </table>
+                     @else
+                     <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
+                     @endif
+                   </div>
+                       <a class="btn btn-secondary btn-md" role="button" href="/transactions/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+             </div>
+             </div>           
+        </div>
         
        <div class="row">
            <div class="col-lg-12">
@@ -67,7 +104,7 @@
                          </tr>
                          @foreach($repair as $repair)
                          <tr>
-                            <td>{{ $rowNo++ }}</td>
+                            <td>{{ $rowNoForConcerns++ }}</td>
                             <td>{{ $repair->dateReported}}</td>
                             <td>{{$repair->name}}</td>
                             <td>{{$repair->desc}}</td>

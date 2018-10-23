@@ -58,10 +58,10 @@
                         <a href="/repairs/{{$repair->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
                     </td>
                     <td>
-                        {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                        {{-- {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
                             {{Form::hidden('_method', 'DELETE')}}  
                             {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                        {!!Form::close()!!}
+                        {!!Form::close()!!} --}}
                     </td>
                 </tr>  
         @endforeach   

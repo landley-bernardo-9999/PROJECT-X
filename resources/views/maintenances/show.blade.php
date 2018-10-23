@@ -16,7 +16,7 @@
                 <table class="table">
                     <tr>
                         <th>Birthdate</th>
-                        <td>{{$maintenances->birthDate}}</td>
+                        <td>{{Carbon\Carbon::parse($maintenances->birthDate)->format('F j, Y')}}</td>
                     <tr>
                     <tr>
                         <th>Employment Status</th>

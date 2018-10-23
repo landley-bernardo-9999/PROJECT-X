@@ -30,6 +30,7 @@ class ContractsController extends Controller
         $registeredRooms = DB::table('rooms')
         ->orderBy('roomNo', 'asc')
         ->select('rooms.*')
+        //  
         ->get();
 
         $registeredResidents = DB::table('residents')
@@ -167,6 +168,6 @@ class ContractsController extends Controller
         $contract = Contract::find($id);
 
         $contract->delete();
-        return redirect('/contracts')->with('success','Deleted successfully!');
+        return redirect('/rooms')->with('success','Deleted successfully!');
     }
 }

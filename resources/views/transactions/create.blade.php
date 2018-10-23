@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/transactions"><i class="fas fa-arrow-circle-left"></i></a>   
+<a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>   
 {!! Form::open(['action'=>'TransactionsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 <div class="container">
         <div class="row justify-content-center">
@@ -13,10 +13,10 @@
 
          
                 <div class="form-group row">
-                        <label for="residenRoomNo" class="col-md-4 col-form-label text-md-right">Room No</label>
+                        <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No</label>
                     
                     <div class="col-md-6">
-                        <select name="residentRoomNo" id="residentRoomNo" class="form-control">
+                        <select name="roomNo" id="roomNo" class="form-control">
                             <option value="" disabled selected>Please select</option>
                                 @foreach($registeredRooms as $registeredRoom)
                             <option value="{{$registeredRoom->roomNo}}">
@@ -26,13 +26,14 @@
                         </select>
                     </div>
                 </div>
+                
 
 
                 <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">Name of the Owner</label>
+                        <label for="ownerName" class="col-md-4 col-form-label text-md-right">Name of the Owner</label>
                     
                     <div class="col-md-6">
-                        <select name="name" id="name" class="form-control">
+                        <select name="ownerName" id="ownerName" class="form-control">
                             <option value="" disabled selected>Please select</option>
                                 @foreach($registeredOwners as $registeredOwner)
                             <option value="{{$registeredOwner->id}}">
@@ -53,7 +54,7 @@
 
 
                 <div class="form-group row">
-                    <label for="totalPrice" class="col-md-4 col-form-label text-md-right">Total Price</label>
+                    <label for="totalPrice" class="col-md-4 col-form-label text-md-right">Buying Price</label>
                     <div class="col-md-6">
                         {{Form::number('totalPrice','',['class'=>'form-control'])}}
                     </div>     

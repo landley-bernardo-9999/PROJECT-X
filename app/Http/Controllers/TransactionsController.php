@@ -7,6 +7,7 @@ use DB;
 use App\Resident;
 use App\Room;
 use App\Owner;
+use App\Transaction;
 
 class TransactionsController extends Controller
 {
@@ -30,6 +31,7 @@ class TransactionsController extends Controller
         $registeredRooms = DB::table('rooms')
         ->orderBy('roomNo', 'asc')
         ->select('rooms.*')
+        // ->where('roomStatus','Vacant')
         ->get();
 
         $registeredOwners = DB::table('owners')
@@ -50,7 +52,7 @@ class TransactionsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required',
+            'ownerName' => 'required',
             "roomNo" => 'required',
             'moveInDate' => 'nullable',
             'totalPrice' => 'nullable',
@@ -62,7 +64,7 @@ class TransactionsController extends Controller
 
         $transaction = new Transaction;
 
-        $transaction->name = $request->input('name');
+        $transaction->ownerName = $request->input('ownerName');
         $transaction->roomNo = $request->input('roomNo');
         $transaction->moveInDate = $request->input('moveInDate');
         $transaction->totalPrice = $request->input('totalPrice');
@@ -85,7 +87,9 @@ class TransactionsController extends Controller
      */
     public function show($id)
     {
-        //
+        $transaction = Transaction::find($id);
+
+        return view('transactions.show')->with('transaction', $transaction);
     }
 
     /**
@@ -96,7 +100,24 @@ class TransactionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $transactions = Transaction::find($id);
+
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('rooms.*')
+        // ->where('roomStatus','Vacant')
+        ->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('owners.*')
+        ->get();
+
+
+
+        return view ('transactions.edit')->with('transactions', $transactions)
+                                         ->with('registeredRooms', $registeredRooms)
+                                         ->with('registeredOwners', $registeredOwners);
     }
 
     /**
@@ -108,7 +129,33 @@ class TransactionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $this->validate($request,[
+            'ownerName' => 'required',
+            "roomNo" => 'required',
+            'moveInDate' => 'nullable',
+            'totalPrice' => 'nullable',
+            'downPayment' => 'nullable',
+            'downPaymentMonthlyAmortization' => 'nullable',
+            'monthlyAmortization' => 'nullable',
+            'formOfPayment' => 'nullable',
+        ]);
+
+        $transaction = Transaction::find($id);
+
+        $transaction->ownerName = $request->input('ownerName');
+        $transaction->roomNo = $request->input('roomNo');
+        $transaction->moveInDate = $request->input('moveInDate');
+        $transaction->totalPrice = $request->input('totalPrice');
+        $transaction->downPayment = $request->input('downPayment');
+        $transaction->downPaymentMonthlyAmortization = $request->input('downPaymentMonthlyAmortization');
+        $transaction->monthlyAmortization = $request->input('monthlyAmortization');
+        $transaction->formOfPayment = $request->input('formOfPayment');
+        
+    
+        $transaction->save();
+
+        return redirect('/transactions/'.$transaction->id)->with('success','Updated successfully!');
     }
 
     /**
@@ -119,6 +166,9 @@ class TransactionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $transaction = Transaction::find($id);
+
+        $transaction->delete();
+        return redirect('/rooms')->with('success','Deleted successfully!');
     }
 }

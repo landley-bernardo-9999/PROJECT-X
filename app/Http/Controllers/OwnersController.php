@@ -103,17 +103,27 @@ class OwnersController extends Controller
      */
     public function show($id)
     {
-        $rowNo = 1;
+        $rowNoForTransactions = 1;
+        $rowNoForConcerns = 1;
         $owner = Owner::find($id);
+
+        $transaction = DB::table('transactions')
+            ->join('owners', 'transactions.ownerName', '=', 'owners.id')
+            ->select('transactions.*')
+            ->where('owners.id','=',$id)
+            ->get();
+
         $repair = DB::table('repairs')
             ->join('owners', 'repairs.name', '=', 'owners.name')
             ->select('repairs.*')
             ->where('owners.id','=',$id)
             ->get();
             
-        return view('owners.show')->with('rowNo', $rowNo)
+        return view('owners.show')->with('rowNoForTransactions', $rowNoForTransactions)
+                                  ->with('rowNoForConcerns', $rowNoForConcerns)
                                   ->with('owner', $owner)
-                                  ->with('repair', $repair);
+                                  ->with('repair', $repair)
+                                  ->with('transaction', $transaction);
                                   
     }
 
