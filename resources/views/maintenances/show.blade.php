@@ -9,7 +9,7 @@
         {!!Form::close()!!} --}}
 <br>
 <br>
-<h1>{{$maintenances->name}}</h1>
+<h3>{{$maintenances->name}}&nbsp<i class="fas fa-wrench"></i></h3>
     <div class="container">
        <div class="row">
             <div class="col-lg-9">
@@ -73,10 +73,10 @@
                 <td>{{$repair->repairStatus}}</td>
                 <td>{{$repair->cost}}</td>
                 <td><a href="/repairs/{{$repair->id}}" class="btn btn-secondary">MORE INFO</a></td>
-                
              </tr>
-             @endforeach
+             @endforeach             
             </table>
+            
             @else
             <div class="alert alert-danger" role="alert"><p>No records of concerns/repairs!</p></div>
             @endif

@@ -35,10 +35,10 @@
                         <a href="/maintenances/{{$maintenance->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
                     </td>
                     <td>
-                        {!!Form::open(['action' => ['MaintenancesController@destroy', $maintenance->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                        {{-- {!!Form::open(['action' => ['MaintenancesController@destroy', $maintenance->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
                             {{Form::hidden('_method', 'DELETE')}}  
                             {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                        {!!Form::close()!!}
+                        {!!Form::close()!!} --}}
                     </td>
                    
                 </tr>  

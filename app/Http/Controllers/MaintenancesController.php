@@ -98,10 +98,10 @@ class MaintenancesController extends Controller
             ->join('maintenances', 'repairs.endorsedTo', '=', 'maintenances.name')
             ->select('repairs.*')
             ->where('maintenances.id', $id)
-            ->get();
+            ->paginate();
         
-          
         $maintenances = Maintenance::find($id);
+        
         return view('maintenances.show')->with('rowNoForRepairs', $rowNoForRepairs)
                                         ->with('maintenances', $maintenances)
                                         ->with('repair', $repair);
