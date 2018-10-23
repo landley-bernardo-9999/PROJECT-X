@@ -3,10 +3,10 @@
 <br>
     <a class="btn btn-secondary btn-md" role="button" href="/repairs"><i class="fas fa-arrow-circle-left"></i></a>
     <a href="{{$repair->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-    {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'float-right'])!!}
+    {{-- {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
         {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-    {!!Form::close()!!}
+    {!!Form::close()!!} --}}
 <br>
 <br>
 <hr>

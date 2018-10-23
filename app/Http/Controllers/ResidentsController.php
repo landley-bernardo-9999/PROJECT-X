@@ -164,7 +164,7 @@ class ResidentsController extends Controller
 
         $contract = DB::table('contracts')
             ->join('residents', 'contracts.residentName', '=', 'residents.id')
-            ->select('contracts.*')
+            ->select('contracts.*', 'residents.*')
             ->where('residents.id','=',$id)
             ->get();
 

@@ -5,10 +5,10 @@
             <a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-store-alt"></i></a>
             
             <a href="{{$owner->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
-            {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'float-right'])!!}
+            {{-- {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-            {!!Form::close()!!}
+            {!!Form::close()!!} --}}
 <br>
 <br>
 <hr>

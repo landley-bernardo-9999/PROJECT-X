@@ -6,70 +6,7 @@
             <a class="btn btn-secondary btn-md" role="button" href="/maintenances/create"><i class="fas fa-user-plus"></i></a>
             <a href="/maintenances" class="btn btn-secondary"><i class="fas fa-wrench"></i>&nbspPersonnels</a>
     </div>
-    <br>
-    <div class="container-fluid">
-            <h3>Schedule of the Maintenance</h3>
-            <div class="row justify-content-center">
-                    
-                <div class="col-md-3 btn" style="border:solid black 1px">
-                    <h3>Monday</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">Armando</li>
-                        <li class="list-group-item">Anand Perez</li>
-                        <li class="list-group-item">Christopher Legapi</li>
-                    </ul>
-                </div>
-                
-                <div class="col-md-3 btn" style="border:solid black 1px">
-                    <h3>Tuesday</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">Armando</li>
-                        <li class="list-group-item">Anand Perez</li>
-                        <li class="list-group-item">Christopher Legapi</li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3 btn" style="border:solid black 1px">
-                    <h3>Wednesday</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">Armando</li>
-                        <li class="list-group-item">Anand Perez</li>
-                        <li class="list-group-item">Christopher Legapi</li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3 btn" style="border:solid black 1px">
-                    <h3>Thursday</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">Armando</li>
-                        <li class="list-group-item">Anand Perez</li>
-                        <li class="list-group-item">Christopher Legapi</li>
-                    </ul>
-                </div>
-            </div>
-            <br>
-        <div class="row justify-content-center">
-                <div class="col-md-3 btn" style="border:solid black 1px">
-                    <h3>Friday</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">Armando</li>
-                        <li class="list-group-item">Anand Perez</li>
-                        <li class="list-group-item">Christopher Legapi</li>
-                    </ul>
-                </div>    
-                <div class="col-md-3 btn" style="border:solid black 1px">
-                    <h3>Saturday</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">Armando</li>
-                        <li class="list-group-item">Anand Perez</li>
-                        <li class="list-group-item">Christopher Legapi</li>
-                    </ul>
-                </div>
-                <div class="col-md-3 btn" style="border:solid black 1px">        
-                    <h3>Sunday</h3>
-                </div>            
-        </div>
-        </div>
+   
    <br>
     @if(count($maintenances) > 0)
     <div class="container"  >

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Maintenance;
+use App\Repair;
 use DB;
 
 class MaintenancesController extends Controller
@@ -92,8 +93,18 @@ class MaintenancesController extends Controller
      */
     public function show($id)
     {
+        $rowNoForRepairs = 1;
+        $repair = DB::table('repairs')
+            ->join('maintenances', 'repairs.endorsedTo', '=', 'maintenances.name')
+            ->select('repairs.*')
+            ->where('maintenances.id', $id)
+            ->get();
+        
+          
         $maintenances = Maintenance::find($id);
-        return view('maintenances.show', array('maintenances' => $maintenances));
+        return view('maintenances.show')->with('rowNoForRepairs', $rowNoForRepairs)
+                                        ->with('maintenances', $maintenances)
+                                        ->with('repair', $repair);
     }
 
     /**

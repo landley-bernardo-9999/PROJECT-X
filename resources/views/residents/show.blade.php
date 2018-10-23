@@ -4,10 +4,10 @@
     <a class="btn btn-secondary btn-md" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i></a>
     <a class="btn btn-secondary btn-md" role="button" href="/rooms"> <i class="fas fa-store-alt"></i></a>
     <a href="{{$resident->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
-    {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'float-right'])!!}
+    {{-- {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
         {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-    {!!Form::close()!!}
+    {!!Form::close()!!} --}}
 <br> 
 <br>
 <hr>
@@ -72,6 +72,7 @@
                          <tr>
                             <th>No</th>
                             <th>Unit No</th>
+                            <th>Status</th>
                             <th>Rent</th>
                             <th>Deposit</th>
                             <th>Term</th>
@@ -85,6 +86,7 @@
                          <tr>
                             <td>{{ $rowNoForContracts++ }}</td>
                             <td><a href="/rooms/{{$contract->residentRoomNo}}" class="btn btn-secondary">{{ $contract->residentRoomNo }}</a></td>
+                            <td>{{ $contract->residentStatus }}</td>
                             <td>{{ $contract->amountPaid }}</td>
                             <td>{{ $contract->securityDeposit}}</td>
                             <td>{{ $contract->term}}</td>
