@@ -30,7 +30,7 @@ class RoomsController extends Controller
      */
     public function index()
     {
-        $rooms = DB::table('rooms')->orderBy('roomNo', 'asc')->get();
+        $rooms = DB::table('rooms')->orderBy('created_at', 'desc')->get();
         $occupied = DB::table('rooms')->where('roomStatus','=', 'Occupied')->get();
         $vacant = DB::table('rooms')->where('roomStatus','=', 'Vacant')->get();
         $reserved = DB::table('rooms')->where('roomStatus','=', 'Reserved')->get();
@@ -107,7 +107,7 @@ class RoomsController extends Controller
 
         $room->save();
 
-        return redirect('/rooms/')->with('success','Added successfully!');
+        return redirect('/rooms/create')->with('success','Added successfully!');
     }
 
     /**
@@ -127,7 +127,7 @@ class RoomsController extends Controller
             ->join('contracts', 'residents.id', '=', 'contracts.residentName')
             ->select('residents.*','contracts.*')
             ->where('residentRoomNo', $roomNo)
-            ->whereIn('residents.residentStatus',['Active', 'Moving-In', 'Moving-Out', 'Extended'])
+            ->whereIn('residents.residentStatus',['Active', 'Moving-In', 'Moving-Out', 'Extended', 'Pending'])
             ->orderBy('contracts.moveOutDate', 'asc')
             ->get();
 

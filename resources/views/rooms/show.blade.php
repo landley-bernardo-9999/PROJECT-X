@@ -89,13 +89,13 @@
                             <td>{{$resident_contract->term}}</td>
                             <td>{{$resident_contract->amountPaid}}</td>
                             <td>{{Carbon\Carbon::parse($resident_contract->moveInDate)->format('F j, Y')}}</td>
-                            <td>{{Carbon\Carbon::parse($resident_contract->moveInDate)->format('F j, Y')}}</td>
+                            <td>{{Carbon\Carbon::parse($resident_contract->moveOutDate)->format('F j, Y')}}</td>
                             <td><a href="/contracts/{{$resident_contract->id}}" class="btn btn-secondary">MORE INFO</td>
                          </tr>
                         @endforeach
                         </table>
                         @else
-                        <div class="alert alert-success" role="alert"><p>No records of residents!</p></div>
+                        <div class="alert alert-danger" role="alert"><p>No records of residents!</p></div>
                         @endif
                       </div>
                       <a class="btn btn-secondary btn-md" role="button" href="/contracts/create"><i class="fas fa-user-plus"></i></a> 
@@ -135,7 +135,7 @@
                                   @endforeach
                                  </table>
                                  @else
-                                 <div class="alert alert-success" role="alert"><p>No records of repairs!</p></div>
+                                 <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
                                  @endif
                                </div>
                                    <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
@@ -173,7 +173,7 @@
                          @endforeach
                         </table>
                         @else
-                        <div class="alert alert-success" role="alert"><p>No records of owners!</p></div>
+                        <div class="alert alert-danger" role="alert"><p>No records of owners!</p></div>
                         @endif
                       </div>
             </div>

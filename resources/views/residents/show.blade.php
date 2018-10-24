@@ -92,7 +92,7 @@
                             <td>{{ $contract->term}}</td>
                             <td>{{ Carbon\Carbon::parse($contract->moveInDate)->format('F j, Y') }}</td>
                             <td>{{ Carbon\Carbon::parse($contract->moveOutDate)->format('F j, Y') }}</td>
-                            <td><a href="/contracts/{{$contract->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                            <td><a href="/contracts/{{$contract->contractId}}" class="btn btn-secondary">MORE INFO</a></td>
                             
                          </tr>
                          @endforeach

@@ -88,10 +88,10 @@ class ContractsController extends Controller
         $contract = Contract::find($id);
         // $contract = DB::table('contracts')
         // ->join('residents', 'contracts.residentName', '=', 'residents.id')
-        // ->select('contracts.*', 'residents.name')
+        // ->select('contracts.*','residents.*')
         // ->where('contracts.id', '=', $id)
         // ->get();
-
+        
         return view ('contracts.show')->with('contract', $contract);
     }
 

@@ -22,9 +22,9 @@
                     <label for="building" class="col-md-4 col-form-label text-md-right">Building</label>
                     <div class="col-md-6">
                     <select class="form-control" name="building" id="building">
-                        <option value="" disabled selected>Please select</option>    
+                        <option value="" disabled selected>Please select</option>     
                         <option value="Harvard">Harvard</option>
-                        <option value="Princeton">Princeton</option>
+                        <option value="Princeton" selected  >Princeton</option>
                         <option value="Wharton">Wharton</option>
                         <option value="Courtyard">Courtyard</option>
                     </select>
@@ -36,7 +36,7 @@
                     <div class="col-md-6">
                     <select class="form-control" name="enrolled" id="enrolled">
                         <option value="" disabled selected>Please select</option>    
-                        <option value="Yes">Yes</option>
+                        <option value="Yes" selected>Yes</option>
                         <option value="No">No</option>
                     </select>
                     </div>   
@@ -46,7 +46,7 @@
                 <div class="form-group row">
                         <label for="shortTermRent" class="col-md-4 col-form-label text-md-right">Short Term Rent</label>
                         <div class="col-md-6">
-                            {{Form::number('shortTermRent',' ',['class'=>'form-control'],['min'>'0'])}}
+                            {{Form::number('shortTermRent','8500',['class'=>'form-control'],['min'>'0'])}}
                        </div>     
                 </div>
 
@@ -54,7 +54,7 @@
                 <div class="form-group row">
                     <label for="longTermRent" class="col-md-4 col-form-label text-md-right">Long Term Rent</label>
                     <div class="col-md-6">
-                        {{Form::number('longTermRent',' ',['class'=>'form-control'],['min'>'0'])}}
+                        {{Form::number('longTermRent','7000',['class'=>'form-control'],['min'>'0'])}}
                    </div>     
                 </div>
 
@@ -63,7 +63,7 @@
                         <div class="col-md-6">
                         <select class="form-control" name="roomStatus" id="roomStatus">
                             <option value="" disabled selected>Please select</option>    
-                            <option value="Occupied">Occupied</option>
+                            <option value="Occupied" selected>Occupied</option>
                             <option value="Vacant">Vacant</option>
                             <option value="Reserved">Reserved</option>
                             <option value="NRFO">NRFO</option>
@@ -74,7 +74,7 @@
                 <div class="form-group row">
                         <label for="" class="col-md-4 col-form-label text-md-right">Size(sqm)</label>
                         <div class="col-md-6">
-                            {{Form::number('size','',['class'=>'form-control'])}}
+                            {{Form::number('size','15',['class'=>'form-control'])}}
                        </div>     
                 </div>
 
