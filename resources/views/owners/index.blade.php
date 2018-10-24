@@ -14,7 +14,8 @@
                     <th>No</th>
                     <th>Profile</th>
                     <th>Name</th>
-                    
+                    <th>Room</th>
+                    <th>Move-In</th>
                     <th>Mobile</th>
                     <th>Email</th>
                     <th></th>
@@ -25,7 +26,8 @@
                     <td>{{$rowNum++}}</td>
                     <td><img class="card-img-top" style="width: 35px" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap"></td>
                     <td><a href="/owners/{{$owner->id}}">{{$owner->name}}</a></td>
-                    
+                    <td><a href="/rooms/{{$owner->roomNo}}">{{$owner->roomNo}}</a></td>
+                    <td>{{Carbon\Carbon::parse($owner->moveInDate)->format('F j, Y')}}</td>
                     <td>{{$owner->mobileNumber}}</td>
                     <td>{{$owner->emailAddress}}</td>
                     <td>

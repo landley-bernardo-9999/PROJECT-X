@@ -29,43 +29,52 @@
                  <h1>{{count($courtyard)}}</h1> 
             </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-4">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2  " type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>    
+            </div>   
+        </div>
     </div>
     <br>
     @if(count($residents) > 0)
-    <div class="container"  >
+    <div class="container-fluid">
             <table class="table table-striped">
                 <tr>
                     <th>No</th>
                     <th>Profile</th>
                     <th>Name</th>
-                    
+                    <th>Room</th>
                     <th>Status</th>
                     <th>Mobile</th>
                     <th>Email</th>
-                    
+                    <th>Move-Out</th>
                     
                     <th></th>
-                    <th></th>
+                    {{-- <th></th> --}}
                 </tr>
                  @foreach($residents as $resident)
                     <tr>
                         <td>{{$rowNum++}}</td>
                         <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap"></td>
-                        <td><a href="/residents/{{$resident->id}}">{{$resident->name}}</a></td>
+                        <td><a href="/residents/{{$resident->residentId}}">{{$resident->name}}</a></td>
+                        <td><a href="/rooms/{{$resident->residentRoomNo}}">{{$resident->residentRoomNo}}</a></td>
                         <td>{{$resident->residentStatus}}</td>
                         <td>{{$resident->mobileNumber}}</td>
                         <td>{{$resident->emailAddress}}</td>
-                        
-                        
+                        <td>{{Carbon\Carbon::parse($resident->birthDate)->format('F j, Y')}}</td>
                         <td>
-                            <a href="/residents/{{$resident->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+                            <a href="/residents/{{$resident->residentId}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
                         </td>
-                        <td>
-                            {{-- {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                        {{-- <td>
+                             {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}  
                                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                            {!!Form::close()!!} --}}
-                        </td>
+                            {!!Form::close()!!} 
+                        </td> --}}
                     </tr>  
                 @endforeach   
             </table> 

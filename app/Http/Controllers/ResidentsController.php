@@ -31,7 +31,12 @@ class ResidentsController extends Controller
     {
         $rowNum = 1;
     
-         $residents = DB::table('residents')->orderBy('name', 'asc')->get();
+        //  $residents = DB::table('residents')->orderBy('name', 'asc')->get();
+        $residents = DB::table('residents')
+        ->join('contracts', 'residents.id', '=', 'contracts.residentName')
+        ->select('residents.*', 'residents.id as residentId','contracts.*')
+        ->orderBy('contracts.moveOutDate','asc')
+        ->get();
 
         $active = DB::table('residents')->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])->get();
         $harvard = DB::table('rooms')

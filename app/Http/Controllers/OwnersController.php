@@ -28,7 +28,11 @@ class OwnersController extends Controller
     public function index()
     {
         $rowNum = 1;
-        $owners = DB::table('owners')->orderBy('name', 'asc')->get();
+        $owners = DB::table('owners')
+        ->join('transactions', 'owners.id', '=', 'transactions.ownerName')
+        ->select('owners.*', 'owners.id as ownerId','transactions.*')
+        ->orderBy('transactions.moveInDate','asc')
+        ->get();
         
         return view('owners.index')->with('owners', $owners)->with('rowNum', $rowNum);
     }
