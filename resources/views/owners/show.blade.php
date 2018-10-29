@@ -56,7 +56,7 @@
                      <table class="table table-striped">
                       <tr>
                          <th>No</th> 
-                         <th>Unit Number</th>
+                         <th>Room</th>
                          <th>Move-In</th>
                          <th>Buying Price</th>
                          <th>Form Of Payment</th>
@@ -65,7 +65,7 @@
                       @foreach($transaction as $transaction)
                       <tr>
                          <td>{{ $rowNoForTransactions++ }}</td>
-                         <td>{{$transaction->roomNo}}</td>
+                         <td><a href="/rooms/{{$transaction->roomNo}}" class="btn btn-secondary">{{$transaction->roomNo}}</a></td>
                          <td>{{$transaction->moveInDate}}</td>
                          <td>{{$transaction->totalPrice}}</td>
                          <td>{{$transaction->formOfPayment}}</td>

@@ -31,7 +31,7 @@ class OwnersController extends Controller
         $owners = DB::table('owners')
         ->join('transactions', 'owners.id', '=', 'transactions.ownerName')
         ->select('owners.*', 'owners.id as ownerId','transactions.*')
-        ->orderBy('transactions.moveInDate','asc')
+        ->orderBy('owners.name','asc')
         ->get();
         
         return view('owners.index')->with('owners', $owners)->with('rowNum', $rowNum);
@@ -46,6 +46,7 @@ class OwnersController extends Controller
     {
         $registeredRooms = DB::table('rooms')
         ->orderBy('roomNo', 'asc')
+        
         ->select('roomNo')
         ->get();
         return view('owners.create')->with('registeredRooms', $registeredRooms);
@@ -60,7 +61,7 @@ class OwnersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required',
+            'name' => 'required|unique:owners',
             'birthDate' => 'nullable',
             'mobileNumber' => 'nullable',
             'emailAddress' => 'nullable',
@@ -95,7 +96,7 @@ class OwnersController extends Controller
 
         $owner->save();
 
-        return redirect('/owners/'.$owner->id)->with('success','Added successfully!');
+        return redirect('/owners/create')->with('success','Added successfully!');
 
     }
 

@@ -172,6 +172,7 @@
                          </tr>
                          @endforeach
                         </table>
+                        
                         @else
                         <div class="alert alert-danger" role="alert"><p>No records of owners!</p></div>
                         @endif

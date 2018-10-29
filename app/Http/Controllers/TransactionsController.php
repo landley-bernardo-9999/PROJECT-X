@@ -30,6 +30,7 @@ class TransactionsController extends Controller
     {
         $registeredRooms = DB::table('rooms')
         ->orderBy('roomNo', 'asc')
+        ->orderBy('roomNo', 'created_at')
         ->select('rooms.*')
         // ->where('roomStatus','Vacant')
         ->get();
@@ -76,7 +77,7 @@ class TransactionsController extends Controller
     
         $transaction->save();
 
-        return redirect('/transactions/'.$transaction->id)->with('success','Added successfully!');
+        return redirect('/transactions/create')->with('success','Added successfully!');
     }
 
     /**

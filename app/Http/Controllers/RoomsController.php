@@ -30,6 +30,9 @@ class RoomsController extends Controller
      */
     public function index()
     {
+        $pm = DB::table('rooms')->where('enrolled', 'No')->get();
+        $accepted = DB::table('rooms')->where('enrolled', 'No')->get();
+        $unaccepted = DB::table('rooms')->where('enrolled', 'No')->get();
         $rooms = DB::table('rooms')->orderBy('created_at', 'desc')->get();
         $occupied = DB::table('rooms')->where('roomStatus','=', 'Occupied')->get();
         $vacant = DB::table('rooms')->where('roomStatus','=', 'Vacant')->get();
@@ -38,7 +41,10 @@ class RoomsController extends Controller
         $totalRooms = count($rooms);
         $occupiedRooms = count($occupied);
         $occupancyRate = round($occupiedRooms/$totalRooms * 100); 
-        return view('rooms.index')->with('rooms', $rooms)
+        return view('rooms.index')->with('pm', $pm)
+                                  ->with('accepted', $accepted)
+                                  ->with('unaccepted', $unaccepted)
+                                  ->with('rooms', $rooms)
                                   ->with('occupied', $occupied)
                                   ->with('vacant', $vacant)
                                   ->with('reserved', $reserved)

@@ -30,14 +30,7 @@
             </div>
         </div>
         <br>
-        <div class="row">
-            <div class="col-lg-4">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2  " type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>    
-            </div>   
-        </div>
+        
     </div>
     <br>
     @if(count($residents) > 0)
@@ -65,7 +58,7 @@
                         <td>{{$resident->residentStatus}}</td>
                         <td>{{$resident->mobileNumber}}</td>
                         <td>{{$resident->emailAddress}}</td>
-                        <td>{{Carbon\Carbon::parse($resident->birthDate)->format('F j, Y')}}</td>
+                        <td>{{Carbon\Carbon::parse($resident->moveOutDate)->format('F j, Y')}}</td>
                         <td>
                             <a href="/residents/{{$resident->residentId}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
                         </td>

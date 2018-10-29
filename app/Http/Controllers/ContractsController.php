@@ -74,7 +74,7 @@ class ContractsController extends Controller
 
         $contract->save();
 
-        return redirect('/contracts/'.$contract->id)->with('success','Added successfully!');
+        return redirect('/contracts/create' )->with('success','Added successfully!');
     }
 
     /**

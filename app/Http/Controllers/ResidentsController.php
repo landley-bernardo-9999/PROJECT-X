@@ -107,7 +107,7 @@ class ResidentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required',
+            'name' => 'required|unique:residents',
             'birthDate' => 'nullable',
             'residentStatus' => 'required',
             'school' => 'nullable',
@@ -151,7 +151,7 @@ class ResidentsController extends Controller
         $resident->save();
 
 
-        return redirect('/residents/'.$resident->id)->with('success','Added successfully!');
+        return redirect('/residents/create')->with('success','Added successfully!');
     }
 
     /**
