@@ -9,12 +9,12 @@
 <br>
 <br>
 <hr>
-<h3>Contracts&nbsp<i class="fas fa-archive"></i></h3>
+<h3>Contract&nbsp<i class="fas fa-archive"></i></h3>
 <br>
-    <div class="container">
+    <div class="container-fluid">
        <div class="row">
             <div class="col-lg-12">
-                <table class="table">
+                <table class="table table-striped">
                     <tr>
                         <th>Room of the Resident</th>
                         <td>{{$contract->residentRoomNo}}</td>
@@ -41,7 +41,7 @@
                     </tr>
                    
                     <tr>
-                        <th>Security Deposit</th>
+                        <th>Security Deposit </th>
                         <td>{{$contract->securityDeposit}}</td>
                     </tr>                  
                     <tr>
@@ -51,6 +51,44 @@
                 </table>
                 </div>             
        </div>
+
+       <div class="row">
+            <div class="col-lg-12">
+            <hr>
+            <h3>Co-Tenants&nbsp<i class="fas fa-users"></i></h3>
+            <br>
+            <div class="panel panel-default">
+            @if(count($coTenants) > 0)               
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Mobile</th>
+                        <th>Email</th>                                   
+                    </tr>
+                </thead>
+                @foreach($coTenants as $row)
+                <tbody>
+                    <tr>
+                        <th>{{ $contractRow++ }}</th>
+                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->residentStatus }}</td>
+                        <td>{{ $row->mobileNumber }}</td>
+                        <td>{{ $row->emailAddress }}</td>
+                    </tr>
+                </tbody> 
+                @endforeach  
+            </table>
+                 @else
+                    <div class="alert alert-danger" role="alert"><p>No co-tenants found!</p></div>
+                @endif
+                    </div> 
+                        <a class="btn btn-secondary btn-md" role="button" href="/coTenants/create"><i class="fas fa-plus-circle fa-1x"></i></a> 
+        </div>
+            <br>
+        </div>
     </div>
      
         

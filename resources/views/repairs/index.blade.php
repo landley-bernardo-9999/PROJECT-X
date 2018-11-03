@@ -51,9 +51,10 @@
                     <td>{{$repair->dateReported}}</td>
                     <td>{{$repair->desc}}</td>
                     <td>{{$repair->endorsedTo}}</td>
-                    
                     <td>{{$repair->repairStatus}}</td>
-                    <td><a href="/repairs/{{$repair->id}}" class="btn btn-secondary"><i class="far fa-eye"></i></a></td>
+                    <td>
+                        <a href="/repairs/{{$repair->id}}" class="btn btn-secondary">MORE INFO</a>
+                    </td>
                     <td>
                         <a href="/repairs/{{$repair->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
                     </td>

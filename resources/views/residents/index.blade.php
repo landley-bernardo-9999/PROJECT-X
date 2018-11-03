@@ -33,48 +33,62 @@
         
     </div>
     <br>
+    <div class="container box">
+            <div class="panel panel-default">
+                
+                <div class="panel-body">
+                    <div class="form-group">
+                        <input type="text" name="search" id="search" class="form-control" placeholder="Search Resident">
+                    </div>
+                    <div class="table-responsive">
+                        <h3 class="text-center">Residents found : <span id="resultsFound"></span> </h3>  
+                    </div>    
+                </div> 
+            </div>
+        </div>
+        <br>
     @if(count($residents) > 0)
-    <div class="container-fluid">
-            <table class="table table-striped">
-                <tr>
-                    <th>No</th>
-                    <th>Profile</th>
-                    <th>Name</th>
-                    <th>Room</th>
-                    <th>Status</th>
-                    <th>Mobile</th>
-                    <th>Email</th>
-                    <th>Move-Out</th>
-                    
-                    <th></th>
+            <table class="table table-hover">
+                <thead class="thead-light"> 
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Profile</th>
+                    <th scope="col">Resident</th>
+                    <th scope="col">Room</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Move-Out</th>
                     {{-- <th></th> --}}
-                </tr>
-                 @foreach($residents as $resident)
+                  </tr>
+                </thead>
+                @foreach($residents as $row)
+                <tbody>
                     <tr>
-                        <td>{{$rowNum++}}</td>
-                        <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$resident->cover_image}}" alt="Card image cap"></td>
-                        <td><a href="/residents/{{$resident->residentId}}">{{$resident->name}}</a></td>
-                        <td><a href="/rooms/{{$resident->residentRoomNo}}">{{$resident->residentRoomNo}}</a></td>
-                        <td>{{$resident->residentStatus}}</td>
-                        <td>{{$resident->mobileNumber}}</td>
-                        <td>{{$resident->emailAddress}}</td>
-                        <td>{{Carbon\Carbon::parse($resident->moveOutDate)->format('F j, Y')}}</td>
-                        <td>
-                            <a href="/residents/{{$resident->residentId}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
-                        </td>
+                        <th scope="row">{{$rowNum++}}</th>
+                        <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$row->cover_image}}" alt="Card image cap"></td>
+                        <td><a href="/residents/{{$row->residentId}}">{{$row->name}}</a></td>
+                        <td><a href="/rooms/{{$row->residentRoomNo}}">{{$row->residentRoomNo}}</a></td>
+                        <td>{{$row->residentStatus}}</td>
+                        <td>{{$row->mobileNumber}}</td>
+                        <td>{{$row->emailAddress}}</td>
+                        <td>{{Carbon\Carbon::parse($row->moveOutDate)->format('F j, Y')}}</td>
                         {{-- <td>
-                             {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                            <a href="/residents/{{$row->residentId}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+                        </td> --}}
+                        {{-- <td>
+                            {!!Form::open(['action' => ['ResidentsController@destroy', $row->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}  
                                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
                             {!!Form::close()!!} 
                         </td> --}}
-                    </tr>  
-                @endforeach   
-            </table> 
+                    </tr>
+                </tbody>
+            @endforeach            
+              </table>
     @else
     <div class="alert alert-danger" role="alert"><p>No residents found!</p></div>
     @endif
-            </div>
 @endsection
 
 

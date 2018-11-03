@@ -66,7 +66,7 @@
              @foreach($repair as $repair)
              <tr>
                 <td>{{ $rowNoForRepairs++ }}</td>
-                <td><a href="/repairs/{{$repair->id}}" class="btn btn-secondary">{{$repair->roomNo}}</a></td>
+                <td><a href="/rooms/{{$repair->roomNo}}" class="btn btn-secondary">{{$repair->roomNo}}</a></td>
                 <td>{{Carbon\Carbon::parse($repair->dateReported)->format('F j, Y')}}</td>
                 <td>{{$repair->name}}</td>
                 <td>{{$repair->desc}}</td>

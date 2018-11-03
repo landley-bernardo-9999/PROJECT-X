@@ -46,4 +46,5 @@ Route::resources([
     'violations' => 'ViolationsController',
     'contracts' => 'ContractsController',
     'transactions' => 'TransactionsController',
+    'coTenants' => 'CoTenantsController',
 ]);

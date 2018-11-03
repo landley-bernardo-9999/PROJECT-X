@@ -7,6 +7,7 @@ use DB;
 use App\Room;
 use App\Resident;
 use App\Contract;
+use App\CoTenant;
 
 class ContractsController extends Controller
 {
@@ -85,14 +86,24 @@ class ContractsController extends Controller
      */
     public function show($id)
     {
+        $contractRow = 1;
         $contract = Contract::find($id);
         // $contract = DB::table('contracts')
         // ->join('residents', 'contracts.residentName', '=', 'residents.id')
         // ->select('contracts.*','residents.*')
         // ->where('contracts.id', '=', $id)
         // ->get();
+
+        $coTenants = DB::table('co_tenants')
+            ->join('contracts', 'co_tenants.principalTenant', '=', 'contracts.residentName')
+            ->select('co_tenants.*','contracts.*')
+            ->where('contracts.id', $id)
+            ->get();
         
-        return view ('contracts.show')->with('contract', $contract);
+            return view ('contracts.show')
+            ->with('contractRow', $contractRow)
+            ->with('contract', $contract)
+            ->with('coTenants', $coTenants);
     }
 
     /**

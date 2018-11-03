@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 use App\Resident;
 use App\Room;
-use App\Violation; 
-use App\CoTenants; 
+use App\Violation;  
+use App\CoTenant;
 use DB;
 use Carbon\Carbon;
 
-class ResidentsController extends Controller
+class CoTenantsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -30,52 +30,7 @@ class ResidentsController extends Controller
      */
     public function index()
     {
-        $rowNum = 1;
-    
-        //  $residents = DB::table('residents')->orderBy('name', 'asc')->get();
-        $residents = DB::table('residents')
-        ->join('contracts', 'residents.id', '=', 'contracts.residentName')
-        ->select('residents.*', 'residents.id as residentId','contracts.*')
-        ->orderBy('contracts.moveOutDate','asc')
-        ->get();
-
-        $active = DB::table('residents')->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])->get();
-        $harvard = DB::table('rooms')
-             ->join('contracts', 'rooms.roomNo', '=', 'contracts.residentRoomNo')
-             ->join('residents', 'residents.id', '=', 'contracts.residentName')
-             ->select('rooms.*', 'residents.*', 'contracts.*')
-             ->where('rooms.building','=','Harvard')
-             ->whereIn('residents.residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-             ->get();
-        $princeton = DB::table('rooms')
-             ->join('contracts', 'rooms.roomNo', '=', 'contracts.residentRoomNo')
-             ->join('residents', 'residents.id', '=', 'contracts.residentName')
-             ->select('rooms.*')
-             ->where('rooms.building','=','Princeton')
-             ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-             ->get();
-        $wharton = DB::table('rooms')
-             ->join('contracts', 'rooms.roomNo', '=', 'contracts.residentRoomNo')
-             ->join('residents', 'residents.id', '=', 'contracts.residentName')
-             ->select('rooms.*')
-             ->where('rooms.building','=','Wharton')
-             //->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-             ->get();
-        $courtyard = DB::table('rooms')
-             ->join('contracts', 'rooms.roomNo', '=', 'contracts.residentRoomNo')
-             ->join('residents', 'residents.id', '=', 'contracts.residentName')
-             ->select('rooms.*')
-             ->where('rooms.building','=','Courtyard')
-             ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
-             ->get();
         
-        return view('residents.index')->with('residents', $residents)
-                                      ->with('active', $active)
-                                      ->with('rowNum', $rowNum)
-                                      ->with('harvard', $harvard)
-                                      ->with('princeton', $princeton)
-                                      ->with('wharton', $wharton)
-                                      ->with('courtyard', $courtyard);
     }
 
     /**
@@ -85,19 +40,19 @@ class ResidentsController extends Controller
      */
     public function create()
     {
-        //$registeredRooms = DB::table('rooms')->get();
-
         $registeredRooms = DB::table('rooms')
         ->orderBy('roomNo', 'asc')
         ->select('roomNo')
         ->get();
 
-        //return $registeredRooms;
-        return view('residents.create')->with('registeredRooms', $registeredRooms);
+        $registeredResidents = DB::table('residents')
+        ->orderBy('name', 'asc')
+        ->select('residents.*')
+        ->get();
 
+        return view('coTenants.create')->with('registeredRooms', $registeredRooms)
+        ->with('registeredResidents', $registeredResidents);
     }
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -108,10 +63,11 @@ class ResidentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|unique:residents',
+            'name' => 'required',
+            'principalTenant' => 'required',
             'birthDate' => 'nullable',
             'residentStatus' => 'required',
-            'school' => 'nullable',
+            'school' =>'nullable',
             'course' => 'nullable',
             'yearLevel' => 'nullable',
             'mobileNumber' => 'nullable',
@@ -119,6 +75,7 @@ class ResidentsController extends Controller
             'cover_image' => 'image|nullable|max:1999',
         ]);
 
+        
          //Handle File Upload
          if($request->hasFile('cover_image')){
             //Get filename with the extension
@@ -130,30 +87,32 @@ class ResidentsController extends Controller
             //Filename to store
             $fileNameToStore = $filename.' '.time().' '.$extension;
             //Upload Image
-            $path = $request->file('cover_image')->storeAs('public/resident_images',$fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/coTenant_images',$fileNameToStore);
         }else{
             $fileNameToStore = 'noimage.jpg';
         }
 
 
         //Add Room
-        $resident = new Resident;
+        $coTenant = new CoTenant;
 
-        $resident->name = $request->input('name');
-        $resident->birthDate = $request->input('birthDate');
-        $resident->residentStatus = $request->input('residentStatus');
-        $resident->school = $request->input('school');
-        $resident->course =$request->input('course');
-        $resident->yearLevel = $request->input('yearLevel');
-        $resident->mobileNumber = $request->input('mobileNumber');
-        $resident->emailAddress = $request->input('emailAddress');
-        $resident->cover_image = $fileNameToStore;
+        $coTenant->name = $request->input('name');
+        $coTenant->principalTenant = $request->input('principalTenant');
+        $coTenant->birthDate = $request->input('birthDate');
+        $coTenant->residentStatus = $request->input('residentStatus');
+        $coTenant->school = $request->input('school');
+        $coTenant->course =$request->input('course');
+        $coTenant->yearLevel = $request->input('yearLevel');
+        $coTenant->mobileNumber = $request->input('mobileNumber');
+        $coTenant->emailAddress = $request->input('emailAddress');
+        $coTenant->cover_image = $fileNameToStore;
 
-        $resident->save();
+        $coTenant->save();
 
 
-        return redirect('/residents/create')->with('success','Added successfully!');
+        return redirect('/coTenants/create')->with('success','Added successfully!');
     }
+
 
     /**
      * Display the specified resource.
@@ -186,9 +145,7 @@ class ResidentsController extends Controller
             ->where('residents.id','=',$id)
             ->get();
 
-        
-
-        return view('residents.show')->with('rowNoForContracts', $rowNoForContracts)
+            return view('coTenants.show')->with('rowNoForContracts', $rowNoForContracts)
                                      ->with('rowNoForConcerns', $rowNoForConcerns)
                                      ->with('rowNoForViolations', $rowNoForViolations)
                                      ->with('resident',$resident)
@@ -205,12 +162,12 @@ class ResidentsController extends Controller
      */
     public function edit($id)
     {
-        $residents = Resident::find ($id);
+        $coTenant = CoTenant::find ($id);
         $registeredRooms = DB::table('rooms')
         ->orderBy('roomNo', 'asc')
         ->select('roomNo')
         ->get();
-        return view('residents.edit')->with('resident',$residents)->with('registeredRooms', $registeredRooms);
+        return view('coTenant.edit')->with('coTenant',$coTenant)->with('registeredRooms', $registeredRooms);
     }
 
     /**
@@ -224,9 +181,10 @@ class ResidentsController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
+            'principalTenant' => 'required',
             'birthDate' => 'nullable',
             'residentStatus' => 'required',
-            'school' => 'nullable',
+            'school' =>'nullable',
             'course' => 'nullable',
             'yearLevel' => 'nullable',
             'mobileNumber' => 'nullable',
@@ -234,6 +192,7 @@ class ResidentsController extends Controller
             'cover_image' => 'image|nullable|max:1999',
         ]);
 
+        
          //Handle File Upload
          if($request->hasFile('cover_image')){
             //Get filename with the extension
@@ -251,22 +210,27 @@ class ResidentsController extends Controller
         }
 
 
-        //Add Resident
-        $resident = Resident::find($id);
-        $resident->name = $request->input('name');
-        $resident->birthDate = $request->input('birthDate');
-        $resident->residentStatus = $request->input('residentStatus');
-        $resident->school = $request->input('school');
-        $resident->course =$request->input('course');
-        $resident->yearLevel = $request->input('yearLevel');
-        $resident->mobileNumber = $request->input('mobileNumber');
-        $resident->emailAddress = $request->input('emailAddress');
-        if($request->hasFile('cover_image')){
-        $resident->cover_image = $fileNameToStore;
-        }
-        $resident->save();
-        return redirect('/residents/'.$resident->id)->with('success', 'Updated successfully!');
+        //Add Room
+        $coTenant = CoTenant::find($id);
 
+        $coTenant->name = $request->input('name');
+        $coTenant->principalTenant = $request->input('principalTenant');
+        $coTenant->birthDate = $request->input('birthDate');
+        $coTenant->residentStatus = $request->input('residentStatus');
+        $coTenant->school = $request->input('school');
+        $coTenant->course =$request->input('course');
+        $coTenant->yearLevel = $request->input('yearLevel');
+        $coTenant->mobileNumber = $request->input('mobileNumber');
+        $coTenant->emailAddress = $request->input('emailAddress');
+        if($request->hasFile('cover_image'))
+        {
+            $coTenant->cover_image = $fileNameToStore;
+        }
+
+        $coTenant->save();
+
+
+        return redirect('/coTenants/'.$coTenant->id)->with('success','Edited successfully!');
     }
 
     /**
@@ -277,11 +241,11 @@ class ResidentsController extends Controller
      */
     public function destroy($id)
     {
-        $resident = Resident::find($id);
-        if($resident->cover_image != 'noimage.jpg'){
-            Storage::delete('public/resident_images/'.$resident->cover_image);
+        $coTenant = CoTenant::find($id);
+        if($coTenant->cover_image != 'noimage.jpg'){
+            Storage::delete('public/coTenant_images/'.$coTenant->cover_image);
         }
-        $resident->delete();
+        $coTenant->delete();
         return redirect('/residents')->with('success','Deleted successfully!');
     }
 }
