@@ -1,5 +1,8 @@
 <?php
-
+ use Illuminate\Support\Facades\Input;
+ use Illuminate\Database\Query\Builder;
+ use App\Residents;
+ use App\Contracts;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,3 +51,6 @@ Route::resources([
     'transactions' => 'TransactionsController',
     'coTenants' => 'CoTenantsController',
 ]);
+    
+Route::get('/', 'SearchController@index');
+Route::get('/action', 'SearchController@action')->name('search.action');

@@ -59,7 +59,7 @@ class ResidentsController extends Controller
              ->join('residents', 'residents.id', '=', 'contracts.residentName')
              ->select('rooms.*')
              ->where('rooms.building','=','Wharton')
-             //->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
+             ->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])
              ->get();
         $courtyard = DB::table('rooms')
              ->join('contracts', 'rooms.roomNo', '=', 'contracts.residentRoomNo')
@@ -85,16 +85,12 @@ class ResidentsController extends Controller
      */
     public function create()
     {
-        //$registeredRooms = DB::table('rooms')->get();
-
         $registeredRooms = DB::table('rooms')
         ->orderBy('roomNo', 'asc')
         ->select('roomNo')
         ->get();
 
-        //return $registeredRooms;
         return view('residents.create')->with('registeredRooms', $registeredRooms);
-
     }
 
 

@@ -52,7 +52,7 @@
                 </div>             
        </div>
 
-       <div class="row">
+       {{-- <div class="row">
             <div class="col-lg-12">
             <hr>
             <h3>Co-Tenants&nbsp<i class="fas fa-users"></i></h3>
@@ -88,7 +88,7 @@
                         <a class="btn btn-secondary btn-md" role="button" href="/coTenants/create"><i class="fas fa-plus-circle fa-1x"></i></a> 
         </div>
             <br>
-        </div>
+        </div> --}}
     </div>
      
         

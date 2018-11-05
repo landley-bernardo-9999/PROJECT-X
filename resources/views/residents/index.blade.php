@@ -32,23 +32,9 @@
         <br>
         
     </div>
-    <br>
-    <div class="container box">
-            <div class="panel panel-default">
-                
-                <div class="panel-body">
-                    <div class="form-group">
-                        <input type="text" name="search" id="search" class="form-control" placeholder="Search Resident">
-                    </div>
-                    <div class="table-responsive">
-                        <h3 class="text-center">Residents found : <span id="resultsFound"></span> </h3>  
-                    </div>    
-                </div> 
-            </div>
-        </div>
-        <br>
-    @if(count($residents) > 0)
-            <table class="table table-hover">
+        <div class="container-fluid">
+            @if(count($residents) > 0)
+            <table class="table table-hover table-striped table-borderless table-condensed">
                 <thead class="thead-light"> 
                   <tr>
                     <th scope="col">#</th>
@@ -62,8 +48,8 @@
                     {{-- <th></th> --}}
                   </tr>
                 </thead>
-                @foreach($residents as $row)
                 <tbody>
+                    @foreach($residents as $row)
                     <tr>
                         <th scope="row">{{$rowNum++}}</th>
                         <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$row->cover_image}}" alt="Card image cap"></td>
@@ -73,22 +59,23 @@
                         <td>{{$row->mobileNumber}}</td>
                         <td>{{$row->emailAddress}}</td>
                         <td>{{Carbon\Carbon::parse($row->moveOutDate)->format('F j, Y')}}</td>
-                        {{-- <td>
-                            <a href="/residents/{{$row->residentId}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
-                        </td> --}}
-                        {{-- <td>
-                            {!!Form::open(['action' => ['ResidentsController@destroy', $row->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
-                                {{Form::hidden('_method', 'DELETE')}}  
-                                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                            {!!Form::close()!!} 
-                        </td> --}}
+                         {{-- <td>
+                        <a href="/residents/{{$row->residentId}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+                    </td> --}}
+                    {{-- <td>
+                        {!!Form::open(['action' => ['ResidentsController@destroy', $row->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                            {{Form::hidden('_method', 'DELETE')}}  
+                            {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
+                        {!!Form::close()!!} 
+                    </td> --}}
                     </tr>
+                    @endforeach
                 </tbody>
-            @endforeach            
               </table>
-    @else
-    <div class="alert alert-danger" role="alert"><p>No residents found!</p></div>
-    @endif
+              @else
+              <div class="alert alert-danger" role="alert"><p>No residents found!</p></div>
+              @endif
+        </div>
 @endsection
 
 

@@ -61,7 +61,7 @@
     </div>    
    <br>
     @if(count($rooms) > 0)
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             @foreach($rooms as $room)
                 @if($room->roomStatus == 'Occupied')

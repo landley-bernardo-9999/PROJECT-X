@@ -2,14 +2,14 @@
 @section('content')
 <br>
 
-    <div class="container" >
+    <div class="container-fluid" >
             <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
             <a class="btn btn-secondary btn-md" role="button" href="/violations/create"><i class="fas fa-plus-circle fa-1x"></i></a>
             <a href="/violations" class="btn btn-secondary"><i class="fas fa-user-times">&nbspViolations</i></a>
     </div>
    <br>
     @if(count($violations) > 0)
-    <div class="container"  >
+    <div class="container-fluid" >
             <table class="table table-striped">
                 <tr>
                     <th>No</th>

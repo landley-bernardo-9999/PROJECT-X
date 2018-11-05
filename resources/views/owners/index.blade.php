@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <div class="container" >
+    <div class="container-fluid" >
             <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
             <a class="btn btn-secondary btn-md" role="button" href="/owners/create"><i class="fas fa-user-plus"></i></a>
             <a href="/owners" class="btn btn-secondary"><i class="fas fa-user-tie"></i>&nbspOwners</a>
         </div>
    <br>
     @if(count($owners) > 0)
-    <div class="container"  >
+    <div class="container-fluid"  >
             <table class="table table-striped">
                 <tr>
                     <th>No</th>
