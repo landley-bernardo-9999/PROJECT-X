@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <a class="btn btn-secondary btn-md" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i></a>
-    <a class="btn btn-secondary btn-md" role="button" href="/rooms"> <i class="fas fa-store-alt"></i></a>
-    <a href="{{$resident->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+    <a class="btn btn-dark" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    <a class="btn btn-dark" role="button" href="/rooms"> <i class="fas fa-store-alt"></i>&nbspROOMS</a>
+    <a href="{{$resident->id}}/edit" class="btn btn-dark float-right" ><i class="fas fa-user-edit"></i>&nbspEDIT</a>
     {{-- {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
         {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
@@ -12,6 +12,7 @@
 <br>
 <hr>
 <h3>Resident&nbsp<i class="fas fa-users"></i></h3>
+<br>
     <div class="container-fluid">
        <div class="row">
             <div class="col-lg-9">
@@ -82,14 +83,14 @@
                 @foreach($contract as $contract)
                     <tr>
                         <td>{{ $rowNoForContracts++ }}</td>
-                        <td><a href="/rooms/{{$contract->residentRoomNo}}" class="btn btn-secondary">{{ $contract->residentRoomNo }}</a></td>
+                        <td><a href="/rooms/{{$contract->residentRoomNo}}" class="btn btn-primary">{{ $contract->residentRoomNo }}</a></td>
                         <td>{{ $contract->residentStatus }}</td>
                         <td>{{ $contract->amountPaid }}</td>
                         <td>{{ $contract->securityDeposit}}</td>
                         <td>{{ $contract->term}}</td>
                         <td>{{ Carbon\Carbon::parse($contract->moveInDate)->format('F j, Y') }}</td>
                         <td>{{ Carbon\Carbon::parse($contract->moveOutDate)->format('F j, Y') }}</td>
-                        <td><a href="/contracts/{{$contract->contractId}}" class="btn btn-secondary">MORE INFO</a></td>        
+                        <td><a href="/contracts/{{$contract->contractId}}" class="btn btn-info">CONTRACT</a></td>        
                     </tr>
                 @endforeach
                 </tbody>   
@@ -98,7 +99,7 @@
                     <div class="alert alert-danger" role="alert"><p>No records of contracts!</p></div>
                 @endif
                     </div>
-                        <a class="btn btn-secondary btn-md" role="button" href="/contracts/create"><i class="fas fa-plus-circle fa-1x"></i></a> 
+                        <a class="btn btn-warning" role="button" href="/contracts/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD ROOM</a> 
         </div>
             <br>
         </div>
@@ -140,7 +141,7 @@
                         <div class="alert alert-danger" role="alert"><p>No records of concerns/repairs!</p></div>
                         @endif
                       </div>
-                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a> 
+                          <a class="btn btn-warning" role="button" href="/repairs/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a> 
                 </div>
                 <br>
                     </div>
@@ -183,7 +184,7 @@
                             <div class="alert alert-danger" role="alert"><p>No records of violations!</p></div>
                             @endif
                           </div>
-                              <a class="btn btn-secondary btn-md" role="button" href="/violations/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+                              <a class="btn btn-warning" role="button" href="/violations/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD VIOLATION</a>  
                     </div>
                         <br>      
                         </div>         

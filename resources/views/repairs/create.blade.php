@@ -33,6 +33,7 @@
                 <div class="col-md-6">
                     <select name="name" id="name" class="form-control">
                         <option value="" disabled selected>Please select</option>
+                        <option value="None">None</option>
                             @foreach($registeredResidentsAndOwners as $registeredResidentAndOwner)
                         <option value="{{$registeredResidentAndOwner->name}}">
                             {{$registeredResidentAndOwner->name}}

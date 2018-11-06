@@ -71,7 +71,7 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'roomNo' => 'required',
+            'roomNo' => 'required|unique:rooms',
             'building' => 'required',
             'enrolled' => 'required',
             'longTermRent' => 'required',

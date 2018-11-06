@@ -8,7 +8,7 @@
             <div class="col-md-7">
                 <div class="card"style="padding:6%">
                     <div class="card-header">
-                        <h3>Add Room</h3>
+                        <h3>Room Information</h3>
                     </div>
                 <br>
                 <div class="form-group row">

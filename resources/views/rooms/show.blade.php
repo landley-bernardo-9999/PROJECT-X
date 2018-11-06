@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>
-    <a href="{{$room->roomNo}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+    <a class="btn btn-dark" role="button" href="/rooms" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    <a href="{{$room->roomNo}}/edit" class="btn btn-dark float-right" style="width:155px" ><i class="fas fa-edit"></i>&nbspEDIT</a>
     {{-- {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo], 'method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
@@ -62,13 +62,14 @@
         <hr>
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>Residents&nbsp<i class="fas fa-users"></i></h3>
+                    
+                    <h3>Residents&nbsp <i class="fas fa-users"></i></h3>
                     <br>
                     <div class="panel panel-default">
                         @if(count($resident_contract) > 0)             
                         <table class="table table-striped">
                          <tr>
-                            <th>No</th>
+                            <th>#</th>
                             <th>Profile</th>
                             <th>Name</th>
                             <th>Status</th>
@@ -81,16 +82,16 @@
                          </tr>
                         @foreach($resident_contract as $resident_contract)
                          <tr>
-                            <td>{{ $residentsRowNo++ }}</td>
+                            <th>{{ $residentsRowNo++ }}</th>
                             <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$resident_contract->cover_image}}" alt="Card image cap"></td>
-                            <td><a href="/residents/{{$resident_contract->residentName}}" class="btn btn-secondary">{{$resident_contract->name}}</a></td>
+                            <td><a href="/residents/{{$resident_contract->residentName}}" class="btn btn-primary">{{$resident_contract->name}}</a></td>
                                 
                             <td>{{$resident_contract->residentStatus}}</td>
                             <td>{{$resident_contract->term}}</td>
                             <td>{{$resident_contract->amountPaid}}</td>
                             <td>{{Carbon\Carbon::parse($resident_contract->moveInDate)->format('F j, Y')}}</td>
                             <td>{{Carbon\Carbon::parse($resident_contract->moveOutDate)->format('F j, Y')}}</td>
-                            <td><a href="/contracts/{{$resident_contract->id}}" class="btn btn-secondary">MORE INFO</td>
+                            <td><a href="/contracts/{{$resident_contract->id}}" class="btn btn-info">MORE INFO</td>
                          </tr>
                         @endforeach
                         </table>
@@ -98,7 +99,7 @@
                         <div class="alert alert-danger" role="alert"><p>No records of residents!</p></div>
                         @endif
                       </div>
-                      <a class="btn btn-secondary btn-md" role="button" href="/contracts/create"><i class="fas fa-user-plus"></i></a> 
+                      <a class="btn btn-warning" role="button" href="/contracts/create" style="width:150px">ADD RESIDENT</a> 
                 </div>
             </div>
             <hr>
@@ -109,20 +110,23 @@
                                   <div class="panel panel-default">
                                  @if(count($repair) > 0)              
                                  <table class="table table-striped">
-                                  <tr>
-                                     <th>No</th>
-                                     <th>Date Reported</th>
-                                     <th>Reported By</th>
-                                     <th>Description</th>
-                                     <th>Endorse To</th>
-                                     <th>Status</th>
-                                     
-                                     <th>Cost</th>
-                                     <th></th>
+                                    <thead>
+                                            <tr>
+                                                    <th>#</th>
+                                                    <th>Date Reported</th>
+                                                    <th>Reported By</th>
+                                                    <th>Description</th>
+                                                    <th>Endorse To</th>
+                                                    <th>Status</th>
+                                                    
+                                                    <th>Cost</th>
+                                                    <th></th>
+                                    </thead>
                                   </tr>
+                                  <tbody>
                                   @foreach($repair as $repair)
                                   <tr>
-                                     <td>{{ $repairsRowNo++ }}</td>
+                                     <th>{{ $repairsRowNo++ }}</th>
                                      <td>{{ $repair->dateReported}}</td>
                                      <td>{{$repair->name}}</td>
                                      <td>{{$repair->desc}}</td>
@@ -130,15 +134,17 @@
                                      <td>{{$repair->repairStatus}}</td>
                                      
                                      <td>{{$repair->cost}}</td>
-                                     <td><a href="/repairs/{{$repair->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                                     <td><a href="/repairs/{{$repair->id}}" class="btn btn-info">MORE INFO</a></td>
                                   </tr>
                                   @endforeach
+                                </tbody>
+                                
                                  </table>
                                  @else
                                  <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
                                  @endif
                                </div>
-                                   <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+                                   <a class="btn btn-warning" role="button" href="/repairs/create" style="width:150px">ADD REPAIR&nbsp</a>  
                          </div>
                 </div>
                 <hr>
@@ -150,7 +156,7 @@
                         @if(count($owner) > 0)              
                         <table class="table table-striped">
                          <tr>
-                            <th>No</th>
+                            <th>#</th>
                             <th>Profile</th>
                             <th>Name</th>
                             <th>Move-In</th>
@@ -163,12 +169,12 @@
                          <tr>
                             <td>{{ $ownersRowNo++ }}</td>
                             <td><img class="card-img-top" style="width:35px" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap"></td>
-                            <td><a href="/owners/{{$owner->ownerName}}" class="btn btn-secondary">{{$owner->name}}</a></td>
+                            <td><a href="/owners/{{$owner->ownerName}}" class="btn btn-primary">{{$owner->name}}</a></td>
                             <td>{{Carbon\Carbon::parse($owner->moveInDate)->format('F j, Y')}}</td>
                             <td>{{$owner->totalPrice}}</td>
                             <td>{{$owner->downPayment}}</td>
                             <td>{{$owner->formOfPayment}}</td>
-                            <td><a href="/transactions/{{$owner->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                            <td><a href="/transactions/{{$owner->id}}" class="btn btn-info">MORE INFO</a></td>
                          </tr>
                          @endforeach
                         </table>
@@ -179,7 +185,7 @@
                       </div>
             </div>
 </div>
-                    <a class="btn btn-secondary btn-md" role="button" href="/transactions/create"><i class="fas fa-user-plus"></i></a> 
+                    <a class="btn btn-warning" role="button" href="/transactions/create" style="width:150px" >ADD OWNER&nbsp</a> 
 
        </div>        
    <br>

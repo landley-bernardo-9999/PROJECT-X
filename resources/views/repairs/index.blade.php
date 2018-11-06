@@ -29,42 +29,44 @@
  <br>
     @if(count($repairs) > 0)
     <div class="container"  >
-            <table class="table table-striped">
-                <tr>
-                    <th>No</th>
-                    <th>Room No</th>
-                    <th>Reported By</th>
-                    <th>Date Reported</th>
-                    <th>Description</th>
-                    <th>Endorsed To</th>
-                    
-                    <th>Status</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Room</th>
+                        <th>Reported By</th>
+                        <th>Date Reported</th>
+                        <th>Description</th>
+                        <th>Endorsed To</th> 
+                        <th>Status</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
                  @foreach($repairs as $repair)
-                <tr>
-                    <td>{{$rowNum++}}</td>
-                    <td><a href="/rooms/{{$repair->roomNo}}">{{$repair->roomNo}}</a></td>
-                    <td>{{$repair->name}}</td>
-                    <td>{{$repair->dateReported}}</td>
-                    <td>{{$repair->desc}}</td>
-                    <td>{{$repair->endorsedTo}}</td>
-                    <td>{{$repair->repairStatus}}</td>
-                    <td>
-                        <a href="/repairs/{{$repair->id}}" class="btn btn-secondary">MORE INFO</a>
-                    </td>
-                    <td>
-                        <a href="/repairs/{{$repair->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-                    </td>
-                    <td>
-                        {{-- {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
-                            {{Form::hidden('_method', 'DELETE')}}  
-                            {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                        {!!Form::close()!!} --}}
-                    </td>
-                </tr>  
+                <tbody>
+                        <th>{{$rowNum++}}</th>
+                        <td><a href="/rooms/{{$repair->roomNo}}">{{$repair->roomNo}}</a></td>
+                        <td>{{$repair->residentName}}</td>
+                        <td>{{Carbon\Carbon::parse($repair->dateReported)->format('F j, Y')}}</td>
+                        <td>{{$repair->desc}}</td>
+                        <td><a href="/maintenances/{{$repair->id}}">{{$repair->endorsedTo}}</a></td>
+                        <td>{{$repair->repairStatus}}</td>
+                        <td>
+                            <a href="/repairs/{{$repair->repairsId}}" class="btn btn-info">MORE INFO</a>
+                        </td>
+                        <td>
+                            <a href="/repairs/{{$repair->repairsId}}/edit" class="btn btn-warning">EDIT</a>
+                        </td>
+                        <td>
+                            {{-- {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                                {{Form::hidden('_method', 'DELETE')}}  
+                                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
+                            {!!Form::close()!!} --}}
+                        </td>
+                     
+                </tbody>
         @endforeach   
             </table>
             

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
-<a class="btn btn-secondary btn-md" role="button" href="/residents/create"><i class="fas fa-user-plus"></i></a>
-<a href="/residents" class="btn btn-secondary"><i class="fas fa-users"></i>&nbspResidents</a>
+<a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+<a class="btn btn-warning float-right" role="button" href="/residents/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD RESIDENT</a>
+<a href="/residents" class="btn btn-dark" style="width:155px"><i class="fas fa-users"></i>&nbspRESIDENTS</a>
 <br>
 <br>
 <div class="container-fluid">
@@ -34,8 +34,8 @@
     </div>
         <div class="container-fluid">
             @if(count($residents) > 0)
-            <table class="table table-hover table-striped table-borderless table-condensed">
-                <thead class="thead-light"> 
+            <table class="table table-hover table-striped">
+                <thead class="thead-dark"> 
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Profile</th>
@@ -48,8 +48,9 @@
                     {{-- <th></th> --}}
                   </tr>
                 </thead>
+                
                 <tbody>
-                    @foreach($residents as $row)
+                        @foreach($residents as $row)
                     <tr>
                         <th scope="row">{{$rowNum++}}</th>
                         <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$row->cover_image}}" alt="Card image cap"></td>
@@ -71,6 +72,7 @@
                     </tr>
                     @endforeach
                 </tbody>
+              
               </table>
               @else
               <div class="alert alert-danger" role="alert"><p>No residents found!</p></div>

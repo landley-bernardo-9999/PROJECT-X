@@ -27,6 +27,8 @@
 <body>
     <div id="app">
         @include('includes.navbar')
+        <hr class="my-0">
+        <br><br>
         <div class="container">
             @include('includes.messages')
             @yield('content')

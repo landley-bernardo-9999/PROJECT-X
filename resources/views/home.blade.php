@@ -8,9 +8,6 @@
     @endif
     <div class="container text-center">
             <div class="row">
-                <br><br><br>
-            </div>
-            <div class="row">
                     <!--Room management icon-->
                     <div class="col-sm-4">
                         <a href="propertymgmt" class="btn btn-secondary"><i class="fas fa-city fa-4x"></i></a>

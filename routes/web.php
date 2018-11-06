@@ -52,5 +52,4 @@ Route::resources([
     'coTenants' => 'CoTenantsController',
 ]);
     
-Route::get('/', 'SearchController@index');
-Route::get('/action', 'SearchController@action')->name('search.action');
+

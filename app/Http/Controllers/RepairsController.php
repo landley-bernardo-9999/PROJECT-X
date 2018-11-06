@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Repair;
 use App\Room;
 use DB;
+use App\Maintenances;
 
 class RepairsController extends Controller
 {
@@ -28,7 +29,13 @@ class RepairsController extends Controller
     public function index()
     {
         $rowNum = 1;
-        $repairs = DB::table('repairs')->get();
+        $repairs = DB::table('repairs')
+        ->join('maintenances', 'repairs.endorsedTo', '=', 'maintenances.name')
+            
+        ->select('repairs.*','repairs.id as repairsId', 'maintenances.*', 'repairs.name as residentName')
+        ->orderBy('repairs.created_at','asc')
+        ->get();
+
         $pending = DB::table('repairs')->where('repairStatus', 'pending')->get();
         $ongoing = DB::table('repairs')->where('repairStatus', 'ongoing')->get();
         $closed = DB::table('repairs')->where('repairStatus', 'closed' ) ->get();

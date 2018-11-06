@@ -8,7 +8,7 @@
             <div class="col-md-7">
                 <div class="card"  style="padding:6%">
                     <div class="card-header">
-                        <h3>Add Repair</h3>
+                        <h3>Edit Repair</h3>
                     </div>
                 <br>
                 <!--Select Room No of the resident or owner-->
@@ -34,6 +34,7 @@
                 <div class="col-md-6">
                     <select name="name" id="name" class="form-control">
                         <option value="{{$repair->name}}" selected>{{$repair->name}}</option>
+                        <option value="None">None</option>
                             @foreach($registeredResidentsAndOwners as $registeredResidentAndOwner)
                         <option value="{{$registeredResidentAndOwner->name}}">
                             {{$registeredResidentAndOwner->name}}
