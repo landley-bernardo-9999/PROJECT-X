@@ -31,9 +31,10 @@ class RoomsController extends Controller
     public function index()
     {
         $pm = DB::table('rooms')->where('enrolled', 'No')->get();
-        $accepted = DB::table('rooms')->where('enrolled', 'No')->get();
-        $unaccepted = DB::table('rooms')->where('enrolled', 'No')->get();
+        $accepted = DB::table('rooms')->where('isAccepted', 'Yes')->get();
+        $unaccepted = DB::table('rooms')->where('isAccepted', 'No')->get();
         $rooms = DB::table('rooms')->orderBy('created_at', 'desc')->get();
+        $leasing = DB::table('rooms')->where('enrolled', 'yes')->get();
         $occupied = DB::table('rooms')->where('roomStatus','=', 'Occupied')->get();
         $vacant = DB::table('rooms')->where('roomStatus','=', 'Vacant')->get();
         $reserved = DB::table('rooms')->where('roomStatus','=', 'Reserved')->get();
@@ -42,6 +43,7 @@ class RoomsController extends Controller
         $occupiedRooms = count($occupied);
         $occupancyRate = round($occupiedRooms/$totalRooms * 100); 
         return view('rooms.index')->with('pm', $pm)
+                                  ->with('leasing', $leasing)   
                                   ->with('accepted', $accepted)
                                   ->with('unaccepted', $unaccepted)
                                   ->with('rooms', $rooms)
@@ -74,6 +76,7 @@ class RoomsController extends Controller
             'roomNo' => 'required|unique:rooms',
             'building' => 'required',
             'enrolled' => 'required',
+            'isAccepted' => 'required',
             'longTermRent' => 'required',
             'shortTermRent' => 'required',
             'roomStatus' => 'required',
@@ -104,6 +107,7 @@ class RoomsController extends Controller
         $room->roomNo = $request->input('roomNo'); 
         $room->building = $request->input('building');
         $room->enrolled = $request->input('enrolled');
+        $room->isAccepted = $request->input('isAccepted');
         $room->longTermRent = $request->input('longTermRent');
         $room->shortTermRent = $request->input('shortTermRent');
         $room->roomStatus = $request->input('roomStatus');
@@ -181,6 +185,7 @@ class RoomsController extends Controller
             'roomNo' => 'required',
             'building' => 'required',
             'enrolled' => 'required',
+            'isAccepted' => 'required',
             'longTermRent' => 'required',
             'shortTermRent' => 'required',
             'roomStatus' => 'required',
@@ -208,6 +213,7 @@ class RoomsController extends Controller
         $room->roomNo = $request->input('roomNo'); 
         $room->building = $request->input('building');
         $room->enrolled = $request->input('enrolled');
+        $room->isAccepted = $request->input('isAccepted');
         $room->longTermRent = $request->input('longTermRent');
         $room->shortTermRent = $request->input('shortTermRent');
         $room->roomStatus = $request->input('roomStatus');

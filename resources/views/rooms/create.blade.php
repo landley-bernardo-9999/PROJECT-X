@@ -31,6 +31,18 @@
                     </div>   
                 </div>
 
+
+                <div class="form-group row">
+                    <label for="isAccepted" class="col-md-4 col-form-label text-md-right">Accepted?</label>
+                    <div class="col-md-6">
+                    <select class="form-control" name="isAccepted" id="isAccepted">
+                        <option value="" disabled selected>Please select</option>    
+                        <option value="Yes" selected>Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    </div>   
+                </div>
+                
                 <div class="form-group row">
                     <label for="enrolled" class="col-md-4 col-form-label text-md-right">Enrolled</label>
                     <div class="col-md-6">
@@ -41,6 +53,8 @@
                     </select>
                     </div>   
                 </div>
+
+               
                         
 
                 <div class="form-group row">

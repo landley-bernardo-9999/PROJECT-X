@@ -3,7 +3,7 @@
 <br>
     <a class="btn btn-dark" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
     <a class="btn btn-dark" role="button" href="/rooms"> <i class="fas fa-store-alt"></i>&nbspROOMS</a>
-    <a href="{{$resident->id}}/edit" class="btn btn-dark float-right" ><i class="fas fa-user-edit"></i>&nbspEDIT</a>
+    <a href="{{$resident->id}}/edit" class="btn btn-danger float-right" ><i class="fas fa-user-edit"></i>&nbspEDIT</a>
     {{-- {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
         {{Form::submit('Delete',['class' => 'btn btn-danger'])}}

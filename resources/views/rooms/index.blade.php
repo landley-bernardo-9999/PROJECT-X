@@ -21,11 +21,11 @@
                                 </div>
                                 <div class="col-md-3 btn btn-outline-success" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                                     <h5>Accepted</h5>
-                                    <h1>{{count($unaccepted)}}</h1>
+                                    <h1>{{count($accepted)}}</h1>
                                 </div>
                                 <div class="col-md-3 btn btn-outline-danger" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
                                     <h5>Unaccepted</h5>
-                                    <h1>{{count($accepted)}}</h1>
+                                    <h1>{{count($unaccepted)}}</h1>
                                 </div>
                             </div>
                             <br>
@@ -33,7 +33,7 @@
                     <div class="row text-center">
                         <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:6%">
                             <h5>Leasing</h5>
-                            <h1>{{count($rooms)}}</h1>
+                            <h1>{{count($leasing)}}</h1>
                             <i class="fas fa-home fa-1x"></i>
                         </div>
                         <div class="col-md-2 btn btn-outline-danger" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">

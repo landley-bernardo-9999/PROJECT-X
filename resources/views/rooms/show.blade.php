@@ -2,7 +2,7 @@
 @section('content')
 <br>
     <a class="btn btn-dark" role="button" href="/rooms" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a href="{{$room->roomNo}}/edit" class="btn btn-dark float-right" style="width:155px" ><i class="fas fa-edit"></i>&nbspEDIT</a>
+    <a href="{{$room->roomNo}}/edit" class="btn btn-danger float-right" style="width:155px" ><i class="fas fa-edit"></i>&nbspEDIT</a>
     {{-- {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo], 'method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
@@ -15,10 +15,14 @@
     <div class="container-fluid">
        <div class="row">
             <div class="col-lg-9">
-                    <table class="table">
+                    <table class="table table-striped">
                         <tr>
                             <th>Room No</th>
                             <td>{{$room->roomNo}}</td>
+                        </tr>
+                        <tr>
+                            <th>Accepted?</th>
+                            <td>{{$room->isAccepted}}</td>
                         </tr>
                         <tr>
                             <th>Enrolled?</th>
@@ -99,7 +103,7 @@
                         <div class="alert alert-danger" role="alert"><p>No records of residents!</p></div>
                         @endif
                       </div>
-                      <a class="btn btn-warning" role="button" href="/contracts/create" style="width:150px">ADD RESIDENT</a> 
+                      <a class="btn btn-warning" role="button" href="/contracts/create" style="width:150px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD RESIDENT</a> 
                 </div>
             </div>
             <hr>
@@ -144,7 +148,7 @@
                                  <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
                                  @endif
                                </div>
-                                   <a class="btn btn-warning" role="button" href="/repairs/create" style="width:150px">ADD REPAIR&nbsp</a>  
+                                   <a class="btn btn-warning" role="button" href="/repairs/create" style="width:150px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>  
                          </div>
                 </div>
                 <hr>
@@ -167,7 +171,7 @@
                          </tr>
                          @foreach($owner as $owner)
                          <tr>
-                            <td>{{ $ownersRowNo++ }}</td>
+                            <th>{{ $ownersRowNo++ }}</th>
                             <td><img class="card-img-top" style="width:35px" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap"></td>
                             <td><a href="/owners/{{$owner->ownerName}}" class="btn btn-primary">{{$owner->name}}</a></td>
                             <td>{{Carbon\Carbon::parse($owner->moveInDate)->format('F j, Y')}}</td>
@@ -185,7 +189,7 @@
                       </div>
             </div>
 </div>
-                    <a class="btn btn-warning" role="button" href="/transactions/create" style="width:150px" >ADD OWNER&nbsp</a> 
+                    <a class="btn btn-warning" role="button" href="/transactions/create" style="width:150px" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD OWNER</a> 
 
        </div>        
    <br>

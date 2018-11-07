@@ -67,5 +67,20 @@
             </div>
         </div>
     </div>
+
+
+</div>
+<div class="container-fluid text-center" >
+    <!-- Footer -->
+    <footer class="page-footer font-small blue" style="padding-top:10%">   
+        <!-- Copyright -->
+        <hr>
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+          <a href="http://www.marthaservices.com/" target="new_blank">Martha's Official Website</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
 </div>
 @endsection

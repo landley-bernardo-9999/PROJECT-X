@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <br>
-<a class="btn btn-secondary btn-md" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i></a>
-<a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>   
-<a href="/repairs" class="btn btn-secondary"><i class="fas fa-toolbox"></i>&nbspRepairs</a>
+<a class="btn btn-dark" role="button" href="/propertymgmt "  style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+<a class="btn btn-warning float-right" role="button" href="/repairs/create"  style="width:155px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>   
+<a href="/repairs" class="btn btn-dark"  style="width:155px"><i class="fas fa-toolbox"></i>&nbspREPAIRS</a>
 <br>
 <br>
 <div class="container-fluid">
@@ -41,7 +41,7 @@
                         <th>Status</th>
                         <th></th>
                         <th></th>
-                        <th></th>
+                        {{-- <th></th> --}}
                     </tr>
                 </thead>
                  @foreach($repairs as $repair)
@@ -56,9 +56,9 @@
                         <td>
                             <a href="/repairs/{{$repair->repairsId}}" class="btn btn-info">MORE INFO</a>
                         </td>
-                        <td>
+                        {{-- <td>
                             <a href="/repairs/{{$repair->repairsId}}/edit" class="btn btn-warning">EDIT</a>
-                        </td>
+                        </td> --}}
                         <td>
                             {{-- {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}  
