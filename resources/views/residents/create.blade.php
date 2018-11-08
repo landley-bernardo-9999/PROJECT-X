@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i></a>   
+<a class="btn btn-dark" role="button" href="/propertymgmt/residents" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> 
 {!! Form::open(['action'=>'ResidentsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 <div class="container">
         <div class="row justify-content-center">

@@ -2,8 +2,8 @@
 @section('content')
 <br>
 <a class="btn btn-dark" role="button" href="/propertymgmt "  style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-<a class="btn btn-warning float-right" role="button" href="/repairs/create"  style="width:155px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>   
-<a href="/repairs" class="btn btn-dark"  style="width:155px"><i class="fas fa-toolbox"></i>&nbspREPAIRS</a>
+<a class="btn btn-warning float-right" role="button" href="/propertymgmt/repairs/create"  style="width:155px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>   
+<a href="/propertymgmt/repairs" class="btn btn-dark"  style="width:155px"><i class="fas fa-toolbox"></i>&nbspREPAIRS</a>
 <br>
 <br>
 <div class="container-fluid">
@@ -29,8 +29,8 @@
  <br>
     @if(count($repairs) > 0)
     <div class="container"  >
-            <table class="table table-hover">
-                <thead class="thead-light">
+            <table class="table table-hover table-striped">
+                <thead class="thead-dark">
                     <tr>
                         <th>#</th>
                         <th>Room</th>
@@ -44,30 +44,34 @@
                         {{-- <th></th> --}}
                     </tr>
                 </thead>
-                 @foreach($repairs as $repair)
+                 
                 <tbody>
-                        <th>{{$rowNum++}}</th>
-                        <td><a href="/rooms/{{$repair->roomNo}}">{{$repair->roomNo}}</a></td>
-                        <td>{{$repair->residentName}}</td>
-                        <td>{{Carbon\Carbon::parse($repair->dateReported)->format('F j, Y')}}</td>
-                        <td>{{$repair->desc}}</td>
-                        <td><a href="/maintenances/{{$repair->id}}">{{$repair->endorsedTo}}</a></td>
-                        <td>{{$repair->repairStatus}}</td>
-                        <td>
-                            <a href="/repairs/{{$repair->repairsId}}" class="btn btn-info">MORE INFO</a>
-                        </td>
-                        {{-- <td>
-                            <a href="/repairs/{{$repair->repairsId}}/edit" class="btn btn-warning">EDIT</a>
-                        </td> --}}
-                        <td>
-                            {{-- {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
-                                {{Form::hidden('_method', 'DELETE')}}  
-                                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                            {!!Form::close()!!} --}}
-                        </td>
-                     
+                    @foreach($repairs as $repair)  
+                        <tr>
+                                <th>{{$rowNum++}}</th>
+                                {{-- <td><a href="/rooms/{{$repair->roomNo}}">{{$repair->roomNo}}</a></td> --}}
+                                <td>{{$repair->roomNo}}</td>
+                                <td>{{$repair->residentName}}</td>
+                                <td>{{Carbon\Carbon::parse($repair->dateReported)->formatLocalized('%b %d %Y')}}</td>
+                                <td>{{$repair->desc}}</td>
+                                <td><a href="/propertymgmt/maintenances/{{$repair->id}}">{{$repair->endorsedTo}}</a></td>
+                                <td>{{$repair->repairStatus}}</td>
+                                <td>
+                                    <a href="/propertymgmt/repairs/{{$repair->repairsId}}" class="btn btn-info">MORE INFO</a>
+                                </td>
+                                {{-- <td>
+                                    <a href="/repairs/{{$repair->repairsId}}/edit" class="btn btn-warning">EDIT</a>
+                                </td> --}}
+                                <td>
+                                    {{-- {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'pull-right'])!!}
+                                        {{Form::hidden('_method', 'DELETE')}}  
+                                        {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
+                                    {!!Form::close()!!} --}}
+                                </td>
+                        </tr>
+                        @endforeach   
                 </tbody>
-        @endforeach   
+          
             </table>
             
     @else

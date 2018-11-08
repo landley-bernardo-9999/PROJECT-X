@@ -26,10 +26,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Company Email-Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="example@marthservices.com">
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -111,5 +111,18 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container-fluid text-center" >
+    <!-- Footer -->
+    <footer class="page-footer font-small blue" style="padding-top:10%">   
+        <!-- Copyright -->
+        <hr>
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+          <a href="http://www.marthaservices.com/" target="new_blank">Martha's Official Website</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
 </div>
 @endsection

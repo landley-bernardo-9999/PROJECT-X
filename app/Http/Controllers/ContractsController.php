@@ -74,7 +74,7 @@ class ContractsController extends Controller
 
         $contract->save();
 
-        return redirect('/contracts/create' )->with('success','Added successfully!');
+        return redirect('/propertymgmt/contracts/create' )->with('success','Added successfully!');
     }
 
     /**
@@ -159,7 +159,7 @@ class ContractsController extends Controller
 
         $contract->save();
 
-        return redirect('/contracts/'.$contract->id)->with('success','Updated successfully!');
+        return redirect('/propertymgmt/contracts/'.$contract->id)->with('success','Updated successfully!');
     }
 
     /**
@@ -173,6 +173,6 @@ class ContractsController extends Controller
         $contract = Contract::find($id);
 
         $contract->delete();
-        return redirect('/rooms')->with('success','Deleted successfully!');
+        return redirect('/propertymgmt/rooms')->with('success','Deleted successfully!');
     }
 }

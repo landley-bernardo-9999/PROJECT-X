@@ -43,7 +43,7 @@ class RoomsController extends Controller
         $occupiedRooms = count($occupied);
         $occupancyRate = round($occupiedRooms/$totalRooms * 100); 
         return view('rooms.index')->with('pm', $pm)
-                                  ->with('leasing', $leasing)   
+                                  ->with('leasing', $leasing)  
                                   ->with('accepted', $accepted)
                                   ->with('unaccepted', $unaccepted)
                                   ->with('rooms', $rooms)
@@ -117,7 +117,7 @@ class RoomsController extends Controller
 
         $room->save();
 
-        return redirect('/rooms/create')->with('success','Added successfully!');
+        return redirect('/propertymgmt/rooms/create')->with('success','Added successfully!');
     }
 
     /**
@@ -226,7 +226,7 @@ class RoomsController extends Controller
     
         $room->save();
 
-        return redirect('/rooms/'.$room->roomNo)->with('success','Updated successfully!');
+        return redirect('/propertymgmt/rooms/'.$room->roomNo)->with('success','Updated successfully!');
     }
 
     /**
@@ -245,7 +245,7 @@ class RoomsController extends Controller
         }
 
         $room->delete();
-        return redirect('/rooms')->with('success','Deleted successfully!');
+        return redirect('/propertymgmt/rooms')->with('success','Deleted successfully!');
     }
 }
 

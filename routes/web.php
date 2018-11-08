@@ -22,7 +22,7 @@ Route::get('/', function () {
         return view('/home');
 });
 
-Route::get('/propertymgmt', 'AppsController@propertymgmt');
+Route::get('/propertymgmt', 'AppsController@propertymgmt')->middleware('verified');
 
 Route::get('/financialmgmt', 'AppsController@financialmgmt');
 
@@ -34,22 +34,21 @@ Route::get('/inventorymgmt', 'AppsController@inventorymgmt');
 
 Route::get('/reportsandstats', 'AppsController@reportsandstats');
 
-Route::get('/profile', 'HomeController@profile');
+Route::get('/profile', 'HomeController@profile')->middleware('verified');
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::resources([
-    'rooms'=> 'RoomsController',
-    'residents'=> 'ResidentsController',
-    'owners'=> 'OwnersController',
-    'repairs'=> 'RepairsController',
-    'maintenances' => 'MaintenancesController',
-    'violations' => 'ViolationsController',
-    'contracts' => 'ContractsController',
-    'transactions' => 'TransactionsController',
-    'coTenants' => 'CoTenantsController',
+    '/propertymgmt/rooms'=> 'RoomsController',
+    '/propertymgmt/residents'=> 'ResidentsController',
+    '/propertymgmt/owners'=> 'OwnersController',
+    '/propertymgmt/repairs'=> 'RepairsController',
+    '/propertymgmt/maintenances' => 'MaintenancesController',
+    '/propertymgmt/violations' => 'ViolationsController',
+    '/propertymgmt/contracts' => 'ContractsController',
+    '/propertymgmt/transactions' => 'TransactionsController',
 ]);
     
 

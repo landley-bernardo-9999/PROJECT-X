@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-arrow-circle-left"></i></a>
+    <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt/rooms"><i class="fas fa-arrow-circle-left"></i></a>
     <a href="{{$transaction->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
     {{-- {!!Form::open(['action' => ['TransactionsController@destroy', $transaction->id], 'method' => 'POST', 'class' =>'float-right'])!!}
     {{Form::hidden('_method', 'DELETE')}}  

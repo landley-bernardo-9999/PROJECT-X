@@ -2,8 +2,8 @@
 @section('content')
 <div class="container-fluid">
     <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a class="btn btn-warning float-right" role="button" href="/rooms/create" style="width:155px" ><i class="fas fa-store-alt"></i>&nbspADD ROOM</a> 
-    <a href="/rooms" class="btn btn-dark" style="width:155px"><i class="fas fa-store-alt"></i>&nbspROOMS</a>
+    <a class="btn btn-warning float-right" role="button" href="/propertymgmt/rooms/create" style="width:155px" ><i class="fas fa-store-alt"></i>&nbspADD ROOM</a> 
+    <a href="/propertymgmt/rooms" class="btn btn-dark" style="width:155px"><i class="fas fa-store-alt"></i>&nbspROOMS</a>
 </div>
 <br>
 <div class="btn-group dropright">
@@ -77,14 +77,14 @@
             @foreach($rooms as $room)
                 @if($room->roomStatus == 'Occupied')
                     @if($room->enrolled == "Yes")
-                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
+                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
                         <i class="fas fa-home fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
                     @else
-                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
+                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
                         <i class="fas fa-user-tag fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
@@ -93,14 +93,14 @@
                     @endif
                 @elseif($room->roomStatus == 'Vacant')
                     @if($room->enrolled == "Yes")
-                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
+                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
                         <i class="fas fa-home fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
                     @else
-                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
+                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
                         <i class="fas fa-user-tag fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
@@ -109,14 +109,14 @@
                     @endif
                 @elseif($room->roomStatus == 'Reserved')
                     @if($room->enrolled == "Yes")
-                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
+                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
                         <i class="fas fa-home fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
                     @else
-                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
+                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
                         <i class="fas fa-user-tag fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
@@ -125,14 +125,14 @@
                     @endif
                 @elseif($room->roomStatus == 'NRFO')
                     @if($room->enrolled == "Yes")
-                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
+                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
                         <i class="fas fa-home fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
                     @else
-                    <a href="/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
+                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
                         <i class="fas fa-user-tag fa-4x"></i>
                         <div style="display: flex; width: 90px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>

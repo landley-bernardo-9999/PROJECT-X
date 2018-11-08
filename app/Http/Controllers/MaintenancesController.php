@@ -80,7 +80,7 @@ class MaintenancesController extends Controller
 
         $maintenance->save();
 
-        return redirect('/maintenances/'.$maintenance->id)->with('success','Added successfully!');
+        return redirect('/propertymgmt/maintenances/'.$maintenance->id)->with('success','Added successfully!');
 
  
     }
@@ -166,7 +166,7 @@ class MaintenancesController extends Controller
             $maintenance->cover_image = $fileNameToStore;
         }
         $maintenance->save();
-        return redirect('/maintenances/'.$maintenance->id)->with('success','Updated successfully!');
+        return redirect('/propertymgmt/maintenances/'.$maintenance->id)->with('success','Updated successfully!');
     }
 
     /**
@@ -185,6 +185,6 @@ class MaintenancesController extends Controller
         }
 
         $maintenance->delete();
-        return redirect('/maintenances')->with('success', 'Deleted successfully!');
+        return redirect('/propertymgmt/maintenances')->with('success', 'Deleted successfully!');
     }
 }

@@ -3,8 +3,8 @@
 <br>
     <div class="container-fluid" >
             <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-            <a class="btn btn-warning float-right" role="button" href="/owners/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD OWNER</a>
-            <a href="/owners" class="btn btn-dark" style="width:155px"><i class="fas fa-user-tie" ></i>&nbspOWNERS</a>
+            <a class="btn btn-warning float-right" role="button" href="/propertymgmt/owners/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD OWNER</a>
+            <a href="/propertymgmt/owners" class="btn btn-dark" style="width:155px"><i class="fas fa-user-tie" ></i>&nbspOWNERS</a>
         </div>
    <br>
     @if(count($owners) > 0)
@@ -30,9 +30,9 @@
                 <tr>
                     <th scope="row">{{$rowNum++}}</td>
                     <td ><img class="card-img-top" style="width: 35px" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap"></td>
-                    <td><a href="/owners/{{$owner->ownerId}}">{{$owner->name}}</a></td>
-                    <td><a href="/rooms/{{$owner->roomNo}}">{{$owner->roomNo}}</a></td>
-                    <td>{{Carbon\Carbon::parse($owner->moveInDate)->format('F j, Y')}}</td>
+                    <td><a href="/propertymgmt/owners/{{$owner->ownerId}}">{{$owner->name}}</a></td>
+                    <td><a href="/propertymgmt/rooms/{{$owner->roomNo}}">{{$owner->roomNo}}</a></td>
+                    <td>{{Carbon\Carbon::parse($owner->moveInDate)->formatLocalized('%b %d %Y')}}</td>
                     <td>{{$owner->mobileNumber}}</td>
                     <td>{{$owner->emailAddress}}</td>
                     {{-- <td>

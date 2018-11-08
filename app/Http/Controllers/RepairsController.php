@@ -133,7 +133,7 @@ class RepairsController extends Controller
 
         $repair->save();
 
-        return redirect('/repairs/'.$repair->id)->with('success','Added successfully!');
+        return redirect('/propertymgmt/repairs/'.$repair->id)->with('success','Added successfully!');
     }
 
     /**
@@ -241,7 +241,7 @@ class RepairsController extends Controller
 
         $repair->save();
 
-        return redirect('/repairs/'.$repair->id)->with('success','Updated successfully!');
+        return redirect('/propertymgmt/repairs/'.$repair->id)->with('success','Updated successfully!');
     }
 
     /**
@@ -260,6 +260,6 @@ class RepairsController extends Controller
         }
 
         $repair->delete();
-        return redirect('/repairs')->with('success','Deleted successfully!');
+        return redirect('/propertymgmt/repairs')->with('success','Deleted successfully!');
     }
 }

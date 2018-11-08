@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <br>
-            <a class="btn btn-secondary btn-md" role="button" href="/owners"><i class="fas fa-arrow-circle-left"></i></a>
-            <a class="btn btn-secondary btn-md" role="button" href="/rooms"><i class="fas fa-store-alt"></i></a>
+            <a class="btn btn-dark" role="button" href="/propertymgmt/owners" style="width: 155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+            <a class="btn btn-dark" role="button" href="/propertymgmt/rooms" style="width: 155px"><i class="fas fa-store-alt"></i>&nbspROOMS</a>
             
-            <a href="{{$owner->id}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+            <a href="{{$owner->id}}/edit" class="btn btn-danger float-right" style="width: 155px"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
             {{-- {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
@@ -13,17 +13,22 @@
 <br>
 <hr>
 <h3>Owner&nbsp<i class="fas fa-user-tie"></i></h3>
+<br>
     <div class="container">
        <div class="row">
             <div class="col-lg-9">
-                <table class="table">
+                <table class="table table-striped">
                     <tr>
                         <th>Name of the owner</th>
                         <td>{{$owner->name}}</td>
                     </tr>
                     <tr>
+                        <th>Move-In</th>
+                        <td>{{$owner->moveInDate}}</td>
+                    </tr>
+                    <tr>
                         <th>Birthdate</th>
-                        <td>{{Carbon\Carbon::parse($owner->birthDate)->format('F j, Y')}}</td>
+                        <td>{{Carbon\Carbon::parse($owner->birthDate)->formatLocalized('%b %d %Y')}}</td>
                     </tr>
                     <tr>
                         <th>Email</th>
@@ -54,30 +59,37 @@
                       <div class="panel panel-default">
                      @if(count($transaction) > 0)              
                      <table class="table table-striped">
-                      <tr>
-                         <th>No</th> 
-                         <th>Room</th>
-                         <th>Move-In</th>
-                         <th>Buying Price</th>
-                         <th>Form Of Payment</th>
-                         <th></th>
-                      </tr>
+                      <thead class="thead-light">
+                        <tr>
+                            <th>No</th> 
+                            <th>Room</th>
+                            <th>Move-In</th>
+                            <th>Buying Price</th>
+                            <th>Form Of Payment</th>
+                            <th></th>
+                         </tr>
+                      </thead>
                       @foreach($transaction as $transaction)
-                      <tr>
-                         <td>{{ $rowNoForTransactions++ }}</td>
-                         <td><a href="/rooms/{{$transaction->roomNo}}" class="btn btn-secondary">{{$transaction->roomNo}}</a></td>
-                         <td>{{$transaction->moveInDate}}</td>
-                         <td>{{$transaction->totalPrice}}</td>
-                         <td>{{$transaction->formOfPayment}}</td>
-                         <td><a href="/transactions/{{$transaction->id}}" class="btn btn-secondary">MORE INFO</a></td>
-                      </tr>
+                      <tbody>
+                        
+                        <tr>
+                           <td>{{ $rowNoForTransactions++ }}</td>
+                           <td><a href="/propertymgmt/rooms/{{$transaction->roomNo}}" class="btn btn-primary">{{$transaction->roomNo}}</a></td>
+                           <td>{{$transaction->moveInDate}}</td>
+                           <td>{{$transaction->totalPrice}}</td>
+                           <td>{{$transaction->formOfPayment}}</td>
+                           <td><a href="/propertymgmt/transactions/{{$transaction->id}}" class="btn btn-info">MORE INFO</a></td>
+                        </tr>
+                      
+                      </tbody>
+
                       @endforeach
                      </table>
                      @else
-                     <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
+                     <div class="alert alert-danger" role="alert"><p>No records of rooms!</p></div>
                      @endif
                    </div>
-                       <a class="btn btn-secondary btn-md" role="button" href="/transactions/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+                       <a class="btn btn-warning" role="button" href="/propertymgmt/transactions/create" style="width:155px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD ROOM</a>  
              </div>
              </div>           
         </div>
@@ -91,36 +103,40 @@
                          <div class="panel panel-default">
                         @if(count($repair) > 0)              
                         <table class="table table-striped">
-                         <tr>
-                            <th>No</th>
-                            <th>Date Reported</th>
-                            <th>Reported By</th>
-                            <th>Description</th>
-                            <th>Endorse To</th>
-                            <th>Status</th>
-                            
-                            <th>Cost</th>
-                            <th></th>
-                         </tr>
+                         <thead class="thead-light">
+                            <tr>
+                                <th>No</th>
+                                <th>Date Reported</th>
+                                <th>Reported By</th>
+                                <th>Description</th>
+                                <th>Endorse To</th>
+                                <th>Status</th>
+                                
+                                <th>Cost</th>
+                                <th></th>
+                             </tr>
+                         </thead>
                          @foreach($repair as $repair)
-                         <tr>
-                            <td>{{ $rowNoForConcerns++ }}</td>
-                            <td>{{ $repair->dateReported}}</td>
-                            <td>{{$repair->name}}</td>
-                            <td>{{$repair->desc}}</td>
-                            <td>{{$repair->endorsedTo}}</td>
-                            <td>{{$repair->repairStatus}}</td>
-                            
-                            <td>{{$repair->cost}}</td>
-                            <td><a href="/repairs/{{$repair->id}}"><i class="far fa-eye"></i></a></td>
-                         </tr>
+                         <tbody>
+                            <tr>
+                                <td>{{ $rowNoForConcerns++ }}</td>
+                                <td>{{ $repair->dateReported}}</td>
+                                <td>{{$repair->name}}</td>
+                                <td>{{$repair->desc}}</td>
+                                <td>{{$repair->endorsedTo}}</td>
+                                <td>{{$repair->repairStatus}}</td>
+                                
+                                <td>{{$repair->cost}}</td>
+                                <td><a href="/propertymgmt/repairs/{{$repair->id}}" class="btn btn-info"></a></td>
+                             </tr>
+                         </tbody>
                          @endforeach
                         </table>
                         @else
                         <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
                         @endif
                       </div>
-                          <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  
+                          
                 </div>
                 </div>           
            </div>

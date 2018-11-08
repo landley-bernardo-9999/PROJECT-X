@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                         <th>Date Reported</th>
-                        <td>{{$repair->dateReported}}</td>
+                        <td>{{Carbon\Carbon::parse($repair->dateReported)->formatLocalized('%b %d %Y')}}</td>
                     </tr>
                     <tr>
                         <th>Description</th>
@@ -46,7 +46,7 @@
                     </tr>
                     <tr>
                         <th>Date Finished</th>
-                        <td>{{$repair->dateFinished}}</td>
+                        <td>{{Carbon\Carbon::parse($repair->dateFinished)->formatLocalized('%b %d %Y')}}</td>
                     </tr>
                         
                     </table>

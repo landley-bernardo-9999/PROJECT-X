@@ -100,7 +100,7 @@ class ViolationsController extends Controller
         
          $violation->save();
 
-         return redirect('/violations/'.$violation->id)->with('success', 'Added successfully!');
+         return redirect('/propertymgmt/violations/'.$violation->id)->with('success', 'Added successfully!');
     }
 
     /**
@@ -185,7 +185,7 @@ class ViolationsController extends Controller
 
         $violation->save();
 
-        return redirect('/violations/'.$violation->id)->with('success', 'Updated successfully!');
+        return redirect('/propertymgmt/violations/'.$violation->id)->with('success', 'Updated successfully!');
     }
 
     /**
@@ -199,6 +199,6 @@ class ViolationsController extends Controller
         $violation = Violation::find($id);
 
         $violation->delete();
-        return redirect('/violations')->with('success','Deleted successfully!');
+        return redirect('/propertymgmt/violations')->with('success','Deleted successfully!');
     }
 }

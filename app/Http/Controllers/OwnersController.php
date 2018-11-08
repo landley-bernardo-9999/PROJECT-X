@@ -96,7 +96,7 @@ class OwnersController extends Controller
 
         $owner->save();
 
-        return redirect('/owners/create')->with('success','Added successfully!');
+        return redirect('/propertymgmt/owners/create')->with('success','Added successfully!');
 
     }
 
@@ -193,7 +193,7 @@ class OwnersController extends Controller
 
         $owner->save();
 
-        return redirect('/owners/'.$owner->id)->with('success','Updated successfully!');
+        return redirect('/propertymgmt/owners/'.$owner->id)->with('success','Updated successfully!');
     }
 
     /**
@@ -212,6 +212,6 @@ class OwnersController extends Controller
         }
 
         $owner->delete();
-        return redirect('/owners')->with('success','Deleted successfully!');
+        return redirect('/propertymgmt/owners')->with('success','Deleted successfully!');
     }
 }

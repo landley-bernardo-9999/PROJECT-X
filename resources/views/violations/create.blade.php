@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-secondary btn-md" role="button" href="/violations"><i class="fas fa-arrow-circle-left"></i></a>   
+<a class="btn btn-dark" role="button" href="/propertymgmt/maintenances" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
 {!! Form::open(['action'=>'ViolationsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card"style="padding:6%">
-                    <div class="card-header">
-                        <h3>Add Violation</h3>
-                    </div>
+                    
+                            <h1 class="display-6">Add Violation</h1>
+                 <hr>
                 <br>
 
                 <!--Date when the repair reported-->

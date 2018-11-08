@@ -77,7 +77,7 @@ class TransactionsController extends Controller
     
         $transaction->save();
 
-        return redirect('/transactions/create')->with('success','Added successfully!');
+        return redirect('/propertymgmt/transactions/create')->with('success','Added successfully!');
     }
 
     /**
@@ -156,7 +156,7 @@ class TransactionsController extends Controller
     
         $transaction->save();
 
-        return redirect('/transactions/'.$transaction->id)->with('success','Updated successfully!');
+        return redirect('/propertymgmt/transactions/'.$transaction->id)->with('success','Updated successfully!');
     }
 
     /**
@@ -170,6 +170,6 @@ class TransactionsController extends Controller
         $transaction = Transaction::find($id);
 
         $transaction->delete();
-        return redirect('/rooms')->with('success','Deleted successfully!');
+        return redirect('/propertymgmt/rooms')->with('success','Deleted successfully!');
     }
 }

@@ -8,7 +8,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a  class="navbar-brand" href="{{ url('/') }}">
+                    <a  class="navbar-brand" href="{{ url('/home') }}">
                         <h1 style="font-size:35px">Martha.</h1>
                         <p style="font-size:15px">A GoshenLand Property Management Company</p>
                     </a>
@@ -20,16 +20,16 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li> --}}
-                  <!--
+                    </li> 
+                  
                     <li class="nav-item">
                         @if (Route::has('register'))
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     </li>
-                    -->
+                    
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">{{ __('Dashboard') }}</a>

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <a class="btn btn-dark" role="button" href="/residents"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a class="btn btn-dark" role="button" href="/rooms"> <i class="fas fa-store-alt"></i>&nbspROOMS</a>
+    <a class="btn btn-dark" role="button" href="/propertymgmt/residents"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    <a class="btn btn-dark" role="button" href="/propertymgmt/rooms"> <i class="fas fa-store-alt"></i>&nbspROOMS</a>
     <a href="{{$resident->id}}/edit" class="btn btn-danger float-right" ><i class="fas fa-user-edit"></i>&nbspEDIT</a>
     {{-- {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
@@ -23,7 +23,7 @@
                     </tr>   
                     <tr>
                         <th>Birthdate</th>
-                        <td>{{Carbon\Carbon::parse($resident->birthDate)->format('F j, Y')}}</td>
+                        <td>{{Carbon\Carbon::parse($resident->birthDate)->formatLocalized('%b %d %Y')}}</td>
                     </tr>
                     <tr>
                         <th>Status</th>
@@ -65,7 +65,7 @@
             <br>
             <div class="panel panel-default">
             @if(count($contract) > 0)              
-            <table class="table">
+            <table class="table table-striped">
                 <thead class="thead-light">
                     <tr>
                         <th>#</th>
@@ -83,14 +83,14 @@
                 @foreach($contract as $contract)
                     <tr>
                         <td>{{ $rowNoForContracts++ }}</td>
-                        <td><a href="/rooms/{{$contract->residentRoomNo}}" class="btn btn-primary">{{ $contract->residentRoomNo }}</a></td>
+                        <td><a href="/propertymgmt/rooms/{{$contract->residentRoomNo}}" class="btn btn-primary">{{ $contract->residentRoomNo }}</a></td>
                         <td>{{ $contract->residentStatus }}</td>
                         <td>{{ $contract->amountPaid }}</td>
                         <td>{{ $contract->securityDeposit}}</td>
                         <td>{{ $contract->term}}</td>
-                        <td>{{ Carbon\Carbon::parse($contract->moveInDate)->format('F j, Y') }}</td>
-                        <td>{{ Carbon\Carbon::parse($contract->moveOutDate)->format('F j, Y') }}</td>
-                        <td><a href="/contracts/{{$contract->contractId}}" class="btn btn-info">CONTRACT</a></td>        
+                        <td>{{ Carbon\Carbon::parse($contract->moveInDate)->formatLocalized('%b %d %Y')}}</td>
+                        <td>{{ Carbon\Carbon::parse($contract->moveOutDate)->formatLocalized('%b %d %Y') }}</td>
+                        <td><a href="/propertymgmt/contracts/{{$contract->contractId}}" class="btn btn-info">CONTRACT</a></td>        
                     </tr>
                 @endforeach
                 </tbody>   
@@ -99,7 +99,7 @@
                     <div class="alert alert-danger" role="alert"><p>No records of contracts!</p></div>
                 @endif
                     </div>
-                        <a class="btn btn-warning" role="button" href="/contracts/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD ROOM</a> 
+                        <a class="btn btn-warning" role="button" href="/propertymgmt/contracts/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD ROOM</a> 
         </div>
             <br>
         </div>
@@ -132,7 +132,7 @@
                                         <td>{{$repair->endorsedTo}}</td>
                                         <td>{{$repair->repairStatus}}</td>
                                         <td>{{$repair->cost}}</td>
-                                        <td><a href="/repairs/{{$repair->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                                        <td><a href="/propertymgmt/repairs/{{$repair->id}}" class="btn btn-secondary">MORE INFO</a></td>
                                         </tr>
                                 </tbody>
                          @endforeach
@@ -141,7 +141,7 @@
                         <div class="alert alert-danger" role="alert"><p>No records of concerns/repairs!</p></div>
                         @endif
                       </div>
-                          <a class="btn btn-warning" role="button" href="/repairs/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a> 
+                          {{-- <a class="btn btn-warning" role="button" href="/repairs/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>  --}}
                 </div>
                 <br>
                     </div>
@@ -172,10 +172,11 @@
                                     <td>{{ $rowNoForViolations++ }}</td>
                                     <td>{{ $violation->dateReported }}</td>
                                     <td>{{ $violation->description }}</td>
-                                    <td>{{ $violation->dateCommitted }}</td>
-                                    <td>{{ $violation->reportedBy }}</td>
+                                    <td>{{Carbon\Carbon::parse($violation->dateCommitted)->formatLocalized('%b %d %Y')}}</td>
+                                    <td>{{Carbon\Carbon::parse( $violation->reportedBy)->formatLocalized('%b %d %Y')}}</td>
+                                    
                                     <td>{{ $violation->fine }}</td>
-                                    <td><a href="/violations/{{$violation->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                                    <td><a href="/propertymgmt/violations/{{$violation->id}}" class="btn btn-secondary">MORE INFO</a></td>
                                 </tr>
                              </tbody>
                              @endforeach
@@ -184,7 +185,7 @@
                             <div class="alert alert-danger" role="alert"><p>No records of violations!</p></div>
                             @endif
                           </div>
-                              <a class="btn btn-warning" role="button" href="/violations/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD VIOLATION</a>  
+                              {{-- <a class="btn btn-warning" role="button" href="/violations/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD VIOLATION</a>   --}}
                     </div>
                         <br>      
                         </div>         

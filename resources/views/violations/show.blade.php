@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <a class="btn btn-secondary btn-md" role="button" href="/violations"><i class="fas fa-arrow-circle-left"></i></a>
+    <a class="btn btn-secondary btn-md" role="button" href="/propertymgmt/violations"><i class="fas fa-arrow-circle-left"></i></a>
     <a href="{{$violation->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
     {{-- {!!Form::open(['action' => ['ViolationsController@destroy', $violation->id], 'method' => 'POST', 'class' =>'float-right'])!!}
     {{Form::hidden('_method', 'DELETE')}}  
@@ -14,7 +14,7 @@
     <div class="container">
        <div class="row">
             <div class="col-lg-12">
-                <table class="table">
+                <table class="table table-striped">
                     <tr>
                         <th>Name of the violator</th>
                         <td>{{$violation->name}}</td>

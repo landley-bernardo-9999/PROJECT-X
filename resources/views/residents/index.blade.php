@@ -2,8 +2,8 @@
 @section('content')
 
 <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-<a class="btn btn-warning float-right" role="button" href="/residents/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD RESIDENT</a>
-<a href="/residents" class="btn btn-dark" style="width:155px"><i class="fas fa-users"></i>&nbspRESIDENTS</a>
+<a class="btn btn-warning float-right" role="button" href="/propertymgmt/residents/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD RESIDENT</a>
+<a href="/propertymgmt/residents" class="btn btn-dark" style="width:155px"><i class="fas fa-users"></i>&nbspRESIDENTS</a>
 <br>
 <br>
 <div class="container-fluid">
@@ -54,12 +54,12 @@
                     <tr>
                         <th scope="row">{{$rowNum++}}</th>
                         <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$row->cover_image}}" alt="Card image cap"></td>
-                        <td><a href="/residents/{{$row->residentId}}">{{$row->name}}</a></td>
-                        <td><a href="/rooms/{{$row->residentRoomNo}}">{{$row->residentRoomNo}}</a></td>
+                        <td><a href="/propertymgmt/residents/{{$row->residentId}}">{{$row->name}}</a></td>
+                        <td><a href="/propertymgmt/rooms/{{$row->residentRoomNo}}">{{$row->residentRoomNo}}</a></td>
                         <td>{{$row->residentStatus}}</td>
                         <td>{{$row->mobileNumber}}</td>
                         <td>{{$row->emailAddress}}</td>
-                        <td>{{Carbon\Carbon::parse($row->moveOutDate)->format('F j, Y')}}</td>
+                        <td>{{Carbon\Carbon::parse($row->moveOutDate)->formatLocalized('%b %d %Y')}}</td>
                          {{-- <td>
                         <a href="/residents/{{$row->residentId}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
                     </td> --}}

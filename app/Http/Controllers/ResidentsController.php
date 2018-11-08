@@ -148,7 +148,7 @@ class ResidentsController extends Controller
         $resident->save();
 
 
-        return redirect('/residents/create')->with('success','Added successfully!');
+        return redirect('/propertymgmt/residents/create')->with('success','Added successfully!');
     }
 
     /**
@@ -261,7 +261,7 @@ class ResidentsController extends Controller
         $resident->cover_image = $fileNameToStore;
         }
         $resident->save();
-        return redirect('/residents/'.$resident->id)->with('success', 'Updated successfully!');
+        return redirect('/propertymgmt/residents/'.$resident->id)->with('success', 'Updated successfully!');
 
     }
 
@@ -278,6 +278,6 @@ class ResidentsController extends Controller
             Storage::delete('public/resident_images/'.$resident->cover_image);
         }
         $resident->delete();
-        return redirect('/residents')->with('success','Deleted successfully!');
+        return redirect('/propertymgmt/residents')->with('success','Deleted successfully!');
     }
 }
