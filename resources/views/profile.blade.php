@@ -7,15 +7,11 @@
                         
                 </div>
                 <div class="col-md-4 col-lg-4 text-center" >
-                        <i class="far fa-user-circle fa-10x"></i>
+                      <i class="far fa-user-circle fa-9x"></i>
                 </div>
-                <div class="col-md-4 col-lg-4" >
-                        
-                </div>
+               
             </div>
-            <div class="row">
-                <br><br>
-            </div>
+          <br>
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                         <table class="table table-striped">
@@ -23,7 +19,7 @@
                                     <th scope="col">Name</th>
                                     <td scope="col">{{ Auth::user()->name }}</td>
                                   </tr>
-                                    <tr>
+                                  <tr>
                                     <th scope="row">Email Address</th>
                                     <td>{{Auth::user()->email}}</td>    
                                   </tr>
@@ -41,9 +37,8 @@
                                   </tr>
                                   <tr>
                                     <th scope="row">Date Hired</th>
-                                    <td>{{Auth::user()->created_at}}</td> 
+                                    <td>{{Carbon\Carbon::parse(Auth::user()->created_at)->formatLocalized('%b %d %Y')}}</td> 
                                   </tr>
-                               
                               </table>
                 </div>
             </div>

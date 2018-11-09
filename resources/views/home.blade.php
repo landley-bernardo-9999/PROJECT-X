@@ -8,11 +8,14 @@
     @endif
     <div class="container text-center">
             <div class="row">
+
                     <!--Room management icon-->
+                    
                     <div class="col-sm-4">
                         <a href="propertymgmt" class="btn btn-secondary"><i class="fas fa-city fa-4x"></i></a>
-                        <p class="card-title">Property Management </p>
+                        <p class="card-title">Condominium Management </p>
                     </div>
+                 
                     <!--Financial Management icon-->
                     <div class="col-md-4">
                         <a href="/financialmgmt" class="btn btn-secondary"><i class="fas fa-hand-holding-usd fa-4x"></i></a>

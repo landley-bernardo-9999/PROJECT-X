@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <a class="btn btn-dark" role="button" href="/propertymgmt/residents"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a class="btn btn-dark" role="button" href="/propertymgmt/rooms"> <i class="fas fa-store-alt"></i>&nbspROOMS</a>
-    <a href="{{$resident->id}}/edit" class="btn btn-danger float-right" ><i class="fas fa-user-edit"></i>&nbspEDIT</a>
+    <a class="btn btn-dark" role="button" href="/propertymgmt/residents" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    <a class="btn btn-dark" role="button" href="/propertymgmt/rooms" style="width:155px"> <i class="fas fa-store-alt"></i>&nbspROOMS</a>
+    <a href="{{$resident->id}}/edit" class="btn btn-danger float-right" style="width:155px"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
     {{-- {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
         {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
@@ -66,7 +66,7 @@
             <div class="panel panel-default">
             @if(count($contract) > 0)              
             <table class="table table-striped">
-                <thead class="thead-light">
+                <thead class="thead-dark">
                     <tr>
                         <th>#</th>
                         <th>Room</th>
@@ -112,7 +112,7 @@
                     <div class="panel panel-default">
                         @if(count($repair) > 0)              
                             <table class="table">
-                                <thead class="thead-light">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th>#</th>
                                         <th>Date Reported</th>
@@ -120,11 +120,12 @@
                                         <th>Endorse To</th>
                                         <th>Status</th>
                                         <th>Cost</th>   
-                                        <th></th>
+                                        
                                     </tr>
                                 </thead>
-                         @foreach($repair as $repair)
+                         
                                 <tbody>
+                                        @foreach($repair as $repair)
                                     <tr>
                                         <td>{{ $rowNoForConcerns++ }}</td>
                                         <td>{{Carbon\Carbon::parse($repair->dateReported)->format('F j, Y')}}</td>
@@ -132,10 +133,11 @@
                                         <td>{{$repair->endorsedTo}}</td>
                                         <td>{{$repair->repairStatus}}</td>
                                         <td>{{$repair->cost}}</td>
-                                        <td><a href="/propertymgmt/repairs/{{$repair->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                                        
                                         </tr>
+                                        @endforeach
                                 </tbody>
-                         @endforeach
+                        
                     </table>
                         @else
                         <div class="alert alert-danger" role="alert"><p>No records of concerns/repairs!</p></div>
@@ -155,7 +157,7 @@
                              <div class="panel panel-default">
                             @if(count($violation) > 0)              
                             <table class="table">
-                             <thead class="thead-light">
+                             <thead class="thead-dark">
                                 <tr>
                                     <th>#</th>
                                     <th>Date Reported</th>
@@ -163,11 +165,12 @@
                                     <th>Date Committed</th>
                                     <th>Reported By</th>
                                     <th>Fine</th>
-                                    <th></th>
+                                    
                                 </tr>
                              </thead>
-                             @foreach($violation as $violation)
+                             
                              <tbody>
+                                    @foreach($violation as $violation)
                                 <tr>
                                     <td>{{ $rowNoForViolations++ }}</td>
                                     <td>{{ $violation->dateReported }}</td>
@@ -176,10 +179,11 @@
                                     <td>{{Carbon\Carbon::parse( $violation->reportedBy)->formatLocalized('%b %d %Y')}}</td>
                                     
                                     <td>{{ $violation->fine }}</td>
-                                    <td><a href="/propertymgmt/violations/{{$violation->id}}" class="btn btn-secondary">MORE INFO</a></td>
+                                    
                                 </tr>
+                                @endforeach
                              </tbody>
-                             @endforeach
+                            
                             </table>
                             @else
                             <div class="alert alert-danger" role="alert"><p>No records of violations!</p></div>

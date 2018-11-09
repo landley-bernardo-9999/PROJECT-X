@@ -79,12 +79,13 @@
                             <label for="type" class="col-md-4 col-form-label text-md-right" >User Type:</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="type" id="type">
-                                        <option value=""disabled selected>Select one</option>    
-                                        <option value="Maintenance">Maintenance</option>
-                                        <option value="Finance">Finance</option>
-                                        <option value="Admin">Admin</option>
-                                        <option value="Executive">Executive</option>
-                                        <option value="Developer">Developer</option>
+                                        <option value=""disabled selected>Select one</option> 
+                                        <option value="leasingOfficer">Leasing Officer</option>   
+                                        <option value="finance">Finance</option>
+                                        <option value="adminAssistant">Admin Assistant</option>
+                                        <option value="maintenance">Maintenance</option>
+                                        <option value="executive">Executive</option>
+                                        <option value="developer" disabled>Developer</option>
                                     </select>
                                 </div>
                         </div>
@@ -93,7 +94,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" name="department" id="department">
                                         <option value=" " disabled selected>Select one</option> 
-                                        <option value="Leasing">Leasing</option>    
+                                        <option value="Leasing">Leasing Management</option>    
                                         <option value="Property Management">Property Management</option>
                                     </select>
                                 </div>

@@ -14,8 +14,8 @@
                             {{-- {{ __('A fresh verification link has been sent to your email address.') }} --}}
                         </div>
                     @endif
-                    {{ __('Our system will review your information.') }}
-                    {{ __('Please reload this page within 60 seconds.  If you still do not have access') }}, <a href="{{ route('verification.resend') }}">{{ __('please click this link') }}</a>.
+                    {{ __('Our system will review your information in a moment.') }}
+                    {{ __('Please reload this page within 60 seconds.  If you still do not have access') }}, <a href="{{ route('verification.resend') }}">{{ __('please click this link') }}</a> or contact your IT department.
                     {{-- {{ __('Before proceeding, please check your email for a verification link.') }}
                     {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>. --}}
                 </div>

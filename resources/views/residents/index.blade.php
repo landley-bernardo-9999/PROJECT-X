@@ -4,9 +4,15 @@
 <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
 <a class="btn btn-warning float-right" role="button" href="/propertymgmt/residents/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD RESIDENT</a>
 <a href="/propertymgmt/residents" class="btn btn-dark" style="width:155px"><i class="fas fa-users"></i>&nbspRESIDENTS</a>
+<br><br>
+<form action="/search/" method="GET">
+    <input class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
+</form>
 <br>
-<br>
-<div class="container-fluid">
+<div class="container-fluid text-center">
+    <h3>Residents Found: {{count($residents)}}</h3>
+</div>   
+{{-- <div class="container-fluid">
         <div class="row text-center">
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:4%">
                 <h3>Active</h3>
@@ -29,9 +35,7 @@
                  <h1>{{count($courtyard)}}</h1> 
             </div>
         </div>
-        <br>
-        
-    </div>
+        <br> --}}
         <div class="container-fluid">
             @if(count($residents) > 0)
             <table class="table table-hover table-striped">
@@ -48,7 +52,7 @@
                     {{-- <th></th> --}}
                   </tr>
                 </thead>
-                
+        
                 <tbody>
                         @foreach($residents as $row)
                     <tr>

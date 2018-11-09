@@ -50,5 +50,10 @@ Route::resources([
     '/propertymgmt/contracts' => 'ContractsController',
     '/propertymgmt/transactions' => 'TransactionsController',
 ]);
+
+
+Route::get('search/{s?}', 'SearchesController@residents')->where('s', '[\w\d]+');
+
+
     
 

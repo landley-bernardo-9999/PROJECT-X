@@ -72,7 +72,7 @@
                     <div class="panel panel-default">
                         @if(count($resident_contract) > 0)             
                         <table class="table table-striped">
-                         <thead class="thead-light">
+                         <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
                                 <th>Profile</th>
@@ -86,9 +86,9 @@
                                
                              </tr>
                          </thead>
-                         @foreach($resident_contract as $resident_contract)
+                         
                         <tbody>
-                           
+                                @foreach($resident_contract as $resident_contract)
                          <tr>
                             <th>{{ $residentsRowNo++ }}</th>
                             <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$resident_contract->cover_image}}" alt="Card image cap"></td>
@@ -101,9 +101,9 @@
                             <td>{{Carbon\Carbon::parse($resident_contract->moveOutDate)->formatLocalized('%b %d %Y')}}</td>
                             <td><a href="/propertymgmt/contracts/{{$resident_contract->id}}" class="btn btn-info">MORE INFO</td>
                          </tr>
-                     
+                         @endforeach
                         </tbody>
-                        @endforeach
+                        
                         </table>
                         @else
                         <div class="alert alert-danger" role="alert"><p>No records of residents!</p></div>
@@ -120,7 +120,7 @@
                                   <div class="panel panel-default">
                                  @if(count($repair) > 0)              
                                  <table class="table table-striped">
-                                    <thead class="thead-light">
+                                    <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
                                             <th>Date Reported</th>
@@ -129,11 +129,12 @@
                                             <th>Endorse To</th>
                                             <th>Status</th> 
                                             <th>Cost</th>
-                                            <th></th>
+                                            
                                         </tr>
                                 </thead>
-                                @foreach($repair as $repair)
+                                
                                   <tbody>
+                                        @foreach($repair as $repair)
                                   <tr>
                                      <th>{{ $repairsRowNo++ }}</th>
                                      <td>{{ $repair->dateReported}}</td>
@@ -142,7 +143,7 @@
                                      <td>{{$repair->endorsedTo}}</td>
                                      <td>{{$repair->repairStatus}}</td> 
                                      <td>{{$repair->cost}}</td>
-                                     <td><a href="/propertymgmt/repairs/{{$repair->id}}" class="btn btn-info">MORE INFO</a></td>
+                                     
                                   </tr>
                                   @endforeach
                                 </tbody>
@@ -164,7 +165,7 @@
                         @if(count($owner) > 0)              
                         <table class="table table-striped">
                         <thead>
-                            <tr class="thead-light">
+                            <tr class="thead-dark">
                                 <th>#</th>
                                 <th>Profile</th>
                                 <th>Name</th>

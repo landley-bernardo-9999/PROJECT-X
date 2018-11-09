@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <a class="btn btn-dark" role="button" href="/repairs"  style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    <a class="btn btn-dark" role="button" href="/propertymgmt/repairs"  style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
     <a href="{{$repair->id}}/edit" class="btn btn-danger float-right"  style="width:155px"><i class="fas fa-edit"></i>&nbspEDIT</a>
     {{-- {!!Form::open(['action' => ['RepairsController@destroy', $repair->id], 'method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
