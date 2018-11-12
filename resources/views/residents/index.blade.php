@@ -3,15 +3,16 @@
 
 <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
 <a class="btn btn-warning float-right" role="button" href="/propertymgmt/residents/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD RESIDENT</a>
-<a href="/propertymgmt/residents" class="btn btn-dark" style="width:155px"><i class="fas fa-users"></i>&nbspRESIDENTS</a>
+<a href="/propertymgmt/residents" class="btn btn-dark" style="width:155px"><i class="fas fa-users"></i>&nbspCLEAR SEARCH</a>
 <br><br>
-<form action="/search/" method="GET">
+<form action="/search/residents" method="GET">
     <input class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
 </form>
 <br>
-<div class="container-fluid text-center">
-    <h3>Residents Found: {{count($residents)}}</h3>
+<div class="container-fluid text-center" >
+    <h3>Residents found: {{count($residents)}}</h3>
 </div>   
+<br>
 {{-- <div class="container-fluid">
         <div class="row text-center">
             <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:4%">

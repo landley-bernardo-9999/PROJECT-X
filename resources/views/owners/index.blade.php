@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<br>
-    <div class="container-fluid" >
             <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
             <a class="btn btn-warning float-right" role="button" href="/propertymgmt/owners/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD OWNER</a>
-            <a href="/propertymgmt/owners" class="btn btn-dark" style="width:155px"><i class="fas fa-user-tie" ></i>&nbspOWNERS</a>
-        </div>
-   <br>
+            <a href="/propertymgmt/owners" class="btn btn-dark" style="width:155px"><i class="fas fa-user-tie" ></i>&nbspCLEAR SEARCH</a>
+
+<div class="container-fluid text-center" >
+    <h3>Owners found: {{count($owners)}}</h3>
+</div>  
+<br> 
     @if(count($owners) > 0)
     <div class="container-fluid"  >
             <table class="table table-striped table-hover">
@@ -18,13 +19,9 @@
                                 <th scope="col">Room</th>
                                 <th scope="col">Move-In</th>
                                 <th scope="col">Mobile</th>
-                                <th scope="col">Email</th>
-                                
-                               
-                                
+                                <th scope="col">Email</th>                    
                             </tr>
                 </thead>
-            
             <tbody>   
                     @foreach($owners as $owner)
                 <tr>

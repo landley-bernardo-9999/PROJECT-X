@@ -28,12 +28,19 @@ class RoomsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $s = $request->query('s');
+     
         $pm = DB::table('rooms')->where('enrolled', 'No')->get();
         $accepted = DB::table('rooms')->where('isAccepted', 'Yes')->get();
         $unaccepted = DB::table('rooms')->where('isAccepted', 'No')->get();
-        $rooms = DB::table('rooms')->orderBy('created_at', 'desc')->get();
+        $rooms = DB::table('rooms')->where('roomNo', 'like', "%$s%")
+                                   ->orWhere('roomStatus', 'like', "%$s%")
+                                   ->orWhere('capacity', 'like', "%$s%")
+                                   ->orWhere('building', 'like', "%$s%")->get();
+   
+   
         $leasing = DB::table('rooms')->where('enrolled', 'yes')->get();
         $occupied = DB::table('rooms')->where('roomStatus','=', 'Occupied')->get();
         $vacant = DB::table('rooms')->where('roomStatus','=', 'Vacant')->get();
@@ -41,17 +48,21 @@ class RoomsController extends Controller
         $nrfo = DB::table('rooms')->where('roomStatus','=', 'NRFO')->get();
         $totalRooms = count($rooms);
         $occupiedRooms = count($occupied);
-        $occupancyRate = round($occupiedRooms/$totalRooms * 100); 
-        return view('rooms.index')->with('pm', $pm)
-                                  ->with('leasing', $leasing)  
-                                  ->with('accepted', $accepted)
-                                  ->with('unaccepted', $unaccepted)
-                                  ->with('rooms', $rooms)
-                                  ->with('occupied', $occupied)
-                                  ->with('vacant', $vacant)
-                                  ->with('reserved', $reserved)
-                                  ->with('nrfo', $nrfo)
-                                  ->with('occupancyRate', $occupancyRate);
+        
+   
+        return view('rooms.index', [
+                                      'rooms' => $rooms, 
+                                      's' => $s, 
+                                      'pm' => $pm,
+                                      'leasing'=> $leasing,  
+                                      'accepted' => $accepted,
+                                      'unaccepted' => $unaccepted,
+                                      'rooms' => $rooms,
+                                      'occupied' => $occupied,
+                                      'vacant'=> $vacant,
+                                      'reserved' => $reserved,
+                                      'nrfo'=> $nrfo,
+                                  ]);  
     }
 
     /**
