@@ -15,21 +15,10 @@ class CreateRepairsTable extends Migration
     {
         Schema::create('repairs', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('dateReported');
-            
+            $table->date('dateReported')->nullable();
             $table->string('name');
-            //set residentId as a foreign key
-            // $table->integer('residentId')->unsigned()->after('id');
-            // $table->foreign('residentId')->references('id')->on('residents')->onDelete('cascade');
             $table->string('roomNo');
-            //set roomNo as a foreign key
-            // $table->string('repairRoomNo')->after('id');
-            // $table->foreign('repairRoomNo')->references('roomNo')->on('rooms')->onDelete('cascade');
-            
-            //set personnelName as a foreign key 
-            // $table->integer('personnelId')->unsigned()->after('id');
-            // $table->foreign('personnelId')->references('id')->on('maintenances')->onDelete('cascade');
-            $table->string('endorsedTo');
+            $table->string('endorsedTo')->nullable();
             $table->string('desc');
             $table->integer('cost');
             $table->string('repairStatus');

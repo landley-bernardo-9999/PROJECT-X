@@ -6,37 +6,15 @@
 <a href="/propertymgmt/residents" class="btn btn-dark" style="width:155px"><i class="fas fa-users"></i>&nbspCLEAR SEARCH</a>
 <br><br>
 <form action="/search/residents" method="GET">
-    <input class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
+    <div class="input-group mb-3">
+        <input class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
+    </div>
 </form>
-<br>
+
 <div class="container-fluid text-center" >
     <h3>Residents found: {{count($residents)}}</h3>
 </div>   
 <br>
-{{-- <div class="container-fluid">
-        <div class="row text-center">
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:4%">
-                <h3>Active</h3>
-                    <h1>{{count($active)}}</h1>
-            </div>
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
-                <h3>Harvard</h3>
-                 <h1>{{count($harvard)}}</h1> 
-            </div>
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
-                <h3>Princeton</h3>
-                 <h1>{{count($princeton)}}</h1>
-            </div>
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
-                <h3>Wharton</h3>
-                 <h1>{{count($wharton)}}</h1>
-            </div>
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
-                <h3>Courtyard</h3>
-                 <h1>{{count($courtyard)}}</h1> 
-            </div>
-        </div>
-        <br> --}}
         <div class="container-fluid">
             @if(count($residents) > 0)
             <table class="table table-hover table-striped">

@@ -26,6 +26,43 @@
                 </div>
                 </div>
 
+                <div class="form-group row">
+                        <label for="concernDepartment" class="col-md-4 col-form-label text-md-right" >Concern Department</label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="concernDeparment" id="concernDepartment">
+                            <option value="" disabled selected>Please select</option>    
+                            <option value="Leasing">Leasing</option>
+                            <option value="Property Management">Property Management</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                        <label for="concernDepartment" class="col-md-4 col-form-label text-md-right" >Urgency</label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="urgency" id="urgency">
+                            <option value="" disabled selected>Please select</option>    
+                            <option value="Emergency">Emergency</option>
+                            <option value="Major Concern">Major Concern</option>
+                            <option value="Minor Concern">Minor Concern</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                        <label for="isWarranty" class="col-md-4 col-form-label text-md-right" >Under Warranty?</label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="isWarranry" id="isWarranty">
+                            <option value="" disabled selected>Please select</option>    
+                            <option value="Emergency">Yes</option>
+                            <option value="Major Concern">No</option>
+                            <option value="Minor Concern">Unknown</option>
+                        </select>
+                    </div>
+                </div>
+
                 <!--Select Name of the resident or owner-->
                 <div class="form-group row">
                     <label for="" class="col-md-4 col-form-label text-md-right">Name of the Resident/Owner</label>
@@ -116,7 +153,21 @@
                         {{Form::file('cover_image', ['class' => 'form-control'])}}
                     </div>
             </div>
-            <br>
+            
+            <div class="form-group row">
+                    <label for="clientSatisfaction" class="col-md-4 col-form-label text-md-right" >Client Satisfaction</label>
+                <div class="col-md-6">
+                    <select class="form-control" name="isWarranry" id="isWarranty">
+                        <option value="" disabled selected>Please select</option>    
+                        <option value="Very Poor">Very Poor</option>
+                        <option value="Somewhat Unsatisfactory">Somewhat Unsatisfactory</option>
+                        <option value="Average">Average</option>
+                        <option value="Very Satisfactory">Very Satisfactory</option>
+                        <option value="Superior">Superior</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         {{Form::submit('Submit',['class'=>'btn btn-secondary'])}}

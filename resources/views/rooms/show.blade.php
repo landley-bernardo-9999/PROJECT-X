@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<br>
     <a class="btn btn-dark" role="button" href="/propertymgmt/rooms" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
     <a href="{{$room->roomNo}}/edit" class="btn btn-danger float-right" style="width:155px" ><i class="fas fa-edit"></i>&nbspEDIT</a>
     {{-- {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo], 'method' => 'POST', 'class' =>'float-right'])!!}

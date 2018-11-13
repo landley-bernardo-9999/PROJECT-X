@@ -21,6 +21,18 @@
                         <td>{{$repair->roomNo}}</td>
                     </tr>
                     <tr>
+                        <th>Under Warranty</th>
+                        <td>{{$repair->isWarranty}}</td>
+                    </tr>
+                    <tr>
+                        <th>Concern Department</th>
+                        <td>{{$repair->concernDepartmen}}</td>
+                    </tr>
+                    <tr>
+                        <th>Urgency</th>
+                        <td>{{$repair->urgency}}</td>
+                    </tr>
+                    <tr>
                         <th>Reported By</th>
                         <td>{{$repair->name}}</td>
                     </tr>
@@ -48,7 +60,10 @@
                         <th>Date Finished</th>
                         <td>{{Carbon\Carbon::parse($repair->dateFinished)->formatLocalized('%b %d %Y')}}</td>
                     </tr>
-                        
+                    <tr>
+                        <th>Client Satisfaction</th>
+                        <td>{{$repair->clientSatisfaction}}</td>
+                    </tr>
                     </table>
                 </div>             
                 <div class="col-lg-3">
