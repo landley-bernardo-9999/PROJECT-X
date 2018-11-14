@@ -26,10 +26,9 @@
 </head>
 <body>
     <div id="app">
-        @include('includes.sidebar')
         <hr class="my-0">
-        <br><br>
-        <div class="container">
+        <br>
+        <div class="container-fluid">
             @include('includes.messages')
             @yield('content')
         </div>

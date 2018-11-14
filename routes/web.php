@@ -49,12 +49,14 @@ Route::resources([
     '/propertymgmt/violations' => 'ViolationsController',
     '/propertymgmt/contracts' => 'ContractsController',
     '/propertymgmt/transactions' => 'TransactionsController',
+    '/inventorymgmt/items' => 'ItemsController',
 ]);
 
 
 Route::get('/search/residents{s?}', 'ResidentsController@index')->where('s', '[\w\d]+');
 Route::get('/search/rooms{s?}', 'RoomsController@index')->where('s', '[\w\d]+');
-Route::get('/create/rooms{s?}', 'RoomsController@create')->where('s', '[\w\d]+');
+Route::get('/search/supplies{s?}', 'ItemsController@index')->where('s', '[\w\d]+');
+
 
 
 
