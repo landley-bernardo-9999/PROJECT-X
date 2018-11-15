@@ -38,7 +38,9 @@ class RoomsController extends Controller
         $rooms = DB::table('rooms')->where('roomNo', 'like', "%$s%")
                                    ->orWhere('roomStatus', 'like', "%$s%")
                                    ->orWhere('capacity', 'like', "%$s%")
-                                   ->orWhere('building', 'like', "%$s%")->get();
+                                   ->orWhere('building', 'like', "%$s%")
+                                   ->orderBy('created_at', 'desc')
+                                   ->get();
    
    
         $leasing = DB::table('rooms')->where('enrolled', 'yes')->get();

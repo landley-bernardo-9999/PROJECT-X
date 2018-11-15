@@ -45,7 +45,7 @@
                         <td>{{$repair->desc}}</td>
                     </tr>
                     <tr>
-                        <th>Person In Charge</th>
+                        <th>Endorsed To</th>
                         <td>{{$repair->endorsedTo}}</td>
                     </tr>
                     <tr>

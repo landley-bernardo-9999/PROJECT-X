@@ -103,6 +103,7 @@
                             <option value="Security">Security</option>
                             <option value="Internet">Internet</option>
                             <option value="Request">Request</option>
+                            <option value="Door/Window">Door/Window</option>
                             <option value="General">General</option>
                         </select>
                     </div>
@@ -159,6 +160,7 @@
                 <div class="col-md-6">
                     <select class="form-control" name="isWarranry" id="isWarranty">
                         <option value="" disabled selected>Please select</option>    
+                        <option value="None">None</option>
                         <option value="Very Poor">Very Poor</option>
                         <option value="Somewhat Unsatisfactory">Somewhat Unsatisfactory</option>
                         <option value="Average">Average</option>

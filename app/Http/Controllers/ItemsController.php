@@ -26,11 +26,24 @@ class ItemsController extends Controller
     public function index(Request $request)
     {
         $rowNum = 1;
+        $itemRow = 1;
 
         $s = $request->query('s');
-        $items = DB::table('items')->where('items.item', 'like', "%$s%")
-       -> get();
-        return view('inventorymgmt.items.index')->with('items', $items)->with('rowNum', $rowNum)->with('s', $s);
+        $items = DB::table('items')
+        ->where('items.item', 'like', "%$s%")
+        ->orWhere('items.desc', 'like', "%$s%")
+        ->orWhere('items.brand', 'like', "%$s%")
+        ->orderBy('updated_at', 'desc')
+        ->get();
+
+        $outOfStack = DB::table('items')
+        ->where('quan', '<=', "0")
+        ->orWhere('quan', '==', null)
+        ->get();
+
+        return view('inventorymgmt.items.index')
+        ->with('outOfStack', $outOfStack)
+        ->with('items', $items)->with('rowNum', $rowNum)->with('itemRow', $itemRow)->with('s', $s);
     }
 
     /**
@@ -40,7 +53,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return view('inventorymgmt.items.create');
+        //
     }
 
     /**
@@ -55,6 +68,7 @@ class ItemsController extends Controller
 
         $item->item = $request->input('item');
         $item->desc = $request->input('desc');
+        $item->brand = $request->input('brand');
         $item->quan = $request->input('quan');
         $item->unit = $request->input('unit');
         $item->remarks = $request->input('remarks');
@@ -99,6 +113,7 @@ class ItemsController extends Controller
 
         $item->item = $request->input('item');
         $item->desc = $request->input('desc');
+        $item->brand = $request->input('brand');
         $item->quan = $request->input('quan');
         $item->unit = $request->input('unit');
         $item->remarks = $request->input('remarks');

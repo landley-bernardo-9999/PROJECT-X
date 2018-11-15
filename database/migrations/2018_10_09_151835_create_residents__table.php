@@ -36,10 +36,6 @@ class CreateResidentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('residents');
-
-        //drop the foreign key
-       $table->dropForeign('resident_roomNo_foreign');
-       $table->dropColumn('residentRoomNo');  
+        Schema::dropIfExists('residents'); 
     }
 }
