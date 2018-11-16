@@ -140,7 +140,7 @@
                         <div class="alert alert-danger" role="alert"><p>No records of concerns/repairs!</p></div>
                         @endif
                       </div>
-                          {{-- <a class="btn btn-warning" role="button" href="/repairs/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>  --}}
+                          <a class="btn btn-warning" role="button" href="/repairs/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>  
                 </div>
                 <br>
                     </div>
@@ -186,7 +186,7 @@
                             <div class="alert alert-danger" role="alert"><p>No records of violations!</p></div>
                             @endif
                           </div>
-                              {{-- <a class="btn btn-warning" role="button" href="/violations/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD VIOLATION</a>   --}}
+                               <a class="btn btn-warning" role="button" href="/violations/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD VIOLATION</a>   --}}
                     </div>
                         <br>      
                         </div>         

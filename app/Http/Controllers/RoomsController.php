@@ -130,7 +130,7 @@ class RoomsController extends Controller
 
         $room->save();
 
-        return redirect('/propertymgmt/rooms/create')->with('success','Added successfully!');
+        return redirect('/propertymgmt/rooms/')->with('success','Added successfully!');
     }
 
     /**
@@ -186,7 +186,13 @@ class RoomsController extends Controller
             ->where('roomNo', $roomNo)
             ->orderBy('transactions.created_at', 'asc')
             ->get();
+
         $repair = Repair::where('roomNo', '=', $roomNo)->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('owners.*')
+        ->get();
 
        return view('rooms.show')->with('residentsRowNo', $residentsRowNo)
                                 ->with('ownersRowNo', $ownersRowNo)
@@ -198,7 +204,8 @@ class RoomsController extends Controller
                                 ->with('registeredRooms', $registeredRooms)
                                         ->with('registeredResidents', $registeredResidents)
                                         ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners)
-                                        ->with('registeredPersonnels', $registeredPersonnels);
+                                        ->with('registeredPersonnels', $registeredPersonnels)
+                                        ->with('registeredOwners', $registeredOwners);
                                    
         
     }

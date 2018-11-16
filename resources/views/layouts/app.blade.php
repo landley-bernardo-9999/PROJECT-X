@@ -44,16 +44,37 @@
     {{-- ajax-form --}}
  
     <script type="text/javascript">
+
+    // pop up form for resident's contract's form
+
         $(document).on('click','.add-resident', function(){
             $('#create-resident').modal('show');
             $('.resident-form').show();
             $('.resident-title').text('Contract Information');
         });
 
+        // pop up for repair's form
+
          $(document).on('click','.add-repair', function(){
             $('#create-repair').modal('show');
             $('.repair-form-').show();
             $('.repair-title').text('Repair Information');
+        });
+
+        // pop up form for owner's transaction's form
+
+        $(document).on('click','.add-owner', function(){
+            $('#create-owner').modal('show');
+            $('.owner-form').show();
+            $('.owner-title').text('Transaction Information');
+        });
+
+        // pop up form for adding new room
+
+        $(document).on('click','.add-room', function(){
+            $('#create-room').modal('show');
+            $('.room-form').show();
+            $('.room-title').text('Room Information');
         });
 
 
