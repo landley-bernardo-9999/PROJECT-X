@@ -43,7 +43,7 @@
             </div>
         
             
-            <div class="form-group row" style="margin-left:-10%; margin-right:-10%">
+            <div class="form-group row" style="margin-left:-5%; margin-right:-5">
                     <div class="col-md-6">
                             <a class="btn btn-dark float-left" role="button" href="/home" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>   
                     </div>
@@ -78,8 +78,7 @@
                             <th>Quantity</th>
                             <th>Unit</th>
                             <th>Remarks</th>
-                            <th>Action</th>
-                          
+                            <th colspan="2" style="text-align:center">Action</th>
                         </tr>
                     </thead>   
                 <tbody>
@@ -87,9 +86,7 @@
                         {!! Form::open(['action'=>['ItemsController@update', $row->id],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                     <tr>
                         <th>
-                            <div style="padding:1%">
-                                <label for="name">{{$rowNum++}}</label>
-                            </div>
+                            <label for="name">{{$rowNum++}}</label>
                         </th>
                         <td>
                             {{Form::text('item',$row->item,['class'=>'form-control'])}}  

@@ -113,10 +113,7 @@
                 </div>
                 </div>
             </div>
-        </div>
-    </div> 
-    </div>
-</div>
+  
 
     <br>
 @endsection

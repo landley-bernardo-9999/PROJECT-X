@@ -108,9 +108,153 @@
                         <div class="alert alert-danger" role="alert"><p>No records of residents!</p></div>
                         @endif
                       </div>
-                      <a class="btn btn-warning" role="button" href="/propertymgmt/contracts/create" style="width:150px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD RESIDENT</a> 
+                      <a class="btn btn-warning add-resident" href="#" style="width:150px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD RESIDENT</a> 
+                    
+
                 </div>
-            </div>
+                      {{-- Create a resident registration form --}}
+
+                      <div id="create-resident" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                        <h4 class="resident-title float-left"> </h4>
+                                      <button class="close" type="button" data-dismiss="modal" >&times;</button>
+                                        
+                                  </div>
+
+                                  <div class="modal-body">
+                                      
+                                    {!! Form::open(['action'=>'ContractsController@store','method' => 'POST', 'enctype' => 'multipart/form-data', 'class'=>'resident-form'] ) !!}
+
+                                        {{-- Resident's Room Number --}}
+                                        
+                                        <div class="form-group row add">
+                                            <label for="residentRoomNo" class="col-md-5 text-md-left">Room No <span style="color:red">&nbsp*</span></label> 
+                                            <div class="col-md-6">
+                                                <select name="residentRoomNo" id="residentRoomNo" class="form-control">
+                                                    <option value="" disabled selected>Please select</option>
+                                                        @foreach($registeredRooms as $registeredRoom)
+                                                    <option value="{{$registeredRoom->roomNo}}">
+                                                        {{$registeredRoom->roomNo}}
+                                                    </option>
+                                                        @endforeach
+                                                </select>
+
+                                            
+                                            </div>                                            
+                                        </div>
+
+                                         {{-- Resident's full name --}}
+
+                                         <div class="form-group row">
+                                                <label for="residentName" class="col-md-5 col-form-label text-md-left">Name of the Resident<span style="color:red">&nbsp*</span></label>
+                                            
+                                            <div class="col-md-6">
+                                                <select name="residentName" id="residentName" class="form-control">
+                                                    <option value="" disabled selected>Please select</option>
+                                                        @foreach($registeredResidents as $registeredResident)
+                                                    <option value="{{$registeredResident->id}}">
+                                                        {{$registeredResident->name}}
+                                                    </option>
+                                                        @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                      
+
+                                        {{-- Resident's duration of stay --}}
+
+                                        <div class="form-group row">
+                                            <label for="term" class="col-md-5 col-form-label text-md-left">Term<span style="color:red">&nbsp*</span></label>
+                                                <div class="col-md-6">
+                                                    <select class="form-control" name="term" id="term">
+                                                        <option value="" selected>Please select</option>
+                                                        <option value="Short Term" >Short Term</option>    
+                                                        <option value="Long Term">Long Term</option>
+                                                        <option value="Transient">Transient</option>                            
+                                                    </select>
+                                                </div>   
+                                        </div>
+
+                                        {{-- Residet's move-in date. --}}
+
+                                        <div class="form-group row">    
+                                            <label for="moveInDate" class="col-md-5 col-form-label text-md-left">Move-In Date</label>
+                                            <div class="col-md-6">
+                                                {{ Form::date('moveInDate',' ', ['class' => 'form-control']) }}
+                                            </div>
+                                        </div>
+
+                                        {{-- Resident's move out date. --}}
+
+                                        <div class="form-group row">
+                                            <label for="moveOutDate" class="col-md-5 col-form-label text-md-left">Move-Out Date</label>
+                                            <div class="col-md-6">
+                                                {{ Form::date('moveOutDate',' ', ['class' => 'form-control']) }}
+                                            </div>
+                                        </div>
+
+                                        {{-- Resident's move-in charges. --}}
+
+                                        <div class="form-group row">
+                                            <label for="amountPaid" class="col-md-5 col-form-label text-md-left">Rent<span style="color:red">&nbsp*</span></label>
+                                            <div class="col-md-6">
+                                                {{Form::number('amountPaid','',['class'=>'form-control'])}}
+                                            </div>     
+                                        </div>
+
+                                        {{-- Resident's security deposit --}}
+
+                                        <div class="form-group row">
+                                            <label for="securityDeposit" class="col-md-5 col-form-label text-md-left">Security Deposit<span style="color:red">&nbsp*</span></label>
+                                            <div class="col-md-6">
+                                                {{Form::number('securityDeposit','',['class'=>'form-control'])}}
+                                            </div>     
+                                        </div>
+
+                                        {{-- Resident's reason for moving-out. --}}
+
+                                        <div class="form-group row">
+                                            <label for="reasonForMovingOut" class="col-md-5 col-form-label text-md-left">Reason for Moving-out</label>
+                                            <div class="col-md-6">
+                                                <select class="form-control" name="reasonForMovingOut" id="reasonForMovingOut">
+                                                    <option value="Not Applicable">Not Applicable</option>
+                                                    <option value="Not Applicable" selected>Please select</option>    
+                                                    <option value="End of Contract">End of Contract</option>
+                                                    <option value="Delinquent">Delinquent</option>
+                                                    <option value="Misconduct">Misconduct</option>
+                                                    <option value="Force Majeure">Force Majeure</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>   
+                                        </div>
+
+                                          </div>
+
+                                          <div class="modal-footer">
+                                                <div class="col-md-5 float-right">
+
+                                                    <button class="btn btn-danger" data-dismiss="modal" type="button">CLOSE</button>
+                                                    
+                                                    {{Form::submit('SUBMIT',['class'=>'btn btn-warning', 'float'=>'right'])}}
+                                                    {!! Form::close() !!}  
+
+                                                    
+                                                </div>
+
+                                                
+                                            </div>
+                                      
+                                  </div>
+
+                                  
+                              </div>
+                          </div>
+
+                        </div>
+
             <hr>
                 <div class="row">
                          <div class="col-lg-12">
@@ -152,9 +296,260 @@
                                  <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
                                  @endif
                                </div>
-                                   {{-- <a class="btn btn-warning" role="button" href="/repairs/create" style="width:150px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>   --}}
+                                
+                                    <a class="btn btn-warning add-repair" href="#" style="width:150px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a> 
                          </div>
                 </div>
+
+                   {{-- Create a repair form --}}
+
+                   <div id="create-repair" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                      <h4 class="repair-title float-left"> </h4>
+                                    <button class="close" type="button" data-dismiss="modal" >&times;</button>
+                                      
+                                </div>
+
+                                <div class="modal-body">
+                                    
+                                  {!! Form::open(['action'=>'RepairsController@store','method' => 'POST', 'enctype' => 'multipart/form-data', 'class'=>'repair-form'] ) !!}
+
+                                      {{-- Resident's Room Number --}}
+                                      
+                                      <div class="form-group row">
+                                            <label for="" class="col-md-4 col-form-label text-md-right">Room No<span style="color:red">&nbsp*</span></label>
+                                            <div class="col-md-6">
+                                            <select name="roomNo" id="roomNo" class="form-control">
+                                                <option value="" disabled selected>Please select</option>
+                                                    @foreach($registeredRooms as $registeredRoom)
+                                                <option value="{{$registeredRoom->roomNo}}">
+                                                    {{$registeredRoom->roomNo}}
+                                                </option>
+                                                    @endforeach
+                                            </select>
+                                        </div>
+                                        </div>
+
+                                        {{-- Concern department of the repair         --}}
+
+                                        <div class="form-group row">
+                                                <label for="concernDepartment" class="col-md-4 col-form-label text-md-right" >Concern Department</label>
+                                            <div class="col-md-6">
+                                                <select class="form-control" name="concernDeparment" id="concernDepartment">
+                                                    <option value="" disabled selected>Please select</option>    
+                                                    <option value="Leasing">Leasing</option>
+                                                    <option value="Property Management">Property Management</option>
+                                                    <option value="Accounting">Accounting</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        {{-- Urgency of the repair --}}
+
+                                        <div class="form-group row">
+                                                <label for="concernDepartment" class="col-md-4 col-form-label text-md-right" >Urgency</label>
+                                            <div class="col-md-6">
+                                                <select class="form-control" name="urgency" id="urgency">
+                                                    <option value="" disabled selected>Please select</option>    
+                                                    <option value="Emergency">Emergency</option>
+                                                    <option value="Major Concern">Major Concern</option>
+                                                    <option value="Minor Concern">Minor Concern</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        {{-- Verify if the unit is still under warranty --}}
+
+                                        <div class="form-group row">
+                                                <label for="isWarranty" class="col-md-4 col-form-label text-md-right" >Under Warranty?</label>
+                                            <div class="col-md-6">
+                                                <select class="form-control" name="isWarranry" id="isWarranty">
+                                                    <option value="" disabled selected>Please select</option>    
+                                                    <option value="Emergency">Yes</option>
+                                                    <option value="Major Concern">No</option>
+                                                    <option value="Minor Concern">Unknown</option>
+                                                </select>
+                                            </div>
+                                        </div>
+{{-- 
+                                        Name of the resident/owner who requested for the repairs/concern --}}
+
+                                        <div class="form-group row">
+                                                <label for="" class="col-md-4 col-form-label text-md-right">Name of the Resident/Owner</label>
+                                            
+                                            <div class="col-md-6">
+                                                <select name="name" id="name" class="form-control">
+                                                    <option value="" disabled selected>Please select</option>
+                                                    <option value="None">None</option>
+                                                        @foreach($registeredResidentsAndOwners as $registeredResidentAndOwner)
+                                                    <option value="{{$registeredResidentAndOwner->name}}">
+                                                        {{$registeredResidentAndOwner->name}}
+                                                    </option>
+                                                        @endforeach
+                                                </select>
+                                            </div>
+                                            </div>
+
+                                            {{-- Date when the repair/concern reported --}}
+                                        
+                                            <div class="form-group row">
+                                                    <label for="" class="col-md-4 col-form-label text-md-right">Date Reported<span style="color:red">&nbsp*</span></label>
+                                                    <div class="col-md-6">
+                                                        {{ Form::date('dateReported',' ', ['class' => 'form-control']) }}
+                                                    </div>
+                                                </div>
+
+                                             {{-- Category of the concern/repair    --}}
+                                            
+                                                <div class="form-group row">
+                                                        <label for="desc" class="col-md-4 col-form-label text-md-right" >Category<span style="color:red">&nbsp*</span></label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control" name="desc" id="desc">
+                                                            <option value="" disabled selected>Please select</option>    
+                                                            <option value="Carpentry">Carpentry</option>
+                                                            <option value="Electrical">Electrical</option>
+                                                            <option value="Plumbing">Plumbing</option>
+                                                            <option value="Installations">Installations</option>
+                                                            <option value="Masonry">Masonry</option>
+                                                            <option value="Painting">Painting</option>
+                                                            <option value="Cleaning">Cleaning</option>
+                                                            <option value="Security">Security</option>
+                                                            <option value="Internet">Internet</option>
+                                                            <option value="Request">Request</option>
+                                                            <option value="Door/Window">Door/Window</option>
+                                                            <option value="General">General</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                {{-- The person incharge for the repair --}}
+
+                                                <div class="form-group row">
+                                                        <label for="endorsedTo" class="col-md-4 col-form-label text-md-right">Endorsed To<span style="color:red">&nbsp*</span></label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control" name="endorsedTo" id="endorsedTo">
+                                                            <option value="" disabled selected>Please select</option>
+                                                                @foreach($registeredPersonnels as $registeredPersonnel)
+                                                            <option value="{{$registeredPersonnel->name}}">
+                                                                {{$registeredPersonnel->name}}
+                                                            </option>
+                                                                @endforeach
+                                                        </select>
+                                                    </div>
+                                                  </div>
+
+                                                  {{-- Cost of the repair if applicable --}}
+                                                
+                                                  <div class="form-group row">
+                                                        <label for="" class="col-md-4 col-form-label text-md-right">Cost<span style="color:red">&nbsp*</span></label>
+                                                        <div class="col-md-6">
+                                                           {{Form::number('cost','',['class'=>'form-control'])}}
+                                                       </div>     
+                                                     </div>
+
+                                                    {{-- The status of the repair --}}
+
+                                                     <div class="form-group row">
+                                                            <label for="repairStatus" class="col-md-4 col-form-label text-md-right">Status<span style="color:red">&nbsp*</span></label>
+                                                         <div class="col-md-6">
+                                                            <select class="form-control" name="repairStatus" id="repairStatus">
+                                                                <option value=""disabled selected>Please select</option>    
+                                                                <option value="Pending">Pending</option>
+                                                                <option value="Ongoing">Ongoing</option>
+                                                                <option value="Closed">Closed</option>
+                                                            </select>
+                                                        </div>   
+                                                        </div>
+                            
+                                                    {{-- The date when repairs was finished --}}
+
+                                                        <div class="form-group row">
+                                                                <label for="dateFinished" class="col-md-4 col-form-label text-md-right">Date Finished</label>
+                                                                    <div class="col-md-6">
+                                                                        {{ Form::date('dateFinished',' ', ['class' => 'form-control']) }}
+                                                                    </div>
+                                                            </div>
+
+                                                    {{-- Image of the repair/concern if applicable --}}
+
+                                                    <div class="form-group row mb-0">
+                                                            <div class="col-md-6 offset-md-4">
+                                                                {{Form::file('cover_image', ['class' => 'form-control'])}}
+                                                            </div>
+                                                    </div>
+
+                                                    <br>
+
+                                                    {{-- The satisfaction for the repair --}}
+
+                                                    <div class="form-group row">
+                                                            <label for="clientSatisfaction" class="col-md-4 col-form-label text-md-right" >Client Satisfaction</label>
+                                                        <div class="col-md-6">
+                                                            <select class="form-control" name="isWarranry" id="isWarranty">
+                                                                <option value="" disabled selected>Please select</option>    
+                                                                <option value="None">None</option>
+                                                                <option value="Very Poor">Very Poor</option>
+                                                                <option value="Somewhat Unsatisfactory">Somewhat Unsatisfactory</option>
+                                                                <option value="Average">Average</option>
+                                                                <option value="Very Satisfactory">Very Satisfactory</option>
+                                                                <option value="Superior">Superior</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                
+                                    
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                              <div class="col-md-5 float-right">
+
+                                                  <button class="btn btn-danger" data-dismiss="modal" type="button">CLOSE</button>
+                                                  
+                                                  {{Form::submit('SUBMIT',['class'=>'btn btn-warning', 'float'=>'right'])}}
+                                                  {!! Form::close() !!}  
+
+                                                  
+                                              </div>
+
+                                              
+                                          </div>
+                                    
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+                  
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+               
                 <hr>
     <div class="row">
         <div class="col-lg-12">
@@ -198,6 +593,6 @@
                     <a class="btn btn-warning" role="button" href="/propertymgmt/transactions/create" style="width:150px" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD OWNER</a> 
 
        </div>        
-   <br>
+       <br>
 @endsection
 

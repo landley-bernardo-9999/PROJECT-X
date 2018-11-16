@@ -74,7 +74,7 @@ class ContractsController extends Controller
 
         $contract->save();
 
-        return redirect('/propertymgmt/contracts/create' )->with('success','Added successfully!');
+        return redirect('/propertymgmt/rooms/'.$contract->residentRoomNo )->with('success','Added successfully!');
     }
 
     /**

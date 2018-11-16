@@ -98,9 +98,6 @@
                 @else
                     <div class="alert alert-danger" role="alert"><p>No records of contracts!</p></div>
                 @endif
-                    </div>
-                        <a class="btn btn-warning" role="button" href="/propertymgmt/contracts/create" style="width:160px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD ROOM</a> 
-        </div>
             <br>
         </div>
         <br> 

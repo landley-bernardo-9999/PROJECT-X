@@ -141,6 +141,32 @@ class RoomsController extends Controller
      */
     public function show($roomNo)
     {
+
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('rooms.*')
+        //  
+        ->get();
+
+        $registeredResidents = DB::table('residents')
+        ->orderBy('name', 'asc')
+        ->select('residents.*')
+        ->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+
+        $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
+        
+        $registeredPersonnels = DB::table('maintenances')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+
         $residentsRowNo = 1;
         $ownersRowNo = 1;
         $repairsRowNo = 1;
@@ -168,7 +194,11 @@ class RoomsController extends Controller
                                 ->with('room', $room)
                                 ->with('resident_contract', $resident_contract)
                                 ->with('owner', $owner_transaction)
-                                ->with('repair', $repair);
+                                ->with('repair', $repair)
+                                ->with('registeredRooms', $registeredRooms)
+                                        ->with('registeredResidents', $registeredResidents)
+                                        ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners)
+                                        ->with('registeredPersonnels', $registeredPersonnels);
                                    
         
     }

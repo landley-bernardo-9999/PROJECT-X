@@ -2,8 +2,8 @@
 @section('content')
 
 <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-<a class="btn btn-warning float-right" role="button" href="/propertymgmt/residents/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD RESIDENT</a>
 <a href="/propertymgmt/residents" class="btn btn-dark" style="width:155px"><i class="fas fa-users"></i>&nbspCLEAR SEARCH</a>
+<a href="/propertymgmt/residents/create" class="btn btn-warning float-right" style="width:155px"><i class="fas fa-users"></i>&nbspADD RESIDENT</a>
 <br><br>
 <form action="/search/residents" method="GET">
     <div class="input-group mb-3">
