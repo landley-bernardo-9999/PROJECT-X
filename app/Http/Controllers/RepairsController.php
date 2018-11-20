@@ -28,12 +28,37 @@ class RepairsController extends Controller
      */
     public function index()
     {
+
+        
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('rooms.*')
+        ->get();
+
+        $registeredResidents = DB::table('residents')
+        ->orderBy('name', 'asc')
+        ->select('residents.*')
+        ->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+
+        $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
+        
         $rowNum = 1;
         $repairs = DB::table('repairs')
         ->join('maintenances', 'repairs.endorsedTo', '=', 'maintenances.name')
             
         ->select('repairs.*','repairs.id as repairsId', 'maintenances.*', 'repairs.name as residentName')
-        ->orderBy('repairs.created_at','asc')
+        ->orderBy('repairs.created_at','desc')
+        ->get();
+
+        $registeredPersonnels = DB::table('maintenances')
+        ->orderBy('name', 'asc')
+        ->select('name')
         ->get();
 
         $pending = DB::table('repairs')->where('repairStatus', 'pending')->get();
@@ -43,7 +68,10 @@ class RepairsController extends Controller
                                     ->with('rowNum', $rowNum)
                                     ->with('pending', $pending)
                                     ->with('ongoing', $ongoing)
-                                    ->with('closed', $closed);
+                                    ->with('closed', $closed)
+                                    ->with('registeredRooms', $registeredRooms)
+                                    ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners)
+                                    ->with('registeredPersonnels', $registeredPersonnels);
     }
 
     /**
@@ -145,7 +173,33 @@ class RepairsController extends Controller
     public function show($id)
     {
         $repair = Repair::find($id);
-        return view('repairs.show')->with('repair', $repair);
+
+        $registeredResidents = DB::table('residents')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+        $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
+
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get(); 
+
+        $registeredPersonnels = DB::table('maintenances')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+        return view('repairs.show')->with('repair', $repair)
+                                   ->with('registeredRooms', $registeredRooms)
+                                   ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners)
+                                   ->with('registeredPersonnels', $registeredPersonnels);
     }
 
     /**

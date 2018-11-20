@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-<a href="/propertymgmt/residents" class="btn btn-dark" style="width:155px"><i class="fas fa-users"></i>&nbspCLEAR SEARCH</a>
-<a href="/propertymgmt/residents/create" class="btn btn-warning float-right" style="width:155px"><i class="fas fa-users"></i>&nbspADD RESIDENT</a>
+<a class="btn btn-dark" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+
+<a href="/propertymgmt/residents/create" class="btn btn-warning float-right"><i class="fas fa-users"></i>&nbspADD</a>
 <br><br>
 <form action="/search/residents" method="GET">
     <div class="input-group mb-3">

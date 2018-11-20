@@ -89,7 +89,7 @@
                      <div class="alert alert-danger" role="alert"><p>No records of rooms!</p></div>
                      @endif
                    </div>
-                       <a class="btn btn-warning" role="button" href="/propertymgmt/transactions/create" style="width:155px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD ROOM</a>  
+                       {{-- <a class="btn btn-warning" role="button" href="/propertymgmt/transactions/create" "><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a>   --}}
              </div>
              </div>           
         </div>
@@ -136,7 +136,7 @@
                         <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
                         @endif
                       </div>
-                          
+                      {{-- <a class="btn btn-warning" role="button" href="/propertymgmt/transactions/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD </a> --}}
                 </div>
                 </div>           
            </div>

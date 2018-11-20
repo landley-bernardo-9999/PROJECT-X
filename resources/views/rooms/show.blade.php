@@ -1,10 +1,141 @@
 @extends('layouts.app')
 @section('content')
     <a class="btn btn-dark" role="button" href="/propertymgmt/rooms" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a href="{{$room->roomNo}}/edit" class="btn btn-primary"  ><i class="fas fa-edit"></i>&nbspEDIT</a>
+    <a href="#" class="btn btn-primary edit-room"  ><i class="fas fa-edit"></i>&nbspEDIT</a>
+
+    {{-- Edit form  --}}
+
+
+    <div id="edit-room" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                      <h4 class="edit-room-title float-left"> </h4>
+                    <button class="close" type="button" data-dismiss="modal" >&times;</button>
+                      
+                </div>
+
+                <div class="modal-body">
+
+                        {!! Form::open(['action'=>['RoomsController@update', $room->roomNo],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                    <div class="form-group row">
+                        <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No</label>
+                        <div class="col-md-6">
+                            {{Form::text('roomNo',$room->roomNo,['class'=>'form-control'])}}
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label for="building" class="col-md-4 col-form-label text-md-right">Building:</label>
+                        <div class="col-md-6">
+                        <select class="form-control" name="building" id="building">
+                            <option value="{{$room->building}}" selected>{{$room->building}}</option>    
+                            <option value="Harvard">Harvard</option>
+                            <option value="Princeton">Princeton</option>
+                            <option value="Wharton">Wharton</option>
+                            <option value="Courtyard">Courtyard</option>
+                        </select>
+                        </div>   
+                    </div>
+    
+                    <div class="form-group row">
+                        <label for="isAccepted" class="col-md-4 col-form-label text-md-right">Accepted?:</label>
+                        <div class="col-md-6">
+                        <select class="form-control" name="isAccepted" id="isAccepted">
+                            <option value="" disabled selected>Please select</option>    
+                            <option value="Yes" selected>Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        </div>   
+                    </div>
+    
+                    <div class="form-group row">
+                        <label for="enrolled" class="col-md-4 col-form-label text-md-right">Enrolled:</label>
+                        <div class="col-md-6">
+                        <select class="form-control" name="enrolled" id="enrolled">
+                            <option value="{{$room->enrolled}}" selected>{{$room->enrolled}}</option>    
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        </div>   
+                    </div>
+            
+    
+    
+                    <div class="form-group row">
+                        <label for="shortTermRent" class="col-md-4 col-form-label text-md-right">Short Term Rent:</label>
+                        <div class="col-md-6">
+                            {{Form::number('shortTermRent',$room->shortTermRent,['class'=>'form-control'],['min'>'0'])}}
+                       </div>     
+                </div>
+    
+                
+                <div class="form-group row">
+                    <label for="longTermRent" class="col-md-4 col-form-label text-md-right">Long Term Rent:</label>
+                    <div class="col-md-6">
+                        {{Form::number('longTermRent',$room->longTermRent,['class'=>'form-control'],['min'>'0'])}}
+                   </div>     
+                </div>
+    
+                    <div class="form-group row">
+                            <label for="roomStatus" class="col-md-4 col-form-label text-md-right">Status:</label>
+                            <div class="col-md-6">
+                            <select class="form-control" name="roomStatus" id="roomStatus">
+                                <option value="{{$room->roomStatus}}" selected>{{$room->roomStatus}}</option>    
+                                <option value="Occupied">Occupied</option>
+                                <option value="Vacant">Vacant</option>
+                                <option value="Reserved">Reserved</option>
+                                <option value="NRFO">NRFO</option>
+                            </select>
+                            </div>   
+                    </div>
+    
+                    <div class="form-group row">
+                            <label for="size" class="col-md-4 col-form-label text-md-right">Size(sqm):</label>
+                            <div class="col-md-6">
+                                {{Form::number('size',$room->size,['class'=>'form-control'])}}
+                           </div>     
+                    </div>
+    
+                    <div class="form-group row">
+                            <label for="capacity" class="col-md-4 col-form-label text-md-right">Capacity:</label>
+                            <div class="col-md-6">
+                                {{Form::number('capacity',$room->capacity,['class'=>'form-control'])}}
+                           </div>     
+                    </div>
+    
+                <div class="form-group row mb-0">
+                        <label for="capacity" class="col-md-4 col-form-label text-md-right">Image:</label>
+                        <div class="col-md-6 offset-md-4">
+                            {{Form::file('cover_image', ['class' => 'form-control'])}}
+                        </div>
+                </div>
+                    
+                </div>
+
+                <div class="modal-footer">
+                    <div class="col-md-5 float-right">
+
+                        <button class="btn btn-danger" data-dismiss="modal" type="button">CLOSE</button>
+                        {{Form::hidden('_method','PUT')}}
+                        {{Form::submit('SUBMIT',['class'=>'btn btn-warning', 'float'=>'right'])}}
+                        {!! Form::close() !!}  
+
+                        
+                    </div>
+
+                    
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+
     {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo], 'method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
-                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
+                {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
     {!!Form::close()!!} 
 <br>
 <br>
@@ -297,7 +428,6 @@
                                  @endif
                                </div>
                                 
-                                    <a class="btn btn-warning add-repair" href="#" style="width:150px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a> 
                          </div>
                 </div>
 
@@ -586,7 +716,7 @@
 
                   
                 <div class="form-group row">
-                    <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No:</label>
+                    <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No:<spans style="color:red">&nbsp*</spans></label>
                     <div class="col-md-6">
                         <select name="roomNo" id="roomNo" class="form-control">
                             <option value="" disabled selected>Please select</option>

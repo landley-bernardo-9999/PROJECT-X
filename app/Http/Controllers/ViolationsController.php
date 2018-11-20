@@ -30,7 +30,30 @@ class ViolationsController extends Controller
     {
         $rowNo = 1;
         $violations = DB::table('violations')->get();
-        return view('violations.index')->with('rowNo', $rowNo)->with('violations', $violations);
+
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get();
+
+        $registeredResidents = DB::table('residents')
+        ->orderBy('name', 'asc')
+        ->select('name', 'id')
+        ->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('name', 'id')
+        ->get();
+
+        $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
+
+        return view('violations.index')
+                                ->with('rowNo', $rowNo)
+                                ->with('violations', $violations)
+                                ->with('registeredRooms', $registeredRooms)
+                                ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners);
+
     }
 
     /**
@@ -112,7 +135,29 @@ class ViolationsController extends Controller
     public function show($id)
     {
         $violation = Violation::find($id);
-        return view('violations.show', array('violation' => $violation));
+
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get();
+
+        $registeredResidents = DB::table('residents')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
+
+        $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
+        
+
+        return view('violations.show')->with('violation', $violation)
+                                      ->with('registeredRooms', $registeredRooms)
+                                      ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners);
+    
     }
 
     /**

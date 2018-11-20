@@ -61,6 +61,16 @@
             $('.repair-title').text('Repair Information');
         });
 
+        
+         // pop up form for editing repair
+
+        $(document).on('click','.edit', function(){
+            $('#edit-repair').modal('show');
+            $('.edit-repair-form').show();
+            $('.edit-repair-title').text('Edit');
+        });
+
+
         // pop up form for owner's transaction's form
 
         $(document).on('click','.add-owner', function(){
@@ -77,7 +87,39 @@
             $('.room-title').text('Room Information');
         });
 
+         // pop up form for editing room
 
+        $(document).on('click','.edit-room', function(){
+            $('#edit-room').modal('show');
+            $('.edit-room-form').show();
+            $('.edit-room-title').text('Edit');
+        });
+
+        // pop up form for addding violation
+
+        $(document).on('click','.add-violation', function(){
+            $('#create-violation').modal('show');
+            $('.add-violation-form').show();
+            $('.add-violation-title').text('Violation');
+        });
+
+
+        // pop up form for editing violation
+
+        $(document).on('click','.edit-violation', function(){
+            $('#edit-violation').modal('show');
+            $('.edit-violation-form').show();
+            $('.edit-violation-title').text('Edit');
+        });
+
+
+        // pop up form for editing supplies
+
+        $(document).on('click','.edit-item', function(){
+            $('#edit-item').modal('show');
+            $('.edit-item-form').show();
+            $('.edit-item-title').text('Edit');
+        });
 
     </script>
 

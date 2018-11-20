@@ -45,7 +45,7 @@
             
             <div class="form-group row" style="margin-left:-5%; margin-right:-5">
                     <div class="col-md-6">
-                            <a class="btn btn-dark float-left" role="button" href="/home" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>   
+                            <a class="btn btn-dark float-left" role="button" href="/home"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>   
                     </div>
                     
                   <div class="col-md-6">

@@ -1,11 +1,133 @@
 @extends('layouts.app')
 @section('content')
-    <a class="btn btn-dark" role="button" href="/propertymgmt/violations" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a href="{{$violation->id}}/edit" class="btn btn-danger float-right" style="width:155px"><i class="fas fa-edit"></i>&nbspEDIT</a>
-    {{-- {!!Form::open(['action' => ['ViolationsController@destroy', $violation->id], 'method' => 'POST', 'class' =>'float-right'])!!}
+    <a class="btn btn-dark" role="button" href="/propertymgmt/violations"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    <a href="#" class="btn btn-primary edit-violation"><i class="fas fa-edit"></i>&nbspEDIT</a>
+     
+    {!! Form::open(['action'=>['ViolationsController@update', $violation->id],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+    
+    <div id="edit-violation" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                          <h4 class="edit-violation-title float-left"> </h4>
+                        <button class="close" type="button" data-dismiss="modal" >&times;</button>
+                          
+                    </div>
+
+                    <div class="modal-body">
+                            <div class="form-group row">
+                                    <label for="" class="col-md-4 col-form-label text-md-right">Date Reported</label>
+                                    <div class="col-md-6">
+                                        {{ Form::date('dateReported',$violation->dateReported, ['class' => 'form-control']) }}
+                                    </div>
+                                </div>
+            
+            
+                                  <!--Select Name of the resident or owner-->
+                            <div class="form-group row">
+                                    <label for="" class="col-md-4 col-form-label text-md-right">Name of the Resident/Owner</label>
+                                
+                                <div class="col-md-6">
+                                    <select name="name" id="name" class="form-control">
+                                    <option value="{{$violation->name}}" selected>{{$violation->name}}</option>
+                                            @foreach($registeredResidentsAndOwners as $registeredResidentAndOwner)
+                                        <option value="{{$registeredResidentAndOwner->name}}">
+                                            {{$registeredResidentAndOwner->name}}
+                                        </option>
+                                            @endforeach
+                                    </select>
+                                </div>
+                                </div>
+                            <!--Select Room No of the resident or owner-->
+                            <div class="form-group row">
+                                <label for="" class="col-md-4 col-form-label text-md-right">Room No</label>
+                            
+                            <div class="col-md-6">
+                                <select name="roomNo" id="roomNo" class="form-control">
+                                    <option value="{{$violation->roomNo}}" selected>{{$violation->roomNo}}</option>
+                                        @foreach($registeredRooms as $registeredRoom)
+                                    <option value="{{$registeredRoom->roomNo}}">
+                                        {{$registeredRoom->roomNo}}
+                                    </option>
+                                        @endforeach
+                                </select>
+                            </div>
+                            </div>
+            
+            
+                            <div class="form-group row">
+                                    <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
+                                    <div class="col-md-6">
+                                        {{Form::text('description',$violation->description,['class'=>'form-control'])}}
+                                    </div>
+                                </div> 
+                          
+                                <div class="form-group row">
+                                        <label for="details" class="col-md-4 col-form-label text-md-right">Details of the violation/s</label>
+                                        <div class="col-md-6">
+                                                {{Form::textarea('details',$violation->details,['class'=>'form-control'])}}
+                                        </div>
+                                    </div>
+                                
+                                    <div class="form-group row">
+                                            <label for="dateCommitted" class="col-md-4 col-form-label text-md-right">Date Committed</label>
+                                            <div class="col-md-6">
+                                                {{ Form::date('dateCommitted',$violation->dateCommitted, ['class' => 'form-control']) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                                <label for="reportedBy" class="col-md-4 col-form-label text-md-right">Reported By</label>
+                                                <div class="col-md-6">
+                                                        {{Form::text('reportedBy',$violation->reportedBy,['class'=>'form-control'])}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                             <label for="fine" class="col-md-4 col-form-label text-md-right">Fine</label>
+                             <div class="col-md-6">
+                                    {{Form::number('fine',$violation->fine,['class'=>'form-control'])}}
+                            </div>     
+                          </div> 
+                     
+                          <div class="form-group row">
+                                        <label for="actionTaken" class="col-md-4 col-form-label text-md-right">Action/s Taken</label>
+                                        <div class="col-md-6">
+                                                {{Form::textarea('actionTaken',$violation->actionTaken,['class'=>'form-control'])}}
+            
+                                        </div>
+                                    </div>
+                    
+                            
+                            
+
+                    </div>
+
+                    <div class="modal-footer">
+                            <div class="col-md-5 float-right">
+        
+                                <button class="btn btn-danger" data-dismiss="modal" type="button">CLOSE</button>
+                                {{Form::hidden('_method','PUT')}}
+                                {{Form::submit('SUBMIT',['class'=>'btn btn-warning', 'float'=>'right'])}}
+                                {!! Form::close() !!}  
+        
+                                
+                            </div>
+        
+                            
+                        </div>
+
+                </div>
+
+            </div>
+     </div>
+
+    
+    
+    
+    
+    {!!Form::open(['action' => ['ViolationsController@destroy', $violation->id], 'method' => 'POST', 'class' =>'float-right'])!!}
     {{Form::hidden('_method', 'DELETE')}}  
-        {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-    {!!Form::close()!!} --}}
+        {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
+    {!!Form::close()!!} 
 <br>
 <br>
 <hr>
@@ -15,10 +137,7 @@
        <div class="row">
             <div class="col-lg-12">
                 <table class="table table-striped">
-                    <tr>
-                        <th>Name of the violator</th>
-                        <td>{{$violation->name}}</td>
-                    </tr>
+                   
                     <tr>
                         <th>Date Reported</th>
                         <td>{{$violation->dateReported}}</td>

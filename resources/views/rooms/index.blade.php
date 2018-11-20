@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-    <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a class="btn btn-warning float-right add-room" role="button" href="#" style="width:155px" ><i class="fas fa-store-alt"></i>&nbspADD ROOM</a> 
+    <a class="btn btn-dark" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    <a class="btn btn-warning float-right add-room" role="button" href="#" ><i class="fas fa-store-alt"></i>&nbspADD</a> 
 
     
     <div id="create-room" class="modal fade" role="dialog">
@@ -133,8 +133,7 @@
 
     </div>
 
-    <a href="/search/rooms" name="s" value="{{ Request::query('s') }}" class="btn btn-dark" style="width:155px"><i class="fas fa-store-alt"></i>&nbspCLEAR SEARCH</a>
-    <br>
+  <br>
     <br>
 
     <form action="/search/rooms" method="GET">
