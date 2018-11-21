@@ -133,7 +133,7 @@
     </div>
 
 
-    {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo], 'method' => 'POST', 'class' =>'float-right'])!!}
+    {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo],'id' => 'FormDeleteTime', 'method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
     {!!Form::close()!!} 

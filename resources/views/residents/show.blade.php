@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <a class="btn btn-dark" role="button" href="/propertymgmt/residents" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a class="btn btn-dark" role="button" href="/propertymgmt/rooms" style="width:155px"> <i class="fas fa-store-alt"></i>&nbspROOMS</a>
-    <a href="{{$resident->id}}/edit" class="btn btn-danger float-right" style="width:155px"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
-    {{-- {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST', 'class' =>'float-right'])!!}
+    <a class="btn btn-dark" role="button" href="/propertymgmt/residents" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+  
+    <a href="{{$resident->id}}/edit" class="btn btn-primary"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
+    {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id],'id' => 'FormDeleteTime','method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
-        {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-    {!!Form::close()!!} --}}
+        {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
+    {!!Form::close()!!} 
 <br> 
 <br>
 <hr>

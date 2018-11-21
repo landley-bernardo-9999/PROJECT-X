@@ -3,7 +3,7 @@
 <br>
     <a class="btn btn-dark" role="button" href="/propertymgmt/repairs"  "><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
     <a href="#" class="btn btn-primary edit" ><i class="fas fa-edit edit"></i>&nbspEDIT</a>
-
+    
 
      {{-- Create a repair form --}}
 
@@ -202,10 +202,47 @@
             </div>
      </div>
 
-    {!!Form::open(['action' => ['RepairsController@destroy', $repair->id],'class' => 'float-right','method' => 'POST', 'class' =>'float-right'])!!}
+    {!!Form::open(['action' => ['RepairsController@destroy', $repair->id],'id' => 'FormDeleteTime','class' => 'float-right','method' => 'POST', 'class' =>'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}  
         {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
     {!!Form::close()!!} 
+
+    <div id="edit-repair" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                      <h4 class="edit-repair-title float-left"> </h4>
+                    <button class="close" type="button" data-dismiss="modal" >&times;</button>
+                      
+                </div>
+
+                <div class="modal-body">
+                    
+                       
+
+                </div>
+
+                <div class="modal-footer">
+                        <div class="col-md-5 float-right">
+    
+                            <button class="btn btn-danger" data-dismiss="modal" type="button">CLOSE</button>
+                            {{Form::hidden('_method','PUT')}}
+                            {{Form::submit('SUBMIT',['class'=>'btn btn-warning', 'float'=>'right'])}}
+                            {!! Form::close() !!}  
+    
+                            
+                        </div>
+    
+                        
+                    </div>
+
+            </div>
+
+        </div>
+ </div>
+
+
+    
 <br>
 <br>
 <hr>

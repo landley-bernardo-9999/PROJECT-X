@@ -1,11 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <div class="container-fluid" >
-            <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-            <a class="btn btn-warning float-right" role="button" href="/propertymgmt/maintenances/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD PERSONNEL</a>
-            <a href="/propertymgmt/maintenances" class="btn btn-dark" style="width:155px"><i class="fas fa-wrench"></i>&nbspPERSONNEL</a>
-    </div>
+    <a class="btn btn-dark" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    <a class="btn btn-warning float-right" role="button" href="/propertymgmt/maintenances/create" ><i class="fas fa-user-plus"></i>&nbspADD</a> 
+<br>
    
    <br>
     @if(count($maintenances) > 0)

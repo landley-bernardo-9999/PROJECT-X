@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <br>
-<a class="btn btn-dark" role="button" href="/propertymgmt "  style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-<a class="btn btn-warning float-right add-repair" role="button" href="#"  style="width:155px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>   
-<a href="/propertymgmt/repairs" class="btn btn-dark"  style="width:155px"><i class="fas fa-toolbox"></i>&nbspREPAIRS</a>
+<a class="btn btn-dark" role="button" href="/propertymgmt "  ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+<a class="btn btn-warning float-right add-repair" role="button" href="#" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a>   
+
 
 
   {{-- Create a repair form --}}
