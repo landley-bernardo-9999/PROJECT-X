@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid" style="margin-top: 0%" >
-        <form action="/search/items" method="GET">
-            <div class="input-group mb-3">
-                <input class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search items" />
-            </div>
-        </form>  
         
         {!! Form::open(['action'=>['ItemsController@store'],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         
@@ -44,11 +39,25 @@
         
             
             <div class="form-group row" style="margin-left:-5%; margin-right:-5">
-                    <div class="col-md-6">
-                            <a class="btn btn-dark float-left" role="button" href="/home"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>   
+                    <div class="col-md-1">
+                            <a class="btn btn-dark float-left" role="button" href="/home"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+                            
+                               
+                     </div>
+
+
+                    <div class="col-md-1">
+                            <form action="/search/items" method="GET">
+                                <input class ="float-left form-control" style="width:200px" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search items" /> 
+                        </form> 
                     </div>
+                     
+                           
+            
                     
-                  <div class="col-md-6">
+                    
+                  <div class="col-md-10">
+                        
                         <div class=" dropright">
                                 <button type="button" class="btn btn-primary dropdown-toggle float-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Out of Stack Supplies&nbsp<span class="badge badge-light">{{count($outOfStack)}}</span>
@@ -68,16 +77,16 @@
                               </div>     
                  </div>   
                           <br><br>
-                <table class="table">
-                    <thead class="thead-dark">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark ">
                         <tr>
                             <th>#</th>
-                            <th>Item</th>
-                            <th>Description</th>
-                            <th>Brand</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Remarks</th>
+                            <th  style="width: 250px;">Item</th>
+                            <th style="width: 250px;">Description</th>
+                            <th style="width: 130px;">Brand</th>
+                            <th style="width: 90px;">Qty</th>
+                            <th style="width: 80px;">Unit</th>
+                            <th style="width: 200px;">Remarks</th>
                             <th colspan="2" style="text-align:center">Action</th>
                         </tr>
                     </thead>   
@@ -99,27 +108,27 @@
                             {{Form::text('brand',$row->brand,['class'=>'form-control'])}}
                         </td>
                             @if($row->quan==0)
-                                <td>
-                                    {{Form::number('quan',$row->quan,['class'=>'form-control btn-danger'])}}
+                                <td style="width: 90px;">
+                                    {{Form::number('quan',$row->quan,['class'=>'form-control btn-danger', 'min'=>'0'])}}
                                 </td>
                             @else
-                                <td>
-                                    {{Form::number('quan',$row->quan,['class'=>'form-control'])}}
+                                <td style="width: 90px;">
+                                    {{Form::number('quan',$row->quan,['class'=>'form-control','min'=>'0'])}}
                                 </td>
                             @endif
-                        <td>
-                            {{Form::text('unit',$row->unit,['class'=>'form-control', 'min'=>'0'])}}                     
+                        <td style="width: 80px;">
+                            {{Form::text('unit',$row->unit,['class'=>'form-control'])}}                     
                         </td>
                         <td> 
-                            {{Form::text('remarks',$row->remarks,['class'=>'form-control', 'min'=>'0'])}}
+                            {{Form::text('remarks',$row->remarks,['class'=>'form-control'])}}
                         </td>
-                        <td>
+                        <td style="width: 50px;">
                             {{Form::hidden('_method','PUT')}}   
                                 {{Form::submit('SAVE',['class'=>'btn btn-primary'])}}
                             {!! Form::close() !!} 
                         </td>
-                        <td>
-                            {!!Form::open(['action' => ['ItemsController@destroy', $row->id], 'method' => 'POST'])!!}
+                        <td style="width: 50px;">
+                            {!!Form::open(['action' => ['ItemsController@destroy', $row->id], 'method' => 'POST','id' => 'FormDeleteTime'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}  
                                 {{Form::submit('DELETE',['class' => 'btn btn-danger', 'name' => 'delete_modal'])}}
                             {!!Form::close()!!} 

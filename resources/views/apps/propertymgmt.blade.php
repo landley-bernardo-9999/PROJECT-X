@@ -34,11 +34,6 @@
             </div>
 
             <div class="col-sm-4">
-                <a href="/propertymgmt/maintenances" class="btn btn-secondary"><i class="fas fa-wrench fa-4x"></i></a>
-                <p class="card-title">Personnels</p>
-            </div>
-
-            <div class="col-sm-4">
                     <a href="/propertymgmt/violations" class="btn btn-secondary"><i class="fas fa-user-times fa-4x"></i></a>
                     <p class="card-title">Violations</p>
                 </div>       

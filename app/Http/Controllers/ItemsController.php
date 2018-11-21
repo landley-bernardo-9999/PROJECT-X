@@ -38,7 +38,7 @@ class ItemsController extends Controller
 
         $outOfStack = DB::table('items')
         ->where('quan', '<=', "0")
-        ->orWhere('quan', '==', null)
+        ->orWhere('quan', 'IS NULL')
         ->get();
 
         return view('inventorymgmt.items.index')
@@ -75,7 +75,7 @@ class ItemsController extends Controller
     
         $item->save();
 
-        return redirect('/inventorymgmt/items/')->with('success','Added successfully!');
+        return redirect('/inventorymgmt/items/')->with('success',$item->item, 'Added successfully!');
     }
 
     /**

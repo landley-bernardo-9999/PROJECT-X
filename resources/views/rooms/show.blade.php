@@ -150,14 +150,7 @@
                             <th>Room No</th>
                             <td>{{$room->roomNo}}</td>
                         </tr>
-                        <tr>
-                            <th>Accepted?</th>
-                            <td>{{$room->isAccepted}}</td>
-                        </tr>
-                        <tr>
-                            <th>Enrolled?</th>
-                            <td>{{$room->enrolled}}</td>
-                        </tr>
+                       
                         <tr>
                             <th>Building</th>
                             <td>{{$room->building}}</td>

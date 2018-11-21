@@ -8,9 +8,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a  class="navbar-brand" href="{{ url('/home') }}">
-                        <h1 style="font-size:35px">Martha.</h1>
-                        <p style="font-size:15px">A GoshenLand Property Management Company</p>
+                    <a  class="navbar-brand" href="{{ url('/') }}">
+                        <h1 style="font-size:35px">Vester </h1>
+                        <p style="font-size:15px"></p>
                     </a>
                 </li>
                     

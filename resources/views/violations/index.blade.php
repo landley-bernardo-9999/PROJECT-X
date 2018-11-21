@@ -129,7 +129,7 @@
             <table class="table table-striped">
                <thead class="thead-dark">
                 <tr>
-                    <th>No</th>
+                    <th>#</th>
                     <th>Date Reported</th>
                     <th>Name</th>
                     <th>Room No</th>
@@ -145,7 +145,7 @@
                 <tbody>
                         @foreach($violations as $violation)
                         <tr>
-                            <td>{{$rowNo++}}</td>
+                            <th>{{$rowNo++}}</th>
                             <td>{{$violation->dateReported}}</td>
                             <td>{{$violation->name}}</td>
                             <td>{{$violation->roomNo}}</td>
