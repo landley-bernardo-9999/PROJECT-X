@@ -9,7 +9,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a  class="navbar-brand" href="{{ url('/') }}">
-                        <h1 style="font-size:35px">Vester </h1>
+                        <h1 style="font-size:35px">Vester Corporation</h1>
                         <p style="font-size:15px"></p>
                     </a>
                 </li>

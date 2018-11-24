@@ -58,7 +58,7 @@
                    
             
             <div class="card-footer text-muted">
-                <p>Vester Applications © 2018 </p>
+                <p>Vester Systems © 2018 </p>
             </div>
 
               
