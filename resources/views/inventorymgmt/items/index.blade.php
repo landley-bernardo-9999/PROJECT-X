@@ -1,82 +1,33 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid" style="margin-top: 0%" >
-        
-        {!! Form::open(['action'=>['ItemsController@store'],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        
-            
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                {{Form::text('item','',['class'=>'form-control', 'placeholder'=>'Item'])}}        
-                            </th>
-                            <th>
-                                {{Form::text('desc','',['class'=>'form-control','placeholder'=>'Description'])}}                    
-                            </th>
-                            <th>
-                                {{Form::text('brand','',['class'=>'form-control','placeholder'=>'Brand'])}}
-                            </th>
-                            <th>
-                                {{Form::text('quan','',['class'=>'form-control', 'min' => '0', 'placeholder'=>'Quantity'])}}
-                            </th>
-                            <th>
-                                {{Form::text('unit','',['class'=>'form-control', 'placeholder'=>'Unit'])}}
-                            </th>
-                            <th>
-                                {{Form::text('remarks','',['class'=>'form-control', 'placeholder'=>'Remarks'])}}
-                            </th>
-                            <th>   
-                                 {{Form::submit('ADD',['class'=>'btn btn-warning openbutton'])}}
-                                 {!! Form::close() !!} 
-                            </th>
-                        </tr>
-                                 
-                    </thead>
-                </table>
-        
-            </div>
-        
-            
-            <div class="form-group row" style="margin-left:-5%; margin-right:-5">
-                    <div class="col-md-1">
-                            <a class="btn btn-dark float-left" role="button" href="/home"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-                            
-                               
-                     </div>
+    
+        <a class="btn btn-dark float-left" role="button" href="/home"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>       
+        <a class="btn btn-warning add-room float-left" role="button" href="#" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a>
+    
+        &nbsp
+        <form action="/search/items" method="GET">
+            <input class =" form-control float-right" style="width:200px" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search items" /> 
+        </form>   
 
-
-                    <div class="col-md-1">
-                            <form action="/search/items" method="GET">
-                                <input class ="float-left form-control" style="width:200px" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search items" /> 
-                        </form> 
-                    </div>
-                     
-                           
-            
+        <div class=" dropright">
+            <button type="button" class="btn btn-primary dropdown-toggle float-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Out of Stack Supplies&nbsp<span class="badge badge-light">{{count($outOfStack)}}</span>
+                    </button>
+                        <div class="dropdown-menu">
+                            @foreach($items as $row)
+                                @if($row->quan==0)
+                                    <ol class="list-group">
+                                        <li class="list-group-item">
+                                            {{$itemRow++}}.
+                                                {{$row->item}}&nbsp{{$row->desc}}
+                                        </li>
+                                    </ol>
+                                @endif
+                            @endforeach
+                        </div>
+        </div>  
+    
                     
-                    
-                  <div class="col-md-10">
-                        
-                        <div class=" dropright">
-                                <button type="button" class="btn btn-primary dropdown-toggle float-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Out of Stack Supplies&nbsp<span class="badge badge-light">{{count($outOfStack)}}</span>
-                                </button>
-                                <div class="dropdown-menu">
-                                    @foreach($items as $row)
-                                        @if($row->quan==0)
-                                            <ol class="list-group">
-                                                <li class="list-group-item">
-                                                    {{$itemRow++}}.
-                                                    {{$row->item}}&nbsp{{$row->desc}}
-                                                </li>
-                                            </ol>
-                                         @endif
-                                    @endforeach
-                                </div>
-                              </div>     
-                 </div>   
-                          <br><br>
                 <table class="table table-bordered table-hover">
                     <thead class="thead-dark ">
                         <tr>

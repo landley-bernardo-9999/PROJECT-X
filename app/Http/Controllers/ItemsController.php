@@ -33,7 +33,7 @@ class ItemsController extends Controller
         ->where('items.item', 'like', "%$s%")
         ->orWhere('items.desc', 'like', "%$s%")
         ->orWhere('items.brand', 'like', "%$s%")
-        ->orderBy('updated_at', 'desc')
+        ->orderBy('created_at', 'desc')
         ->get();
 
         $outOfStack = DB::table('items')
