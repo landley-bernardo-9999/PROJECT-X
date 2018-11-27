@@ -177,6 +177,7 @@ class ResidentsController extends Controller
         $rowNoForViolations = 1;
         $resident = Resident::find($id);
 
+
         $contract = DB::table('contracts')
             ->join('residents', 'contracts.residentName', '=', 'residents.id')
             ->select('contracts.*', 'contracts.id as contractId','residents.*')

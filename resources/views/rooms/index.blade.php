@@ -1,9 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-    <a class="btn btn-dark" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a class="btn btn-warning float-right add-room" role="button" href="#" ><i class="fas fa-store-alt"></i>&nbspADD</a> 
-
     
     <div id="create-room" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -37,33 +33,8 @@
                             </select>
                             </div>   
                         </div>
-        
-        
-                        <div class="form-group row">
-                            <label for="isAccepted" class="col-md-4 col-form-label text-md-right">Accepted?:<span style="color:red">&nbsp*</span></label>
-                            <div class="col-md-6">
-                            <select class="form-control" name="isAccepted" id="isAccepted">
-                                <option value="" disabled selected>Please select</option>    
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                            </div>   
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="enrolled" class="col-md-4 col-form-label text-md-right">Enrolled?:<span style="color:red">&nbsp*</span></label>
-                            <div class="col-md-6">
-                            <select class="form-control" name="enrolled" id="enrolled">
-                                <option value="" disabled selected>Please select</option>    
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                            </div>   
-                        </div>
-        
-                       
-                                
-        
+    
+            
                         <div class="form-group row">
                                 <label for="shortTermRent" class="col-md-4 col-form-label text-md-right">Short Term Rent:<span style="color:red">&nbsp*</span></label>
                                 <div class="col-md-6">
@@ -108,7 +79,7 @@
         
                     <div class="form-group row mb-0">
                             <label for="" class="col-md-4 col-form-label text-md-right">Image:</label>
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6">
                                 {{Form::file('cover_image', ['class' => 'form-control'])}}
                             </div>
                     </div>
@@ -132,95 +103,81 @@
             </div>
 
     </div>
+    <a class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    
 
-  <br>
-    <br>
 
-    <form action="/search/rooms" method="GET">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" aria-label="Text input with dropdown button" name="s" value="{{ Request::query('s') }}" placeholder="Search rooms">
-    </div>
-    </form>
-  
-    <div class="container-fluid text-center" >
-        <h3>Rooms found: {{count($rooms)}} </h3>
-    </div> 
-    <br>
-   
-    <div class="container-fluid">
-            @if(count($rooms) > 0)
-        <div class="row justify-content-center">
+        <form action="/search/rooms" method="GET">
+            <input type="text" class="form-control float-right" style="width:200px" aria-label="Text input with dropdown button" name="s" value="{{ Request::query('s') }}" placeholder="Search rooms">    
+        </form> 
+        <br><br>
+
+        <a href="/search/rooms?s=" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspAll Rooms</a>
+
+        <a href="/search/rooms?s=occupied" class="btn btn-outline-danger" role="button"> <i class="fas fa-home "></i>&nbspOccupied</a>
+
+        <a href="/search/rooms?s=vacant" class="btn btn-outline-success" role="button"> <i class="fas fa-home "></i>&nbspVacant</a>
+    
+        <a href="/search/rooms?s=reserved" class="btn btn-outline-info" role="button"> <i class="fas fa-home "></i>&nbspReserved</a>
+    
+        <a href="/search/rooms?s=nrfo" class="btn btn-outline-dark" role="button"> <i class="fas fa-home "></i>&nbspNRFO</a>
+    
+        <a href="/search/rooms?s=harvard" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspHarvard</a>
+
+        <a href="/search/rooms?s=princeton" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspPrinceton</a>
+
+        <a href="/search/rooms?s=wharton" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspWharton</a>
+
+        <a href="/search/rooms?s=2" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbsp2 Beds</a>
+
+        <a class="btn btn-warning add-room float-right" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD</a>
+    <br><br>
+    <div class="card container-fluid">
+        <div class="card-header">
+                <h3 class="text-center">{{ Request::query('s') }} Rooms found: {{count($rooms)}} </h3>
+        </div>
+        <div class="row card-body">
             @foreach($rooms as $room)
+            {{-- Generate red house if the room is OCCUPIED. --}}
                 @if($room->roomStatus == 'Occupied')
-                    @if($room->enrolled == "Yes")
+                    
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
-                        <i class="fas fa-home fa-4x"></i>
-                        <div style="display: flex; width: 90px; justify-content: space-around">
+                        <i class="fas fa-home fa-3x"></i>
+                        <div style="display: flex; width: 80px; justify-content: space-around">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
-                    @else
-                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
-                        <i class="fas fa-user-tag fa-4x"></i>
-                        <div style="display: flex; width: 90px; justify-content: space-around"">
-                            <p>{{$room->roomNo}}</p>
-                        </div>
-                    </a>
-                    @endif
+            {{-- Generate green house if the room is VACANT.      --}}
                 @elseif($room->roomStatus == 'Vacant')
-                    @if($room->enrolled == "Yes")
+                    
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
-                        <i class="fas fa-home fa-4x"></i>
-                        <div style="display: flex; width: 90px; justify-content: space-around"">
+                        <i class="fas fa-home fa-3x"></i>
+                        <div style="display: flex; width: 80px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
-                    @else
-                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
-                        <i class="fas fa-user-tag fa-4x"></i>
-                        <div style="display: flex; width: 90px; justify-content: space-around"">
-                            <p>{{$room->roomNo}}</p>
-                        </div>
-                    </a>
-                    @endif
+            {{-- Generate blue house if the room is RESERVED. --}}
                 @elseif($room->roomStatus == 'Reserved')
-                    @if($room->enrolled == "Yes")
+                    
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
-                        <i class="fas fa-home fa-4x"></i>
-                        <div style="display: flex; width: 90px; justify-content: space-around"">
+                        <i class="fas fa-home fa-3x"></i>
+                        <div style="display: flex; width: 80px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
-                    @else
-                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
-                        <i class="fas fa-user-tag fa-4x"></i>
-                        <div style="display: flex; width: 90px; justify-content: space-around"">
-                            <p>{{$room->roomNo}}</p>
-                        </div>
-                    </a>
-                    @endif
+            {{-- Generate dark blak house if the room is NRFO.    --}}
                 @elseif($room->roomStatus == 'NRFO')
-                    @if($room->enrolled == "Yes")
+                   
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
-                        <i class="fas fa-home fa-4x"></i>
-                        <div style="display: flex; width: 90px; justify-content: space-around"">
+                        <i class="fas fa-home fa-3x"></i>
+                        <div style="display: flex; width: 80px; justify-content: space-around"">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
-                    @else
-                    <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
-                        <i class="fas fa-user-tag fa-4x"></i>
-                        <div style="display: flex; width: 90px; justify-content: space-around"">
-                            <p>{{$room->roomNo}}</p>
-                        </div>
-                    </a>
-                    @endif             
+                     
                 @endif
             @endforeach
         </div>
-    @else
-    <div class="alert alert-danger" role="alert"><p>No rooms found!</p></div>
-    @endif
     </div>
     <br>
 @endsection

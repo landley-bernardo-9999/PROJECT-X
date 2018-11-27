@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <a class="btn btn-dark" role="button" href="/propertymgmt/rooms" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+<a class="btn btn-dark" role="button" href="/propertymgmt/rooms/" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
     <a href="#" class="btn btn-primary edit-room"  ><i class="fas fa-edit"></i>&nbspEDIT</a>
 
     {{-- Edit form  --}}
@@ -37,29 +37,6 @@
                         </select>
                         </div>   
                     </div>
-    
-                    <div class="form-group row">
-                        <label for="isAccepted" class="col-md-4 col-form-label text-md-right">Accepted?:</label>
-                        <div class="col-md-6">
-                        <select class="form-control" name="isAccepted" id="isAccepted">
-                            <option value="" disabled selected>Please select</option>    
-                            <option value="Yes" selected>Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                        </div>   
-                    </div>
-    
-                    <div class="form-group row">
-                        <label for="enrolled" class="col-md-4 col-form-label text-md-right">Enrolled:</label>
-                        <div class="col-md-6">
-                        <select class="form-control" name="enrolled" id="enrolled">
-                            <option value="{{$room->enrolled}}" selected>{{$room->enrolled}}</option>    
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                        </div>   
-                    </div>
-            
     
     
                     <div class="form-group row">
@@ -104,12 +81,14 @@
                            </div>     
                     </div>
     
-                <div class="form-group row mb-0">
-                        <label for="capacity" class="col-md-4 col-form-label text-md-right">Image:</label>
-                        <div class="col-md-6 offset-md-4">
-                            {{Form::file('cover_image', ['class' => 'form-control'])}}
-                        </div>
-                </div>
+                    <div class="form-group row mb-0">
+                            <label for="" class="col-md-4 col-form-label text-md-right">Image:</label>
+                            <div class="col-md-6">
+                                {{Form::file('cover_image', ['class' => 'form-control'])}}
+                            </div>
+                    </div>
+                      
+                    <br>
                     
                 </div>
 
@@ -222,7 +201,7 @@
                             <td>{{$resident_contract->amountPaid}}</td>
                             <td>{{Carbon\Carbon::parse($resident_contract->moveInDate)->formatLocalized('%b %d %Y')}}</td>
                             <td>{{Carbon\Carbon::parse($resident_contract->moveOutDate)->formatLocalized('%b %d %Y')}}</td>
-                            <td><a href="/propertymgmt/contracts/{{$resident_contract->id}}" class="btn btn-info">MORE INFO</td>
+                            <td><a href="/propertymgmt/contracts/{{$resident_contract->id}}" class="btn btn-info">MORE</td>
                          </tr>
                          @endforeach
                         </tbody>
@@ -253,22 +232,19 @@
 
                                         {{-- Resident's Room Number --}}
                                         
-                                        <div class="form-group row add">
+                                        <div class="form-group row add" style="visibility:hidden">
                                             <label for="residentRoomNo" class="col-md-5 text-md-right">Room No:<span style="color:red">&nbsp*</span></label> 
                                             <div class="col-md-6">
-                                                <select name="residentRoomNo" id="residentRoomNo" class="form-control">
-                                                    <option value="" disabled selected>Please select</option>
-                                                        @foreach($registeredRooms as $registeredRoom)
-                                                    <option value="{{$registeredRoom->roomNo}}">
-                                                        {{$registeredRoom->roomNo}}
+                                                <select name="residentRoomNo" id="residentRoomNo" class="form-control">   
+                                                    <option value="{{$room->roomNo}}" selected >
+                                                        {{$room->roomNo}}
                                                     </option>
-                                                        @endforeach
+                                                        
                                                 </select>
 
                                             
                                             </div>                                            
                                         </div>
-
                                          {{-- Resident's full name --}}
 
                                          <div class="form-group row">
@@ -279,7 +255,7 @@
                                                     <option value="" disabled selected>Please select</option>
                                                         @foreach($registeredResidents as $registeredResident)
                                                     <option value="{{$registeredResident->id}}">
-                                                        {{$registeredResident->name}}
+                                                        {{$registeredResident->name}}&nbsp|&nbsp{{Carbon\Carbon::parse($registeredResident->created_at)->formatLocalized('%b %d %Y')}}
                                                     </option>
                                                         @endforeach
                                                 </select>
@@ -307,7 +283,7 @@
                                         <div class="form-group row">    
                                             <label for="moveInDate" class="col-md-5 col-form-label text-md-right">Move-In Date:</label>
                                             <div class="col-md-6">
-                                                {{ Form::date('moveInDate',' ', ['class' => 'form-control']) }}
+                                                {{ Form::date('moveInDate',\Carbon\Carbon::now() , ['class' => 'form-control']) }}
                                             </div>
                                         </div>
 
@@ -325,7 +301,7 @@
                                         <div class="form-group row">
                                             <label for="amountPaid" class="col-md-5 col-form-label text-md-right">Rent:<span style="color:red">&nbsp*</span></label>
                                             <div class="col-md-6">
-                                                {{Form::number('amountPaid','',['class'=>'form-control'])}}
+                                                {{Form::number('amountPaid','0',['class'=>'form-control', 'min'=> '0'])}}
                                             </div>     
                                         </div>
 
@@ -334,11 +310,11 @@
                                         <div class="form-group row">
                                             <label for="securityDeposit" class="col-md-5 col-form-label text-md-right">Security Deposit:<span style="color:red">&nbsp*</span></label>
                                             <div class="col-md-6">
-                                                {{Form::number('securityDeposit','',['class'=>'form-control'])}}
+                                                {{Form::number('securityDeposit','0',['class'=>'form-control', 'min' => '0'])}}
                                             </div>     
                                         </div>
 
-                                        {{-- Resident's reason for moving-out. --}}
+                                        {{-- Resident's reason for moving-out.
 
                                         <div class="form-group row">
                                             <label for="reasonForMovingOut" class="col-md-5 col-form-label text-md-right">Reason for Moving-out:</label>
@@ -353,7 +329,7 @@
                                                     <option value="Others">Others</option>
                                                 </select>
                                             </div>   
-                                        </div>
+                                        </div> --}}
 
                                           </div>
 
@@ -420,7 +396,7 @@
                                  <div class="alert alert-danger" role="alert"><p>No records of repairs!</p></div>
                                  @endif
                                </div>
-                                
+                               <a class="btn btn-warning add-repair" role="button" href="#" style="width:150px" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>
                          </div>
                 </div>
 
@@ -441,21 +417,18 @@
 
                                       {{-- Resident's Room Number --}}
                                       
-                                      <div class="form-group row">
+                                      <div class="form-group row" style="visibility:hidden">
                                             <label for="" class="col-md-4 col-form-label text-md-right">Room No:<span style="color:red">&nbsp*</span></label>
                                             <div class="col-md-6">
                                             <select name="roomNo" id="roomNo" class="form-control">
-                                                <option value="" disabled selected>Please select</option>
-                                                    @foreach($registeredRooms as $registeredRoom)
-                                                <option value="{{$registeredRoom->roomNo}}">
-                                                    {{$registeredRoom->roomNo}}
+                                                <option value="{{$room->roomNo}}" selected >
+                                                    {{$room->roomNo}}
                                                 </option>
-                                                    @endforeach
                                             </select>
                                         </div>
                                         </div>
 
-                                        {{-- Concern department of the repair         --}}
+{{--                              
 
                                         <div class="form-group row">
                                                 <label for="concernDepartment" class="col-md-4 col-form-label text-md-right" >Concern Department:</label>
@@ -471,8 +444,6 @@
                                         </div>
 
 
-                                        {{-- Urgency of the repair --}}
-
                                         <div class="form-group row">
                                                 <label for="concernDepartment" class="col-md-4 col-form-label text-md-right" >Urgency:</label>
                                             <div class="col-md-6">
@@ -487,7 +458,7 @@
 
                                         {{-- Verify if the unit is still under warranty --}}
 
-                                        <div class="form-group row">
+                                        {{-- <div class="form-group row">
                                                 <label for="isWarranty" class="col-md-4 col-form-label text-md-right" >Under Warranty?:</label>
                                             <div class="col-md-6">
                                                 <select class="form-control" name="isWarranry" id="isWarranty">
@@ -497,20 +468,20 @@
                                                     <option value="Minor Concern">Unknown</option>
                                                 </select>
                                             </div>
-                                        </div>
-{{-- 
-                                        Name of the resident/owner who requested for the repairs/concern --}}
+                                        </div> --}} 
+
+                              
 
                                         <div class="form-group row">
-                                                <label for="" class="col-md-4 col-form-label text-md-right">Reported by:</label>
+                                                <label for="" class="col-md-4 col-form-label text-md-right">Reported by:<span style="color:red">&nbsp*</span></label>
                                             
                                             <div class="col-md-6">
                                                 <select name="name" id="name" class="form-control">
                                                     <option value="" disabled selected>Please select</option>
                                                     <option value="None">None</option>
-                                                        @foreach($registeredResidentsAndOwners as $registeredResidentAndOwner)
-                                                    <option value="{{$registeredResidentAndOwner->name}}">
-                                                        {{$registeredResidentAndOwner->name}}
+                                                        @foreach($registeredResidents as $registeredResident)
+                                                    <option value="{{$registeredResident->name}}">
+                                                        {{$registeredResident->name}}&nbsp|&nbsp{{Carbon\Carbon::parse($registeredResident->created_at)->formatLocalized('%b %d %Y')}}
                                                     </option>
                                                         @endforeach
                                                 </select>
@@ -522,14 +493,14 @@
                                             <div class="form-group row">
                                                     <label for="" class="col-md-4 col-form-label text-md-right">Date Reported:<span style="color:red">&nbsp*</span></label>
                                                     <div class="col-md-6">
-                                                        {{ Form::date('dateReported',' ', ['class' => 'form-control']) }}
+                                                        {{ Form::date('dateReported',\Carbon\Carbon::now(), ['class' => 'form-control']) }}
                                                     </div>
                                                 </div>
 
                                              {{-- Category of the concern/repair    --}}
                                             
                                                 <div class="form-group row">
-                                                        <label for="desc" class="col-md-4 col-form-label text-md-right" >Category:<span style="color:red">&nbsp*</span></label>
+                                                        <label for="desc" class="col-md-4 col-form-label text-md-right" >Description:<span style="color:red">&nbsp*</span></label>
                                                     <div class="col-md-6">
                                                         <select class="form-control" name="desc" id="desc">
                                                             <option value="" disabled selected>Please select</option>    
@@ -570,7 +541,7 @@
                                                   <div class="form-group row">
                                                         <label for="" class="col-md-4 col-form-label text-md-right">Cost:<span style="color:red">&nbsp*</span></label>
                                                         <div class="col-md-6">
-                                                           {{Form::number('cost','',['class'=>'form-control'])}}
+                                                           {{Form::number('cost','0',['class'=>'form-control', 'min' => '0'])}}
                                                        </div>     
                                                      </div>
 
@@ -588,42 +559,42 @@
                                                         </div>   
                                                         </div>
                             
-                                                    {{-- The date when repairs was finished --}}
+                                                    {{-- The date when repairs was finished
 
                                                         <div class="form-group row">
                                                                 <label for="dateFinished" class="col-md-4 col-form-label text-md-right">Date Finished:</label>
                                                                     <div class="col-md-6">
                                                                         {{ Form::date('dateFinished',' ', ['class' => 'form-control']) }}
                                                                     </div>
-                                                            </div>
+                                                            </div> --}}
 
-                                                    {{-- Image of the repair/concern if applicable --}}
+                                                   {{-- Image of the repair/concern if applicable --}}
 
-                                                    <div class="form-group row mb-0">
-                                                            <div class="col-md-6 offset-md-4">
-                                                                <label for="cover_image" class="col-md-4 col-form-label text-md-right">Image:</label>
-                                                                {{Form::file('cover_image', ['class' => 'form-control'])}}
-                                                            </div>
-                                                    </div>
-
-                                                    <br>
+                                                   {{-- <div class="form-group row mb-0">
+                                                        <label for="" class="col-md-4 col-form-label text-md-right">Image:</label>
+                                                        <div class="col-md-6">
+                                                            {{Form::file('cover_image', ['class' => 'form-control'])}}
+                                                        </div>
+                                                </div> --}}
+                                                  
+                                                
 
                                                     {{-- The satisfaction for the repair --}}
 
-                                                    <div class="form-group row">
+                                                    {{-- <div class="form-group row">
                                                             <label for="clientSatisfaction" class="col-md-4 col-form-label text-md-right" >Client Satisfaction:</label>
                                                         <div class="col-md-6">
                                                             <select class="form-control" name="isWarranry" id="isWarranty">
                                                                 <option value="" disabled selected>Please select</option>    
                                                                 <option value="None">None</option>
                                                                 <option value="Very Poor">Very Poor</option>
-                                                                <option value="Somewhat Unsatisfactory">Somewhat Unsatisfactory</option>
+                                                                <option value="Somewhat Unsatisfa   ctory">Somewhat Unsatisfactory</option>
                                                                 <option value="Average">Average</option>
                                                                 <option value="Very Satisfactory">Very Satisfactory</option>
                                                                 <option value="Superior">Superior</option>
                                                             </select>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 
                                     
@@ -679,7 +650,7 @@
                             <td>{{$owner->totalPrice}}</td>
                             <td>{{$owner->downPayment}}</td>
                             <td>{{$owner->formOfPayment}}</td>
-                            <td><a href="/propertymgmt/transactions/{{$owner->id}}" class="btn btn-info">MORE INFO</a></td>
+                            <td><a href="/propertymgmt/transactions/{{$owner->id}}" class="btn btn-info">MORE</a></td>
                          </tr>
                          @endforeach
                         </table>
@@ -708,16 +679,13 @@
                   {!! Form::open(['action'=>'OwnersController@store','method' => 'POST', 'enctype' => 'multipart/form-data', 'class'=>'owner-form'] ) !!}
 
                   
-                <div class="form-group row">
+                <div class="form-group row" style="visibility:hidden">
                     <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No:<spans style="color:red">&nbsp*</spans></label>
                     <div class="col-md-6">
                         <select name="roomNo" id="roomNo" class="form-control">
-                            <option value="" disabled selected>Please select</option>
-                                @foreach($registeredRooms as $registeredRoom)
-                            <option value="{{$registeredRoom->roomNo}}">
-                                {{$registeredRoom->roomNo}}
+                            <option value="{{$room->roomNo}}" selected >
+                                {{$room->roomNo}}
                             </option>
-                                @endforeach
                         </select>
                     </div>
                 </div>
@@ -729,7 +697,7 @@
                             <option value="" disabled selected>Please select</option>
                                 @foreach($registeredOwners as $registeredOwner)
                             <option value="{{$registeredOwner->id}}">
-                                {{$registeredOwner->name}}
+                                {{$registeredOwner->name}}&nbsp|&nbsp{{Carbon\Carbon::parse($registeredResident->created_at)->formatLocalized('%b %d %Y')}}
                             </option>
                                 @endforeach
                         </select>

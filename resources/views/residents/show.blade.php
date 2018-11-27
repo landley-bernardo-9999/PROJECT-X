@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <a class="btn btn-dark" role="button" href="/propertymgmt/residents" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+<a class="btn btn-dark" role="button" href="/propertymgmt/residents/" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
   
     <a href="{{$resident->id}}/edit" class="btn btn-primary"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
     {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id],'id' => 'FormDeleteTime','method' => 'POST', 'class' =>'float-right'])!!}
@@ -90,7 +90,7 @@
                         <td>{{ $contract->term}}</td>
                         <td>{{ Carbon\Carbon::parse($contract->moveInDate)->formatLocalized('%b %d %Y')}}</td>
                         <td>{{ Carbon\Carbon::parse($contract->moveOutDate)->formatLocalized('%b %d %Y') }}</td>
-                        <td><a href="/propertymgmt/contracts/{{$contract->contractId}}" class="btn btn-info">CONTRACT</a></td>        
+                        <td><a href="/propertymgmt/contracts/{{$contract->contractId}}" class="btn btn-info">MORE</a></td>        
                     </tr>
                 @endforeach
                 </tbody>   
