@@ -10,6 +10,7 @@ use App\Violation;
 use App\CoTenants; 
 use DB;
 use Carbon\Carbon;
+use App\Contract;
 
 class ResidentsController extends Controller
 {
@@ -161,7 +162,7 @@ class ResidentsController extends Controller
         $resident->save();
 
 
-        return redirect('/propertymgmt/residents/create')->with('success','Added successfully!');
+        return redirect('/propertymgmt/residents/')->with('success','Added successfully!');
     }
 
     /**
@@ -176,7 +177,22 @@ class ResidentsController extends Controller
         $rowNoForConcerns = 1;
         $rowNoForViolations = 1;
         $resident = Resident::find($id);
+        $violation = Violation::find($id);
 
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('roomNo')
+        ->get();
+
+        $room = DB::table('contracts')
+        ->select('residentRoomNo')
+        ->where('residentName','=',$id)
+        ->get();
+
+        $registeredResidents = DB::table('residents')
+        ->orderBy('name', 'asc')
+        ->select('name')
+        ->get();
 
         $contract = DB::table('contracts')
             ->join('residents', 'contracts.residentName', '=', 'residents.id')
@@ -204,7 +220,10 @@ class ResidentsController extends Controller
                                      ->with('resident',$resident)
                                      ->with('repair', $repair)
                                      ->with('violation', $violation)
-                                     ->with('contract', $contract);
+                                     ->with('contract', $contract)
+                                      ->with('registeredRooms', $registeredRooms)
+                                      ->with('registeredResidents', $registeredResidents)
+                                      ->with('room', $room);
     }
 
     /**

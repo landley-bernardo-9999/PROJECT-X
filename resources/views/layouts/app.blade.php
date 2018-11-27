@@ -121,8 +121,31 @@
             $('.edit-item-title').text('Edit');
         });
 
-        // Delete confirmation dialog
+         // pop up form for adding resident info
 
+        $(document).on('click','.add-resident-info', function(){
+            $('#add-resident-info').modal('show');
+            $('.add-resident-info-form').show();
+            $('.add-resident-info-title').text('Resident Form');
+        });
+
+          // pop up form for editing resident info
+
+        $(document).on('click','.edit-resident-info', function(){
+            $('#edit-resident-info').modal('show');
+            $('.edit-resident-info-form').show();
+            $('.edit-resident-info-title').text('Edit Resident');
+        });
+
+         // pop up form for adding resident violation
+
+        $(document).on('click','.add-violation', function(){
+            $('#add-violation').modal('show');
+            $('.add-violation-form').show();
+            $('.add-violation-title').text('Violation Form');
+        });
+
+        // Delete confirmation dialog
         $("#FormDeleteTime").submit(function (event) {
                  var x = confirm("Are you sure you want to delete?");
                     if (x) {

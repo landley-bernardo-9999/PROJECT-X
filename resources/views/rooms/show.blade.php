@@ -1,11 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <a class="btn btn-dark" role="button" href="/propertymgmt/rooms/" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a href="#" class="btn btn-primary edit-room"  ><i class="fas fa-edit"></i>&nbspEDIT</a>
+<a href="#" class="btn btn-primary edit-room"  ><i class="fas fa-edit"></i>&nbspEDIT</a>
 
-    {{-- Edit form  --}}
-
-
+    {{-- Edit form  --}}    
+    
     <div id="edit-room" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

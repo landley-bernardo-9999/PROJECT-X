@@ -86,26 +86,19 @@
                       
                     <br>
                     <div class="modal-footer">
-                            <div class="col-md-6 float-right">
+                            <div class="col-md-5 float-right">
                                 <button class="btn btn-danger" data-dismiss="modal" type="button">CLOSE</button>              
                                     {{Form::submit('SUBMIT',['class'=>'btn btn-warning', 'float'=>'right'])}}
                                     {!! Form::close() !!}            
                             </div>
                         </div>
-        
-    
-    
-                        
                 </div>
-    
-                    
                 </div>
             </div>
 
     </div>
     <a class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
     
-
 
         <form action="/search/rooms" method="GET">
             <input type="text" class="form-control float-right" style="width:200px" aria-label="Text input with dropdown button" name="s" value="{{ Request::query('s') }}" placeholder="Search rooms">    

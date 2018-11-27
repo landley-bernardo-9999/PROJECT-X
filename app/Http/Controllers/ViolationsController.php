@@ -146,17 +146,9 @@ class ViolationsController extends Controller
         ->select('name')
         ->get();
 
-        $registeredOwners = DB::table('owners')
-        ->orderBy('name', 'asc')
-        ->select('name')
-        ->get();
-
-        $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
-        
-
         return view('violations.show')->with('violation', $violation)
                                       ->with('registeredRooms', $registeredRooms)
-                                      ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners);
+                                      ->with('registeredResidents', $registeredResidents);
     
     }
 
@@ -168,29 +160,29 @@ class ViolationsController extends Controller
      */
     public function edit($id)
     {
-        $violations = Violation::find ($id);
+            $violations = Violation::find ($id);
 
-        $registeredRooms = DB::table('rooms')
-        ->orderBy('roomNo', 'asc')
-        ->select('roomNo')
-        ->get();
+            $registeredRooms = DB::table('rooms')
+            ->orderBy('roomNo', 'asc')
+            ->select('roomNo')
+            ->get();
 
-        $registeredResidents = DB::table('residents')
-        ->orderBy('name', 'asc')
-        ->select('name')
-        ->get();
+            $registeredResidents = DB::table('residents')
+            ->orderBy('name', 'asc')
+            ->select('name')
+            ->get();
 
-        $registeredOwners = DB::table('owners')
-        ->orderBy('name', 'asc')
-        ->select('name')
-        ->get();
+            $registeredOwners = DB::table('owners')
+            ->orderBy('name', 'asc')
+            ->select('name')
+            ->get();
 
-        $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
-        
+            $registeredResidentsAndOwners = $registeredResidents->merge($registeredOwners);
+            
 
-        return view('violations.edit')->with('violation', $violations)
-                                      ->with('registeredRooms', $registeredRooms)
-                                      ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners);
+            return view('violations.edit')->with('violation', $violations)
+                                        ->with('registeredRooms', $registeredRooms)
+                                        ->with('registeredResidentsAndOwners', $registeredResidentsAndOwners);
     }
 
     /**
