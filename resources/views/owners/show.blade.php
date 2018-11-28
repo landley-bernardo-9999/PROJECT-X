@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <br>
-            <a class="btn btn-dark" role="button" href="/propertymgmt/owners" style="width: 155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-            <a class="btn btn-dark" role="button" href="/propertymgmt/rooms" style="width: 155px"><i class="fas fa-store-alt"></i>&nbspROOMS</a>
+            <a class="btn btn-dark" role="button" href="/propertymgmt/owners"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
             
-            <a href="{{$owner->id}}/edit" class="btn btn-danger float-right" style="width: 155px"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
-            {{-- {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'method' => 'POST', 'class' =>'float-right'])!!}
+            
+            <a href="#" class="btn btn-info edit-owner"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
+            {!!Form::open(['action' => ['OwnersController@destroy', $owner->id], 'id'=>'FormDeleteTime','method' => 'POST', 'class' =>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}  
-                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-            {!!Form::close()!!} --}}
+                {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
+            {!!Form::close()!!} 
 <br>
 <br>
 <hr>
@@ -58,8 +58,8 @@
                      <br>
                       <div class="panel panel-default">
                      @if(count($transaction) > 0)              
-                     <table class="table table-striped">
-                      <thead class="thead-light">
+                     <table class="table table-striped table-hover">
+                      <thead class="thead-dark">
                         <tr>
                             <th>No</th> 
                             <th>Room</th>
@@ -93,6 +93,71 @@
              </div>
              </div>           
         </div>
+
+        <div id="edit-owner" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                              <h4 class="edit-owner-title float-left"> </h4>
+                            <button class="close" type="button" data-dismiss="modal" >&times;</button>
+                              
+                        </div>
+        
+                        <div class="modal-body">
+                                {!! Form::open(['action'=>['OwnersController@update', $owner->id],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+    
+                                <div class="form-group row">
+                                        <label for="name" class="col-md-4 col-form-label text-md-right">Name:</label>
+                                        <div class="col-md-6">
+                                            {{Form::text('name',$owner->name,['class'=>'form-control'])}}
+                                        </div>
+                                    </div>
+                                        
+                                        <div class="form-group row">
+                                                <label for="birthDate" class="col-md-4 col-form-label text-md-right">Birthdate:</label>
+                                                <div class="col-md-6">
+                                                    {{ Form::date('birthDate',$owner->birthDate, ['class' => 'form-control']) }}
+                                                </div>
+                                        </div>
+                    
+                                    
+                                                    <div class="form-group row">
+                                                            <label for="mobileNumber" class="col-md-4 col-form-label text-md-right">Mobile Number:</label>
+                                                            <div class="col-md-6">
+                                                                {{Form::text('mobileNumber',$owner->mobileNumber,['class'=>'form-control'])}}
+                                                            </div>
+                                                        </div> 
+                                                        <div class="form-group row">
+                                                                <label for="emailAddress" class="col-md-4 col-form-label text-md-right">Email Address:</label>
+                                                                <div class="col-md-6">
+                                                                        {{Form::email('emailAddress',$owner->emailAddress,['class'=>'form-control'])}}
+                                                                </div>
+                                                            </div>                            
+                                                        
+                    
+                                <div class="form-group row mb-0">
+                                        <div class="col-md-6 offset-md-4">
+                                            {{Form::file('cover_image', ['class' => 'form-control'])}}
+                                        </div>
+                                </div>
+                        
+                        <div class="modal-footer">
+                                
+                                        <div class="col-md-6 float-right">
+                                            <button class="btn btn-danger" data-dismiss="modal" type="button">CLOSE</button>  
+                                            {{Form::hidden('_method','PUT')}}            
+                                                {{Form::submit('SUBMIT',['class'=>'btn btn-warning', 'float'=>'right'])}}
+                                                {!! Form::close() !!}            
+                                        </div>
+                                    </div>
+                            
+                    </div>
+                    </div>
+                </div>
+    
+        </div>
+
+
         
        <div class="row">
            <div class="col-lg-12">

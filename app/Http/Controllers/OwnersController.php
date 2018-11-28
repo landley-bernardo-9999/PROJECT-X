@@ -25,14 +25,19 @@ class OwnersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $s = $request->query('s');
+
         $rowNum = 1;
         $owners = DB::table('owners')
         ->join('transactions', 'owners.id', '=', 'transactions.ownerName')
         ->select('owners.*', 'owners.id as ownerId','transactions.*')
+        ->where('owners.name', 'like', "%$s%")
+        ->orWhere('transactions.roomNo', 'like', "%$s%")
         ->orderBy('owners.name','asc')
         ->paginate(10);
+
         
         return view('owners.index')->with('owners', $owners)->with('rowNum', $rowNum);
     }

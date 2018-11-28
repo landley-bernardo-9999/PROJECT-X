@@ -145,6 +145,31 @@
             $('.add-violation-title').text('Add Violation');
         });
 
+        // pop up form for adding owner
+
+         $(document).on('click','.add-owner', function(){
+            $('#add-owner').modal('show');
+            $('.add-owner-form').show();
+            $('.add-owner-title').text('Add Owner');
+        });
+
+        // pop up form for editing owner information
+
+        $(document).on('click','.edit-owner', function(){
+            $('#edit-owner').modal('show');
+            $('.edit-owner-form').show();
+            $('.edit-owner-title').text('Edit Owner');
+        });
+
+        // pop up form for editing transaction
+
+        $(document).on('click','.edit-transaction', function(){
+            $('#edit-transaction').modal('show');
+            $('.edit-transaction-form').show();
+            $('.edit-transaction-title').text('Edit Transaction');
+        });
+
+
         // Delete confirmation dialog
         $("#FormDeleteTime").submit(function (event) {
                  var x = confirm("Are you sure you want to delete?");

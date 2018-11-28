@@ -88,9 +88,26 @@ class TransactionsController extends Controller
      */
     public function show($id)
     {
+
+        $transactions = Transaction::find($id);
+
+        $registeredRooms = DB::table('rooms')
+        ->orderBy('roomNo', 'asc')
+        ->select('rooms.*')
+        // ->where('roomStatus','Vacant')
+        ->get();
+
+        $registeredOwners = DB::table('owners')
+        ->orderBy('name', 'asc')
+        ->select('owners.*')
+        ->get();
+
         $transaction = Transaction::find($id);
 
-        return view('transactions.show')->with('transaction', $transaction);
+        return view('transactions.show')->with('transaction', $transaction)
+                                        ->with('transactions', $transactions)
+                                        ->with('registeredRooms', $registeredRooms)
+                                        ->with('registeredOwners', $registeredOwners);
     }
 
     /**

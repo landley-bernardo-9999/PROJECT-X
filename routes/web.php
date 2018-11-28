@@ -55,6 +55,7 @@ Route::resources([
 Route::get('/search/residents{s?}', 'ResidentsController@index')->where('s', '[\w\d]+');
 Route::get('/search/rooms{s?}', 'RoomsController@index')->where('s', '[\w\d]+');
 Route::get('/search/items{s?}', 'ItemsController@index')->where('s', '[\w\d]+');
+Route::get('/search/owners{s?}', 'OwnersController@index')->where('s', '[\w\d]+');
 
 
 
