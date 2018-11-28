@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<br>
 <a class="btn btn-dark" role="button" href="/propertymgmt "  ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
 {{-- <a class="btn btn-warning float-right add-repair" role="button" href="#" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a>    --}}
 
@@ -281,7 +280,7 @@
                                 <td>{{$repair->residentName}}</td>
                                 <td>{{Carbon\Carbon::parse($repair->dateReported)->formatLocalized('%b %d %Y')}}</td>
                                 <td>{{$repair->desc}}</td>
-                                <td><a href="/propertymgmt/maintenances/{{$repair->id}}">{{$repair->endorsedTo}}</a></td>
+                                <td>{{$repair->endorsedTo}}</td>
                                 <td>{{$repair->repairStatus}}</td>
                                 <td>
                                     <a href="/propertymgmt/repairs/{{$repair->repairsId}}" class="btn btn-info">MORE</a>

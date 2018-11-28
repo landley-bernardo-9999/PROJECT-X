@@ -50,7 +50,7 @@
         $(document).on('click','.add-resident', function(){
             $('#create-resident').modal('show');
             $('.resident-form').show();
-            $('.resident-title').text('Contract Information');
+            $('.resident-title').text('Add Resident');
         });
 
         // pop up for repair's form
@@ -58,7 +58,7 @@
          $(document).on('click','.add-repair', function(){
             $('#create-repair').modal('show');
             $('.repair-form-').show();
-            $('.repair-title').text('Repair Information');
+            $('.repair-title').text('Add Repair');
         });
 
         
@@ -67,7 +67,7 @@
         $(document).on('click','.edit', function(){
             $('#edit-repair').modal('show');
             $('.edit-repair-form').show();
-            $('.edit-repair-title').text('Edit');
+            $('.edit-repair-title').text('Edit Repair');
         });
 
 
@@ -76,7 +76,7 @@
         $(document).on('click','.add-owner', function(){
             $('#create-owner').modal('show');
             $('.owner-form').show();
-            $('.owner-title').text('Transaction Information');
+            $('.owner-title').text('Add Owner');
         });
 
         // pop up form for adding new room
@@ -84,7 +84,7 @@
         $(document).on('click','.add-room', function(){
             $('#create-room').modal('show');
             $('.room-form').show();
-            $('.room-title').text('Room Information');
+            $('.room-title').text('Add Room');
         });
 
          // pop up form for editing room
@@ -92,7 +92,7 @@
         $(document).on('click','.edit-room', function(){
             $('#edit-room').modal('show');
             $('.edit-room-form').show();
-            $('.edit-room-title').text('Edit');
+            $('.edit-room-title').text('Edit Room');
         });
 
         // pop up form for addding violation
@@ -100,7 +100,7 @@
         $(document).on('click','.add-violation', function(){
             $('#create-violation').modal('show');
             $('.add-violation-form').show();
-            $('.add-violation-title').text('Violation');
+            $('.add-violation-title').text('Add Violation');
         });
 
 
@@ -109,7 +109,7 @@
         $(document).on('click','.edit-violation', function(){
             $('#edit-violation').modal('show');
             $('.edit-violation-form').show();
-            $('.edit-violation-title').text('Edit');
+            $('.edit-violation-title').text('Edit Violation');
         });
 
 
@@ -118,7 +118,7 @@
         $(document).on('click','.edit-item', function(){
             $('#edit-item').modal('show');
             $('.edit-item-form').show();
-            $('.edit-item-title').text('Edit');
+            $('.edit-item-title').text('Edit Item');
         });
 
          // pop up form for adding resident info
@@ -126,7 +126,7 @@
         $(document).on('click','.add-resident-info', function(){
             $('#add-resident-info').modal('show');
             $('.add-resident-info-form').show();
-            $('.add-resident-info-title').text('Resident Form');
+            $('.add-resident-info-title').text('Add Resident');
         });
 
           // pop up form for editing resident info
@@ -142,7 +142,7 @@
         $(document).on('click','.add-violation', function(){
             $('#add-violation').modal('show');
             $('.add-violation-form').show();
-            $('.add-violation-title').text('Violation Form');
+            $('.add-violation-title').text('Add Violation');
         });
 
         // Delete confirmation dialog

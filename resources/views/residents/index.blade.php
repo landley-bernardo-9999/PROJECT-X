@@ -98,24 +98,24 @@
     </div>
 </div>
 
-<a class="btn btn-dark" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+<a class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
 
-<a class="btn btn-warning float-right add-resident-info" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD</a>
-<br><br>
 <form action="/search/residents" method="GET">
-    <div class="input-group mb-3">
-        <input class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
-    </div>
+    <input style="width:200px" class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
 </form>
 
-<div class="container-fluid text-center" >
-    <h3>Residents found: {{count($residents)}}</h3>
-</div>   
+<a class="btn btn-warning float-left add-resident-info" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD</a>
+
 <br>
-        <div class="container-fluid">
-            @if(count($residents) > 0)
-            <table class="table table-hover table-striped">
-                <thead class="thead-dark"> 
+<br>
+
+<div class=" card container-fluid" >
+    <div class="card-header">
+        <h3 class="text-center">Residents found: {{count($residents)}}</h3>     
+    </div> 
+        <div class="row card-body">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class=""> 
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Profile</th>
@@ -151,13 +151,14 @@
                     </td> --}}
                     </tr>
                     @endforeach
+                   
                 </tbody>
-              
               </table>
-              @else
-              <div class="alert alert-danger" role="alert"><p>No residents found!</p></div>
-              @endif
+            </div>
         </div>
+        <br>
+        <h6 class="text-center">{{$residents->links()}}</h6>
+
 @endsection
 
 

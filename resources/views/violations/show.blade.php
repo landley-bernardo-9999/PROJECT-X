@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-dark" role="button" href="/propertymgmt/residents/"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a href="#" class="btn btn-primary edit-violation"><i class="fas fa-edit"></i>&nbspEDIT</a>
+
      
     {!! Form::open(['action'=>['ViolationsController@update', $violation->id],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     
@@ -121,6 +120,8 @@
      </div>
 
     
+     <a class="btn btn-dark" role="button" href="/propertymgmt/residents/"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    <a href="#" class="btn btn-primary edit-violation"><i class="fas fa-edit"></i>&nbspEDIT</a>
     
     
     

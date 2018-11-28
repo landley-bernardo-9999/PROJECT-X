@@ -240,7 +240,7 @@
                         <div class="alert alert-danger" role="alert"><p>No records of concerns/repairs!</p></div>
                         @endif
                       </div>
-                          {{-- <a class="btn btn-warning" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a>   --}}
+                      {{-- <a class="btn btn-warning add-repair" role="button" href="#" style="width:150px" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD REPAIR</a> --}}
                 </div>
                 <br>
                     </div>

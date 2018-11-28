@@ -1,26 +1,25 @@
 @extends('layouts.app')
 @section('content')
-            <a class="btn btn-dark" role="button" href="/propertymgmt" style="width:155px"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-            <a class="btn btn-warning float-right" role="button" href="/propertymgmt/owners/create" style="width:155px"><i class="fas fa-user-plus"></i>&nbspADD OWNER</a>
-            <a href="/propertymgmt/owners" class="btn btn-dark" style="width:155px"><i class="fas fa-user-tie" ></i>&nbspCLEAR SEARCH</a>
-
-<div class="container-fluid text-center" >
-    <h3>Owners found: {{count($owners)}}</h3>
-</div>  
-<br> 
-    @if(count($owners) > 0)
-    <div class="container-fluid"  >
-            <table class="table table-striped table-hover">
-                <thead class="thead-dark">
-                        <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Profile</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Room</th>
-                                <th scope="col">Move-In</th>
-                                <th scope="col">Mobile</th>
-                                <th scope="col">Email</th>                    
-                            </tr>
+            
+<a class="btn btn-dark" role="button" href="/propertymgmt" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+<a class="btn btn-warning float-right" role="button" href="/propertymgmt/owners/create" ><i class="fas fa-user-plus"></i>&nbspADD OWNER</a>
+<br><br>
+<div class="card container-fluid" >
+    <div class="card-header">
+        <h3 class="text-center">Owners found: {{count($owners)}}</h3>
+    </div>
+<div class="row card-body">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Profile</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Room</th>
+                        <th scope="col">Move-In</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Email</th>                    
+                    </tr>
                 </thead>
             <tbody>   
                     @foreach($owners as $owner)
@@ -45,13 +44,11 @@
                 </tr>
                 @endforeach 
             </tbody>  
-              
-            </table> 
-            {{-- {{$owners->links()}} --}}
-    @else
-    <div class="alert alert-danger" role="alert"><p>No Owners found!</p></div>
-    @endif
+        </table> 
+        </div>      
             </div>
+            <br>
+    {{$owners->links()}}
 @endsection
 
 

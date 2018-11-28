@@ -38,7 +38,7 @@
                         <div class="form-group row">
                                 <label for="shortTermRent" class="col-md-4 col-form-label text-md-right">Short Term Rent:<span style="color:red">&nbsp*</span></label>
                                 <div class="col-md-6">
-                                    {{Form::number('shortTermRent','',['class'=>'form-control'],['min'>'0'])}}
+                                    {{Form::number('shortTermRent','6800',['class'=>'form-control'],['min'>'0'])}}
                                </div>     
                         </div>
         
@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label for="longTermRent" class="col-md-4 col-form-label text-md-right">Long Term Rent:<span style="color:red">&nbsp*</span></label>
                             <div class="col-md-6">
-                                {{Form::number('longTermRent','',['class'=>'form-control'],['min'>'0'])}}
+                                {{Form::number('longTermRent','6000',['class'=>'form-control'],['min'>'0'])}}
                            </div>     
                         </div>
         
@@ -66,27 +66,27 @@
                         <div class="form-group row">
                                 <label for="" class="col-md-4 col-form-label text-md-right">Size(sqm):<span style="color:red">&nbsp*</span></label>
                                 <div class="col-md-6">
-                                    {{Form::number('size','',['class'=>'form-control'])}}
+                                    {{Form::number('size','15',['class'=>'form-control', 'min'=> '0'])}}
                                </div>     
                         </div>
         
                         <div class="form-group row">
                                 <label for="" class="col-md-4 col-form-label text-md-right">Capacity:<span style="color:red">&nbsp*</span></label>
                                 <div class="col-md-6">
-                                    {{Form::number('capacity','',['class'=>'form-control'])}}
+                                    {{Form::number('capacity','2',['class'=>'form-control', 'min' => '1'])}}
                                </div>     
                         </div>
         
-                    <div class="form-group row mb-0">
+                    {{-- <div class="form-group row mb-0">
                             <label for="" class="col-md-4 col-form-label text-md-right">Image:</label>
                             <div class="col-md-6">
                                 {{Form::file('cover_image', ['class' => 'form-control'])}}
                             </div>
-                    </div>
+                    </div> --}}
                       
-                    <br>
+                    
                     <div class="modal-footer">
-                            <div class="col-md-5 float-right">
+                            <div class="col-md-6 float-right">
                                 <button class="btn btn-danger" data-dismiss="modal" type="button">CLOSE</button>              
                                     {{Form::submit('SUBMIT',['class'=>'btn btn-warning', 'float'=>'right'])}}
                                     {!! Form::close() !!}            
@@ -98,7 +98,7 @@
 
     </div>
     <a class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    
+    <a class="btn btn-warning add-room float-left " role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD</a>
 
         <form action="/search/rooms" method="GET">
             <input type="text" class="form-control float-right" style="width:200px" aria-label="Text input with dropdown button" name="s" value="{{ Request::query('s') }}" placeholder="Search rooms">    
@@ -123,11 +123,11 @@
 
         <a href="/search/rooms?s=2" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbsp2 Beds</a>
 
-        <a class="btn btn-warning add-room float-right" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD</a>
+        
     <br><br>
     <div class="card container-fluid">
         <div class="card-header">
-                <h3 class="text-center">{{ Request::query('s') }} Rooms found: {{count($rooms)}} </h3>
+            <h3 class="text-center">{{ Request::query('s') }} Rooms found: {{count($rooms)}} </h3>
         </div>
         <div class="row card-body">
             @foreach($rooms as $room)

@@ -18,7 +18,7 @@
 
                         {!! Form::open(['action'=>['RoomsController@update', $room->roomNo],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group row">
-                        <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No</label>
+                        <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No:</label>
                         <div class="col-md-6">
                             {{Form::text('roomNo',$room->roomNo,['class'=>'form-control'])}}
                         </div>
@@ -231,7 +231,7 @@
 
                                         {{-- Resident's Room Number --}}
                                         
-                                        <div class="form-group row add" style="visibility:hidden">
+                                        <div class="form-group row add" >
                                             <label for="residentRoomNo" class="col-md-5 text-md-right">Room No:<span style="color:red">&nbsp*</span></label> 
                                             <div class="col-md-6">
                                                 <select name="residentRoomNo" id="residentRoomNo" class="form-control">   
@@ -269,8 +269,7 @@
                                             <label for="term" class="col-md-5 col-form-label text-md-right">Term<span style="color:red">&nbsp*</span></label>
                                                 <div class="col-md-6">
                                                     <select class="form-control" name="term" id="term">
-                                                        <option value="" selected>Please select</option>
-                                                        <option value="Short Term" >Short Term</option>    
+                                                        <option value="Short Term" selected>Short Term</option>    
                                                         <option value="Long Term">Long Term</option>
                                                         <option value="Transient">Transient</option>                            
                                                     </select>
@@ -416,7 +415,7 @@
 
                                       {{-- Resident's Room Number --}}
                                       
-                                      <div class="form-group row" style="visibility:hidden">
+                                      <div class="form-group row">
                                             <label for="" class="col-md-4 col-form-label text-md-right">Room No:<span style="color:red">&nbsp*</span></label>
                                             <div class="col-md-6">
                                             <select name="roomNo" id="roomNo" class="form-control">
@@ -549,9 +548,8 @@
                                                      <div class="form-group row">
                                                             <label for="repairStatus" class="col-md-4 col-form-label text-md-right">Status:<span style="color:red">&nbsp*</span></label>
                                                          <div class="col-md-6">
-                                                            <select class="form-control" name="repairStatus" id="repairStatus">
-                                                                <option value=""disabled selected>Please select</option>    
-                                                                <option value="Pending">Pending</option>
+                                                            <select class="form-control" name="repairStatus" id="repairStatus">    
+                                                                <option value="Pending" selected>Pending</option>
                                                                 <option value="Ongoing">Ongoing</option>
                                                                 <option value="Closed">Closed</option>
                                                             </select>
@@ -678,7 +676,7 @@
                   {!! Form::open(['action'=>'OwnersController@store','method' => 'POST', 'enctype' => 'multipart/form-data', 'class'=>'owner-form'] ) !!}
 
                   
-                <div class="form-group row" style="visibility:hidden">
+                <div class="form-group row" >
                     <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No:<spans style="color:red">&nbsp*</spans></label>
                     <div class="col-md-6">
                         <select name="roomNo" id="roomNo" class="form-control">
@@ -706,35 +704,35 @@
                 <div class="form-group row">
                     <label for="moveInDate" class="col-md-4 col-form-label text-md-right">Move-In Date:</label>
                     <div class="col-md-6">
-                        {{ Form::date('moveInDate',' ', ['class' => 'form-control']) }}
+                        {{ Form::date('moveInDate',\Carbon\Carbon::now(), ['class' => 'form-control']) }}
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="totalPrice" class="col-md-4 col-form-label text-md-right">Buying Price:</label>
                     <div class="col-md-6">
-                        {{Form::number('totalPrice','',['class'=>'form-control'])}}
+                        {{Form::number('totalPrice','0',['class'=>'form-control', 'min' => '0'])}}
                     </div>     
                 </div>
 
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                     <label for="downPayment" class="col-md-4 col-form-label text-md-right">DownPayment:</label>
                     <div class="col-md-6">
-                        {{Form::number('downPayment','',['class'=>'form-control'])}}
+                        {{Form::number('downPayment','',['class'=>'form-control', 'min'=> '0'])}}
                     </div>     
                 </div>
 
                 <div class="form-group row">
                     <label for="downPaymentMonthlyAmortization" class="col-md-4 col-form-label text-md-right">DownPayment Monthly Amortization:</label>
                     <div class="col-md-6">
-                        {{Form::number('downPaymentMonthlyAmortization','',['class'=>'form-control'])}}
+                        {{Form::number('downPaymentMonthlyAmortization','',['class'=>'form-control', 'min' => '0'])}}
                     </div>     
                 </div>
 
                 <div class="form-group row">
                     <label for="monthlyAmortization" class="col-md-4 col-form-label text-md-right">Monthly Amortization:</label>
                     <div class="col-md-6">
-                        {{Form::number('monthlyAmortization','',['class'=>'form-control'])}}
+                        {{Form::number('monthlyAmortization','',['class'=>'form-control', 'min' => '0'])}}
                     </div>     
                 </div>
 
@@ -751,7 +749,7 @@
                         </div>   
                     </div>
                   
-                  
+                   --}}
                 </div>
 
                 <div class="modal-footer">

@@ -32,7 +32,7 @@ class OwnersController extends Controller
         ->join('transactions', 'owners.id', '=', 'transactions.ownerName')
         ->select('owners.*', 'owners.id as ownerId','transactions.*')
         ->orderBy('owners.name','asc')
-        ->get();
+        ->paginate(10);
         
         return view('owners.index')->with('owners', $owners)->with('rowNum', $rowNum);
     }

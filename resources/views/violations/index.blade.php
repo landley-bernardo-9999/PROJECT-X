@@ -3,7 +3,7 @@
 <br>
 
     <a class="btn btn-dark" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a class="btn btn-warning float-right add-violation" role="button" href="#" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a>
+    {{-- <a class="btn btn-warning float-right add-violation" role="button" href="#" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a> --}}
 
     {!! Form::open(['action'=>'ViolationsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     
