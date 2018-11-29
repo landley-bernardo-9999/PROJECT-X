@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-hover" >
     <tr>
         <th><i class="fas fa-user-times"></i><a href="/propertymgmt/">&nbspDashboard</a></th> 
     </tr>
@@ -17,8 +17,5 @@
     <tr>
         <th><i class="fas fa-user-times"></i><a href="/propertymgmt/violations">&nbspViolations</a></th> 
     </tr>
-    
-    
-
         
 </table>

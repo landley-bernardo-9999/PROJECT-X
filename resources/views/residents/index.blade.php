@@ -1,5 +1,6 @@
 @extends('layouts.appsidebar')
 @section('content')
+@include('includes.messages')
 <div id="add-resident-info" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -98,13 +99,13 @@
     </div>
 </div>
 
-<a class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+{{-- <a class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> --}}
 
 <form action="/search/residents" method="GET">
     <input style="width:200px" class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
 </form>
 
-<a class="btn btn-warning float-left add-resident-info" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD</a>
+<a class="btn btn-warning float-left add-resident-info" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD NEW RESIDENT</a>
 
 <br>
 <br>

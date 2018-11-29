@@ -1,8 +1,7 @@
 @extends('layouts.appsidebar')
 @section('content')
-<br>
-
-    <a class="btn btn-dark" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+@include('includes.messages')
+    {{-- <a class="btn btn-dark" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> --}}
     {{-- <a class="btn btn-warning float-right add-violation" role="button" href="#" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a> --}}
 
     {!! Form::open(['action'=>'ViolationsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
@@ -123,11 +122,10 @@
             </div>
      </div>
 
-   <br>
     @if(count($violations) > 0)
     <div class="container-fluid" >
-            <table class="table table-striped">
-               <thead class="thead-dark">
+            <table class="table table-striped table-hover">
+               <thead class="">
                 <tr>
                     <th>#</th>
                     <th>Date Reported</th>
@@ -146,7 +144,7 @@
                         @foreach($violations as $violation)
                         <tr>
                             <th>{{$rowNo++}}</th>
-                            <td>{{$violation->dateReported}}</td>
+                            <td>{{Carbon\Carbon::parse($violation->dateReported)->formatLocalized('%b %d %Y')}}</td>
                             <td>{{$violation->name}}</td>
                             <td>{{$violation->roomNo}}</td>
                             <td>{{$violation->description}}</td>

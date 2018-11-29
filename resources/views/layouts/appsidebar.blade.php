@@ -27,7 +27,6 @@
 <body>
     <div id="app">
         @include('includes.navbar')
-        @include('includes.messages')
         <hr class="my-0">
         <br>
         <div class="container-fluid">

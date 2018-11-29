@@ -1,6 +1,6 @@
 @extends('layouts.appsidebar')
 @section('content')
-
+@include('includes.messages')
      
     {!! Form::open(['action'=>['ViolationsController@update', $violation->id],'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     

@@ -1,5 +1,6 @@
 @extends('layouts.appsidebar')
 @section('content')
+@include('includes.messages')
 <br>
             <a class="btn btn-dark" role="button" href="/propertymgmt/owners/"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
             

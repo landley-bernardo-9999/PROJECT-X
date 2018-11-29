@@ -64,15 +64,15 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'roomNo' => 'required|unique:rooms',
-            'building' => 'required',
-            
-            'longTermRent' => 'required',
-            'shortTermRent' => 'required',
-            'roomStatus' => 'required',
-            'size' => 'required',
-            'capacity' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+
+                'roomNo' => ['required','unique:rooms', 'min:4', 'max:8'],
+                'building' => 'required',
+                'longTermRent' => 'required',
+                'shortTermRent' => 'required',
+                'roomStatus' => 'required',
+                'size' => 'required',
+                'capacity' => 'required',
+                'cover_image' => ['image','nullable','max:1999']
         ]);
 
          //Handle File Upload

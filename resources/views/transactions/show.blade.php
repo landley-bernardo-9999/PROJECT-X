@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.appsidebar')
 @section('content')
-    <a class="btn btn-dark" role="button" href="/propertymgmt/rooms"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+@include('includes.messages')
+    <a class="btn btn-dark" role="button" href="/propertymgmt/rooms/"{{$transaction->roomNo}}><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
     <a href="#" class="btn btn-info edit-transaction"><i class="fas fa-edit"></i>&nbspEDIT</a>
      {!!Form::open(['action' => ['TransactionsController@destroy', $transaction->id],'id'=>'FormDeleteTime' ,'method' => 'POST', 'class' =>'float-right'])!!}
     {{Form::hidden('_method', 'DELETE')}}  

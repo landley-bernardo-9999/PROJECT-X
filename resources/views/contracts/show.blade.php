@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appsidebar')
 @section('content')
 <a class="btn btn-dark float-left" role="button" href="/propertymgmt/rooms/{{$contract->residentRoomNo}}" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
     

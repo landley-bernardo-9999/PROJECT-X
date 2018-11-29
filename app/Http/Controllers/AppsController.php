@@ -8,6 +8,8 @@ use App\Room;
 use App\Repair;
 use DateTime;
 use Carbon\Carbon;
+use App\Residents;
+use App\Owners;
 
 
 class AppsController extends Controller
@@ -23,8 +25,13 @@ class AppsController extends Controller
 
     public function propertymgmt(){
         $rooms = DB::table('rooms')->get();
+
+        $residents = DB::table('residents')->where('residentStatus', 'active')->get();
+
+        $owners = DB::table('owners')->get();
+
     
-        return view('apps.propertymgmt', compact('rooms'));
+        return view('apps.propertymgmt', compact('rooms', 'residents', 'owners'));
   
     }
 

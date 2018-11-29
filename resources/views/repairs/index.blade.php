@@ -1,9 +1,8 @@
 @extends('layouts.appsidebar')
 @section('content')
-<a class="btn btn-dark" role="button" href="/propertymgmt "  ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+@include('includes.messages')
+{{-- <a class="btn btn-dark" role="button" href="/propertymgmt "  ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> --}}
 {{-- <a class="btn btn-warning float-right add-repair" role="button" href="#" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a>    --}}
-
-
 
   {{-- Create a repair form --}}
 
@@ -231,34 +230,10 @@
             </div>
         </div>
 
-
-<br>
-<br>
-<div class="container-fluid">
-        <div class="row text-center">
-            <div class="col-md-2 btn" style="border:solid black 1px; padding-bottom: 2%; padding-top: 2%; margin-left:14%">
-                <h3>Total</h3>
-                <h1>{{count($repairs)}}</h1>
-            </div>
-            <div class="col-md-2 btn btn-outline-warning" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
-                <h3>Pending</h3>
-                <h1>{{count($pending)}}</h1>
-            </div>
-            <div class="col-md-2 btn btn-outline-success" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
-                <h3>Ongoing</h3>
-                <h1>{{count($ongoing)}}</h1>
-            </div>
-            <div class="col-md-2 btn btn-outline-danger" style="border:solid black 1px; padding-bottom: 4%; padding-top: 2%; margin-left:2%">
-                <h3>Closed</h3>
-                <h1>{{count($closed)}}</h1>
-            </div>
-        </div>
-    </div>
- <br>
     @if(count($repairs) > 0)
     <div class="container"  >
             <table class="table table-hover table-striped">
-                <thead class="thead-dark">
+                <thead class="">
                     <tr>
                         <th>#</th>
                         <th>Room</th>

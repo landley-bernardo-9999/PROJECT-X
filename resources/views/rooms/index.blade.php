@@ -1,6 +1,6 @@
 @extends('layouts.appsidebar')
 @section('content')
-    
+@include('includes.messages')
     <div id="create-room" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -17,7 +17,7 @@
                       <div class="form-group row">
                             <label for="roomNo" class="col-md-4 col-form-label text-md-right">Room No: <span style="color:red">&nbsp*</span></label>
                             <div class="col-md-6">
-                                {{Form::text('roomNo','',['class'=>'form-control'])}}
+                                <input name="roomNo" id="roomNo" type="text" class="form-control" value="{{ old('roomNo') }}"></input>
                             </div>
                         </div>
         
@@ -25,7 +25,7 @@
                             <label for="building" class="col-md-4 col-form-label text-md-right">Building:<span style="color:red">&nbsp*</span></label>
                             <div class="col-md-6">
                             <select class="form-control" name="building" id="building">
-                                <option value="" disabled selected>Please select</option>     
+                            <option value="{{ old('building') }}">{{ old('building') }}</option>     
                                 <option value="Harvard">Harvard</option>
                                 <option value="Princeton">Princeton</option>
                                 <option value="Wharton">Wharton</option>
@@ -38,7 +38,7 @@
                         <div class="form-group row">
                                 <label for="shortTermRent" class="col-md-4 col-form-label text-md-right">Short Term Rent:<span style="color:red">&nbsp*</span></label>
                                 <div class="col-md-6">
-                                    {{Form::number('shortTermRent','6800',['class'=>'form-control'],['min'>'0'])}}
+                                    <input name="shortTermRent" id="shortTermRent" type="number" min="0" class="form-control" value="{{ old('shortTermRent') }}"></input>
                                </div>     
                         </div>
         
@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label for="longTermRent" class="col-md-4 col-form-label text-md-right">Long Term Rent:<span style="color:red">&nbsp*</span></label>
                             <div class="col-md-6">
-                                {{Form::number('longTermRent','6000',['class'=>'form-control'],['min'>'0'])}}
+                                <input name="longTermRent" id="longTermRent" type="number" min="0" class="form-control" value="{{ old('longTermRent') }}"></input>
                            </div>     
                         </div>
         
@@ -54,7 +54,7 @@
                                 <label for="roomStatus" class="col-md-4 col-form-label text-md-right">Status:<span style="color:red">&nbsp*</span></label>
                                 <div class="col-md-6">
                                 <select class="form-control" name="roomStatus" id="roomStatus">
-                                    <option value="" disabled selected>Please select</option>    
+                                    <option value="{{ old('roomStatus') }}">{{ old('roomStatus') }}</option>      
                                     <option value="Occupied">Occupied</option>
                                     <option value="Vacant">Vacant</option>
                                     <option value="Reserved">Reserved</option>
@@ -66,23 +66,23 @@
                         <div class="form-group row">
                                 <label for="" class="col-md-4 col-form-label text-md-right">Size(sqm):<span style="color:red">&nbsp*</span></label>
                                 <div class="col-md-6">
-                                    {{Form::number('size','15',['class'=>'form-control', 'min'=> '0'])}}
+                                    <input name="size" id="size" type="number" min="0" class="form-control" value="{{ old('size') }}"></input>
                                </div>     
                         </div>
         
                         <div class="form-group row">
                                 <label for="" class="col-md-4 col-form-label text-md-right">Capacity:<span style="color:red">&nbsp*</span></label>
                                 <div class="col-md-6">
-                                    {{Form::number('capacity','2',['class'=>'form-control', 'min' => '1'])}}
+                                    <input name="capacity" id="capacity" type="number" min="1" class="form-control" value="{{ old('capacity') }}"></input>
                                </div>     
                         </div>
         
-                    {{-- <div class="form-group row mb-0">
+                     <div class="form-group row mb-0">
                             <label for="" class="col-md-4 col-form-label text-md-right">Image:</label>
                             <div class="col-md-6">
                                 {{Form::file('cover_image', ['class' => 'form-control'])}}
                             </div>
-                    </div> --}}
+                    </div> 
                       
                     
                     <div class="modal-footer">
@@ -137,8 +137,8 @@
                 @if($room->roomStatus == 'Occupied')
                     
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
-                        <i class="fas fa-home fa-3x"></i>
-                        <div style="display: flex; width: 80px; justify-content: space-around">
+                        <i class="fas fa-home fa-2x"></i>
+                        <div style="display: flex; width: 70px; justify-content: space-around; margin-bottom:-25%">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
@@ -146,8 +146,8 @@
                 @elseif($room->roomStatus == 'Vacant')
                     
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
-                        <i class="fas fa-home fa-3x"></i>
-                        <div style="display: flex; width: 80px; justify-content: space-around"">
+                        <i class="fas fa-home fa-2x"></i>
+                        <div style="display: flex; width: 70px; justify-content: space-around; margin-bottom:-25%">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
@@ -155,8 +155,8 @@
                 @elseif($room->roomStatus == 'Reserved')
                     
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
-                        <i class="fas fa-home fa-3x"></i>
-                        <div style="display: flex; width: 80px; justify-content: space-around"">
+                        <i class="fas fa-home fa-2x"></i>
+                        <div style="display: flex; width: 70px; justify-content: space-around;  margin-bottom:-25%">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>
@@ -164,8 +164,8 @@
                 @elseif($room->roomStatus == 'NRFO')
                    
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
-                        <i class="fas fa-home fa-3x"></i>
-                        <div style="display: flex; width: 80px; justify-content: space-around"">
+                        <i class="fas fa-home fa-2x"></i>
+                        <div style="display: flex; width: 70px; justify-content: space-around;  margin-bottom:-25%">
                             <p>{{$room->roomNo}}</p>
                         </div>
                     </a>

@@ -1,5 +1,6 @@
 @extends('layouts.appsidebar')
 @section('content')
+@include('includes.messages')
 <a class="btn btn-dark" role="button" href="/propertymgmt/rooms/" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
 <a href="#" class="btn btn-primary edit-room"  ><i class="fas fa-edit"></i>&nbspEDIT</a>
 

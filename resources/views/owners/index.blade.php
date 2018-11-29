@@ -1,12 +1,13 @@
 @extends('layouts.appsidebar')
 @section('content')
+@include('includes.messages')
             
-<a class="btn btn-dark float-left" role="button" href="/propertymgmt" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+{{-- <a class="btn btn-dark float-left" role="button" href="/propertymgmt" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> --}}
 
 <form action="/search/owners" method="GET">
     <input style="width:200px" class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search owners" />
 </form>
-<a class="btn btn-warning float-left add-owner" role="button" href="#" ><i class="fas fa-user-plus"></i>&nbspADD</a>
+<a class="btn btn-warning float-left add-owner" role="button" href="#" ><i class="fas fa-user-plus"></i>&nbspADD NEW OWNER</a>
 <br><br>
 <div class="card container-fluid" >
     <div class="card-header">

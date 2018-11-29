@@ -1,6 +1,6 @@
 @extends('layouts.appsidebar')
 @section('content')
-
+@include('includes.messages')
 <div id="edit-resident-info" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">

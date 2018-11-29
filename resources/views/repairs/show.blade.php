@@ -1,5 +1,6 @@
 @extends('layouts.appsidebar')
 @section('content')
+@include('includes.messages')
      {{-- Create a edit form --}}
 
      {!! Form::open(['action'=>['RepairsController@update', $repair->id],'method' => 'POST', 'enctype' => 'multipart/form-data', 'class'=>'edit-repair-form']) !!}
