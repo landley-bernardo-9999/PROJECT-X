@@ -22,7 +22,10 @@ class AppsController extends Controller
     }
 
     public function propertymgmt(){
-        return view('apps.propertymgmt');
+        $rooms = DB::table('rooms')->get();
+    
+        return view('apps.propertymgmt', compact('rooms'));
+  
     }
 
     public function financialmgmt(){

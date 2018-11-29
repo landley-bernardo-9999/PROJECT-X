@@ -32,7 +32,7 @@
                     
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
+                        <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/profile">{{ __('Profile') }}</a>

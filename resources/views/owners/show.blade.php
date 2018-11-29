@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.appsidebar')
 @section('content')
 <br>
-            <a class="btn btn-dark" role="button" href="/propertymgmt/owners"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+            <a class="btn btn-dark" role="button" href="/propertymgmt/owners/"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
             
             
             <a href="#" class="btn btn-info edit-owner"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
@@ -168,9 +168,9 @@
                          <div class="panel panel-default">
                         @if(count($repair) > 0)              
                         <table class="table table-striped">
-                         <thead class="thead-light">
+                         <thead class="thead-dark">
                             <tr>
-                                <th>No</th>
+                                <th>#</th>
                                 <th>Date Reported</th>
                                 <th>Reported By</th>
                                 <th>Description</th>

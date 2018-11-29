@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appsidebar')
 @section('content')
     
     <div id="create-room" class="modal fade" role="dialog">
@@ -97,12 +97,14 @@
             </div>
 
     </div>
-    <a class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a class="btn btn-warning add-room float-left " role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD</a>
-
-        <form action="/search/rooms" method="GET">
-            <input type="text" class="form-control float-right" style="width:200px" aria-label="Text input with dropdown button" name="s" value="{{ Request::query('s') }}" placeholder="Search rooms">    
-        </form> 
+    
+        {{-- <a  class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> --}}
+        <a  class="btn btn-warning add-room float-left " role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD NEW ROOM</a>
+    
+            <form action="/search/rooms" method="GET">
+                <input type="text" class="form-control float-right" style="width:200px" aria-label="Text input with dropdown button" name="s" value="{{ Request::query('s') }}" placeholder="Search rooms">    
+            </form> 
+  
         <br><br>
 
         <a href="/search/rooms?s=" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspAll Rooms</a>

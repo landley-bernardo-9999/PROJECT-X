@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appsidebar')
 @section('content')
 <div id="add-resident-info" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -6,7 +6,7 @@
             <div class="modal-header">
                   <h4 class="add-resident-info-title float-left"> </h4>
                 <button class="close" type="button" data-dismiss="modal" >&times;</button>
-                  
+              
             </div>
 
             <div class="modal-body">
@@ -19,14 +19,14 @@
                 </div>
                     
                     <div class="form-group row">
-                            <label for="birthDate" class="col-md-4 col-form-label text-md-right">BirthDate</label>
+                            <label for="birthDate" class="col-md-4 col-form-label text-md-right">BirthDate:</label>
                             <div class="col-md-6">
                                 {{ Form::date('birthDate',' ', ['class' => 'form-control']) }}
                             </div>
                     </div>
 
                     <div class="form-group row">
-                            <label for="residentStatus" class="col-md-4 col-form-label text-md-right">Status<span style="color:red">&nbsp*</span></label>
+                            <label for="residentStatus" class="col-md-4 col-form-label text-md-right">Status:<span style="color:red">&nbsp*</span></label>
                             <div class="col-md-6">
                             <select class="form-control" name="residentStatus" id="residentStatus">
                                 <option value="" disabled selected>Please select</option>    
@@ -43,7 +43,7 @@
                     </div>
                   
                     <div class="form-group row">
-                            <label for="school" class="col-md-4 col-form-label text-md-right">School</label>
+                            <label for="school" class="col-md-4 col-form-label text-md-right">School:</label>
                             <div class="col-md-6">
                                     {{Form::text('school','',['class'=>'form-control'])}}
                      
@@ -52,27 +52,27 @@
 
                    
                         <div class="form-group row">
-                                <label for="course" class="col-md-4 col-form-label text-md-right">Course</label>
+                                <label for="course" class="col-md-4 col-form-label text-md-right">Course:</label>
                                 <div class="col-md-6">
                                         {{Form::text('course','',['class'=>'form-control'])}}
                                 </div>
                             </div>  
                             
                             <div class="form-group row">
-                                    <label for="yearLevel" class="col-md-4 col-form-label text-md-right">Year Level</label>
+                                    <label for="yearLevel" class="col-md-4 col-form-label text-md-right">Year Level:</label>
                                     <div class="col-md-6">
                                         {{Form::number('yearLevel','',['class'=>'form-control', 'min'=>'1'])}}
                                     </div>
                                 </div>  
                
                                 <div class="form-group row">
-                                        <label for="mobileNumber" class="col-md-4 col-form-label text-md-right">Mobile Number</label>
+                                        <label for="mobileNumber" class="col-md-4 col-form-label text-md-right">Mobile Number:</label>
                                         <div class="col-md-6">
                                             {{Form::text('mobileNumber','',['class'=>'form-control'])}}
                                         </div>
                                     </div> 
                                     <div class="form-group row">
-                                            <label for="emailAddress" class="col-md-4 col-form-label text-md-right">Email Address</label>
+                                            <label for="emailAddress" class="col-md-4 col-form-label text-md-right">Email Address:</label>
                                             <div class="col-md-6">
                                                     {{Form::email('emailAddress','',['class'=>'form-control'])}}
                                             </div>
@@ -134,8 +134,10 @@
                     <tr>
                         <th scope="row">{{$rowNum++}}</th>
                         <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$row->cover_image}}" alt="Card image cap"></td>
-                        <td><a href="/propertymgmt/residents/{{$row->residentId}}">{{$row->name}}</a></td>
-                        <td><a href="/propertymgmt/rooms/{{$row->residentRoomNo}}">{{$row->residentRoomNo}}</a></td>
+                        {{-- <td><a href="/propertymgmt/residents/{{$row->residentId}}">{{$row->name}}</a></td> --}}
+                        <td>{{$row->name}}</td>
+                        <td>{{$row->residentRoomNo}}</td>
+                        {{-- <td><a href="/propertymgmt/rooms/{{$row->residentRoomNo}}">{{$row->residentRoomNo}}</a></td> --}}
                         <td>{{$row->residentStatus}}</td>
                         <td>{{$row->mobileNumber}}</td>
                         <td>{{$row->emailAddress}}</td>

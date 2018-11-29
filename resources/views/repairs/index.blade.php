@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appsidebar')
 @section('content')
 <a class="btn btn-dark" role="button" href="/propertymgmt "  ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
 {{-- <a class="btn btn-warning float-right add-repair" role="button" href="#" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a>    --}}

@@ -10,7 +10,7 @@
 <br>
 <br>
 <h3>{{$maintenances->name}}&nbsp<i class="fas fa-wrench"></i></h3>
-<br>
+<hr>
     <div class="container">
        <div class="row">
             <div class="col-lg-9">

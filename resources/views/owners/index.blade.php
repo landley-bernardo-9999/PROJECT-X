@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appsidebar')
 @section('content')
             
 <a class="btn btn-dark float-left" role="button" href="/propertymgmt" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
@@ -30,8 +30,10 @@
                 <tr>
                     <th scope="row">{{$rowNum++}}</td>
                     <td ><img class="card-img-top" style="width: 35px" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap"></td>
-                    <td><a href="/propertymgmt/owners/{{$owner->ownerId}}">{{$owner->name}}</a></td>
-                    <td><a href="/propertymgmt/rooms/{{$owner->roomNo}}">{{$owner->roomNo}}</a></td>
+                    {{-- <td><a href="/propertymgmt/owners/{{$owner->ownerId}}">{{$owner->name}}</a></td> --}}
+                    <td>{{$owner->name}}</td>
+                    {{-- <td><a href="/propertymgmt/rooms/{{$owner->roomNo}}">{{$owner->roomNo}}</a></td> --}}
+                    <td>{{$owner->roomNo}}</td>
                     <td>{{Carbon\Carbon::parse($owner->moveInDate)->formatLocalized('%b %d %Y')}}</td>
                     <td>{{$owner->mobileNumber}}</td>
                     <td>{{$owner->emailAddress}}</td>
