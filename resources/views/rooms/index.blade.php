@@ -123,7 +123,9 @@
 
         <a href="/search/rooms?s=wharton" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspWharton</a>
 
-        <a href="/search/rooms?s=2" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbsp2 Beds</a>
+        <a href="/search/rooms?s=courtyard" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspCourtyard</a>
+
+        {{-- <a href="/search/rooms?s=2" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbsp2 Beds</a> --}}
 
         
     <br><br>

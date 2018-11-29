@@ -29,7 +29,7 @@
         @include('includes.navbar')
         <hr class="my-0">
         <br>
-        <div class="container-fluid">
+        <div class="container-fluid" >
            <div class="row">
             <div class="col-md-2">
                 @include('includes.sidebar')

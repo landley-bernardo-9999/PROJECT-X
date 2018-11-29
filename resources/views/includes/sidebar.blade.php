@@ -1,6 +1,6 @@
 <table class="table table-hover" >
     <tr>
-        <th><i class="fas fa-user-times"></i><a href="/propertymgmt/">&nbspDashboard</a></th> 
+        <th><i class="fas fa-clipboard"></i><a href="/propertymgmt/">&nbspDashboard</a></th> 
     </tr>
     <tr>
         <th><i class="fas fa-store-alt "></i><a href="/propertymgmt/rooms">&nbspRooms</a></th>    
