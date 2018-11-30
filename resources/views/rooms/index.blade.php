@@ -99,40 +99,16 @@
     </div>
     
         {{-- <a  class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> --}}
-        <a  class="btn btn-warning add-room float-left " role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD NEW ROOM</a>
+       
+
+    <div class="card container">
+        <div class="card-header">
+            <a  class="btn btn-warning add-room float-left " role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD NEW ROOM</a>
     
             <form action="/search/rooms" method="GET">
                 <input type="text" class="form-control float-right" style="width:200px" aria-label="Text input with dropdown button" name="s" value="{{ Request::query('s') }}" placeholder="Search rooms">    
             </form> 
-  
-        <br><br>
-
-        <a href="/search/rooms?s=" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspAll Rooms</a>
-
-        <a href="/search/rooms?s=occupied" class="btn btn-outline-danger" role="button"> <i class="fas fa-home "></i>&nbspOccupied</a>
-
-        <a href="/search/rooms?s=vacant" class="btn btn-outline-success" role="button"> <i class="fas fa-home "></i>&nbspVacant</a>
-    
-        <a href="/search/rooms?s=reserved" class="btn btn-outline-info" role="button"> <i class="fas fa-home "></i>&nbspReserved</a>
-    
-        <a href="/search/rooms?s=nrfo" class="btn btn-outline-dark" role="button"> <i class="fas fa-home "></i>&nbspNRFO</a>
-    
-        <a href="/search/rooms?s=harvard" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspHarvard</a>
-
-        <a href="/search/rooms?s=princeton" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspPrinceton</a>
-
-        <a href="/search/rooms?s=wharton" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspWharton</a>
-
-        <a href="/search/rooms?s=courtyard" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbspCourtyard</a>
-
-        {{-- <a href="/search/rooms?s=2" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbsp2 Beds</a> --}}
-
-        
-    <br><br>
-    <div class="card container-fluid">
-        <div class="card-header">
-            <h3 class="text-center">{{ Request::query('s') }} Rooms found: {{count($rooms)}} </h3>
-        </div>
+        </div> 
         <div class="row card-body">
             @foreach($rooms as $room)
             {{-- Generate red house if the room is OCCUPIED. --}}
@@ -140,8 +116,8 @@
                     
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-danger" role="button">
                         <i class="fas fa-home fa-2x"></i>
-                        <div style="display: flex; width: 70px; justify-content: space-around; margin-bottom:-25%">
-                            <p>{{$room->roomNo}}</p>
+                        <div style="display: flex; width: 30px; justify-content: space-around; margin-bottom:-25%">
+                            <p style="font-size: 11px">{{$room->roomNo}}</p>
                         </div>
                     </a>
             {{-- Generate green house if the room is VACANT.      --}}
@@ -149,8 +125,8 @@
                     
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-success" role="button">
                         <i class="fas fa-home fa-2x"></i>
-                        <div style="display: flex; width: 70px; justify-content: space-around; margin-bottom:-25%">
-                            <p>{{$room->roomNo}}</p>
+                        <div style="display: flex; width: 30px; justify-content: space-around; margin-bottom:-25%">
+                            <p style="font-size: 11px">{{$room->roomNo}}</p>
                         </div>
                     </a>
             {{-- Generate blue house if the room is RESERVED. --}}
@@ -158,8 +134,8 @@
                     
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-info" role="button">
                         <i class="fas fa-home fa-2x"></i>
-                        <div style="display: flex; width: 70px; justify-content: space-around;  margin-bottom:-25%">
-                            <p>{{$room->roomNo}}</p>
+                        <div style="display: flex; width: 30px; justify-content: space-around;  margin-bottom:-25%">
+                            <p style="font-size: 11px">{{$room->roomNo}}</p>
                         </div>
                     </a>
             {{-- Generate dark blak house if the room is NRFO.    --}}
@@ -167,14 +143,46 @@
                    
                     <a href="/propertymgmt/rooms/{{$room->roomNo}}" class="btn btn-outline-dark" role="button">
                         <i class="fas fa-home fa-2x"></i>
-                        <div style="display: flex; width: 70px; justify-content: space-around;  margin-bottom:-25%">
-                            <p>{{$room->roomNo}}</p>
+                        <div style="display: flex; width: 30px; justify-content: space-around;  margin-bottom:-25%">
+                            <p style="font-size: 11px">{{$room->roomNo}}</p>
                         </div>
                     </a>
                      
                 @endif
             @endforeach
         </div>
+        <div class="card-footer">
+            <h6 class="text-center">Rooms found: {{count($rooms)}} </h6>
+        </div> 
     </div>
-    <br>
+
+@endsection
+
+@section('filter')
+
+<div class=" row">
+   <b>Filter Rooms</b>
+
+   <br>
+<a href="/search/rooms?s=occupied" style="width: 100px" class="btn btn-outline-danger" role="button">Occupied</a>
+
+<a href="/search/rooms?s=vacant" style="width: 100px" class="btn btn-outline-success" role="button">Vacant</a>
+
+<a href="/search/rooms?s=reserved" style="width: 100px" class="btn btn-outline-info" role="button">Reserved</a>
+
+<a href="/search/rooms?s=nrfo" style="width: 100px" class="btn btn-outline-dark" role="button">NRFO</a>
+
+<a href="/search/rooms?s=" class="btn" style="width: 100px" role="button">Show All</a>
+
+<a href="/search/rooms?s=harvard" class="btn" style="width: 100px"   role="button">Harvard</a>
+
+<a href="/search/rooms?s=princeton"  class="btn" style="width: 100px"  role="button">Princeton</a>
+
+<a href="/search/rooms?s=wharton"  class="btn" style="width: 100px"  role="button">Wharton</a>
+
+<a href="/search/rooms?s=courtyard" class="btn" style="width: 100px"  role="button">Courtyard</a>
+    </div>
+
+
+{{-- <a href="/search/rooms?s=2" class="btn btn-outline-primary" role="button"> <i class="fas fa-home "></i>&nbsp2 Beds</a> --}}
 @endsection

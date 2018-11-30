@@ -27,15 +27,19 @@
 <body>
     <div id="app">
         @include('includes.navbar')
-        <hr class="my-0">
+        <hr class="my-1">
         <br>
         <div class="container-fluid" >
            <div class="row">
             <div class="col-md-2">
                 @include('includes.sidebar')
             </div>
+            
+            <div class="col-md-1" >
+                @yield('filter')
+            </div>
 
-            <div class="col-md-10">
+            <div class="col-md-9" >
                 @yield('content')
             </div>
            </div>
@@ -43,8 +47,6 @@
         
     </div>
 
-  
-            
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

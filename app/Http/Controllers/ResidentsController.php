@@ -42,8 +42,8 @@ class ResidentsController extends Controller
          ->orWhere('residents.emailAddress', 'like', "%$s%")
          ->orWhere('residents.mobileNumber', 'like', "%$s%")
          ->orWhere('residents.residentStatus', 'like', "%$s%")
-         ->orWhere('contracts.moveOutDate', 'like', "%$s%")
-         ->orWhere('contracts.term', 'like', "%$s%")
+        //  ->orWhere('contracts.moveOutDate', 'like', "%$s%")
+        //  ->orWhere('contracts.term', 'like', "%$s%")
         ->paginate(10);
 
         $active = DB::table('residents')->whereIn('residentStatus', ['Active', 'Moving-in', 'Moving-out', 'Extended'])->get();

@@ -105,13 +105,13 @@
     <input style="width:200px" class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
 </form>
 
-<a class="btn btn-warning float-left add-resident-info" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD NEW RESIDENT</a>
+<a class="btn btn-warning float-left add-resident-info" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspRESIDENT</a>
 
 <br>
 <br>
 
 <div class=" card container-fluid" >
-    <div class="card-header">
+     <div class="card-header">
         <h3 class="text-center">Residents found: {{count($residents)}}</h3>     
     </div> 
         <div class="row card-body">

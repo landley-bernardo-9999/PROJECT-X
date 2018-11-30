@@ -237,10 +237,10 @@
                     <tr>
                         <th>#</th>
                         <th>Room</th>
-                        <th>Reported By</th>
-                        <th>Date Reported</th>
+                        <th>Resident</th>
+                        <th>Reported</th>
                         <th>Description</th>
-                        <th>Endorsed To</th> 
+                        <th>Peronnel</th> 
                         <th>Status</th>
                         <th>Action</th>
                     </tr>

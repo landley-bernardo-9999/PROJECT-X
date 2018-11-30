@@ -53,6 +53,7 @@ class RepairsController extends Controller
         ->join('maintenances', 'repairs.endorsedTo', '=', 'maintenances.name')
             
         ->select('repairs.*','repairs.id as repairsId', 'maintenances.*', 'repairs.name as residentName')
+        ->whereIn('repairs.repairStatus', ['pending', 'ongoing'])
         ->orderBy('repairs.created_at','desc')
         ->get();
 
