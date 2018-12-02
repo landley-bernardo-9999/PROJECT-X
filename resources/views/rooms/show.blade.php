@@ -1,8 +1,6 @@
-@extends('layouts.appsidebar')
+@extends('layouts.style')
 @section('content')
 @include('includes.messages')
-<a class="btn btn-dark" role="button" href="/propertymgmt/rooms/" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-<a href="#" class="btn btn-primary edit-room"  ><i class="fas fa-edit"></i>&nbspEDIT</a>
 
     {{-- Edit form  --}}    
     
@@ -109,21 +107,28 @@
                 
             </div>
         </div>
-    </div>
+    </div> 
+    {{-- end of the edit room modal --}}
 
-
-    {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo],'id' => 'FormDeleteTime', 'method' => 'POST', 'class' =>'float-right'])!!}
-                {{Form::hidden('_method', 'DELETE')}}  
-                {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
+<div class="card">
+    <div class="card-header">
+            <a class="btn btn-dark" role="button" href="/propertymgmt/rooms/" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+            <a href="#" class="btn btn-primary edit-room"  ><i class="fas fa-edit"></i>&nbspEDIT</a>
+            {!!Form::open(['action' => ['RoomsController@destroy', $room->roomNo],'id' => 'FormDeleteTime', 'method' => 'POST', 'class' =>'float-right'])!!}
+            {{Form::hidden('_method', 'DELETE')}}  
+            {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
     {!!Form::close()!!} 
-<br>
-<br>
-<hr>
-<h3>Room&nbsp<i class="fas fa-store-alt"></i></h3>
+    </div>
+    <div class="card-body">
+
+
+<div class="card-header">
+        <h3>Room&nbsp<i class="fas fa-store-alt"></i></h3>
+</div>
 <br>
     <div class="container-fluid">
        <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-7">
                     <table class="table table-striped">
                         <tr>
                             <th>Room No</th>
@@ -158,20 +163,21 @@
                     </table>
             </div>  
 
-            <div class="col-lg-3">
-                <div class="card" style="width: 20rem" >
+            <div class="col-lg-5">
+                
                     <img class="card-img-top" src="/storage/cover_images/{{$room->cover_image}}" alt="Card image cap">
-                  </div>
+                  
             </div>
         </div>
-
-        <hr>
             <div class="row">
                 <div class="col-lg-12">
                     
-                    <h3>Residents&nbsp <i class="fas fa-users"></i></h3>
+                    <div class="card-header">
+                            <h3>Residents&nbsp <i class="fas fa-users"></i></h3>
+                    </div>
+
                     <br>
-                    <div class="panel panel-default">
+                   
                         @if(count($resident_contract) > 0)             
                         <table class="table table-striped">
                          <thead class="thead-dark">
@@ -210,7 +216,7 @@
                         @else
                         <div class="alert alert-danger" role="alert"><p>No records of residents!</p></div>
                         @endif
-                      </div>
+                      
                       <a class="btn btn-warning add-resident" href="#" style="width:150px"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD RESIDENT</a> 
                     
 
@@ -270,7 +276,8 @@
                                             <label for="term" class="col-md-5 col-form-label text-md-right">Term<span style="color:red">&nbsp*</span></label>
                                                 <div class="col-md-6">
                                                     <select class="form-control" name="term" id="term">
-                                                        <option value="Short Term" selected>Short Term</option>    
+                                                        <option value="" selected disabled>Please select</option>  
+                                                        <option value="Short Term">Short Term</option>  
                                                         <option value="Long Term">Long Term</option>
                                                         <option value="Transient">Transient</option>                            
                                                     </select>
@@ -300,7 +307,7 @@
                                         <div class="form-group row">
                                             <label for="amountPaid" class="col-md-5 col-form-label text-md-right">Rent:<span style="color:red">&nbsp*</span></label>
                                             <div class="col-md-6">
-                                                {{Form::number('amountPaid','0',['class'=>'form-control', 'min'=> '0'])}}
+                                                <input name="amountPaid" id="amountPaid" type="number" min="0" class="form-control" value="{{ old('amountPaid') }}"></input>
                                             </div>     
                                         </div>
 
@@ -309,7 +316,7 @@
                                         <div class="form-group row">
                                             <label for="securityDeposit" class="col-md-5 col-form-label text-md-right">Security Deposit:<span style="color:red">&nbsp*</span></label>
                                             <div class="col-md-6">
-                                                {{Form::number('securityDeposit','0',['class'=>'form-control', 'min' => '0'])}}
+                                                <input name="securityDeposit" id="securityDeposit" type="number" min="0" class="form-control" value="{{ old('securityDeposit') }}"></input>
                                             </div>     
                                         </div>
 
@@ -353,11 +360,12 @@
                           </div>
 
                         </div>
-
-            <hr>
+<br>
                 <div class="row">
                          <div class="col-lg-12">
-                                 <h3>Repairs&nbsp<i class="fas fa-toolbox"></i></h3>
+                                 <div class="card-header">
+                                        <h3>Repairs&nbsp<i class="fas fa-toolbox"></i></h3>
+                                 </div>
                                  <br>
                                   <div class="panel panel-default">
                                  @if(count($repair) > 0)              
@@ -540,7 +548,7 @@
                                                   <div class="form-group row">
                                                         <label for="" class="col-md-4 col-form-label text-md-right">Cost:<span style="color:red">&nbsp*</span></label>
                                                         <div class="col-md-6">
-                                                           {{Form::number('cost','0',['class'=>'form-control', 'min' => '0'])}}
+                                                            <input name="cost" id="cost" type="number" min="0" class="form-control" value="{{ old('cost') }}"></input>
                                                        </div>     
                                                      </div>
 
@@ -618,11 +626,12 @@
                                 
                             </div>
                         </div>
-               
-                <hr>
+               <br>
     <div class="row">
         <div class="col-lg-12">
-                <h3>Owners&nbsp<i class="fas fa-user-tie"></i></h3>
+                <div class="card-header">
+                        <h3>Owners&nbsp<i class="fas fa-user-tie"></i></h3>
+                </div>
                 <br>
                 <div class="panel panel-default">
                         @if(count($owner) > 0)              
@@ -712,7 +721,7 @@
                 <div class="form-group row">
                     <label for="totalPrice" class="col-md-4 col-form-label text-md-right">Buying Price:</label>
                     <div class="col-md-6">
-                        {{Form::number('totalPrice','0',['class'=>'form-control', 'min' => '0'])}}
+                        <input name="totalPrice" id="totalPrice" type="number" min="0" class="form-control" value="{{ old('totalPrice') }}"></input>
                     </div>     
                 </div>
 
@@ -764,12 +773,22 @@
 
                     
             </div>
+            <div class="acasa">  ssdfsf</div>
+                       
+    </div> 
 
-                
+    
             </div>
+          
         </div>
-       <br>
 
+        
 
+        <div class="card-footer">
+
+        </div>
+    </div>
+<br>
 @endsection
+
 

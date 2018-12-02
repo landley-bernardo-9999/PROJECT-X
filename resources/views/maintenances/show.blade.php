@@ -1,19 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.style')
 @section('content')
-<br>    
-    <a class="btn btn-dark" role="button" href="/propertymgmt/maintenances"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    <a href="{{$maintenances->id}}/edit" class="btn btn-primary" ><i class="fas fa-user-edit"></i>&nbspEDIT</a>
-    {!!Form::open(['action' => ['MaintenancesController@destroy', $maintenances->id],'id' => 'FormDeleteTime','method' => 'POST', 'class' =>'float-right'])!!}
-        {{Form::hidden('_method', 'DELETE')}}  
-            {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
-        {!!Form::close()!!} 
-<br>
-<br>
-<h3>{{$maintenances->name}}&nbsp<i class="fas fa-wrench"></i></h3>
+<div class="card">
+    <div class="card-header">
+            <a class="btn btn-dark" role="button" href="/propertymgmt/maintenances"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+            <a href="{{$maintenances->id}}/edit" class="btn btn-primary" ><i class="fas fa-user-edit"></i>&nbspEDIT</a>
+            {!!Form::open(['action' => ['MaintenancesController@destroy', $maintenances->id],'id' => 'FormDeleteTime','method' => 'POST', 'class' =>'float-right'])!!}
+                {{Form::hidden('_method', 'DELETE')}}  
+                    {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
+                {!!Form::close()!!} 
+        <br>    
+    </div>  
+    <div class="card-body">
+
+   
+    <h3>{{$maintenances->name}}&nbsp<i class="fas fa-wrench"></i></h3>
 <hr>
     <div class="container">
        <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <table class="table table-striped">
                     <tr>
                         <th>Birthdate</th>
@@ -39,8 +43,8 @@
                         
                     </table>
                 </div>             
-                <div class="col-lg-3">
-                    <div class="card" style="width: 20rem" >
+                <div class="col-lg-4">
+                    <div class="card">
                         <img class="card-img-top" src="/storage/maintenance_images/{{$maintenances->cover_image}}" alt="Card image cap">
                 </div>
                 </div>
@@ -92,8 +96,10 @@
           </div>
               {{-- <a class="btn btn-secondary btn-md" role="button" href="/repairs/create"><i class="fas fa-plus-circle fa-1x"></i></a>  --}}
     </div>
+</div>
     <br>
         </div>
     </div>
+</div>
 @endsection
 

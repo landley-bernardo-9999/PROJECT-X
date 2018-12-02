@@ -43,11 +43,11 @@
                             <p class="card-title">Inventory Management</p>
                         </div>
     
-                         <!--Personnel Management-->
+                         {{-- <!--Personnel Management-->
                          <div class="col-md-3">
                             <a href="/propertymgmt/maintenances" class="btn btn-secondary"><i class="fas fa-wrench fa-3x"></i></a>
                             <p class="card-title">Personnel Management</p>
-                        </div>
+                        </div> --}}
     
                         <div class="col-md-3">
                             <a href="/reportsandstats" class="btn btn-secondary"><i class="fas fa-chart-line fa-3x"></i></a>

@@ -1,4 +1,4 @@
-@extends('layouts.appsidebar')
+@extends('layouts.style')
 @section('content')
 @include('includes.messages')
 {{-- <a class="btn btn-dark" role="button" href="/propertymgmt "  ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> --}}
@@ -230,8 +230,15 @@
             </div>
         </div>
 
-    @if(count($repairs) > 0)
-    <div class="container"  >
+    
+    <div class="container fluid">
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+
+            
             <table class="table table-hover table-striped">
                 <thead class="">
                     <tr>
@@ -268,11 +275,12 @@
                 </tbody>
           
             </table>
+        </div>
+        <div class="card-footer">
             
-    @else
-    <div class="alert alert-danger" role="alert"><p>No Repairs found!</p></div>
-    @endif
+        </div>
             </div>
+        </div>
 @endsection
 
 

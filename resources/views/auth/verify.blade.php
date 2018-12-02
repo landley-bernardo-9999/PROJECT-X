@@ -32,8 +32,8 @@
     <footer class="page-footer font-small blue">   
         <!-- Copyright -->
         <hr>
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-          <a href="http://www.marthaservices.com/" target="new_blank">Martha's Official Website</a>
+        <div class="footer-copyright text-center py-3">Copyright © 2018 
+          
         </div>
         <!-- Copyright -->
       

@@ -1,4 +1,4 @@
-@extends('layouts.appsidebar')
+@extends('layouts.style')
 @section('content')
 @include('includes.messages')
      

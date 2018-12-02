@@ -1,8 +1,10 @@
-@extends('layouts.appsidebar')
+@extends('layouts.style')
 @section('content')
 @include('includes.messages')
+
     {{-- <a class="btn btn-dark" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> --}}
     {{-- <a class="btn btn-warning float-right add-violation" role="button" href="#" ><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a> --}}
+
 
     {!! Form::open(['action'=>'ViolationsController@store','method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     
@@ -122,8 +124,13 @@
             </div>
      </div>
 
-    @if(count($violations) > 0)
     <div class="container-fluid" >
+       
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+    
             <table class="table table-striped table-hover">
                <thead class="">
                 <tr>
@@ -134,7 +141,7 @@
                     <th>Description</th>
                     <th>Reported By</th>
                     <th>Fine</th>
-                    <th></th>
+                    <th>Action</th>
                     {{-- <th></th>
                     <th></th> --}}
                     
@@ -150,7 +157,7 @@
                             <td>{{$violation->description}}</td>
                             <td>{{$violation->reportedBy}}</td>
                             <td>{{$violation->fine}}</td>
-                            <td><a href="/propertymgmt/violations/{{$violation->id}}" class="btn btn-primary">MORE</a></td>
+                            <td><a href="/propertymgmt/violations/{{$violation->id}}" class="btn btn-info">MORE</a></td>
                             {{-- <td>
                                 <a href="/violations/{{$violation->id}}/edit" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
                             </td>
@@ -165,11 +172,16 @@
                  
                 </tbody>        
             </table>
-            
-    @else
-    {{-- <div class="alert alert-danger" role="alert"><p>No Violations found!</p></div> --}}
-    @endif
+           
+        </div>
+        <div class="card-footer">
+                
             </div>
+    </div>
+    
+            </div>
+
+         
 @endsection
 
 

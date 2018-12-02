@@ -1,7 +1,10 @@
-@extends('layouts.appsidebar')
+@extends('layouts.style')
 @section('content')
 @include('includes.messages')
-<br>
+
+
+<div class="card">
+    <div class="card-header">
             <a class="btn btn-dark" role="button" href="/propertymgmt/owners/"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
             
             
@@ -10,14 +13,17 @@
                 {{Form::hidden('_method', 'DELETE')}}  
                 {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
             {!!Form::close()!!} 
-<br>
-<br>
-<hr>
-<h3>Owner&nbsp<i class="fas fa-user-tie"></i></h3>
+    </div>
+    <div class="card-body">
+
+    
+        <div class="card-header">
+                <h3>Owner&nbsp<i class="fas fa-user-tie"></i></h3>
+        </div>
 <br>
     <div class="container">
        <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-8    ">
                 <table class="table table-striped">
                     <tr>
                         <th>Name of the owner</th>
@@ -43,19 +49,19 @@
 
             </div>
 
-            <div class="col-lg-3">
-                    <div class="card" style="width: 20rem" >
+            <div class="col-lg-4">
+                    <div class="card">
                         <img class="card-img-top" src="/storage/owner_images/{{$owner->cover_image}}" alt="Card image cap">
                 </div>
             </div>
         
        </div>
-
+       <br>
        <div class="row">
-        <div class="col-lg-12">
-             <div>
-                 <hr>
-                     <h3>Rooms&nbsp<i class="fas fa-store-alt fa-1x"></i></h3>
+        <div class="col-lg-12">            
+                     <div class="card-header">
+                            <h3>Rooms&nbsp<i class="fas fa-store-alt fa-1x"></i></h3>
+                     </div>
                      <br>
                       <div class="panel panel-default">
                      @if(count($transaction) > 0)              
@@ -91,7 +97,7 @@
                      @endif
                    </div>
                        {{-- <a class="btn btn-warning" role="button" href="/propertymgmt/transactions/create" "><i class="fas fa-plus-circle fa-1x"></i>&nbspADD</a>   --}}
-             </div>
+           
              </div>           
         </div>
 
@@ -158,13 +164,13 @@
     
         </div>
 
-
+<br>
         
        <div class="row">
            <div class="col-lg-12">
-                <div>
-                    <hr>
-                        <h3>Concerns/Repairs &nbsp<i class="fas fa-toolbox fa-1x"></i></h3>
+            <div class="card-header">
+                    <h3>Concerns/Repairs &nbsp<i class="fas fa-toolbox fa-1x"></i></h3>
+            </div>
                         <br>
                          <div class="panel panel-default">
                         @if(count($repair) > 0)              
@@ -203,11 +209,118 @@
                         @endif
                       </div>
                       {{-- <a class="btn btn-warning" role="button" href="/propertymgmt/transactions/create"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD </a> --}}
-                </div>
+                
                 </div>           
            </div>
+
+           <br>
+
+            {{-- Start of billing section for the resident --}}
+            <br>
+            <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card-header">
+                                <h3>Income&nbsp<i class="fas fa-hand-holding-usd"></i></h3>
+                        </div>
+                        <br>
+                         <div class="panel panel-default">
+                                    
+                        <table class="table">
+                         <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Paid</th>
+                                <th>Balance</th>
+                                <th>Surcharge</th>
+                                <th>Action</th>
+                                
+                            </tr>
+                         </thead>
+                         
+                         <tbody>
+                                
+                            <tr>
+                                <td>1</td>
+                                <td>Dec 01 2018</td>
+                                <td>November Monthly Rent</td>
+                                <td>6000</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td><a href="#" class="btn btn-info">MORE</a></td>
+                            </tr>
+                            
+                         </tbody>
+                        
+                        </table>
+                       
+                      </div> 
+                </div>
+                    <br>      
+                    </div> 
+
+            {{-- End of billing section for the resident --}}
+
+             {{-- Start of billing section for the resident --}}
+             <br>
+             <div class="row">
+                     <div class="col-lg-12">
+                         <div class="card-header">
+                                 <h3>Expenses&nbsp<i class="fas fa-hand-holding-usd"></i></h3>
+                         </div>
+                         <br>
+                          <div class="panel panel-default">
+                                     
+                         <table class="table">
+                          <thead class="thead-dark">
+                             <tr>
+                                 <th>#</th>
+                                 <th>Date</th>
+                                 <th>Description</th>
+                                 <th>Amount</th>
+                                 <th>Paid</th>
+                                 <th>Balance</th>
+                                 <th>Surcharge</th>
+                                 <th>Action</th>
+                                 
+                             </tr>
+                          </thead>
+                          
+                          <tbody>
+                                 
+                             <tr>
+                                 <td>1</td>
+                                 <td>Dec 01 2018</td>
+                                 <td>November Monthly Rent</td>
+                                 <td>6000</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td><a href="#" class="btn btn-info">MORE</a></td>
+                             </tr>
+                             
+                          </tbody>
+                         
+                         </table>
+                        
+                       </div> 
+                 </div>
+                     <br>      
+                     </div> 
+ 
+             {{-- End of billing section for the resident --}}
        </div>
        </div>
+       <div class="card-footer">
+           
+        </div>
+       </div>
+
+    
+    </div>
        <br>
 @endsection
 

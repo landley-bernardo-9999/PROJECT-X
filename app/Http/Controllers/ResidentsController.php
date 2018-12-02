@@ -118,14 +118,14 @@ class ResidentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|unique:residents',
+            'name' => 'required',
             'birthDate' => 'nullable',
             'residentStatus' => 'required',
             'school' => 'nullable',
             'course' => 'nullable',
             'yearLevel' => 'nullable',
-            'mobileNumber' => 'nullable',
-            'emailAddress' => 'nullable',
+            'mobileNumber' => 'required',
+            'emailAddress' => 'required|string|email|max:500|unique:residents',
             'cover_image' => 'image|nullable|max:1999',
         ]);
 

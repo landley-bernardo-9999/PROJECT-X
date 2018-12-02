@@ -1,4 +1,4 @@
-@extends('layouts.appsidebar')
+@extends('layouts.style')
 @section('content')
 @include('includes.messages')
 <div id="edit-resident-info" class="modal fade" role="dialog">
@@ -100,21 +100,27 @@
     </div>
 </div>
 
-
-<a class="btn btn-dark" role="button" href="/propertymgmt/residents/" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+<div class="card">
+    <div class="card-header">
+            <a class="btn btn-dark" role="button" href="/propertymgmt/residents/" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
   
-    <a href="#" class="btn btn-primary edit-resident-info"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
-    {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id],'id' => 'FormDeleteTime','method' => 'POST', 'class' =>'float-right'])!!}
-        {{Form::hidden('_method', 'DELETE')}}  
-        {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
-    {!!Form::close()!!} 
+            <a href="#" class="btn btn-primary edit-resident-info"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
+            {!!Form::open(['action' => ['ResidentsController@destroy', $resident->id],'id' => 'FormDeleteTime','method' => 'POST', 'class' =>'float-right'])!!}
+                {{Form::hidden('_method', 'DELETE')}}  
+                {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
+            {!!Form::close()!!} 
+    </div>
 
-<hr>
-<h3>Resident&nbsp<i class="fas fa-users"></i></h3>
+    <div class="card-body">
+
+
+<div class="card-header">
+        <h3>Resident&nbsp<i class="fas fa-users"></i></h3>
+</div>
 <br>
     <div class="container-fluid">
        <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <table class="table table-striped">
                     <tr>
                         <th>Name</th>
@@ -150,8 +156,8 @@
                     </tr> 
                     </table>
             </div>
-            <div class="col-lg-3">
-                <div class="card" style="width: 20rem" >
+            <div class="col-lg-4">
+                <div class="card" >
                     <img class="card-img-top" src="/storage/resident_images/{{ $resident->cover_image }}" alt="Card image cap">
                 </div>
             </div>
@@ -159,8 +165,9 @@
     
         <div class="row">
             <div class="col-lg-12">
-            <hr>
-            <h3>Rooms&nbsp<i class="fas fa-store-alt"></i></h3>
+                <div class="card-header">
+                        <h3>Rooms&nbsp<i class="fas fa-store-alt"></i></h3>
+                </div>
             <br>
             <div class="panel panel-default">
             @if(count($contract) > 0)              
@@ -203,8 +210,9 @@
         <br> 
             <div class="row">
                 <div class="col-lg-12">
-                <hr>
-                    <h3>Concerns/Repairs&nbsp<i class="fas fa-toolbox"></i></h3>
+                <div class="card-header">
+                        <h3>Concerns/Repairs&nbsp<i class="fas fa-toolbox"></i></h3>
+                </div>
                 <br>
                     <div class="panel panel-default">
                         @if(count($repair) > 0)              
@@ -245,11 +253,12 @@
                 <br>
                     </div>
                     <br>
-                <hr>
-       
+               
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3>Violations&nbsp<i class="fas fa-user-times"></i></h3>
+                            <div class="card-header">
+                                    <h3>Violations&nbsp<i class="fas fa-user-times"></i></h3>
+                            </div>
                             <br>
                              <div class="panel panel-default">
                             @if(count($violation) > 0)              
@@ -289,9 +298,60 @@
                                 <a class="btn btn-warning add-violation" role="button" href="#"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD VIOLATION</a>  
                     </div>
                         <br>      
-                        </div>         
+                        </div>
+                                 
                         </div>
                     </div>
+
+            {{-- Start of billing section for the resident --}}
+                    <br>
+                    <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card-header">
+                                        <h3>Billings&nbsp<i class="fas fa-hand-holding-usd"></i></h3>
+                                </div>
+                                <br>
+                                 <div class="panel panel-default">
+                                            
+                                <table class="table">
+                                 <thead class="thead-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>Paid</th>
+                                        <th>Balance</th>
+                                        <th>Surcharge</th>
+                                        <th>Action</th>
+                                        
+                                    </tr>
+                                 </thead>
+                                 
+                                 <tbody>
+                                        
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Dec 01 2018</td>
+                                        <td>November Monthly Rent</td>
+                                        <td>6000</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td><a href="#" class="btn btn-info">MORE</a></td>
+                                    </tr>
+                                    
+                                 </tbody>
+                                
+                                </table>
+                               
+                              </div>
+                                    <a class="btn btn-warning add-violation" role="button" href="#"><i class="fas fa-plus-circle fa-1x"></i>&nbspADD VIOLATION</a>  
+                        </div>
+                            <br>      
+                            </div> 
+
+                    {{-- End of billing section for the resident --}}
     </div>
     </div>
     <br>
@@ -405,9 +465,21 @@
                     </div>
                 </div>
             </div>
+
+            
         </div>
-    </div>
-     
+
+
+
         
+    </div>
+    
+   
+</div>
+
+    
+</div>
+
+</div>
 @endsection
 

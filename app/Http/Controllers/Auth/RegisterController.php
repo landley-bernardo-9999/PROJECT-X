@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'type' => 'required',
             'mobileNumber' => 'required',
-            'department' => 'required',
+            // 'department' => 'nullable',
         ]);
     }
 
@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'type' => $data['type'],
             'mobileNumber' =>$data['mobileNumber'],
-            'department' =>$data['department'],
+            // 'department' =>$data['department'],
         ]);
     }
 }

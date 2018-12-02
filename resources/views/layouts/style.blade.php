@@ -34,17 +34,9 @@
             <div class="col-md-2">
                 @include('includes.sidebar')
             </div>
-            
-            <div class="col-md-2" >
-                @yield('filter')
-            </div>
 
-            <div class="col-md-6" >
+            <div class="col-md-10" >
                 @yield('content')
-            </div>
-
-            <div class="col-md-2" >
-                @yield('action')
             </div>
            </div>
         </div>

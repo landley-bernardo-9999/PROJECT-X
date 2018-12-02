@@ -1,4 +1,4 @@
-@extends('layouts.appsidebar')
+@extends('layouts.style')
 @section('content')
 @include('includes.messages')
     <a class="btn btn-dark" role="button" href="/propertymgmt/rooms/"{{$transaction->roomNo}}><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>

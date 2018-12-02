@@ -89,7 +89,7 @@
                                     </select>
                                 </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="department" class="col-md-4 col-form-label text-md-right" >Department :</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="department" id="department">
@@ -98,7 +98,7 @@
                                         <option value="Property Management">Property Management</option>
                                     </select>
                                 </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -118,8 +118,8 @@
     <footer class="page-footer font-small blue" style="padding-top:10%">   
         <!-- Copyright -->
         <hr>
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-          <a href="http://www.marthaservices.com/" target="new_blank">Martha's Official Website</a>
+        <div class="footer-copyright text-center py-3">Copyright © 2018 
+          {{-- <a href="http://www.marthaservices.com/" target="new_blank">Martha's Official Website</a> --}}
         </div>
         <!-- Copyright -->
       

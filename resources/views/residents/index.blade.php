@@ -1,4 +1,4 @@
-@extends('layouts.appsidebar')
+@extends('layouts.style')
 @section('content')
 @include('includes.messages')
 <div id="add-resident-info" class="modal fade" role="dialog">
@@ -101,18 +101,13 @@
 
 {{-- <a class="btn btn-dark float-left" role="button" href="/propertymgmt"><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a> --}}
 
-<form action="/search/residents" method="GET">
-    <input style="width:200px" class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
-</form>
-
-<a class="btn btn-warning float-left add-resident-info" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspRESIDENT</a>
-
-<br>
-<br>
-
-<div class=" card container-fluid" >
+<div class="container-fluid" >
+    <div class="card">
      <div class="card-header">
-        <h3 class="text-center">Residents found: {{count($residents)}}</h3>     
+            <a class="btn btn-warning float-left add-resident-info" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD RESIDENT</a>
+            <form action="/search/residents" method="GET">
+                <input style="width:200px" class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
+            </form>
     </div> 
         <div class="row card-body">
             <table class="table table-hover table-striped table-bordered">
@@ -125,7 +120,7 @@
                     <th scope="col">Status</th>
                     <th scope="col">Mobile</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Move-Out</th>
+                    <th scope="col">Action</th>
                     {{-- <th></th> --}}
                   </tr>
                 </thead>
@@ -135,14 +130,15 @@
                     <tr>
                         <th scope="row">{{$rowNum++}}</th>
                         <td><img class="card-img-top" style="width:35px" src="/storage/resident_images/{{$row->cover_image}}" alt="Card image cap"></td>
-                        {{-- <td><a href="/propertymgmt/residents/{{$row->residentId}}">{{$row->name}}</a></td> --}}
+                        
                         <td>{{$row->name}}</td>
                         <td>{{$row->residentRoomNo}}</td>
                         {{-- <td><a href="/propertymgmt/rooms/{{$row->residentRoomNo}}">{{$row->residentRoomNo}}</a></td> --}}
                         <td>{{$row->residentStatus}}</td>
                         <td>{{$row->mobileNumber}}</td>
                         <td>{{$row->emailAddress}}</td>
-                        <td>{{Carbon\Carbon::parse($row->moveOutDate)->formatLocalized('%b %d %Y')}}</td>
+                        
+                        <td><a href="/propertymgmt/residents/{{$row->residentId}}" class="btn btn-info">MORE</a></td>
                          {{-- <td>
                         <a href="/residents/{{$row->residentId}}/edit" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
                     </td> --}}
@@ -158,9 +154,15 @@
                 </tbody>
               </table>
             </div>
+            <div class="card-footer">
+                    <h3 class="text-center">Residents found: {{count($residents)}}</h3>    
+            </div>
         </div>
+</div>
         <br>
-        <h6 class="text-center">{{$residents->links()}}</h6>
+        <div class="container text-center">
+                <h6 class="text-center">{{$residents->links()}}</h6>
+        </div>
 
 @endsection
 

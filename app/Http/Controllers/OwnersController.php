@@ -68,8 +68,8 @@ class OwnersController extends Controller
         $this->validate($request,[
             'name' => 'required|unique:owners',
             'birthDate' => 'nullable',
-            'mobileNumber' => 'nullable',
-            'emailAddress' => 'nullable',
+            'mobileNumber' => 'required|integer',
+            'emailAddress' => 'required|max:20',
             'cover_image' => 'image|nullable|max:1999'
         ]);
 
@@ -101,7 +101,7 @@ class OwnersController extends Controller
 
         $owner->save();
 
-        return redirect('/propertymgmt/owners/create')->with('success','Added successfully!');
+        return redirect('/propertymgmt/owners/'.$owner->id)->with('success','Added successfully!');
 
     }
 
