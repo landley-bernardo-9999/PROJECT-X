@@ -1,6 +1,7 @@
 @extends('layouts.appsidebar')
 @section('content')
 @include('includes.messages')
+
     <div id="create-room" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -8,7 +9,7 @@
                     <h4 class="room-title float-left"> </h4>
                     <button class="close" type="button" data-dismiss="modal" >&times;</button>
                 </div>
-    
+                   
                     <div class="modal-body">
                         
                       {!! Form::open(['action'=>'RoomsController@store','method' => 'POST', 'enctype' => 'multipart/form-data', 'class'=>'room-form'] ) !!}

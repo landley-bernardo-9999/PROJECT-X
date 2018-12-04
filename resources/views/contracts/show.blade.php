@@ -1,19 +1,23 @@
-@extends('layouts.appsidebar')
+@extends('layouts.style')
 @section('content')
-<a class="btn btn-dark float-left" role="button" href="/propertymgmt/rooms/{{$contract->residentRoomNo}}" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
-    
-<a href="{{$contract->id}}/edit" class="btn btn-info float-left"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
 
-{!!Form::open(['action' => ['ContractsController@destroy', $contract->id],'id' => 'FormDeleteTime', 'method' => 'POST', 'class' =>'float-right'])!!}
-    {{Form::hidden('_method', 'DELETE')}}  
-        {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
-    {!!Form::close()!!}
-<br>
-<br>
-<hr>
-<h3>Contract&nbsp<i class="fas fa-archive"></i></h3>
-<br>
-    <div class="container-fluid">
+<div class="card">
+    <div class="card-header">
+            <a class="btn btn-dark " role="button" href="/propertymgmt/rooms/{{$contract->residentRoomNo}}" ><i class="fas fa-arrow-circle-left"></i>&nbspBACK</a>
+    
+            <a href="{{$contract->id}}/edit" class="btn btn-info"><i class="fas fa-user-edit"></i>&nbspEDIT</a>
+            
+            {!!Form::open(['action' => ['ContractsController@destroy', $contract->id],'id' => 'FormDeleteTime', 'method' => 'POST', 'class' =>'float-right'])!!}
+                {{Form::hidden('_method', 'DELETE')}}  
+                    {{Form::submit('DELETE',['class' => 'btn btn-danger'])}}
+                {!!Form::close()!!}
+    </div>
+   
+    <div class="card-body">
+        <div class="card-header">
+            <h3>Contract&nbsp<i class="fas fa-archive"></i></h3>
+        </div>
+        <br>
        <div class="row">
             <div class="col-lg-12">
                 <table class="table table-striped">
@@ -55,8 +59,8 @@
        </div>
 
       
-    </div>
-     
-        
+
+    </div>   
+</div>    
 @endsection
 

@@ -26,8 +26,9 @@
 </head>
 <body>
     <div id="app">
+        
         @include('includes.navbar')
-        <hr class="my-1">
+        <hr class="my-0">
         <br>
         <div class="container-fluid" >
            <div class="row">
@@ -185,6 +186,15 @@
             $('.edit-transaction-title').text('Edit Transaction');
         });
 
+         // pop up form for adding maintennance personnel
+
+         $(document).on('click','.add-personnel', function(){
+            $('#add-personnel').modal('show');
+            $('.add-personnel-form').show();
+            $('.add-personnel-title').text('Add Personnel');
+        });
+
+     
 
         // Delete confirmation dialog
         $("#FormDeleteTime").submit(function (event) {

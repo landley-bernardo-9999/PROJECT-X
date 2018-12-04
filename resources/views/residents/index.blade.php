@@ -103,13 +103,13 @@
 
 <div class="container-fluid" >
     <div class="card">
-     <div class="card-header">
+        <div class="card-header">
             <a class="btn btn-warning float-left add-resident-info" role="button" href="#"><i class="fas fa-plus-circle"></i>&nbspADD RESIDENT</a>
             <form action="/search/residents" method="GET">
                 <input style="width:200px" class ="float-right form-control" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search residents" />
             </form>
-    </div> 
-        <div class="row card-body">
+        </div> 
+        <div class="card-body">
             <table class="table table-hover table-striped table-bordered">
                 <thead class=""> 
                   <tr>

@@ -42,10 +42,10 @@ class MaintenancesController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'birthDate' => 'required',
+            'birthDate' => 'nullable',
             'employmentStatus' => 'required',
             'position' => 'required',
-            'schedule' => 'required',
+            'schedule' => 'nullable',
             'mobileNumber' => 'nullable',
             'cover_image' => 'image|nullable|max:1999'
         ]);
@@ -101,7 +101,8 @@ class MaintenancesController extends Controller
             ->paginate();
         
         $maintenances = Maintenance::find($id);
-        
+     
+    
         return view('maintenances.show')->with('rowNoForRepairs', $rowNoForRepairs)
                                         ->with('maintenances', $maintenances)
                                         ->with('repair', $repair);
@@ -130,10 +131,10 @@ class MaintenancesController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'birthDate' => 'required',
+            'birthDate' => 'nullable',
             'employmentStatus' => 'required',
             'position' => 'required',
-            'schedule' => 'required',
+            'schedule' => 'nullable',
             'mobileNumber' => 'nullable',
             'cover_image' => 'image|nullable|max:1999'
         ]);

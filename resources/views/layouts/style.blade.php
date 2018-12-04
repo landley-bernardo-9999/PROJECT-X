@@ -61,6 +61,14 @@
             $('.resident-title').text('Add Resident');
         });
 
+        // pop up form for resident's contract's form
+
+        $(document).on('click','.edit-resident', function(){
+            $('#edit-resident').modal('show');
+            $('.edit-resident-form').show();
+            $('.edit-resident-title').text('Edit Resident');
+        });
+
         // pop up for repair's form
 
          $(document).on('click','.add-repair', function(){
@@ -175,6 +183,22 @@
             $('#edit-transaction').modal('show');
             $('.edit-transaction-form').show();
             $('.edit-transaction-title').text('Edit Transaction');
+        });
+
+        // pop up form for adding maintennance personnel
+
+        $(document).on('click','.add-personnel', function(){
+            $('#add-personnel').modal('show');
+            $('.add-personnel-form').show();
+            $('.add-personnel-title').text('Add Personnel');
+        });
+
+           // pop up form for editing maintennance personnel
+
+           $(document).on('click','.edit-personnel', function(){
+            $('#edit-personnel').modal('show');
+            $('.edit-personnel-form').show();
+            $('.edit-personnel-title').text('Edit Personnel');
         });
 
 

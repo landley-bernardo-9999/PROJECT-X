@@ -169,6 +169,7 @@
                   
             </div>
         </div>
+        <br>
             <div class="row">
                 <div class="col-lg-12">
                     
@@ -253,7 +254,15 @@
                                         </div>
                                          {{-- Resident's full name --}}
 
-                                         <div class="form-group row">
+
+                                        <div class="form-group row">
+                                            <label for="residentName" class="col-md-5 col-form-label text-md-right">Name:<span style="color:red">&nbsp*</span></label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" name="residentName">
+                                            </div>
+                                        </div>
+
+                                         {{-- <div class="form-group row">
                                                 <label for="residentName" class="col-md-5 col-form-label text-md-right">Name:<span style="color:red">&nbsp*</span></label>
                                             
                                             <div class="col-md-6">
@@ -266,7 +275,7 @@
                                                         @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                       
 

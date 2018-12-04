@@ -1,7 +1,4 @@
-<div class="container-fluid" style="width:230px;">
-    <div class="row">
-        <div class="col-md-12">  
-                <ul class="list-group">
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <li class="list-group-item">
                             <i class="fas fa-clipboard"></i><a href="/propertymgmt/">&nbspDashboard</a>           
                         </li>
@@ -24,6 +21,8 @@
                             <i class="fas fa-wrench"></i><a href="/propertymgmt/maintenances">&nbspMaintenance</a>
                         </li>
                     </ul>
-        </div>
-    </div>
-</div>
+ 
+
+</div>  
+
+  

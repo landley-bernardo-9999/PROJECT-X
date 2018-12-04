@@ -162,7 +162,7 @@ class ResidentsController extends Controller
         $resident->save();
 
 
-        return redirect('/propertymgmt/residents/')->with('success','Added successfully!');
+        return redirect('/propertymgmt/residents/'.$resident->id)->with('success','Added successfully!');
     }
 
     /**
